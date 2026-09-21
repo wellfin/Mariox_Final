@@ -1,0 +1,64 @@
+/* Base rules from the Mariox Software Site design (<helmet> block). */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#08070A}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#F4F1EA;text-decoration:none}
+a:hover{color:#F04423}
+input,textarea,button,select{font:inherit;color:inherit}
+::selection{background:#F04423;color:#08070A}
+@keyframes mxDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+@keyframes mxPulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes mxSpin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+#mx-nav{display:flex}
+#work{overflow-x:hidden}
+@media (max-width:900px){#work{overflow-x:auto}}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* Form fields, in the design's hairline language. */
+.mx-field{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(244,241,234,.38);padding:11px 0;font-size:clamp(15px,1.4vw,18px);color:#F4F1EA;outline:none;border-radius:0;transition:border-color .3s}
+.mx-field:focus{border-bottom-color:#F04423}
+.mx-field::placeholder{color:#8E8A85;opacity:1}
+.mx-field:-webkit-autofill,.mx-field:-webkit-autofill:focus{-webkit-text-fill-color:#F4F1EA;-webkit-box-shadow:0 0 0 1000px #0E0D10 inset;caret-color:#F4F1EA;transition:background-color 9999s}
+textarea.mx-field{resize:vertical;min-height:120px;font-size:clamp(15px,1.3vw,17px);line-height:1.5}
+
+/* react-phone-input-2 restyled to match .mx-field */
+.mx-phone.react-tel-input{font-family:inherit}
+.mx-phone.react-tel-input .form-control{width:100%;height:auto;background:transparent;border:0;border-bottom:1px solid rgba(244,241,234,.38);border-radius:0;padding:11px 0 11px 58px;font-size:clamp(15px,1.4vw,18px);color:#F4F1EA;box-shadow:none;transition:border-color .3s}
+.mx-phone.react-tel-input .form-control::placeholder{color:#8E8A85}
+.mx-phone.react-tel-input .form-control:focus{border-bottom-color:#F04423;box-shadow:none}
+.mx-phone.react-tel-input .flag-dropdown{background:transparent;border:0;border-radius:0}
+.mx-phone.react-tel-input .flag-dropdown.open,.mx-phone.react-tel-input .flag-dropdown.open .selected-flag,.mx-phone.react-tel-input .selected-flag:hover,.mx-phone.react-tel-input .selected-flag:focus{background:transparent}
+.mx-phone.react-tel-input .selected-flag{padding:0 0 0 2px;width:50px}
+.mx-phone.react-tel-input .selected-flag .arrow{border-top-color:#8E8A85}
+.mx-phone.react-tel-input .country-list{background:#111013;color:#F4F1EA;border:1px solid rgba(244,241,234,.2);box-shadow:0 20px 50px rgba(0,0,0,.7);border-radius:0;margin:2px 0 0;width:340px;max-width:calc(100vw - 48px);max-height:260px;overscroll-behavior:contain;z-index:50}
+.mx-phone.react-tel-input .country-list .country{padding:9px 12px}
+.mx-phone.react-tel-input .country-list .country .country-name{color:inherit}
+.mx-phone.react-tel-input .country-list .country:hover,.mx-phone.react-tel-input .country-list .country.highlight{background:#F04423;color:#08070A}
+.mx-phone.react-tel-input .country-list .country .dial-code{color:inherit;opacity:.6}
+.mx-phone.react-tel-input .country-list .search{position:sticky;top:0;z-index:2;display:flex;align-items:center;background:#111013;padding:10px;border-bottom:1px solid rgba(244,241,234,.14)}
+.mx-phone.react-tel-input .country-list .search-emoji{display:none}
+.mx-phone.react-tel-input .country-list .no-entries-message{color:#8E8A85;padding:10px 12px}
+.mx-phone.react-tel-input .country-list .search-box{width:100%;margin:0;background:transparent;border:1px solid rgba(244,241,234,.3);color:#F4F1EA;border-radius:0;padding:9px 10px;font-size:14px;outline:none}
+.mx-phone.react-tel-input .country-list .search-box::placeholder{color:#8E8A85}
+
+/* Rich text coming from the CMS / legal copy. */
+.mx-prose{font-size:clamp(15.5px,1.25vw,18px);line-height:1.65;color:#B7B2AA;max-width:72ch}
+.mx-prose h2,.mx-prose h3,.mx-prose h4{color:#F4F1EA;font-weight:800;letter-spacing:-.03em;line-height:1.05;text-transform:uppercase;margin:clamp(34px,4vw,60px) 0 16px}
+.mx-prose h2{font-size:clamp(1.5rem,3vw,2.4rem)}
+.mx-prose h3{font-size:clamp(1.15rem,2vw,1.6rem)}
+.mx-prose h4{font-size:clamp(1rem,1.5vw,1.25rem)}
+.mx-prose > :first-child{margin-top:0}
+.mx-prose p{margin:0 0 16px}
+.mx-prose ul,.mx-prose ol{margin:0 0 18px;padding-left:1.2em}
+.mx-prose li{margin:0 0 8px}
+.mx-prose li::marker{color:#F04423}
+.mx-prose a{color:#F04423;border-bottom:1px solid rgba(240,68,35,.4)}
+.mx-prose strong{color:#F4F1EA}
+.mx-prose img{max-width:100%;height:auto}
+.mx-prose table{width:100%;border-collapse:collapse;margin:0 0 18px}
+.mx-prose td,.mx-prose th{border:1px solid rgba(244,241,234,.14);padding:10px;text-align:left}
+
+.mx-visually-hidden{position:absolute !important;left:-9999px !important;width:1px !important;height:1px !important;opacity:0 !important}

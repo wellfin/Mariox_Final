@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mariox Software — Digital Product Engineering</title>
+<meta name="description" content="Mariox Software designs, engineers and scales digital products. 100+ engineers across Noida, Hyderabad, Dallas and Melbourne.">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#08070A}
+  body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#F4F1EA;text-decoration:none}
+  a:hover{color:#F04423}
+  input,textarea,button{font:inherit;color:inherit}
+  ::selection{background:#F04423;color:#08070A}
+  @keyframes mxDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+  @keyframes mxPulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+  #mx-nav{display:flex}
+  #work{overflow-x:hidden}
+  @media (max-width:900px){#work{overflow-x:auto}}
+</style>
+</helmet>
+
+<div style="background:#08070A;color:#F4F1EA;font-family:'Schibsted Grotesk','Helvetica Neue',Helvetica,sans-serif;position:relative">
+
+  <canvas ref="{{ canvasRef }}" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+  <div style="position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(8,7,10,0) 0%,rgba(8,7,10,.55) 62%,rgba(8,7,10,.9) 100%)"></div>
+  <div style="position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+
+  <div ref="{{ dotRef }}" style="position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:#F04423;z-index:9999;pointer-events:none;transform:translate3d(-100px,-100px,0);will-change:transform"></div>
+  <div ref="{{ ringRef }}" style="position:fixed;top:0;left:0;width:56px;height:56px;border-radius:50%;border:1px solid rgba(244,241,234,.35);z-index:9998;pointer-events:none;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#08070A;transform:translate3d(-100px,-100px,0) scale(.35);will-change:transform;overflow:hidden"><span ref="{{ ringLabelRef }}" style="opacity:0;white-space:nowrap"></span></div>
+
+  <div ref="{{ progRef }}" style="position:fixed;top:0;left:0;height:2px;width:0%;background:#F04423;z-index:9990;pointer-events:none"></div>
+
+  <header ref="{{ navRef }}" style="position:sticky;top:0;z-index:900;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding:20px clamp(18px,4vw,60px);border-bottom:1px solid rgba(244,241,234,0);transition:background .5s cubic-bezier(.2,.8,.2,1),border-color .5s,padding .5s,backdrop-filter .5s">
+    <a href="#top" data-cursor="1" style="display:flex;align-items:center;gap:11px;flex-shrink:0">
+      <div style="width:17px;height:17px;background:#F04423;flex-shrink:0"></div>
+      <span style="font-size:16px;font-weight:800;letter-spacing:-.035em;text-transform:uppercase">Mariox <span style="font-weight:400;opacity:.5">Software</span></span>
+    </a>
+    <nav id="mx-nav" style="flex-wrap:wrap;align-items:center;gap:14px clamp(14px,2vw,30px);margin-left:auto">
+      <sc-for list="{{ navLinks }}" as="n" hint-placeholder-count="6">
+        <a href="{{ n.href }}" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:{{ n.color }};display:flex;align-items:center;gap:7px;transition:color .3s"><span style="width:4px;height:4px;background:#F04423;opacity:{{ n.dot }};transition:opacity .3s"></span>{{ n.label }}</a>
+      </sc-for>
+      <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:10px;background:#F04423;color:#08070A;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;white-space:nowrap;transition:background .3s" style-hover="background:#F4F1EA;color:#08070A">Start a project <span>&#8594;</span></a>
+    </nav>
+  </header>
+
+  <main id="top" style="position:relative;z-index:3">
+
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+  <div>
+
+    <section style="position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,8vw,110px) clamp(18px,4vw,60px) clamp(40px,6vw,80px)">
+      <div ref="{{ heroEyebrowRef }}" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(24px,3.4vw,44px);opacity:0">
+        <span style="width:7px;height:7px;background:#F04423;animation:mxPulse 2.2s ease-in-out infinite"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Mariox Software &nbsp;/&nbsp; Digital product engineering</span>
+      </div>
+      <h1 style="margin:0;font-size:clamp(3.2rem,13vw,13rem);line-height:.82;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span ref="{{ heroL1 }}" style="display:block;transform:translateY(115%)">We build</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span ref="{{ heroL2 }}" style="display:block;transform:translateY(115%)">what&#8217;s <span style="color:#F04423">next.</span></span></span>
+      </h1>
+      <div ref="{{ heroFootRef }}" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,72px);align-items:flex-end;justify-content:space-between;margin-top:clamp(32px,4.5vw,64px);opacity:0">
+        <p style="margin:0;max-width:36ch;font-size:clamp(16px,1.4vw,20px);line-height:1.45;color:#B7B2AA">We design, engineer and scale digital products for ambitious companies.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F4F1EA;color:#08070A;padding:19px 26px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s,color .35s" style-hover="background:#F04423;color:#08070A">Start a project <span>&#8594;</span></a>
+          <a href="#/work" data-cursor="view" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:19px 26px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Explore our work</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="border-top:1px solid rgba(244,241,234,.1);border-bottom:1px solid rgba(244,241,234,.1);overflow:hidden;background:rgba(8,7,10,.55)">
+      <div style="display:flex;width:max-content;animation:mxDrift 44s linear infinite">
+        <sc-for list="{{ tickerLoop }}" as="t" hint-placeholder-count="2">
+          <div style="display:flex;align-items:center">
+            <sc-for list="{{ ticker }}" as="w" hint-placeholder-count="8">
+              <span style="display:flex;align-items:center;gap:clamp(20px,2.6vw,40px);padding:15px clamp(10px,1.3vw,20px);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8E8A85;white-space:nowrap">{{ w }}<span style="width:5px;height:5px;background:#F04423;display:inline-block"></span></span>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(80px,13vw,220px) clamp(18px,4vw,60px)">
+      <h2 style="margin:0;max-width:20ch;font-size:clamp(2.2rem,7.4vw,7rem);line-height:.9;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">We don&#8217;t just</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">write code.</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">We build businesses</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">that run on it.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,80px);margin-top:clamp(40px,5.5vw,90px);max-width:1100px">
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Mariox is a software engineering company of 100+ people working across four countries. Founders come to us with a product to prove. Enterprises come to us with systems that have to keep running while they change.</p>
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Both get the same thing: senior engineers who own the outcome, a plan with real numbers attached, and code you hold the keys to from the first commit.</p>
+      </div>
+    </section>
+
+    <section id="services" style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(32px,4.5vw,70px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">What we do</h2>
+        <a href="#/services" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#F04423;border-bottom:1px solid #F04423;padding-bottom:4px">All services &#8599;</a>
+      </div>
+      <div style="border-top:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <a href="{{ s.href }}" data-row="1" data-cursor="view" onMouseEnter="{{ s.enter }}" style="color:#F4F1EA;position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(20px,2.6vw,34px) clamp(6px,1.6vw,24px);border-bottom:1px solid rgba(244,241,234,.14);transition:background .45s cubic-bezier(.2,.8,.2,1),padding-left .45s cubic-bezier(.2,.8,.2,1),color .45s" style-hover="background:#F04423;color:#08070A;padding-left:clamp(18px,3.4vw,56px)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;opacity:.5">{{ s.n }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline;justify-content:space-between">
+              <span style="font-size:clamp(1.2rem,3.4vw,2.9rem);font-weight:700;letter-spacing:-.035em;line-height:1.02;text-transform:uppercase">{{ s.name }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.62;max-width:34ch">{{ s.tag }}</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="work" ref="{{ pinRef }}" style="position:relative;overflow-y:hidden;padding:clamp(48px,7vw,100px) 0;border-top:1px solid rgba(244,241,234,.1);border-bottom:1px solid rgba(244,241,234,.1);background:rgba(8,7,10,.4)">
+      <div style="padding:0 clamp(18px,4vw,60px);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;margin-bottom:clamp(28px,3.6vw,56px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Selected work</h2>
+        <a href="#/work" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#F04423;border-bottom:1px solid #F04423;padding-bottom:4px">All work &#8599;</a>
+      </div>
+      <div data-track="1" ref="{{ trackRef }}" style="display:flex;gap:clamp(14px,1.6vw,26px);width:max-content;padding:0 clamp(18px,4vw,60px);will-change:transform">
+        <sc-for list="{{ work }}" as="w" hint-placeholder-count="5">
+          <a href="{{ w.url }}" target="_blank" rel="noopener" data-cursor="view" style="display:flex;flex-direction:column;width:clamp(280px,42vw,620px);border:1px solid rgba(244,241,234,.14);background:rgba(8,7,10,.7);transition:border-color .4s" style-hover="border-color:#F04423">
+            <div style="overflow:hidden;aspect-ratio:16/10;background:#111013;background-image:repeating-linear-gradient(135deg,rgba(244,241,234,.06) 0 2px,transparent 2px 11px)">
+              <img src="{{ w.img }}" alt="{{ w.name }}" loading="lazy" onError="{{ imgFail }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(.85)" style-hover="transform:scale(1.07)">
+            </div>
+            <div style="padding:clamp(20px,2.4vw,36px);display:flex;flex-direction:column;gap:14px;border-top:1px solid rgba(244,241,234,.14)">
+              <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85"><span>Project {{ w.n }}</span><span style="color:#F04423">{{ w.sector }}</span></div>
+              <div style="font-size:clamp(1.35rem,2.6vw,2.3rem);font-weight:700;letter-spacing:-.035em;line-height:1.02;text-transform:uppercase">{{ w.name }}</div>
+              <p style="margin:0;font-size:14.5px;line-height:1.55;color:#B7B2AA;max-width:46ch">{{ w.body }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:2px">
+                <sc-for list="{{ w.stack }}" as="t" hint-placeholder-count="3">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(244,241,234,.2);padding:6px 9px;color:#B7B2AA">{{ t }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(80px,12vw,200px) clamp(18px,4vw,60px)">
+      <h2 style="margin:0 0 clamp(40px,6vw,100px);font-size:clamp(2.2rem,7.4vw,7rem);line-height:.88;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">From idea</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">to production.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(28px,4vw,64px)">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div data-fade="1" style="border-top:1px solid rgba(244,241,234,.22);padding-top:clamp(18px,2.2vw,28px)">
+            <div data-count="{{ s.value }}" data-suffix="{{ s.suffix }}" style="font-size:clamp(3rem,7.5vw,7rem);line-height:.86;font-weight:800;letter-spacing:-.055em">{{ s.display }}</div>
+            <div style="margin-top:clamp(14px,1.6vw,22px);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="expertise" style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(32px,4vw,60px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Technology</h2>
+        <a href="#/technology" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#F04423;border-bottom:1px solid #F04423;padding-bottom:4px">Full stack &#8599;</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,72px);align-items:start">
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ techCats }}" as="c" hint-placeholder-count="7">
+            <div onClick="{{ c.pick }}" data-cursor="1" style="cursor:pointer;display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:clamp(13px,1.5vw,19px) 0;border-bottom:1px solid rgba(244,241,234,.14);color:{{ c.color }};transition:color .3s">
+              <span style="font-size:clamp(1.05rem,2vw,1.65rem);font-weight:700;letter-spacing:-.03em;text-transform:uppercase">{{ c.label }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;opacity:{{ c.dim }}">{{ c.count }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start;min-height:200px">
+          <sc-for list="{{ techItems }}" as="t" hint-placeholder-count="8">
+            <span style="font-size:clamp(14px,1.15vw,16.5px);border:1px solid rgba(244,241,234,.2);padding:11px 15px;color:#F4F1EA;transition:border-color .3s,color .3s" style-hover="border-color:#F04423;color:#F04423">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:clamp(70px,10vw,170px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 style="margin:0 0 clamp(36px,5vw,80px);font-size:clamp(2.2rem,7.4vw,7rem);line-height:.88;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Built for</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">ambition.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(244,241,234,.14);border:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+          <div data-fade="1" style="background:rgba(8,7,10,.82);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:16px;min-height:270px;transition:background .4s,color .4s" style-hover="background:#F04423;color:#08070A">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.55">{{ p.n }}</span>
+            <span style="margin-top:auto;font-size:clamp(1.4rem,2.6vw,2.2rem);font-weight:800;letter-spacing:-.035em;line-height:1;text-transform:uppercase">{{ p.title }}</span>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;opacity:.78">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="process" style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(32px,4vw,64px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">How it runs</h2>
+        <a href="#/process" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#F04423;border-bottom:1px solid #F04423;padding-bottom:4px">Full process &#8599;</a>
+      </div>
+      <div style="position:relative">
+        <div style="position:absolute;top:0;bottom:0;left:clamp(4px,1vw,14px);width:1px;background:rgba(244,241,234,.14)"></div>
+        <div data-progress-line="1" style="position:absolute;top:0;left:clamp(4px,1vw,14px);width:1px;height:0%;background:#F04423"></div>
+        <sc-for list="{{ process }}" as="p" hint-placeholder-count="6">
+          <div data-fade="1" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,72px);align-items:start;padding:clamp(26px,4vw,64px) 0 clamp(26px,4vw,64px) clamp(26px,4vw,60px);border-bottom:1px solid rgba(244,241,234,.1)">
+            <div style="font-size:clamp(2.6rem,7vw,6.5rem);line-height:.82;font-weight:800;letter-spacing:-.06em;color:rgba(244,241,234,.14)">{{ p.n }}</div>
+            <div style="padding-top:clamp(4px,1vw,14px)">
+              <div style="font-size:clamp(1.4rem,3.4vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1;text-transform:uppercase">{{ p.title }}</div>
+              <p style="margin:14px 0 0;font-size:clamp(14.5px,1.2vw,17px);line-height:1.55;color:#B7B2AA;max-width:52ch">{{ p.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;margin-bottom:clamp(28px,3.4vw,50px)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8A85">Industries</span>
+        <a href="#/industries" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#F04423;border-bottom:1px solid #F04423;padding-bottom:4px">Explore all sixteen &#8599;</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,1.4vw,20px) clamp(20px,3vw,52px);align-items:baseline">
+        <sc-for list="{{ industries }}" as="i" hint-placeholder-count="10">
+          <a href="{{ i.href }}" data-cursor="view" onMouseEnter="{{ i.enter }}" style="font-size:clamp(1.5rem,4.6vw,4.2rem);font-weight:800;letter-spacing:-.045em;line-height:1.05;text-transform:uppercase;color:rgba(244,241,234,.62);transition:color .35s cubic-bezier(.2,.8,.2,1)" style-hover="color:#F04423">{{ i.name }}</a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="about" style="padding:clamp(80px,12vw,200px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 style="margin:0;max-width:22ch;font-size:clamp(2.2rem,7vw,6.6rem);line-height:.9;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Technology</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">moves fast.</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">So should the people</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">building with it.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,80px);margin-top:clamp(40px,5.5vw,90px);max-width:1100px">
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Mariox Software was founded by Mohit Garg and Rahul Garg. What began as a small engineering team is now 100+ people across Noida, Hyderabad, Dallas and Wyndham Vale, with 42 published case studies behind us.</p>
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">We work as an engineering partner, not a vendor. That means the people in the pitch are the people who write the code, and we tell you when an idea is worth killing before it costs you a quarter.</p>
+      </div>
+    </section>
+
+    <section id="contact" data-cta="1" ref="{{ ctaRef }}" style="padding:clamp(90px,14vw,240px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:14ch;font-size:clamp(2.6rem,10vw,10rem);line-height:.86;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Have a big idea?</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">Let&#8217;s build it.</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(36px,4.5vw,72px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+      <div data-fade="1" style="margin-top:clamp(28px,3.4vw,52px);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">Reply within one business day</div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isWork }}">
+  <div>
+    <section style="padding:clamp(48px,8vw,130px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,2.8vw,38px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Work &nbsp;/&nbsp; 42 case studies published</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">Products we</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">put into production.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">Six of the platforms we are able to talk about in detail. Every card opens the full case study on our main site.</p>
+    </section>
+
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(56px,8vw,130px);display:grid;gap:clamp(16px,2vw,28px)">
+      <sc-for list="{{ work }}" as="w" hint-placeholder-count="6">
+        <a href="{{ w.url }}" target="_blank" rel="noopener" data-fade="1" data-cursor="view" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1px;background:rgba(244,241,234,.14);border:1px solid rgba(244,241,234,.14);color:#F4F1EA;transition:border-color .4s" style-hover="border-color:#F04423">
+          <div style="overflow:hidden;aspect-ratio:16/10;background:#111013;background-image:repeating-linear-gradient(135deg,rgba(244,241,234,.06) 0 2px,transparent 2px 11px)">
+            <img src="{{ w.img }}" alt="{{ w.name }}" loading="lazy" onError="{{ imgFail }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(.85)" style-hover="transform:scale(1.06)">
+          </div>
+          <div style="background:#08070A;padding:clamp(24px,3.4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:16px">
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85"><span>Project {{ w.n }}</span><span style="color:#F04423">{{ w.sector }}</span></div>
+            <div style="font-size:clamp(1.5rem,3.4vw,2.9rem);font-weight:800;letter-spacing:-.04em;line-height:1;text-transform:uppercase">{{ w.name }}</div>
+            <p style="margin:0;font-size:15px;line-height:1.55;color:#B7B2AA;max-width:48ch">{{ w.body }}</p>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:4px">
+              <sc-for list="{{ w.stack }}" as="t" hint-placeholder-count="3">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(244,241,234,.2);padding:6px 9px;color:#B7B2AA">{{ t }}</span>
+              </sc-for>
+            </div>
+          </div>
+        </a>
+      </sc-for>
+      <a href="https://www.marioxsoftware.com/case-study" target="_blank" rel="noopener" data-fade="1" data-cursor="view" style="display:flex;align-items:center;justify-content:space-between;gap:20px;border:1px solid #F04423;background:#F04423;color:#08070A;padding:clamp(24px,3.4vw,48px);font-weight:800;letter-spacing:-.03em;text-transform:uppercase;font-size:clamp(1.2rem,2.8vw,2.2rem)">View all 42 case studies <span style="font-size:22px">&#8599;</span></a>
+    </section>
+    <section style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Have an idea</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">worth building?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isServices }}">
+  <div>
+    <section style="padding:clamp(48px,8vw,130px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,2.8vw,38px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Services &nbsp;/&nbsp; Twelve disciplines</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">What we</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">actually do.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">Twelve disciplines under one roof, from discovery through to 24/7 support. Take a single specialist team or an embedded squad that covers the whole delivery chain. Every service opens its own page.</p>
+    </section>
+
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(48px,7vw,110px)">
+      <div style="border-top:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <a href="{{ s.href }}" data-row="1" data-cursor="view" onMouseEnter="{{ s.enter }}" style="color:#F4F1EA;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(20px,2.6vw,34px) clamp(6px,1.6vw,24px);border-bottom:1px solid rgba(244,241,234,.14);transition:background .45s cubic-bezier(.2,.8,.2,1),padding-left .45s cubic-bezier(.2,.8,.2,1),color .45s" style-hover="background:#F04423;color:#08070A;padding-left:clamp(18px,3.4vw,56px)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;opacity:.5">{{ s.n }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline;justify-content:space-between">
+              <span style="font-size:clamp(1.2rem,3.4vw,2.9rem);font-weight:700;letter-spacing:-.035em;line-height:1.02;text-transform:uppercase">{{ s.name }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.62;max-width:34ch">{{ s.tag }}</span>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(56px,8vw,130px)">
+      <h2 data-fade="1" style="margin:0 0 clamp(26px,3.4vw,52px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">How we are built</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(244,241,234,.14);border:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+          <div data-fade="1" style="background:rgba(8,7,10,.82);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:16px;min-height:270px;transition:background .4s,color .4s" style-hover="background:#F04423;color:#08070A">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.55">{{ p.n }}</span>
+            <span style="margin-top:auto;font-size:clamp(1.4rem,2.6vw,2.2rem);font-weight:800;letter-spacing:-.035em;line-height:1;text-transform:uppercase">{{ p.title }}</span>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;opacity:.78">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Know what you</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">need built?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isTechnology }}">
+  <div>
+    <section style="padding:clamp(48px,8vw,130px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,2.8vw,38px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Technology &nbsp;/&nbsp; The stack in production</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">The stack</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">we stand behind.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">Boring technology by default, chosen because it is well understood by the people who will maintain it. Select a category to see what we run.</p>
+    </section>
+
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(56px,8vw,130px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,72px);align-items:start">
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ techCats }}" as="c" hint-placeholder-count="7">
+            <div onClick="{{ c.pick }}" data-cursor="1" style="cursor:pointer;display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:clamp(13px,1.5vw,19px) 0;border-bottom:1px solid rgba(244,241,234,.14);color:{{ c.color }};transition:color .3s">
+              <span style="font-size:clamp(1.05rem,2vw,1.65rem);font-weight:700;letter-spacing:-.03em;text-transform:uppercase">{{ c.label }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;opacity:{{ c.dim }}">{{ c.count }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start;min-height:220px">
+          <sc-for list="{{ techItems }}" as="t" hint-placeholder-count="8">
+            <span style="font-size:clamp(14px,1.15vw,16.5px);border:1px solid rgba(244,241,234,.2);padding:11px 15px;color:#F4F1EA;transition:border-color .3s,color .3s" style-hover="border-color:#F04423;color:#F04423">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Need this stack</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">on your problem?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isProcess }}">
+  <div>
+    <section style="padding:clamp(48px,8vw,130px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,2.8vw,38px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Process &nbsp;/&nbsp; Six stages</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">From idea</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">to production.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">No stage is decorative. Each one exists because skipping it has cost someone a quarter.</p>
+    </section>
+
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(56px,8vw,130px)">
+      <div style="position:relative">
+        <div style="position:absolute;top:0;bottom:0;left:clamp(4px,1vw,14px);width:1px;background:rgba(244,241,234,.14)"></div>
+        <div data-progress-line="1" style="position:absolute;top:0;left:clamp(4px,1vw,14px);width:1px;height:0%;background:#F04423"></div>
+        <sc-for list="{{ process }}" as="p" hint-placeholder-count="6">
+          <div data-fade="1" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,72px);align-items:start;padding:clamp(26px,4vw,64px) 0 clamp(26px,4vw,64px) clamp(26px,4vw,60px);border-bottom:1px solid rgba(244,241,234,.1)">
+            <div style="font-size:clamp(2.6rem,7vw,6.5rem);line-height:.82;font-weight:800;letter-spacing:-.06em;color:rgba(244,241,234,.14)">{{ p.n }}</div>
+            <div style="padding-top:clamp(4px,1vw,14px)">
+              <div style="font-size:clamp(1.4rem,3.4vw,2.8rem);font-weight:800;letter-spacing:-.04em;line-height:1;text-transform:uppercase">{{ p.title }}</div>
+              <p style="margin:14px 0 0;font-size:clamp(14.5px,1.2vw,17px);line-height:1.55;color:#B7B2AA;max-width:52ch">{{ p.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Ready to start</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">at stage one?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isCompany }}">
+  <div>
+    <section style="padding:clamp(48px,8vw,130px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(20px,2.8vw,38px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Company &nbsp;/&nbsp; Founded by Mohit Garg and Rahul Garg</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">Technology</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">moves fast.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">So should the people building with it. 100+ engineers across four countries, 42 published case studies, and a preference for saying no to the wrong project.</p>
+    </section>
+
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(48px,7vw,110px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,80px);max-width:1100px">
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Mariox Software was founded to close the gap between what a business needs and what software actually does. What began as a small engineering team is now 100+ people across Noida, Hyderabad, Dallas and Wyndham Vale.</p>
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">We work as an engineering partner, not a vendor. The people in the pitch are the people who write the code, you own every repository and cloud account from the first commit, and we tell you when an idea is worth killing before it costs you a quarter.</p>
+      </div>
+    </section>
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(48px,7vw,110px)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(28px,4vw,64px)">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div data-fade="1" style="border-top:1px solid rgba(244,241,234,.22);padding-top:clamp(18px,2.2vw,28px)">
+            <div data-count="{{ s.value }}" data-suffix="{{ s.suffix }}" style="font-size:clamp(3rem,7.5vw,7rem);line-height:.86;font-weight:800;letter-spacing:-.055em">{{ s.display }}</div>
+            <div style="margin-top:clamp(14px,1.6vw,22px);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(56px,8vw,130px)">
+      <h2 data-fade="1" style="margin:0 0 clamp(24px,3vw,44px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Where we are</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:rgba(244,241,234,.14);border:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ offices }}" as="o" hint-placeholder-count="4">
+          <div data-fade="1" style="background:rgba(8,7,10,.82);padding:clamp(22px,2.8vw,38px);display:flex;flex-direction:column;gap:12px;min-height:190px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#F04423">{{ o.country }}</span>
+            <span style="font-size:clamp(1.2rem,2.2vw,1.8rem);font-weight:800;letter-spacing:-.035em;text-transform:uppercase">{{ o.city }}</span>
+            <p style="margin:auto 0 0;font-size:13.5px;line-height:1.5;color:#8E8A85">{{ o.address }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Want to work</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">with this team?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isService }}">
+  <div>
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <a href="#/services" data-cursor="1" data-fade="1" style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85;margin-bottom:clamp(22px,3vw,40px)"><span>&#8592;</span> All services</a>
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(18px,2.6vw,34px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">{{ svc.label }}</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">{{ svc.h1a }}</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">{{ svc.h1b }}</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">{{ svc.sub }}</p>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 data-fade="1" style="margin:0 0 clamp(26px,3.4vw,52px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">What&#8217;s included</h2>
+      <div style="border-top:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ svc.includes }}" as="i" hint-placeholder-count="6">
+          <div data-row="1" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(14px,3vw,44px);align-items:baseline;padding:clamp(16px,2.2vw,28px) clamp(6px,1.6vw,22px);border-bottom:1px solid rgba(244,241,234,.14);transition:background .4s,padding-left .4s,color .4s" style-hover="background:#F04423;color:#08070A;padding-left:clamp(16px,3vw,48px)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.45">{{ i.n }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;justify-content:space-between">
+              <span style="font-size:clamp(1.05rem,2.4vw,1.95rem);font-weight:700;letter-spacing:-.032em;line-height:1.06;text-transform:uppercase">{{ i.title }}</span>
+              <span style="font-size:14.5px;line-height:1.5;opacity:.72;max-width:52ch">{{ i.body }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 data-fade="1" style="margin:0 0 clamp(24px,3vw,44px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">What you get</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:clamp(22px,3vw,52px)">
+        <sc-for list="{{ svc.deliverables }}" as="d" hint-placeholder-count="4">
+          <div data-fade="1" style="border-top:1px solid rgba(244,241,234,.22);padding-top:clamp(16px,2vw,24px)">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#F04423;margin-bottom:14px">{{ d.n }}</div>
+            <div style="font-size:clamp(1.1rem,1.9vw,1.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.12">{{ d.title }}</div>
+            <p style="margin:11px 0 0;font-size:14.5px;line-height:1.55;color:#B7B2AA">{{ d.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(28px,4vw,80px);align-items:start">
+        <div>
+          <h2 data-fade="1" style="margin:0 0 clamp(20px,2.6vw,36px);font-size:clamp(1.7rem,4.4vw,3.4rem);line-height:.94;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Stack</h2>
+          <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:9px">
+            <sc-for list="{{ svc.tech }}" as="t" hint-placeholder-count="8">
+              <span style="font-size:clamp(13.5px,1.1vw,16px);border:1px solid rgba(244,241,234,.2);padding:10px 14px;color:#F4F1EA;transition:border-color .3s,color .3s" style-hover="border-color:#F04423;color:#F04423">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <h2 data-fade="1" style="margin:0 0 clamp(20px,2.6vw,36px);font-size:clamp(1.7rem,4.4vw,3.4rem);line-height:.94;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">How we run it</h2>
+          <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA;max-width:46ch">{{ svc.approach }}</p>
+        </div>
+      </div>
+    </section>
+    <section data-cta="1" style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Need this</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">on your product?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isHire }}">
+  <div>
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(18px,2.6vw,34px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Hire resources &nbsp;/&nbsp; Dedicated teams and staff augmentation</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">Hire engineers,</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">not headcount.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">Vetted engineers embedded in your team, in your tools and in your standups. Scale up or down by the month with no recruitment cycle and no bench.</p>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 data-fade="1" style="margin:0 0 clamp(26px,3.4vw,52px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Roles we place</h2>
+      <div style="border-top:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ roles }}" as="r" hint-placeholder-count="10">
+          <div data-row="1" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(14px,3vw,44px);align-items:baseline;padding:clamp(15px,2vw,26px) clamp(6px,1.6vw,22px);border-bottom:1px solid rgba(244,241,234,.14);transition:background .4s,padding-left .4s,color .4s" style-hover="background:#F04423;color:#08070A;padding-left:clamp(16px,3vw,48px)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.45">{{ r.n }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;justify-content:space-between">
+              <span style="font-size:clamp(1.05rem,2.2vw,1.8rem);font-weight:700;letter-spacing:-.032em;line-height:1.06;text-transform:uppercase">{{ r.title }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;max-width:44ch">{{ r.stack }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 data-fade="1" style="margin:0 0 clamp(24px,3vw,44px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Ways to engage</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:1px;background:rgba(244,241,234,.14);border:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ hireModels }}" as="m" hint-placeholder-count="3">
+          <div data-fade="1" style="background:rgba(8,7,10,.82);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:16px;min-height:300px;transition:background .4s,color .4s" style-hover="background:#F04423;color:#08070A">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.55">{{ m.n }}</span>
+            <span style="font-size:clamp(1.3rem,2.4vw,2rem);font-weight:800;letter-spacing:-.035em;line-height:1;text-transform:uppercase">{{ m.title }}</span>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;opacity:.78">{{ m.body }}</p>
+            <div style="display:grid;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid rgba(244,241,234,.16)">
+              <sc-for list="{{ m.points }}" as="p" hint-placeholder-count="3">
+                <div style="display:flex;gap:10px;align-items:baseline;font-size:13.5px;line-height:1.45"><span style="width:5px;height:5px;background:currentColor;flex-shrink:0;opacity:.6"></span>{{ p }}</div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 data-fade="1" style="margin:0 0 clamp(24px,3vw,44px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">How it works</h2>
+      <div style="position:relative">
+        <div style="position:absolute;top:0;bottom:0;left:clamp(4px,1vw,14px);width:1px;background:rgba(244,241,234,.14)"></div>
+        <div data-progress-line="1" style="position:absolute;top:0;left:clamp(4px,1vw,14px);width:1px;height:0%;background:#F04423"></div>
+        <sc-for list="{{ hireSteps }}" as="s" hint-placeholder-count="4">
+          <div data-fade="1" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(20px,4vw,72px);align-items:start;padding:clamp(22px,3.4vw,52px) 0 clamp(22px,3.4vw,52px) clamp(26px,4vw,60px);border-bottom:1px solid rgba(244,241,234,.1)">
+            <div style="font-size:clamp(2.2rem,6vw,5.5rem);line-height:.82;font-weight:800;letter-spacing:-.06em;color:rgba(244,241,234,.14)">{{ s.n }}</div>
+            <div style="padding-top:clamp(4px,1vw,12px)">
+              <div style="font-size:clamp(1.3rem,3vw,2.4rem);font-weight:800;letter-spacing:-.04em;line-height:1;text-transform:uppercase">{{ s.title }}</div>
+              <p style="margin:13px 0 0;font-size:clamp(14.5px,1.2vw,17px);line-height:1.55;color:#B7B2AA;max-width:52ch">{{ s.body }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+    <section data-cta="1" style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Need people</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">starting this month?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isAi }}">
+  <div>
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px) clamp(30px,4vw,56px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(18px,2.6vw,34px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">AI &nbsp;/&nbsp; Applied, evaluated, in production</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.5rem,8.5vw,8rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">AI that ships,</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">not AI that demos.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(26px,3.4vw,48px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">Assistants, agents and retrieval systems built into products people already use, with the evaluation and guardrails that keep them trustworthy after launch.</p>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 data-fade="1" style="margin:0 0 clamp(26px,3.4vw,52px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">The AI layer</h2>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(244,241,234,.14);border:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ aiLayer }}" as="a" hint-placeholder-count="4">
+          <div data-fade="1" style="background:rgba(8,7,10,.82);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:16px;min-height:300px;transition:background .4s,color .4s" style-hover="background:#F04423;color:#08070A">
+            <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.55"><span>{{ a.n }}</span><span>{{ a.tag }}</span></div>
+            <div style="margin-top:auto;font-size:clamp(1.3rem,2.4vw,2rem);font-weight:800;letter-spacing:-.035em;line-height:1.02;text-transform:uppercase">{{ a.title }}</div>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;opacity:.78">{{ a.body }}</p>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding-top:12px;border-top:1px solid rgba(244,241,234,.16);opacity:.8">{{ a.proof }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div style="border:1px solid rgba(244,241,234,.14);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+        <div data-fade="1" style="padding:clamp(26px,3.4vw,52px);display:flex;flex-direction:column;gap:18px;border-right:1px solid rgba(244,241,234,.14)">
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#F04423">Before we build</div>
+          <h3 style="margin:0;font-size:clamp(1.5rem,3vw,2.4rem);line-height:1.02;letter-spacing:-.035em;font-weight:800;text-transform:uppercase">We tell you when AI is the wrong tool</h3>
+          <p style="margin:0;font-size:15px;line-height:1.6;color:#B7B2AA;max-width:44ch">Most AI projects fail on data, not on models. Every engagement opens with a four-part readiness score, and a low score means we recommend plain software instead.</p>
+        </div>
+        <div data-fade="1" style="padding:clamp(26px,3.4vw,52px);display:grid;gap:20px;align-content:center">
+          <sc-for list="{{ readiness }}" as="r" hint-placeholder-count="4">
+            <div>
+              <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:9px">
+                <span style="font-size:14.5px;font-weight:600;letter-spacing:-.01em">{{ r.label }}</span>
+                <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#8E8A85">{{ r.note }}</span>
+              </div>
+              <div style="height:3px;background:rgba(244,241,234,.14)"><div style="height:3px;background:#F04423;width:{{ r.w }}"></div></div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:clamp(44px,7vw,110px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(28px,4vw,80px);align-items:start">
+        <div>
+          <h2 data-fade="1" style="margin:0 0 clamp(20px,2.6vw,36px);font-size:clamp(1.7rem,4.4vw,3.4rem);line-height:.94;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Stack</h2>
+          <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:9px">
+            <sc-for list="{{ aiTech }}" as="t" hint-placeholder-count="8">
+              <span style="font-size:clamp(13.5px,1.1vw,16px);border:1px solid rgba(244,241,234,.2);padding:10px 14px;color:#F4F1EA;transition:border-color .3s,color .3s" style-hover="border-color:#F04423;color:#F04423">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <h2 data-fade="1" style="margin:0 0 clamp(20px,2.6vw,36px);font-size:clamp(1.7rem,4.4vw,3.4rem);line-height:.94;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Common questions</h2>
+          <sc-for list="{{ aiFaqs }}" as="q" hint-placeholder-count="3">
+            <div data-fade="1" style="border-bottom:1px solid rgba(244,241,234,.16);padding:clamp(14px,1.8vw,22px) 0">
+              <div style="font-size:clamp(15px,1.3vw,17.5px);font-weight:700;letter-spacing:-.02em;line-height:1.25">{{ q.q }}</div>
+              <p style="margin:10px 0 0;font-size:14.5px;line-height:1.6;color:#B7B2AA;max-width:52ch">{{ q.a }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+    <section data-cta="1" style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Have a use case</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">worth testing?</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+    </section>
+
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isIndustries }}">
+  <div>
+    <section style="padding:clamp(56px,9vw,150px) clamp(18px,4vw,60px) clamp(32px,4vw,60px)">
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(22px,3vw,40px)">
+        <span style="width:7px;height:7px;background:#F04423;animation:mxPulse 2.2s ease-in-out infinite"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Industries &nbsp;/&nbsp; Sixteen sectors, one delivery standard</span>
+      </div>
+      <h1 style="margin:0;max-width:19ch;font-size:clamp(2.6rem,9vw,8.5rem);line-height:.85;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">Industries</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">we build for.</span></span>
+      </h1>
+      <p data-fade="1" style="margin:clamp(28px,3.6vw,52px) 0 0;max-width:52ch;font-size:clamp(16px,1.35vw,20px);line-height:1.5;color:#B7B2AA">We understand the technology, workflows and challenges behind the industries where digital products matter most.</p>
+    </section>
+
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(56px,8vw,130px)">
+      <div style="border-top:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ industryList }}" as="i" hint-placeholder-count="10">
+          <a href="{{ i.href }}" data-row="1" data-cursor="view" onMouseEnter="{{ i.enter }}" style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(14px,3vw,44px);align-items:center;padding:clamp(20px,2.8vw,38px) clamp(6px,1.6vw,24px);border-bottom:1px solid rgba(244,241,234,.14);color:#F4F1EA;transition:background .45s cubic-bezier(.2,.8,.2,1),padding-left .45s cubic-bezier(.2,.8,.2,1),color .45s" style-hover="background:#F04423;color:#08070A;padding-left:clamp(18px,3.4vw,56px)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;opacity:.5">{{ i.n }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px 28px;align-items:baseline;justify-content:space-between">
+              <span style="font-size:clamp(1.3rem,3.6vw,3.1rem);font-weight:800;letter-spacing:-.04em;line-height:1.02;text-transform:uppercase">{{ i.name }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.62;max-width:40ch">{{ i.blurb }}</span>
+            </div>
+            <span style="font-size:19px;opacity:.6">&#8599;</span>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:0 clamp(18px,4vw,60px) clamp(70px,10vw,160px)">
+      <div data-fade="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,72px);max-width:1100px">
+        <p style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Regulation, load profile and integration surface change from one sector to the next. The engineering discipline does not. What changes is the domain knowledge we bring on day one.</p>
+        <p style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Sixteen sectors, each with its own page covering where projects usually break, what we build, the stack we use and how we approach the work. Pick yours.</p>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isIndustry }}">
+  <div>
+    <section style="padding:clamp(48px,7vw,110px) clamp(18px,4vw,60px) clamp(32px,4vw,60px)">
+      <a href="#/industries" data-cursor="1" data-fade="1" style="display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85;margin-bottom:clamp(24px,3vw,44px)"><span>&#8592;</span> All industries</a>
+      <div data-fade="1" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(18px,2.4vw,32px)">
+        <span style="width:7px;height:7px;background:#F04423"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">{{ ind.n }} &nbsp;/&nbsp; {{ ind.name }}</span>
+      </div>
+      <h1 style="margin:0;max-width:20ch;font-size:clamp(2.4rem,8vw,7.5rem);line-height:.86;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block">{{ ind.h1a }}</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span data-line="1" style="display:block;color:#F04423">{{ ind.h1b }}</span></span>
+      </h1>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:clamp(20px,4vw,64px);align-items:flex-end;justify-content:space-between;margin-top:clamp(30px,4vw,58px)">
+        <p style="margin:0;max-width:46ch;font-size:clamp(16px,1.35vw,19px);line-height:1.5;color:#B7B2AA">{{ ind.sub }}</p>
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F4F1EA;color:#08070A;padding:19px 26px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F04423">Start a project <span>&#8594;</span></a>
+      </div>
+    </section>
+
+    <section style="padding:clamp(48px,7vw,120px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8A85;margin-bottom:clamp(26px,3.4vw,48px)">Where it usually breaks</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:clamp(22px,3vw,52px)">
+        <sc-for list="{{ ind.challenges }}" as="c" hint-placeholder-count="4">
+          <div data-fade="1" style="border-top:1px solid rgba(244,241,234,.22);padding-top:clamp(16px,2vw,24px)">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;color:#F04423;margin-bottom:14px">{{ c.n }}</div>
+            <div style="font-size:clamp(1.1rem,1.9vw,1.5rem);font-weight:700;letter-spacing:-.03em;line-height:1.12">{{ c.title }}</div>
+            <p style="margin:11px 0 0;font-size:14.5px;line-height:1.55;color:#B7B2AA">{{ c.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(48px,7vw,120px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 data-fade="1" style="margin:0 0 clamp(28px,3.6vw,56px);font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">What we build</h2>
+      <div style="border-top:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ ind.builds }}" as="b" hint-placeholder-count="6">
+          <div data-row="1" style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(14px,3vw,44px);align-items:baseline;padding:clamp(16px,2.2vw,28px) clamp(6px,1.6vw,22px);border-bottom:1px solid rgba(244,241,234,.14);transition:background .4s,padding-left .4s,color .4s" style-hover="background:#F04423;color:#08070A;padding-left:clamp(16px,3vw,48px)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.45">{{ b.n }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:6px 24px;align-items:baseline;justify-content:space-between">
+              <span style="font-size:clamp(1.05rem,2.4vw,1.95rem);font-weight:700;letter-spacing:-.032em;line-height:1.06;text-transform:uppercase">{{ b.title }}</span>
+              <span style="font-size:14.5px;line-height:1.5;opacity:.72;max-width:52ch">{{ b.body }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <sc-if value="{{ ind.hasCases }}">
+    <section style="padding:clamp(48px,7vw,120px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(26px,3.4vw,50px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.4rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Shipped work</h2>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">{{ ind.caseNote }}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(16px,2vw,28px)">
+        <sc-for list="{{ ind.cases }}" as="c" hint-placeholder-count="3">
+          <a href="{{ c.url }}" target="_blank" rel="noopener" data-fade="1" data-cursor="view" style="display:flex;flex-direction:column;border:1px solid rgba(244,241,234,.14);background:rgba(8,7,10,.7);color:#F4F1EA;transition:border-color .4s" style-hover="border-color:#F04423">
+            <div style="overflow:hidden;aspect-ratio:16/10;background:#111013;background-image:repeating-linear-gradient(135deg,rgba(244,241,234,.06) 0 2px,transparent 2px 11px)">
+              <img src="{{ c.img }}" alt="{{ c.name }}" loading="lazy" onError="{{ imgFail }}" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(.85)" style-hover="transform:scale(1.07)">
+            </div>
+            <div style="padding:clamp(18px,2.2vw,30px);display:flex;flex-direction:column;gap:11px;border-top:1px solid rgba(244,241,234,.14)">
+              <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85"><span>Case study</span><span style="color:#F04423">View &#8599;</span></div>
+              <div style="font-size:clamp(1.2rem,2.2vw,1.8rem);font-weight:700;letter-spacing:-.035em;line-height:1.04;text-transform:uppercase">{{ c.name }}</div>
+              <p style="margin:0;font-size:14px;line-height:1.55;color:#B7B2AA">{{ c.body }}</p>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+    </sc-if>
+
+    <section style="padding:clamp(48px,7vw,120px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:clamp(28px,4vw,80px);align-items:start">
+        <div>
+          <h2 data-fade="1" style="margin:0 0 clamp(20px,2.6vw,36px);font-size:clamp(1.7rem,4.4vw,3.4rem);line-height:.94;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Stack we use here</h2>
+          <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:9px">
+            <sc-for list="{{ ind.tech }}" as="t" hint-placeholder-count="8">
+              <span style="font-size:clamp(13.5px,1.1vw,16px);border:1px solid rgba(244,241,234,.2);padding:10px 14px;color:#F4F1EA;transition:border-color .3s,color .3s" style-hover="border-color:#F04423;color:#F04423">{{ t }}</span>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <h2 data-fade="1" style="margin:0 0 clamp(20px,2.6vw,36px);font-size:clamp(1.7rem,4.4vw,3.4rem);line-height:.94;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">How we approach it</h2>
+          <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA;max-width:46ch">{{ ind.approach }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:clamp(70px,11vw,190px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:16ch;font-size:clamp(2.2rem,8vw,7.5rem);line-height:.88;letter-spacing:-.048em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Build your next</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">product with Mariox.</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(32px,4vw,64px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="#/industries" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Other industries</a>
+      </div>
+    </section>
+  </div>
+  </sc-if>
+
+
+  </main>
+
+  <footer style="position:relative;z-index:3;border-top:1px solid rgba(244,241,234,.12);padding:clamp(40px,5.5vw,80px) clamp(18px,4vw,60px) clamp(24px,3vw,40px);background:rgba(8,7,10,.9)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(28px,4vw,72px);margin-bottom:clamp(36px,4.5vw,70px)">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:11px">
+          <div style="width:15px;height:15px;background:#F04423"></div>
+          <span style="font-size:15px;font-weight:800;letter-spacing:-.03em;text-transform:uppercase">Mariox Software</span>
+        </div>
+        <p style="margin:0;font-size:14.5px;line-height:1.55;color:#8E8A85;max-width:26ch">Build digital products that matter.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#57544F;margin-bottom:4px">Navigate</span>
+        <a href="#/work" data-cursor="1" style="color:#B7B2AA">Work</a>
+        <a href="#/services" data-cursor="1" style="color:#B7B2AA">Services</a>
+        <a href="#/ai" data-cursor="1" style="color:#B7B2AA">AI</a>
+        <a href="#/hire" data-cursor="1" style="color:#B7B2AA">Hire resources</a>
+        <a href="#/technology" data-cursor="1" style="color:#B7B2AA">Technology</a>
+        <a href="#/company" data-cursor="1" style="color:#B7B2AA">Company</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#57544F;margin-bottom:4px">Industries</span>
+        <a href="#/industries/fintech" data-cursor="1" style="color:#B7B2AA">Fintech</a>
+        <a href="#/industries/healthcare" data-cursor="1" style="color:#B7B2AA">Healthcare</a>
+        <a href="#/industries/ecommerce" data-cursor="1" style="color:#B7B2AA">E-commerce</a>
+        <a href="#/industries" data-cursor="1" style="color:#F04423">All sixteen &#8599;</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#57544F;margin-bottom:4px">Connect</span>
+        <a href="https://www.linkedin.com/company/marioxsoftwares" target="_blank" rel="noopener" data-cursor="1" style="color:#B7B2AA">LinkedIn</a>
+        <a href="https://www.instagram.com/marioxsoftware" target="_blank" rel="noopener" data-cursor="1" style="color:#B7B2AA">Instagram</a>
+        <a href="https://www.youtube.com/@MarioxSoftware" target="_blank" rel="noopener" data-cursor="1" style="color:#B7B2AA">YouTube</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#57544F;margin-bottom:4px">Contact</span>
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="1" style="color:#B7B2AA;text-transform:none;letter-spacing:.06em">admin@marioxsoftware.com</a>
+        <a href="tel:+919599287045" data-cursor="1" style="color:#B7B2AA;letter-spacing:.08em">+91 9599287045</a>
+        <span style="color:#B7B2AA">Noida &middot; Hyderabad &middot; Dallas</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;border-top:1px solid rgba(244,241,234,.1);padding-top:clamp(18px,2.2vw,28px);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#57544F">
+      <span>&#169; 2026 Mariox Software</span>
+      <div style="display:flex;gap:24px">
+        <a href="https://www.marioxsoftware.com/" target="_blank" rel="noopener" data-cursor="1" style="color:#57544F">marioxsoftware.com</a>
+        <span>Privacy</span>
+        <span>Terms</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F04423&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#F04423&quot;,&quot;#E43C13&quot;,&quot;#FF5C2B&quot;,&quot;#F4F1EA&quot;],&quot;section&quot;:&quot;Brand&quot;},&quot;particleCount&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:8000,&quot;min&quot;:1200,&quot;max&quot;:12000,&quot;step&quot;:400,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;3D&quot;},&quot;showCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;smoothScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { tech: 'Frontend', route: '/', menu: false, vw: (typeof window !== 'undefined' ? window.innerWidth : 1440) };
+
+  constructor(p){
+    super(p);
+    ['canvasRef','dotRef','ringRef','ringLabelRef','progRef','navRef','navLinksRef','burgerRef','overlayRef','pinRef','trackRef','lineRef','ctaRef','heroL1','heroL2','heroEyebrowRef','heroFootRef']
+      .forEach(k => { this[k] = React.createRef(); });
+    this._m = {x:-200,y:-200}; this._r = {x:-200,y:-200}; this._label = '';
+    this._tilt = {x:0,y:0}; this._stage = 0; this._stageTarget = 0; this._focus = 0;
+  }
+
+  componentDidMount(){
+    this.route();
+    this._onHash = () => this.route(true);
+    window.addEventListener('hashchange', this._onHash);
+    this.cursor();
+    this.reveal();
+    this.intro();
+    this.scrollFx();
+    this.responsiveNav();
+    this.loadLibs();
+  }
+
+  componentDidUpdate(_, prev){
+    if (prev.route !== this.state.route){
+      this.reveal();
+      if (this.state.route === '/') this.intro();
+      this.regsap();
+      this.responsiveNav();
+    }
+    if (prev.menu !== this.state.menu){
+      document.body.style.overflow = this.state.menu ? 'hidden' : '';
+    }
+  }
+
+  route(scrollTop){
+    const h = (location.hash || '#/').replace(/^#/, '');
+    const r = h.startsWith('/') ? h : '/';
+    if (r !== this.state.route) this.setState({ route: r, menu: false });
+    if (scrollTop) window.scrollTo(0, 0);
+  }
+
+  toggleMenu = () => this.setState(s => ({ menu: !s.menu }));
+  closeMenu = () => this.setState({ menu: false });
+
+  responsiveNav(){
+    if (this._navBound) return;
+    this._navBound = true;
+    this._onNavResize = () => {
+      const vw = window.innerWidth;
+      if (vw !== this.state.vw) this.setState({ vw });
+    };
+    window.addEventListener('resize', this._onNavResize);
+    this._onNavResize();
+  }
+
+  regsap(){ this.syncScene(true); }
+
+  watchDom(){
+    if (this._domTick) return;
+    this._domTick = setInterval(() => this.syncScene(), 400);
+  }
+
+  syncScene(force){
+    if (!window.gsap || !window.ScrollTrigger) return;
+    const ST = window.ScrollTrigger;
+    const anchor = document.querySelector('#work') || document.querySelector('main');
+    const stale = ST.getAll().some(t => t.trigger && !document.body.contains(t.trigger));
+    const changed = anchor !== this._anchorNode;
+    if (!force && !stale && !changed) return;
+    this._anchorNode = anchor;
+    this.teardownScene();
+    this.buildScene();
+  }
+
+  teardownScene(){
+    const ST = window.ScrollTrigger;
+    if (this._pinTween){
+      if (this._pinTween.scrollTrigger) this._pinTween.scrollTrigger.kill(true);
+      this._pinTween.kill();
+      this._pinTween = null;
+    }
+    if (this._mm){ try { this._mm.revert(); } catch(e){} this._mm = null; }
+    if (ST) ST.getAll().forEach(t => t.kill(true));
+    document.querySelectorAll('[data-row],[data-line]').forEach(el => { el.style.opacity = ''; el.style.transform = ''; });
+    const tr = this.trackRef.current;
+    if (tr) tr.style.transform = '';
+  }
+
+  buildScene(){
+    const gsap = window.gsap, ST = window.ScrollTrigger;
+    if (!gsap || !ST || this.reduced()) return;
+
+    gsap.utils.toArray('[data-line]').forEach((el) => {
+      gsap.fromTo(el, { yPercent: 112 }, { yPercent: 0, duration: 1.15, ease: 'expo.out', immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 94%', once: true } });
+    });
+
+    gsap.utils.toArray('[data-row]').forEach((el) => {
+      gsap.fromTo(el, { xPercent: -3, opacity: 0 }, { xPercent: 0, opacity: 1, duration: .8, ease: 'power3.out', immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 96%', once: true } });
+    });
+
+    const pin = document.querySelector('#work');
+    const track = pin ? pin.querySelector('[data-track]') : null;
+    if (pin && track && window.innerWidth > 900){
+      const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 60);
+      this._pinTween = gsap.to(track, { x: () => -dist(), ease: 'none',
+        scrollTrigger: { trigger: pin, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .8, invalidateOnRefresh: true, anticipatePin: 1 } });
+    }
+
+    const line = document.querySelector('[data-progress-line]');
+    if (line && line.parentElement){
+      gsap.to(line, { height: '100%', ease: 'none',
+        scrollTrigger: { trigger: line.parentElement, start: 'top 72%', end: 'bottom 70%', scrub: .6 } });
+    }
+
+    ST.create({ trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: true,
+      onUpdate: (self) => { this._stageTarget = self.progress * 4; } });
+
+    const cta = document.querySelector('[data-cta]');
+    if (cta){
+      ST.create({ trigger: cta, start: 'top 80%', end: 'bottom bottom',
+        onUpdate: (self) => { this._focus = self.progress; }, onLeaveBack: () => { this._focus = 0; } });
+    }
+
+    ST.refresh();
+    setTimeout(() => ST.refresh(), 700);
+  }
+  componentWillUnmount(){
+    cancelAnimationFrame(this._raf); cancelAnimationFrame(this._raf3);
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    window.removeEventListener('hashchange', this._onHash);
+    if (this._onNavResize) window.removeEventListener('resize', this._onNavResize);
+    document.body.style.overflow = '';
+    if (this._io) this._io.disconnect();
+    if (this._ro) this._ro.disconnect();
+    clearInterval(this._domTick);
+    this.teardownScene();
+    if (this._lenis) this._lenis.destroy();
+  }
+
+  loadScript(src, test){
+    if (test()) return Promise.resolve();
+    if (!window.__mxS) window.__mxS = {};
+    if (window.__mxS[src]) return window.__mxS[src];
+    window.__mxS[src] = new Promise((res) => {
+      const s = document.createElement('script');
+      s.src = src; s.async = false; s.onload = res; s.onerror = function(){ res(); };
+      document.head.appendChild(s);
+    });
+    return window.__mxS[src];
+  }
+
+  loadLibs(){
+    const C = 'https://cdnjs.cloudflare.com/ajax/libs/';
+    const R = window.__resources || {};
+    this.loadScript(R.three || (C + 'three.js/r128/three.min.js'), () => window.THREE)
+      .then(() => this.three()).catch(() => {});
+    this.loadScript(R.gsap || (C + 'gsap/3.12.5/gsap.min.js'), () => window.gsap)
+      .then(() => this.loadScript(R.scrolltrigger || (C + 'gsap/3.12.5/ScrollTrigger.min.js'), () => window.ScrollTrigger))
+      .then(() => this.gsapInit()).catch(() => {});
+    if (this.props.smoothScroll !== false && !this.reduced()){
+      this.loadScript(R.lenis || 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js', () => window.Lenis)
+        .then(() => this.lenis()).catch(() => {});
+    }
+  }
+
+  reduced(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  touch(){ return window.matchMedia('(hover: none)').matches; }
+
+  lenis(){
+    if (!window.Lenis || this._lenis) return;
+    const L = window.Lenis.default || window.Lenis;
+    this._lenis = new L({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+    const raf = (t) => { this._lenis.raf(t); this._lrf = requestAnimationFrame(raf); };
+    this._lrf = requestAnimationFrame(raf);
+    if (window.ScrollTrigger){ this._lenis.on('scroll', window.ScrollTrigger.update); window.ScrollTrigger.refresh(); }
+  }
+
+  cursor(){
+    if (this.props.showCursor === false || this.touch()) return;
+    this._onMove = (e) => {
+      this._m.x = e.clientX; this._m.y = e.clientY;
+      const t = e.target.closest ? e.target.closest('[data-cursor],a,button') : null;
+      const kind = t ? (t.getAttribute('data-cursor') || '1') : '';
+      this._label = kind === 'view' ? 'View' : kind === 'start' ? 'Start' : '';
+      this._hot = !!t;
+    };
+    window.addEventListener('mousemove', this._onMove, {passive:true});
+    const tick = () => {
+      const d = this.dotRef.current, r = this.ringRef.current, l = this.ringLabelRef.current;
+      if (d && r){
+        this._r.x += (this._m.x - this._r.x) * 0.13;
+        this._r.y += (this._m.y - this._r.y) * 0.13;
+        d.style.transform = 'translate3d(' + (this._m.x - 4) + 'px,' + (this._m.y - 4) + 'px,0) scale(' + (this._hot ? 0 : 1) + ')';
+        d.style.transition = 'transform .15s linear';
+        const s = this._label ? 1 : this._hot ? .62 : .35;
+        r.style.transform = 'translate3d(' + (this._r.x - 28) + 'px,' + (this._r.y - 28) + 'px,0) scale(' + s + ')';
+        r.style.background = this._label ? '#F04423' : 'transparent';
+        r.style.borderColor = this._hot ? '#F04423' : 'rgba(244,241,234,.35)';
+        if (l && l.textContent !== this._label) l.textContent = this._label;
+        if (l) l.style.opacity = this._label ? 1 : 0;
+      }
+      this._raf = requestAnimationFrame(tick);
+    };
+    tick();
+  }
+
+  intro(){
+    const q = [[this.heroL1, 260], [this.heroL2, 400]];
+    q.forEach(([ref, delay]) => {
+      const el = ref.current; if (!el) return;
+      el.style.transition = 'transform 1.25s cubic-bezier(.16,1,.3,1) ' + delay + 'ms';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.transform = 'translateY(0)'; }));
+    });
+    [[this.heroEyebrowRef, 120], [this.heroFootRef, 780]].forEach(([ref, delay]) => {
+      const el = ref.current; if (!el) return;
+      el.style.transition = 'opacity 1s ease ' + delay + 'ms, transform 1s cubic-bezier(.16,1,.3,1) ' + delay + 'ms';
+      el.style.transform = 'translateY(18px)';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }));
+    });
+    clearTimeout(this._fs);
+    this._fs = setTimeout(() => {
+      [this.heroL1, this.heroL2].forEach(r => { if (r.current){ r.current.style.transition = 'none'; r.current.style.transform = 'translateY(0)'; } });
+      [this.heroEyebrowRef, this.heroFootRef].forEach(r => { if (r.current){ r.current.style.opacity = '1'; r.current.style.transform = 'none'; } });
+    }, 2400);
+  }
+
+  reveal(){
+    if (this._io) this._io.disconnect();
+    requestAnimationFrame(() => {
+      const els = Array.from(document.querySelectorAll('[data-fade]'));
+      els.forEach(el => {
+        el.style.opacity = '0'; el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity .9s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1)';
+      });
+      this._io = new IntersectionObserver((ent) => {
+        ent.forEach((e, i) => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          el.style.transitionDelay = (i * 80) + 'ms';
+          el.style.opacity = '1'; el.style.transform = 'none';
+          const n = el.querySelector('[data-count]');
+          if (n) this.count(n);
+          this._io.unobserve(el);
+        });
+      }, {threshold: .12, rootMargin: '0px 0px -6% 0px'});
+      els.forEach(el => this._io.observe(el));
+      clearTimeout(this._rfs);
+      this._rfs = setTimeout(() => {
+        els.forEach(el => {
+          if (el.getBoundingClientRect().top < window.innerHeight * 1.15){ el.style.opacity = '1'; el.style.transform = 'none'; }
+        });
+      }, 2000);
+    });
+  }
+
+  count(el){
+    if (el._d) return; el._d = true;
+    const target = parseFloat(el.getAttribute('data-count'));
+    if (!target) return;
+    const suffix = el.getAttribute('data-suffix') || '';
+    const t0 = performance.now(), dur = 1600;
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * e) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  scrollFx(){
+    this._onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? window.scrollY / max : 0;
+      const pr = this.progRef.current;
+      if (pr) pr.style.width = (p * 100) + '%';
+      const nav = this.navRef.current;
+      if (nav){
+        const on = window.scrollY > 40;
+        nav.style.background = on ? 'rgba(8,7,10,.82)' : 'transparent';
+        nav.style.borderBottomColor = on ? 'rgba(244,241,234,.12)' : 'rgba(244,241,234,0)';
+        nav.style.backdropFilter = on ? 'blur(16px)' : 'none';
+        nav.style.paddingTop = on ? '14px' : '20px';
+        nav.style.paddingBottom = on ? '14px' : '20px';
+      }
+      if (!window.ScrollTrigger) this._stageTarget = p * 4;
+    };
+    window.addEventListener('scroll', this._onScroll, {passive:true});
+    this._onScroll();
+  }
+
+  gsapInit(){
+    if (!window.gsap || !window.ScrollTrigger) return;
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    this.syncScene(true);
+    this.watchDom();
+  }
+
+  shape(kind, i, n){
+    const g = 2.399963;
+    if (kind === 0){
+      const y = 1 - (i / (n - 1)) * 2, r = Math.sqrt(Math.max(0, 1 - y * y)), th = g * i;
+      const k = 6.6 * (0.82 + 0.18 * Math.sin(i * 0.7));
+      return [Math.cos(th) * r * k, y * k, Math.sin(th) * r * k];
+    }
+    if (kind === 1){
+      const s = Math.ceil(Math.cbrt(n)), x = i % s, y = Math.floor(i / s) % s, z = Math.floor(i / (s * s));
+      const c = (s - 1) / 2, u = 9.2 / s;
+      return [(x - c) * u, (y - c) * u, (z - c) * u];
+    }
+    if (kind === 2){
+      const p = 2, q = 3, t = (i / n) * Math.PI * 2 * q;
+      const rr = 3.4 + 1.5 * Math.cos(p * t / q * 3);
+      const j = (i % 9) * 0.11 - 0.44;
+      return [(rr + j) * Math.cos(t), (1.5 + j) * Math.sin(p * t / q * 3), (rr + j) * Math.sin(t)];
+    }
+    if (kind === 3){
+      const s = Math.ceil(Math.sqrt(n)), x = i % s, z = Math.floor(i / s), c = (s - 1) / 2, u = 19 / s;
+      const dx = (x - c) * u, dz = (z - c) * u;
+      return [dx, Math.sin(Math.sqrt(dx * dx + dz * dz) * 0.55) * 1.15 - 1.4, dz];
+    }
+    const a = g * i, rr = 6.4 * Math.pow(i / n, 0.62);
+    return [Math.cos(a) * rr * 0.5, (i / n - 0.5) * 7.6, Math.sin(a) * rr * 0.5];
+  }
+
+  three(){
+    const cv = this.canvasRef.current;
+    if (!cv || !window.THREE || this._t) return;
+    if (!cv.clientWidth){ setTimeout(() => this.three(), 120); return; }
+    const THREE = window.THREE;
+    this._t = true;
+    const mobile = window.innerWidth < 760;
+    const N = Math.max(900, Math.min(12000, this.props.particleCount || (mobile ? 2600 : 8000)));
+    const W = () => cv.clientWidth || 1, H = () => cv.clientHeight || 1;
+
+    const scene = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(48, W() / H(), 0.1, 200);
+    cam.position.set(0, 0, 20);
+    const rnd = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: !mobile, powerPreference: 'high-performance' });
+    rnd.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
+    rnd.setSize(W(), H(), false);
+
+    const accent = new THREE.Color(this.props.accentColor || '#F04423');
+    const ivory = new THREE.Color('#F4F1EA');
+
+    const targets = [0,1,2,3,4].map(k => {
+      const a = new Float32Array(N * 3);
+      for (let i = 0; i < N; i++){ const p = this.shape(k, i, N); a[i*3] = p[0]; a[i*3+1] = p[1]; a[i*3+2] = p[2]; }
+      return a;
+    });
+
+    const pos = new Float32Array(N * 3), col = new Float32Array(N * 3), seed = new Float32Array(N);
+    for (let i = 0; i < N; i++){
+      const r = 34;
+      pos[i*3] = (Math.random()-.5)*r; pos[i*3+1] = (Math.random()-.5)*r; pos[i*3+2] = (Math.random()-.5)*r;
+      const c = (i % 11 === 0) ? accent : ivory;
+      col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
+      seed[i] = Math.random();
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const pts = new THREE.Points(geo, new THREE.PointsMaterial({
+      size: mobile ? 0.075 : 0.055, vertexColors: true, transparent: true, opacity: 0.72,
+      sizeAttenuation: true, blending: THREE.AdditiveBlending, depthWrite: false
+    }));
+    const group = new THREE.Group();
+    group.add(pts);
+
+    const LN = Math.min(420, Math.floor(N / 14));
+    const lgeo = new THREE.BufferGeometry();
+    const lpos = new Float32Array(LN * 2 * 3);
+    lgeo.setAttribute('position', new THREE.BufferAttribute(lpos, 3));
+    const lines = new THREE.LineSegments(lgeo, new THREE.LineBasicMaterial({ color: accent, transparent: true, opacity: 0.14, blending: THREE.AdditiveBlending, depthWrite: false }));
+    group.add(lines);
+    scene.add(group);
+
+    const clock = new THREE.Clock();
+    let assemble = 0;
+
+    this._onResize = () => { if (!cv.clientWidth) return; cam.aspect = W()/H(); cam.updateProjectionMatrix(); rnd.setSize(W(), H(), false); };
+    window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver){ this._ro = new ResizeObserver(this._onResize); this._ro.observe(cv); }
+
+    const P = geo.attributes.position.array;
+    const loop = () => {
+      const t = clock.getElapsedTime();
+      const dt = Math.min(0.05, clock.getDelta ? 0.016 : 0.016);
+      assemble = Math.min(1, assemble + 0.0075);
+      const ease = 1 - Math.pow(1 - assemble, 3);
+
+      this._stage += (this._stageTarget - this._stage) * 0.045;
+      const s = Math.max(0, Math.min(3.999, this._stage));
+      const i0 = Math.floor(s), i1 = Math.min(4, i0 + 1), mix = s - i0;
+      const A = targets[i0], B = targets[i1];
+      const focus = this._focus || 0;
+
+      for (let i = 0; i < N; i++){
+        const ix = i * 3;
+        const tx = A[ix] + (B[ix] - A[ix]) * mix;
+        const ty = A[ix+1] + (B[ix+1] - A[ix+1]) * mix;
+        const tz = A[ix+2] + (B[ix+2] - A[ix+2]) * mix;
+        const bo = 0.34 * (0.4 + seed[i]);
+        const wx = tx + Math.sin(t * 0.55 + seed[i] * 9.4) * bo;
+        const wy = ty + Math.cos(t * 0.47 + seed[i] * 7.1) * bo;
+        const wz = tz + Math.sin(t * 0.51 + seed[i] * 5.3) * bo;
+        const cf = 1 - focus * 0.72;
+        const gx = wx * cf, gy = wy * cf, gz = wz * cf;
+        const k = 0.055 + ease * 0.055;
+        P[ix]   += (gx - P[ix]) * k;
+        P[ix+1] += (gy - P[ix+1]) * k;
+        P[ix+2] += (gz - P[ix+2]) * k;
+      }
+      geo.attributes.position.needsUpdate = true;
+
+      if (!this._lskip){
+        for (let j = 0; j < LN; j++){
+          const a = (j * 13) % N, b = (j * 13 + 7) % N;
+          const o = j * 6;
+          lpos[o]   = P[a*3];   lpos[o+1] = P[a*3+1]; lpos[o+2] = P[a*3+2];
+          lpos[o+3] = P[b*3];   lpos[o+4] = P[b*3+1]; lpos[o+5] = P[b*3+2];
+        }
+        lgeo.attributes.position.needsUpdate = true;
+      }
+      this._lskip = !this._lskip;
+      lines.material.opacity = 0.16 * (1 - Math.min(1, s / 2.2)) * ease;
+
+      const mx = (this._m.x / window.innerWidth - 0.5) || 0;
+      const my = (this._m.y / window.innerHeight - 0.5) || 0;
+      this._tilt.x += (my * 0.34 - this._tilt.x) * 0.04;
+      this._tilt.y += (mx * 0.5 - this._tilt.y) * 0.04;
+      group.rotation.x = this._tilt.x;
+      group.rotation.y = t * 0.055 + this._tilt.y;
+      pts.material.opacity = (0.28 + 0.46 * ease) * (1 - focus * 0.15);
+      cam.position.z = 20 - ease * 2.2 - focus * 3.4;
+
+      rnd.render(scene, cam);
+      this._raf3 = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  industryData(){
+    const B = 'https://www.marioxsoftware.com/';
+    const cs = (name, slug, img, body) => ({ name, url: B + 'case-study/' + slug, img: B + img, body });
+    return [
+      { slug:'healthcare', name:'Healthcare', stage:0,
+        h1a:'Digital products for', h1b:'modern healthcare.',
+        blurb:'Patient platforms, telemedicine, provider systems',
+        sub:'Clinical software carries consequences most products do not. We build patient-facing platforms and provider systems that hold up to both a load test and an audit.',
+        challenges:[
+          {n:'01', title:'Consent and audit', body:'Every read and write against a patient record has to be attributable, reversible and explainable months later.'},
+          {n:'02', title:'Fragmented systems', body:'Records sit across practice software, labs and insurers, each with its own format and appetite for integration.'},
+          {n:'03', title:'Clinician time', body:'If a workflow adds thirty seconds per patient, adoption dies quietly regardless of how good the product is.'},
+          {n:'04', title:'Regulatory surface', body:'HIPAA, GDPR and local health regulation change what you can store, where and for how long.'}
+        ],
+        builds:[
+          {n:'01', title:'Patient platforms', body:'Records, history and results in a place patients can actually use.'},
+          {n:'02', title:'Telemedicine', body:'Video consultation with scheduling, notes and prescriptions attached.'},
+          {n:'03', title:'Appointment systems', body:'Availability, reminders and no-show handling across multiple sites.'},
+          {n:'04', title:'Hospital systems', body:'Admissions, departments and internal operations tooling.'},
+          {n:'05', title:'Healthcare marketplaces', body:'Practitioner discovery, booking and payment in one flow.'},
+          {n:'06', title:'Health SaaS', body:'Multi-tenant clinical products with per-clinic configuration.'}
+        ],
+        tech:['Flutter','React','Node.js','Python','PostgreSQL','Azure','FHIR / HL7','Kubernetes'],
+        approach:'We start with the data model and the consent rules, because they constrain everything after. Prototypes go in front of clinicians before a single production endpoint is written, and we assume every integration will be slower to land than promised.',
+        caseNote:'Six healthcare platforms shipped',
+        cases:[
+          cs('Eka Care','ekacare','img/cs/eka.care/eka.care2.png','Patient records and telemedicine at national scale.'),
+          cs('Healthengine','healthengine','img/cs/healthengine/healthengine1.png','Appointment booking across a national provider network.'),
+          cs('ZAVA','zava','img/cs/zava/zavamed1.png','Digital-first consultation and prescription delivery.')
+        ]
+      },
+      { slug:'fintech', name:'Fintech', stage:1,
+        h1a:'Software for money', h1b:'that has to move.',
+        blurb:'Payments, banking, wallets, investment platforms',
+        sub:'Eight shipped platforms across payments, banking and investing. In this sector an outage is a regulatory event, so we build for reconciliation first and features second.',
+        challenges:[
+          {n:'01', title:'Reconciliation', body:'Ledgers must balance to the cent across providers, currencies and retries. Approximate is the same as wrong.'},
+          {n:'02', title:'KYC and AML', body:'Onboarding has to satisfy compliance without becoming the reason users abandon signup.'},
+          {n:'03', title:'Provider dependency', body:'Payment rails fail in ways you do not control. The system has to degrade without losing money.'},
+          {n:'04', title:'Audit expectations', body:'Regulators ask what happened on a specific date to a specific account. You need the answer in minutes.'}
+        ],
+        builds:[
+          {n:'01', title:'Banking platforms', body:'Accounts, statements and transfers on a ledger you can defend.'},
+          {n:'02', title:'Payment systems', body:'Orchestration across providers with retries and failover.'},
+          {n:'03', title:'Wallets', body:'Balance, top-up and payout flows with dispute handling.'},
+          {n:'04', title:'Investment platforms', body:'Portfolio, order routing and market data at retail scale.'},
+          {n:'05', title:'Cross-border payments', body:'FX, compliance and settlement across jurisdictions.'},
+          {n:'06', title:'Financial SaaS', body:'Multi-tenant tooling for lenders, brokers and finance teams.'}
+        ],
+        tech:['TypeScript','Java / Spring','Node.js','PostgreSQL','Redis','Kafka','AWS','Terraform'],
+        approach:'Double-entry from day one, idempotency on every money-moving endpoint, and a reconciliation job that runs whether or not anyone is watching. We design the failure paths before the happy path.',
+        caseNote:'Eight fintech platforms shipped',
+        cases:[
+          cs('Skydo','skydo','img/cs/skydo/Skydo1.png','Cross-border payments for exporters.'),
+          cs('Airwallex','airwallex','img/cs/airwallex/AirWallex4.png','Global business accounts and FX.'),
+          cs('StockGro','stockgro','img/cs/stockgro/stockgro1.png','Social investing at retail scale.')
+        ]
+      },
+      { slug:'real-estate', name:'Real estate', stage:3,
+        h1a:'Platforms for property', h1b:'and the people selling it.',
+        blurb:'Listings, CRM, property management, marketplaces',
+        sub:'Property runs on listings, leads and paperwork. We build the platforms that keep all three in one system instead of four spreadsheets and an inbox.',
+        challenges:[
+          {n:'01', title:'Listing data quality', body:'Feeds arrive duplicated, stale and inconsistently geocoded. Search is only as good as the cleanup.'},
+          {n:'02', title:'Lead leakage', body:'Enquiries scatter across portals, email and phone, then go cold before anyone follows up.'},
+          {n:'03', title:'Document load', body:'Agreements, compliance and approvals still move as attachments unless the product absorbs them.'},
+          {n:'04', title:'Search that works', body:'Buyers filter on things the schema was never designed for. Search needs room to change.'}
+        ],
+        builds:[
+          {n:'01', title:'Property platforms', body:'Listings, media, search and enquiry in one product.'},
+          {n:'02', title:'Real estate CRM', body:'Pipeline, follow-up and agent performance in one place.'},
+          {n:'03', title:'Property management', body:'Tenancies, rent, maintenance and owner reporting.'},
+          {n:'04', title:'Marketplaces', body:'Two-sided platforms connecting buyers, sellers and agents.'},
+          {n:'05', title:'Document workflows', body:'Agreements, approvals and e-signature built into the flow.'},
+          {n:'06', title:'Real estate SaaS', body:'Multi-tenant products for agencies and developers.'}
+        ],
+        tech:['Next.js','Node.js','PostgreSQL','Elasticsearch','Mapbox','AWS','Redis'],
+        approach:'We treat search and lead routing as the product, not features of it. The data pipeline that dedupes and geocodes listings gets built before the interface, because everything downstream depends on it.'
+      },
+      { slug:'education', name:'Education', stage:2,
+        h1a:'Learning platforms', h1b:'people finish.',
+        blurb:'LMS, edtech products, assessment, student systems',
+        sub:'Eight edtech platforms shipped. Completion is the only metric that matters, and it is decided by structure and pace long before it is decided by content.',
+        challenges:[
+          {n:'01', title:'Completion rates', body:'Most learners stop early. Structure, pacing and reminders move the number more than features do.'},
+          {n:'02', title:'Live at scale', body:'A cohort session with thousands of concurrent learners is an infrastructure problem, not a video problem.'},
+          {n:'03', title:'Assessment integrity', body:'Marking has to be fast, consistent and hard to game across large cohorts.'},
+          {n:'04', title:'Many stakeholders', body:'Students, teachers, parents and administrators need different views of the same data.'}
+        ],
+        builds:[
+          {n:'01', title:'Learning platforms', body:'Course delivery, progress and certification.'},
+          {n:'02', title:'Live cohorts', body:'Scheduled sessions, attendance and recordings at scale.'},
+          {n:'03', title:'Assessment platforms', body:'Question banks, marking and analytics.'},
+          {n:'04', title:'Student management', body:'Enrolment, records, fees and reporting.'},
+          {n:'05', title:'Learning apps', body:'Mobile-first practice and revision with offline support.'},
+          {n:'06', title:'Creator platforms', body:'Course authoring, pricing and payouts for educators.'}
+        ],
+        tech:['React','Node.js','React Native','PostgreSQL','Redis','GCP','WebRTC'],
+        approach:'We instrument the funnel from enrolment to completion and design against the drop-off points we find. Live infrastructure gets load-tested at the number you hope for, not the number you have.',
+        caseNote:'Eight edtech platforms shipped',
+        cases:[
+          cs('Graphy','graphy','img/cs/graphy/graphy1.png','Course delivery, live cohorts and creator payouts.'),
+          cs('Teachmint','teachmint','img/cs/teachmint/teachmint.png','Classroom and school management at scale.'),
+          cs('Testbook','testbook','img/cs/testbook/testbook1.png','Test preparation with large-cohort assessment.')
+        ]
+      },
+      { slug:'ecommerce', name:'E-commerce', stage:1,
+        h1a:'Commerce that survives', h1b:'the day it matters.',
+        blurb:'Storefronts, marketplaces, seller platforms, operations',
+        sub:'Six commerce platforms shipped, including marketplaces running third-party sellers. Most of the year is easy. We build for the four days that are not.',
+        challenges:[
+          {n:'01', title:'Peak traffic', body:'A drop or sale concentrates a month of load into twenty minutes. Caching strategy is the product.'},
+          {n:'02', title:'Inventory truth', body:'Overselling is a support problem that scales faster than revenue does.'},
+          {n:'03', title:'Checkout friction', body:'Every additional field costs conversion. Payment coverage has to be broad and fast.'},
+          {n:'04', title:'Seller operations', body:'Marketplaces live or die on how well the seller side works, and nobody demos that.'}
+        ],
+        builds:[
+          {n:'01', title:'Commerce platforms', body:'Catalogue, cart, checkout and post-purchase.'},
+          {n:'02', title:'Marketplaces', body:'Multi-seller listings, payouts and dispute handling.'},
+          {n:'03', title:'Seller platforms', body:'Onboarding, inventory and performance tooling.'},
+          {n:'04', title:'Customer apps', body:'Native shopping with notifications and reorder flows.'},
+          {n:'05', title:'Logistics integration', body:'Fulfilment, shipping rates and tracking wired in.'},
+          {n:'06', title:'Order management', body:'Returns, refunds and exceptions handled properly.'}
+        ],
+        tech:['Next.js','Node.js','PostgreSQL','Redis','Elasticsearch','Stripe','Cloudflare','Kubernetes'],
+        approach:'We load-test at three times the expected peak and treat inventory as a single source of truth with everything else reading from it. Checkout gets the most engineering attention because it converts.',
+        caseNote:'Six commerce platforms shipped',
+        cases:[
+          cs('Snitch','snitch','img/cs/snitch/snitch1.png','Fashion commerce engineered for drops.'),
+          cs('Kogan','kogan','img/cs/kogan/kogan2.png','Marketplace with large third-party seller base.'),
+          cs('Fynd','fynd','img/cs/fynd/fynd1.png','Commerce technology across online and retail.')
+        ]
+      },
+      { slug:'travel', name:'Travel', stage:4,
+        h1a:'Booking systems', h1b:'that hold together.',
+        blurb:'Booking platforms, marketplaces, hotel technology',
+        sub:'Travel products depend on inventory you do not own and prices that change while the user is looking at them. The engineering problem is consistency, not screens.',
+        challenges:[
+          {n:'01', title:'Third-party inventory', body:'Availability comes from suppliers with different latency, formats and reliability.'},
+          {n:'02', title:'Price volatility', body:'Quotes go stale mid-session. Users blame you, not the supplier.'},
+          {n:'03', title:'Cancellation logic', body:'Refund rules vary per supplier, per fare, per date. Most of the complexity lives here.'},
+          {n:'04', title:'Itinerary state', body:'One trip spans flights, stays and transfers that all change independently.'}
+        ],
+        builds:[
+          {n:'01', title:'Booking platforms', body:'Search, hold, book and pay across suppliers.'},
+          {n:'02', title:'Travel marketplaces', body:'Multi-supplier inventory with unified checkout.'},
+          {n:'03', title:'Hotel technology', body:'Property management, rates and channel integration.'},
+          {n:'04', title:'Itinerary management', body:'Trip state, changes and traveller notifications.'},
+          {n:'05', title:'Concierge platforms', body:'Requests, agents and fulfilment tracking.'},
+          {n:'06', title:'Operator tooling', body:'Capacity, pricing and reporting for tour operators.'}
+        ],
+        tech:['React','Node.js','PostgreSQL','Redis','GraphQL','AWS','Elasticsearch'],
+        approach:'We build a normalisation layer over supplier feeds so the product has one shape to work with, cache aggressively with explicit staleness, and make cancellation rules data rather than code.'
+      },
+      { slug:'logistics', name:'Logistics', stage:3,
+        h1a:'Software for things', h1b:'that are moving.',
+        blurb:'Fleet, dispatch, tracking, route optimisation',
+        sub:'Six delivery and quick-commerce platforms shipped, several promising sub-ten-minute delivery. Dispatch is a real-time problem and it is where these systems succeed or fail.',
+        challenges:[
+          {n:'01', title:'Real-time dispatch', body:'Assignment decisions have to be made in seconds with incomplete information.'},
+          {n:'02', title:'Location accuracy', body:'GPS drifts, phones sleep and drivers go through tunnels. The map has to stay believable.'},
+          {n:'03', title:'Battery and data', body:'Driver apps run all day on cheap handsets and patchy networks.'},
+          {n:'04', title:'Exception handling', body:'Failed deliveries, returns and reassignment are the majority of operational cost.'}
+        ],
+        builds:[
+          {n:'01', title:'Dispatch systems', body:'Assignment, batching and live rebalancing.'},
+          {n:'02', title:'Fleet management', body:'Vehicles, drivers, shifts and compliance.'},
+          {n:'03', title:'Tracking', body:'Live location for customers and operations.'},
+          {n:'04', title:'Route optimisation', body:'Multi-stop sequencing under real constraints.'},
+          {n:'05', title:'Warehouse tooling', body:'Picking, packing and stock movement.'},
+          {n:'06', title:'Logistics SaaS', body:'Multi-tenant products for 3PLs and operators.'}
+        ],
+        tech:['React Native','Node.js','PostgreSQL','Redis','Kafka','Kubernetes','Maps APIs'],
+        approach:'Dispatch gets built as a service with its own tests and replay tooling so decisions can be audited after the fact. Driver apps are engineered for low-end devices and intermittent connectivity from the start.',
+        caseNote:'Six delivery platforms shipped',
+        cases:[
+          cs('MILKRUN','milkrun','img/cs/milkrun/milkrun1.png','Grocery delivery with rider dispatch and live tracking.'),
+          cs('Voly','volygroup','img/cs/volygroup/volygroup2.png','Quick commerce across app, web and operations.'),
+          cs('Zapp','zapp','img/cs/zapp/zaap2.png','On-demand delivery at metropolitan scale.')
+        ]
+      },
+      { slug:'media', name:'Media', stage:2,
+        h1a:'Platforms for content', h1b:'and the people making it.',
+        blurb:'OTT, streaming, content and creator platforms',
+        sub:'Media products are judged on playback and discovery. Both are infrastructure problems dressed as design problems.',
+        challenges:[
+          {n:'01', title:'Playback quality', body:'Startup time and rebuffering decide retention more than catalogue size does.'},
+          {n:'02', title:'Delivery cost', body:'Bandwidth is the dominant line item. Encoding and CDN strategy is a business decision.'},
+          {n:'03', title:'Rights and windows', body:'Content availability varies by territory and date, and the system has to enforce it.'},
+          {n:'04', title:'Discovery', body:'A large catalogue without good discovery performs worse than a small one.'}
+        ],
+        builds:[
+          {n:'01', title:'OTT platforms', body:'Catalogue, playback and entitlement across devices.'},
+          {n:'02', title:'Streaming infrastructure', body:'Encoding, packaging and delivery pipelines.'},
+          {n:'03', title:'Content platforms', body:'Publishing, editorial workflow and syndication.'},
+          {n:'04', title:'Creator platforms', body:'Upload, monetisation and audience tooling.'},
+          {n:'05', title:'Subscription billing', body:'Plans, trials, churn handling and dunning.'},
+          {n:'06', title:'Recommendation', body:'Discovery driven by behaviour rather than editorial alone.'}
+        ],
+        tech:['React','Next.js','Node.js','Python','PostgreSQL','AWS','Cloudflare','HLS / DASH'],
+        approach:'We instrument playback before anything else, because startup time and rebuffer rate tell you what to fix. Rights and windowing get modelled as data so business teams can change them without a release.'
+      },
+      { slug:'startups', name:'Startups', stage:0,
+        h1a:'From idea', h1b:'to something real.',
+        blurb:'MVPs, SaaS, marketplaces, scalable backends',
+        sub:'Founders come to us with a product to prove. The job is finding the smallest version that answers the question, building it properly, and not painting you into a corner.',
+        challenges:[
+          {n:'01', title:'Scope discipline', body:'The first version usually contains three products. Deciding which one ships is most of the value.'},
+          {n:'02', title:'Runway', body:'Every week of build is a week of runway. Sequencing matters more than velocity.'},
+          {n:'03', title:'Premature scale', body:'Architecture built for a million users you do not have slows down the ten you do.'},
+          {n:'04', title:'Handover', body:'When you hire your own team, they inherit our decisions. They should be able to live with them.'}
+        ],
+        builds:[
+          {n:'01', title:'MVP development', body:'The smallest build that tests the real assumption.'},
+          {n:'02', title:'SaaS products', body:'Multi-tenancy, billing and onboarding done once, properly.'},
+          {n:'03', title:'Marketplaces', body:'Two-sided products with payments and trust mechanics.'},
+          {n:'04', title:'Mobile applications', body:'Native and cross-platform from wireframe to store.'},
+          {n:'05', title:'Scalable backends', body:'Services that grow without a rewrite at the first inflection.'},
+          {n:'06', title:'Technical due diligence', body:'An honest read on an existing codebase before you raise.'}
+        ],
+        tech:['Next.js','React Native','Node.js','TypeScript','PostgreSQL','Supabase','AWS','Stripe'],
+        approach:'We run a short paid discovery, cut the scope to what tests the assumption, and give you a fixed number. Boring technology by default, because your advantage is the product and not the stack.'
+      },
+      { slug:'enterprise', name:'Enterprise', stage:3,
+        h1a:'Systems the business', h1b:'actually runs on.',
+        blurb:'ERP, CRM, internal platforms, integrations',
+        sub:'Enterprise work is mostly integration and migration under a constraint nobody can relax: the current system has to keep running while you change it.',
+        challenges:[
+          {n:'01', title:'Legacy dependency', body:'The system you want to replace is load-bearing and undocumented.'},
+          {n:'02', title:'Integration surface', body:'A dozen systems, several vendors and no single owner of the data model.'},
+          {n:'03', title:'Change resistance', body:'Adoption fails on process and training long before it fails on software.'},
+          {n:'04', title:'Migration risk', body:'Cutover is the moment everything is exposed. It has to be rehearsed and reversible.'}
+        ],
+        builds:[
+          {n:'01', title:'ERP implementation', body:'Configuration, customisation and rollout.'},
+          {n:'02', title:'CRM platforms', body:'Pipeline, service and reporting fitted to your process.'},
+          {n:'03', title:'Internal platforms', body:'Tools your operations teams live inside all day.'},
+          {n:'04', title:'Workflow automation', body:'Approvals and handoffs that stop living in email.'},
+          {n:'05', title:'System integration', body:'APIs and pipelines connecting what you already own.'},
+          {n:'06', title:'Migration', body:'Staged, rehearsed and reversible cutover.'}
+        ],
+        tech:['.NET','Java / Spring','React','PostgreSQL','Azure','Terraform','Kafka','Power BI'],
+        approach:'We map the current system before proposing the next one, run new and old in parallel where we can, and rehearse cutover until it is boring. Training and documentation are part of scope, not an afterthought.'
+      },
+      { slug:'quick-commerce', name:'Quick commerce', stage:3,
+        h1a:'Ten-minute promises,', h1b:'kept.',
+        blurb:'Dark stores, rider dispatch, sub-hour delivery',
+        sub:'Seven quick-commerce platforms shipped. The promise on the homepage is an engineering commitment: inventory accuracy, rider supply and dispatch have to hold simultaneously.',
+        challenges:[
+          {n:'01', title:'Dark store inventory', body:'Stock accuracy per store decides whether the promise is deliverable or a cancellation.'},
+          {n:'02', title:'Rider supply', body:'Demand spikes in twenty-minute windows. Supply has to be forecast, not reacted to.'},
+          {n:'03', title:'Slot honesty', body:'Showing a delivery window you cannot meet costs more than showing a longer one.'},
+          {n:'04', title:'Unit economics', body:'Every extra minute and every failed drop is measurable margin.'}
+        ],
+        builds:[
+          {n:'01', title:'Customer apps', body:'Browse, order and live tracking on iOS and Android.'},
+          {n:'02', title:'Rider apps', body:'Assignment, navigation and proof of delivery.'},
+          {n:'03', title:'Dark store tooling', body:'Picking, stock counts and store-level availability.'},
+          {n:'04', title:'Dispatch engine', body:'Batching and assignment under time pressure.'},
+          {n:'05', title:'Slot and pricing logic', body:'Dynamic windows and fees tied to real capacity.'},
+          {n:'06', title:'Operations dashboards', body:'Live performance per store and per rider.'}
+        ],
+        tech:['React Native','Node.js','PostgreSQL','Redis','Kafka','Kubernetes','Maps APIs'],
+        approach:'We model store-level inventory as the source of truth and refuse to show a slot the system cannot back. Dispatch is a service with replay tooling so any assignment decision can be audited later.',
+        caseNote:'Seven quick-commerce platforms shipped',
+        cases:[
+          cs('MILKRUN','milkrun','img/cs/milkrun/milkrun1.png','Grocery delivery with rider dispatch and live tracking.'),
+          cs('Zapp','zapp','img/cs/zapp/zaap2.png','On-demand delivery at metropolitan scale.'),
+          cs('Grokart','thegrocart','img/cs/thegrocart/thegrocart1.png','Grocery commerce with store-level fulfilment.')
+        ]
+      },
+      { slug:'insurance', name:'Insurance', stage:1,
+        h1a:'Insurance software', h1b:'without the paper.',
+        blurb:'Quoting, policy admin, claims, distribution',
+        sub:'Insurance runs on rules that change by product, territory and regulator. We build systems where those rules are configurable data rather than hard-coded logic.',
+        challenges:[
+          {n:'01', title:'Rating complexity', body:'Premium logic varies per product and changes often. Hard-coding it guarantees release pressure.'},
+          {n:'02', title:'Claims turnaround', body:'Customers judge insurers on claims, and claims are mostly document handling.'},
+          {n:'03', title:'Legacy policy systems', body:'The core admin platform is old, load-bearing and rarely well documented.'},
+          {n:'04', title:'Regulatory reporting', body:'Returns and disclosures have fixed formats and unforgiving deadlines.'}
+        ],
+        builds:[
+          {n:'01', title:'Quote and buy', body:'Rating, underwriting questions and checkout.'},
+          {n:'02', title:'Policy administration', body:'Issuance, endorsements, renewals and cancellation.'},
+          {n:'03', title:'Claims platforms', body:'Intake, document handling, assessment and settlement.'},
+          {n:'04', title:'Agent and broker portals', body:'Distribution tooling with commission tracking.'},
+          {n:'05', title:'Customer self-service', body:'Documents, changes and claims without a phone call.'},
+          {n:'06', title:'Regulatory reporting', body:'Scheduled returns generated from the system of record.'}
+        ],
+        tech:['Java / Spring','.NET','React','PostgreSQL','Azure','Kafka','Power BI'],
+        approach:'Rating and underwriting rules get modelled as versioned configuration so product teams can change them without a deployment. Claims work starts with the document pipeline, because that is where the days go.'
+      },
+      { slug:'manufacturing', name:'Manufacturing', stage:3,
+        h1a:'Connecting the floor', h1b:'to the back office.',
+        blurb:'ERP, MES, IoT telemetry, production planning',
+        sub:'Manufacturing software has to survive an environment that engineering offices do not: intermittent networks, hostile conditions and machines that predate the internet.',
+        challenges:[
+          {n:'01', title:'Machine integration', body:'Equipment speaks proprietary protocols, or nothing at all, and cannot be replaced.'},
+          {n:'02', title:'Shop-floor conditions', body:'Dust, gloves, noise and poor connectivity break conventional interfaces.'},
+          {n:'03', title:'Planning accuracy', body:'Schedules built on stale data create the shortages they were meant to prevent.'},
+          {n:'04', title:'Traceability', body:'Recalls and audits require knowing which batch went where, months later.'}
+        ],
+        builds:[
+          {n:'01', title:'ERP systems', body:'Orders, inventory, procurement and finance integration.'},
+          {n:'02', title:'Production tracking', body:'Work orders, output and downtime capture.'},
+          {n:'03', title:'IoT telemetry', body:'Machine data collected, buffered and made useful.'},
+          {n:'04', title:'Quality management', body:'Inspections, non-conformance and corrective actions.'},
+          {n:'05', title:'Maintenance systems', body:'Preventive schedules and breakdown handling.'},
+          {n:'06', title:'Traceability', body:'Batch and serial history end to end.'}
+        ],
+        tech:['.NET','Java','React','PostgreSQL','MQTT','Azure IoT','Power BI','Docker'],
+        approach:'Interfaces are designed for gloves and glare, and every shop-floor tool works offline with local buffering. We integrate with machines as they are rather than proposing capital expenditure we cannot justify.',
+        caseNote:'ERP delivered for Vimal Wires & Cable',
+        cases:[
+          cs('Vimal Wires & Cable','vimal-wires-and-cable','img/vimal-cables-thumb.webp','ERP system covering production and operations.')
+        ]
+      },
+      { slug:'public-sector', name:'Public sector', stage:2,
+        h1a:'Services citizens', h1b:'can actually use.',
+        blurb:'Citizen portals, case management, accessibility',
+        sub:'Public software is judged on whether the least confident user can complete the task. Accessibility and documentation are requirements here, not improvements.',
+        challenges:[
+          {n:'01', title:'Universal accessibility', body:'The service must work for every citizen, on old devices and assistive technology.'},
+          {n:'02', title:'Procurement constraints', body:'Scope, reporting and evidence obligations are fixed before work starts.'},
+          {n:'03', title:'Legacy integration', body:'Records live in systems that predate the web and cannot be switched off.'},
+          {n:'04', title:'Transparency', body:'Decisions and data handling have to be explainable to the public.'}
+        ],
+        builds:[
+          {n:'01', title:'Citizen portals', body:'Applications, payments and status tracking.'},
+          {n:'02', title:'Case management', body:'Workflow, assessment and decision recording.'},
+          {n:'03', title:'Licensing systems', body:'Permits, renewals and inspection scheduling.'},
+          {n:'04', title:'Internal platforms', body:'Tooling for caseworkers and administrators.'},
+          {n:'05', title:'Open data', body:'Published datasets and documented APIs.'},
+          {n:'06', title:'Legacy integration', body:'Bridges to existing systems of record.'}
+        ],
+        tech:['React','Node.js','.NET','PostgreSQL','Azure','Terraform','GOV-style patterns'],
+        approach:'We build to WCAG AA and test with assistive technology rather than a checklist. Everything ships with the documentation and evidence procurement requires, produced as we go rather than at the end.'
+      },
+      { slug:'agritech', name:'Agritech', stage:0,
+        h1a:'Software for fields,', h1b:'not just offices.',
+        blurb:'Farm management, supply chain, advisory, marketplaces',
+        sub:'Agricultural software runs where connectivity is unreliable and the user may not be reading in English. Offline-first is a requirement, not a feature.',
+        challenges:[
+          {n:'01', title:'Connectivity', body:'Fields have patchy coverage. Anything requiring a live connection will fail in use.'},
+          {n:'02', title:'Language and literacy', body:'Interfaces need multiple languages and to work with minimal reading.'},
+          {n:'03', title:'Seasonality', body:'Usage concentrates into short windows, so releases must land between them.'},
+          {n:'04', title:'Fragmented supply chain', body:'Many small intermediaries, little digitisation and inconsistent records.'}
+        ],
+        builds:[
+          {n:'01', title:'Farm management', body:'Plots, crops, inputs and activity records.'},
+          {n:'02', title:'Advisory apps', body:'Guidance, alerts and diagnostics in local languages.'},
+          {n:'03', title:'Supply chain platforms', body:'Procurement, grading and payment tracking.'},
+          {n:'04', title:'Marketplaces', body:'Connecting producers to buyers with price transparency.'},
+          {n:'05', title:'Traceability', body:'Origin records from farm to buyer.'},
+          {n:'06', title:'Field data capture', body:'Offline-first collection that syncs when it can.'}
+        ],
+        tech:['React Native','Flutter','Node.js','PostgreSQL','SQLite','Firebase','Maps APIs'],
+        approach:'Every field-facing app is offline-first with conflict resolution designed in from the start. We test on low-end devices and in local languages, because that is what is actually in the user\'s hand.'
+      },
+      { slug:'fitness', name:'Sports & fitness', stage:4,
+        h1a:'Products people', h1b:'come back to.',
+        blurb:'Training apps, class booking, wearables, communities',
+        sub:'Fitness products are retention businesses. Habit mechanics and honest data matter more than feature count.',
+        challenges:[
+          {n:'01', title:'Retention', body:'Most users lapse within weeks. Streaks, reminders and social pressure move the number.'},
+          {n:'02', title:'Wearable data', body:'Device APIs disagree, sync late and report the same activity differently.'},
+          {n:'03', title:'Background tracking', body:'Continuous tracking has to work without destroying battery life.'},
+          {n:'04', title:'Trust in numbers', body:'Users abandon a product the moment its data contradicts their own sense of effort.'}
+        ],
+        builds:[
+          {n:'01', title:'Training apps', body:'Programmes, progression and workout logging.'},
+          {n:'02', title:'Class booking', body:'Schedules, capacity, waitlists and memberships.'},
+          {n:'03', title:'Wearable integration', body:'Apple Health, Google Fit and device SDKs reconciled.'},
+          {n:'04', title:'Community features', body:'Challenges, leaderboards and social accountability.'},
+          {n:'05', title:'Coach platforms', body:'Client management, plan building and messaging.'},
+          {n:'06', title:'Subscription billing', body:'Plans, pauses, trials and churn handling.'}
+        ],
+        tech:['React Native','Swift','Kotlin','Node.js','PostgreSQL','Firebase','HealthKit','Stripe'],
+        approach:'We instrument the retention curve first and design against the week where users drop off. Wearable data gets reconciled through one normalisation layer so the product shows a single believable number.'
+      }
+    ];
+  }
+
+  serviceData(){
+    return [
+      { slug:'product-engineering', name:'Product engineering', tag:'Discovery, architecture, build, handover', stage:0,
+        label:'Service 01 / Product engineering',
+        h1a:'Products built', h1b:'to be owned.',
+        sub:'Full-cycle product work: the discovery that decides what to build, the architecture that survives contact with users, and a handover that leaves your team able to run it without us.',
+        includes:[
+          {n:'01', title:'Paid discovery', body:'A brief turned into architecture, a plan and a fixed number.'},
+          {n:'02', title:'Architecture', body:'Data model, service boundaries and the decisions written down.'},
+          {n:'03', title:'Build', body:'Two-week sprints, a demo at the end of each, a board open daily.'},
+          {n:'04', title:'Release engineering', body:'Pipelines, environments and staged rollout from sprint one.'},
+          {n:'05', title:'Observability', body:'Logging, metrics and alerting in place before real users arrive.'},
+          {n:'06', title:'Handover', body:'Documentation and walkthroughs so your team can take it over.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Working software', body:'Deployed, monitored and in your cloud account.'},
+          {n:'02', title:'Architecture record', body:'Decisions and their reasons, not just diagrams.'},
+          {n:'03', title:'Test coverage', body:'Automated suites you can trust to gate a release.'},
+          {n:'04', title:'Runbook', body:'What to do when something breaks at 3am.'}
+        ],
+        tech:['TypeScript','Node.js','React','PostgreSQL','Docker','Terraform','AWS','GitHub Actions'],
+        approach:'Discovery is paid and short, because free discovery produces optimistic estimates. After that we work in two-week sprints with a demo at the end of every one, and you see the same board we do.'
+      },
+      { slug:'web-mobile', name:'Web & mobile', tag:'React, Next.js, React Native, Flutter', stage:1,
+        label:'Service 02 / Web & mobile',
+        h1a:'Interfaces', h1b:'that stay fast.',
+        sub:'Web applications and native apps from first wireframe to store release, engineered to stay quick under load and easy to change six months later.',
+        includes:[
+          {n:'01', title:'Web applications', body:'Portals, dashboards and products built on React or Next.js.'},
+          {n:'02', title:'Native mobile', body:'iOS and Android via React Native, Flutter or platform native.'},
+          {n:'03', title:'Design systems', body:'Component libraries your team can extend without us.'},
+          {n:'04', title:'Performance work', body:'Core Web Vitals, bundle budgets and render profiling.'},
+          {n:'05', title:'Accessibility', body:'Keyboard, screen reader and contrast to WCAG AA.'},
+          {n:'06', title:'Store release', body:'Submission, review handling and staged rollout.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Shipped app', body:'Live on the web or in both app stores.'},
+          {n:'02', title:'Component library', body:'Documented and reusable across your products.'},
+          {n:'03', title:'Performance budget', body:'Targets wired into CI so regressions fail the build.'},
+          {n:'04', title:'Release pipeline', body:'Automated builds and signing you control.'}
+        ],
+        tech:['React','Next.js','TypeScript','React Native','Flutter','Tailwind','Vite','Playwright'],
+        approach:'We set performance and accessibility budgets at the start and enforce them in CI, because both are cheap to hold and expensive to retrofit. Design and engineering work in the same sprint, not in sequence.'
+      },
+      { slug:'saas-platforms', name:'SaaS & platforms', tag:'Multi-tenancy, billing, scale', stage:2,
+        label:'Service 03 / SaaS & platforms',
+        h1a:'Platforms built', h1b:'for the thousandth customer.',
+        sub:'Multi-tenancy, billing, onboarding and the operational tooling that decides whether a SaaS product is a business or a demo.',
+        includes:[
+          {n:'01', title:'Tenancy model', body:'Isolation, sharing and migration decided before launch.'},
+          {n:'02', title:'Billing', body:'Plans, trials, proration, dunning and revenue reporting.'},
+          {n:'03', title:'Onboarding', body:'Signup, provisioning and time-to-first-value flows.'},
+          {n:'04', title:'Admin tooling', body:'The internal console your support team needs on day one.'},
+          {n:'05', title:'Usage metering', body:'Limits, quotas and the data behind usage-based pricing.'},
+          {n:'06', title:'Scale work', body:'Caching, queues and read replicas ahead of the curve.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Multi-tenant platform', body:'Provisioned, metered and billable.'},
+          {n:'02', title:'Billing integration', body:'Reconciled against your provider, not approximated.'},
+          {n:'03', title:'Admin console', body:'Support actions without database access.'},
+          {n:'04', title:'Capacity plan', body:'What breaks first, and at what number.'}
+        ],
+        tech:['Next.js','Node.js','PostgreSQL','Redis','Stripe','Kubernetes','Terraform','Grafana'],
+        approach:'The tenancy and billing model gets decided in week one, because both are painful to change later. We build the admin console early so support never needs production database access.'
+      },
+      { slug:'crm-erp', name:'CRM & ERP', tag:'Implementation, customisation, integration', stage:3,
+        label:'Service 04 / CRM & ERP',
+        h1a:'The systems', h1b:'your operations live in.',
+        sub:'Implementation, customisation and the integration work that connects the systems your sales and operations teams use all day to everything else you own.',
+        includes:[
+          {n:'01', title:'Implementation', body:'Configuration and rollout fitted to your actual process.'},
+          {n:'02', title:'Customisation', body:'Modules and workflows the standard product will not do.'},
+          {n:'03', title:'Integration', body:'APIs and pipelines to finance, commerce and logistics.'},
+          {n:'04', title:'Data migration', body:'Cleaned, mapped and rehearsed before cutover.'},
+          {n:'05', title:'Reporting', body:'Dashboards built on one agreed definition of each metric.'},
+          {n:'06', title:'Training', body:'Sessions and documentation so adoption actually happens.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Live system', body:'In use by the teams it was built for.'},
+          {n:'02', title:'Integration map', body:'Every connection documented and monitored.'},
+          {n:'03', title:'Migration record', body:'What moved, what did not, and why.'},
+          {n:'04', title:'Training material', body:'Written for your process, not the vendor manual.'}
+        ],
+        tech:['.NET','Java / Spring','React','PostgreSQL','Azure','Kafka','Power BI','Terraform'],
+        approach:'We map the current process before proposing the new one, run old and new in parallel where possible, and rehearse cutover until it is boring. Training and documentation are in scope, not an afterthought.'
+      },
+      { slug:'cloud-infrastructure', name:'Cloud & infrastructure', tag:'AWS, Azure, GCP, Kubernetes, IaC', stage:4,
+        label:'Service 05 / Cloud & infrastructure',
+        h1a:'Deployment', h1b:'stops being an event.',
+        sub:'Migration, infrastructure as code, CI/CD and cost control, so releasing becomes routine and your cloud bill stops being a surprise.',
+        includes:[
+          {n:'01', title:'Cloud migration', body:'Staged, reversible moves to AWS, Azure or GCP.'},
+          {n:'02', title:'Infrastructure as code', body:'Terraform modules, reviewed like application code.'},
+          {n:'03', title:'CI/CD', body:'Build, test and deploy pipelines with real gates.'},
+          {n:'04', title:'Kubernetes', body:'Clusters, autoscaling and workload isolation.'},
+          {n:'05', title:'Observability', body:'Metrics, traces, logs and alerts that page a human.'},
+          {n:'06', title:'Cost control', body:'Rightsizing, reserved capacity and per-team visibility.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Reproducible infrastructure', body:'Every environment created from code.'},
+          {n:'02', title:'Deployment pipeline', body:'Push to production without a ceremony.'},
+          {n:'03', title:'Monitoring stack', body:'Dashboards and alerts tied to real thresholds.'},
+          {n:'04', title:'Cost baseline', body:'What you spend, on what, and where the waste is.'}
+        ],
+        tech:['AWS','Azure','GCP','Kubernetes','Terraform','Docker','Datadog','GitHub Actions'],
+        approach:'Nothing is configured by hand. Every environment is created from the same code, so staging genuinely resembles production and a rollback is a deploy rather than a rescue operation.'
+      },
+      { slug:'design', name:'UI/UX & product design', tag:'Research, flows, interface systems', stage:1,
+        label:'Service 06 / UI/UX & product design',
+        h1a:'Design your engineers', h1b:'can actually build.',
+        sub:'Research, flows, interface systems and prototypes, delivered as specifications rather than pictures. Design and engineering work in the same sprint, not in sequence.',
+        includes:[
+          {n:'01', title:'Product discovery', body:'Interviews, jobs-to-be-done and the problem worth solving.'},
+          {n:'02', title:'Flows and wireframes', body:'Structure agreed before anything gets styled.'},
+          {n:'03', title:'Interface design', body:'High-fidelity screens with real content and edge cases.'},
+          {n:'04', title:'Design systems', body:'Tokens, components and rules your team can extend.'},
+          {n:'05', title:'Prototypes', body:'Clickable builds you can put in front of users this week.'},
+          {n:'06', title:'Usability testing', body:'Sessions with real users and a written list of fixes.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Design system', body:'Documented components, not a folder of artboards.'},
+          {n:'02', title:'Annotated screens', body:'States, errors and empty cases specified.'},
+          {n:'03', title:'Research findings', body:'What users actually did, with recordings.'},
+          {n:'04', title:'Handover spec', body:'Spacing, behaviour and motion your devs can read.'}
+        ],
+        tech:['Figma','Design tokens','Storybook','Framer','Maze','Tailwind'],
+        approach:'We design against real content and real constraints, including the ugly states most portfolios skip. Every screen ships with its loading, empty and error case, because those are where products actually fail.'
+      },
+      { slug:'qa-testing', name:'QA & test automation', tag:'Coverage, performance, security, release gates', stage:2,
+        label:'Service 07 / QA & test automation',
+        h1a:'Find it before', h1b:'your users do.',
+        sub:'Manual and automated coverage, performance and security testing, and release gates that stop a bad build reaching production.',
+        includes:[
+          {n:'01', title:'Test strategy', body:'What to automate, what to test by hand, and why.'},
+          {n:'02', title:'Automation suites', body:'Unit, integration and end-to-end running in CI.'},
+          {n:'03', title:'Manual and exploratory', body:'Human testing where judgment beats a script.'},
+          {n:'04', title:'Performance testing', body:'Load, soak and spike against realistic traffic.'},
+          {n:'05', title:'Security testing', body:'OWASP coverage, dependency and penetration testing.'},
+          {n:'06', title:'Release gates', body:'Quality thresholds that fail the build, not a meeting.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Automated suite', body:'Running on every commit, owned by your team.'},
+          {n:'02', title:'Coverage report', body:'What is tested, what is not, and the risk.'},
+          {n:'03', title:'Performance baseline', body:'Numbers to compare every future release against.'},
+          {n:'04', title:'Defect register', body:'Prioritised, reproducible and tracked to closure.'}
+        ],
+        tech:['Playwright','Cypress','Jest','k6','JMeter','Appium','OWASP ZAP','GitHub Actions'],
+        approach:'Automation goes where the risk and repetition are, not everywhere. We put quality gates in the pipeline so a failing build cannot be argued past, and we hand the suite to your team rather than keeping it.'
+      },
+      { slug:'data-analytics', name:'Data & analytics', tag:'Pipelines, warehousing, BI, reporting', stage:3,
+        label:'Service 08 / Data & analytics',
+        h1a:'One number', h1b:'everyone agrees on.',
+        sub:'Pipelines, warehousing and reporting built on a single agreed definition of each metric, so your teams stop arguing about whose dashboard is right.',
+        includes:[
+          {n:'01', title:'Data pipelines', body:'Ingestion from your products, tools and third parties.'},
+          {n:'02', title:'Warehouse modelling', body:'Facts, dimensions and a semantic layer that holds up.'},
+          {n:'03', title:'Metric definitions', body:'One agreed formula per metric, version controlled.'},
+          {n:'04', title:'Dashboards', body:'Reporting built for the decision, not the data.'},
+          {n:'05', title:'Data quality', body:'Tests, freshness checks and alerts on the pipeline.'},
+          {n:'06', title:'Self-serve access', body:'Tooling so analysts stop queuing behind engineering.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Working warehouse', body:'Modelled, tested and documented.'},
+          {n:'02', title:'Metric layer', body:'Definitions in code, reviewed like any other change.'},
+          {n:'03', title:'Dashboard set', body:'The reports your leadership actually opens.'},
+          {n:'04', title:'Quality monitors', body:'Alerts before a stakeholder spots the gap.'}
+        ],
+        tech:['dbt','Airflow','Snowflake','BigQuery','PostgreSQL','Metabase','Power BI','Python'],
+        approach:'We start from the decisions you need to make and work backwards to the data, which usually means building far fewer dashboards than requested. Metric definitions live in code so a change is reviewable.'
+      },
+      { slug:'blockchain', name:'Blockchain & Web3', tag:'Contracts, wallets, audits, tokenised systems', stage:0,
+        label:'Service 09 / Blockchain & Web3',
+        h1a:'On-chain systems,', h1b:'off-chain discipline.',
+        sub:'Smart contracts, wallets and tokenised systems built with the same review, testing and audit standards we apply to anything holding money.',
+        includes:[
+          {n:'01', title:'Smart contracts', body:'Written, reviewed and tested before any deployment.'},
+          {n:'02', title:'Wallet integration', body:'Custodial and non-custodial flows users can follow.'},
+          {n:'03', title:'Token systems', body:'Issuance, distribution and vesting mechanics.'},
+          {n:'04', title:'Audit preparation', body:'Documentation and fixes ahead of external audit.'},
+          {n:'05', title:'Indexing and APIs', body:'On-chain data made queryable for your product.'},
+          {n:'06', title:'Off-chain services', body:'The conventional backend most Web3 products still need.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Deployed contracts', body:'Verified, documented and version tagged.'},
+          {n:'02', title:'Test suite', body:'Including adversarial and edge-case scenarios.'},
+          {n:'03', title:'Audit-ready package', body:'Specification, threat model and known tradeoffs.'},
+          {n:'04', title:'Integration layer', body:'APIs your existing product can consume.'}
+        ],
+        tech:['Solidity','Hardhat','Foundry','ethers.js','The Graph','Node.js','IPFS'],
+        approach:'Contracts are immutable once deployed, so review and testing come before enthusiasm. We are equally willing to tell you the problem does not need a chain, which is often the honest answer.'
+      },
+      { slug:'managed-it', name:'Managed IT & support', tag:'Monitoring, helpdesk, patching, incident response', stage:4,
+        label:'Service 10 / Managed IT & support',
+        h1a:'Someone awake', h1b:'when it breaks.',
+        sub:'Monitoring, helpdesk, patching and incident response, so your internal team can work on the roadmap instead of the queue.',
+        includes:[
+          {n:'01', title:'Monitoring', body:'Uptime, performance and error tracking with real alerts.'},
+          {n:'02', title:'Helpdesk', body:'Tiered support with defined response and resolution SLAs.'},
+          {n:'03', title:'Patching', body:'Operating systems, dependencies and security updates.'},
+          {n:'04', title:'Incident response', body:'On-call rotation, escalation and written postmortems.'},
+          {n:'05', title:'Backup and recovery', body:'Tested restores, not just scheduled backups.'},
+          {n:'06', title:'Improvement plan', body:'Quarterly review of what keeps breaking, and why.'}
+        ],
+        deliverables:[
+          {n:'01', title:'Coverage schedule', body:'Who is on, when, and what they can action.'},
+          {n:'02', title:'SLA report', body:'Response and resolution times, published monthly.'},
+          {n:'03', title:'Postmortems', body:'Root cause and the fix, for every real incident.'},
+          {n:'04', title:'Recovery plan', body:'Rehearsed, timed and documented.'}
+        ],
+        tech:['Datadog','Grafana','PagerDuty','Zabbix','Ansible','Terraform','Jira Service Management'],
+        approach:'We measure response and resolution and publish both, including the months we miss. Recurring incidents get engineering time rather than another runbook entry, because a queue that never shrinks is a design problem.'
+      }
+    ];
+  }
+
+  renderVals(){
+    const accent = this.props.accentColor || '#F04423';
+    const B = 'https://www.marioxsoftware.com/';
+
+    const tech = {
+      Frontend: ['React','Next.js','TypeScript','Vue','Angular','Tailwind','GSAP','Three.js'],
+      Backend: ['Node.js','.NET','Java / Spring','Python / Django','Laravel','Go','GraphQL','REST'],
+      Mobile: ['React Native','Flutter','SwiftUI','Kotlin','Jetpack Compose','Expo'],
+      AI: ['OpenAI','Anthropic','Llama','PyTorch','LangChain','Hugging Face','Vector search'],
+      Cloud: ['AWS','Azure','GCP','Kubernetes','Terraform','Docker','Cloudflare'],
+      Database: ['PostgreSQL','MongoDB','Redis','MySQL','Snowflake','Elasticsearch'],
+      DevOps: ['GitHub Actions','GitLab CI','Jenkins','Datadog','Grafana','Sentry']
+    };
+    const active = this.state.tech;
+
+    const route = this.state.route || '/';
+    const inds = this.industryData();
+    const indMatch = route.match(/^\/industries\/(.+)$/);
+    const ind = indMatch ? inds.find(i => i.slug === indMatch[1]) : null;
+    const isIndustry = !!ind;
+    const isIndustries = route === '/industries';
+    const isWork = route === '/work';
+    const isServices = route === '/services';
+    const isTechnology = route === '/technology';
+    const isProcess = route === '/process';
+    const isCompany = route === '/company';
+    const isHire = route === '/hire';
+    const isAi = route === '/ai';
+    const svcs = this.serviceData();
+    const svcMatch = route.match(/^\/services\/(.+)$/);
+    const svc = svcMatch ? svcs.find(s => s.slug === svcMatch[1]) : null;
+    const isService = !!svc;
+    const isHome = !isIndustry && !isIndustries && !isWork && !isServices && !isTechnology
+      && !isProcess && !isCompany && !isHire && !isAi && !isService;
+
+    const navSpec = [
+      ['/work','Work'], ['/services','Services'], ['/industries','Industries'],
+      ['/ai','AI'], ['/hire','Hire'], ['/technology','Technology'], ['/company','Company']
+    ];
+
+    return {
+      canvasRef: this.canvasRef, dotRef: this.dotRef, ringRef: this.ringRef, ringLabelRef: this.ringLabelRef,
+      isHome, isIndustries, isIndustry, isWork, isServices, isTechnology, isProcess, isCompany,
+      isHire, isAi, isService,
+      svc: svc || svcs[0],
+      imgFail: (e) => { if (e && e.target) e.target.style.display = 'none'; },
+      roles: [
+        {n:'01', title:'Frontend engineers', stack:'React, Next.js, TypeScript, Vue'},
+        {n:'02', title:'Backend engineers', stack:'Node.js, Java, .NET, Python, Go'},
+        {n:'03', title:'Full-stack engineers', stack:'TypeScript across the whole surface'},
+        {n:'04', title:'Mobile engineers', stack:'React Native, Flutter, Swift, Kotlin'},
+        {n:'05', title:'AI / ML engineers', stack:'LLM integration, RAG, PyTorch, evaluation'},
+        {n:'06', title:'DevOps / SRE', stack:'AWS, Azure, GCP, Kubernetes, Terraform'},
+        {n:'07', title:'Data engineers', stack:'Airflow, dbt, Snowflake, Kafka'},
+        {n:'08', title:'QA engineers', stack:'Playwright, Cypress, load and security testing'},
+        {n:'09', title:'Product designers', stack:'Research, flows, interface systems'},
+        {n:'10', title:'Tech leads', stack:'Architecture, code review, delivery ownership'}
+      ],
+      hireModels: [
+        {n:'Model 01', title:'Dedicated team', body:'A full squad reserved for you, working as one unit with a lead who owns delivery.', points:['Monthly rate per person','Lead included','You set the roadmap']},
+        {n:'Model 02', title:'Team extension', body:'Individual engineers embedded into your existing team, tools and rituals.', points:['Start with one, add as needed','Your process, your board','Direct access, no account layer']},
+        {n:'Model 03', title:'Managed delivery', body:'We take a defined outcome and own it end to end, reporting against milestones.', points:['Scope and milestones agreed up front','Our process and tooling','Fixed or capped pricing']}
+      ],
+      hireSteps: [
+        {n:'01', title:'Brief', body:'A short call on roles, stack, seniority and the time zones you need covered.'},
+        {n:'02', title:'Shortlist', body:'CVs and availability within a few days, drawn from people already on staff.'},
+        {n:'03', title:'Interview', body:'You interview them yourself. No proxy assessments, no substitutions later.'},
+        {n:'04', title:'Onboard', body:'They join your standups and boards. Most placements start within two to three weeks.'}
+      ],
+      aiLayer: [
+        {n:'01', tag:'In-product', title:'Assistants & copilots', body:'Intelligence inside the product your users already open: drafting, summarising, searching and answering in the flow of the work.', proof:'Shipped across fintech and edtech products'},
+        {n:'02', tag:'Agentic', title:'Agents that act', body:'Multi-step agents wired to your tools and APIs, with permissions, human review gates and a record of every action taken.', proof:'Tool use, orchestration, audit trail'},
+        {n:'03', tag:'Retrieval', title:'Knowledge that answers', body:'Your documents, tickets and databases made answerable, with citations back to source so people can verify what they are told.', proof:'Chunking, embeddings, reranking, citations'},
+        {n:'04', tag:'Operations', title:'Evals & guardrails', body:'The unglamorous half. Test sets, accuracy scoring, red-teaming, cost per call and drift alerts running continuously.', proof:'Quality tracked after launch, not before'}
+      ],
+      readiness: [
+        {label:'Data readiness', note:'Volume, labels, access', w:'82%'},
+        {label:'Tolerance for error', note:'What a wrong answer costs', w:'64%'},
+        {label:'Cost per call at scale', note:'Unit economics at volume', w:'73%'},
+        {label:'Integration surface', note:'Systems it must reach', w:'58%'}
+      ],
+      aiTech: ['OpenAI','Anthropic','Llama','Mistral','LangGraph','Hugging Face','pgvector','Pinecone','PyTorch','vLLM'],
+      aiFaqs: [
+        {q:'How do we know AI is the right answer?', a:'Often it is not, and we will say so. Discovery scores your use case on data readiness, tolerance for error and cost per call before anyone writes code.'},
+        {q:'What happens to our data?', a:'It stays yours. We deploy inside your cloud account or use zero-retention endpoints, and we never train shared models on client data.'},
+        {q:'How do you stop it making things up?', a:'Retrieval with citations, output validation, and an evaluation suite that runs on every change. Where accuracy matters most, a human approves before the action commits.'}
+      ],
+      navLinks: navSpec.map(([path, label]) => {
+        const on = route === path || (path === '/industries' && isIndustry);
+        return { href: '#' + path, label, color: on ? accent : '#F4F1EA', dot: on ? 1 : 0 };
+      }),
+
+      offices: [
+        {country:'India', city:'Noida', address:'202, Assotech Business Cresterra, Tower-4, Sector 135, Noida, Uttar Pradesh 201301'},
+        {country:'India', city:'Hyderabad', address:'10th Floor, SmartPace, Suite-B 1003, The Platina, Wing-B, Gachibowli, Hyderabad, Telangana 500032'},
+        {country:'USA', city:'Dallas', address:'539 W Commerce St, Suite 5589, Dallas, TX 75208'},
+        {country:'Australia', city:'Wyndham Vale', address:'2 Nichollii Ct, Wyndham Vale VIC 3024'}
+      ],
+
+      ind: (() => { const d = ind || inds[0]; return Object.assign({}, d, { hasCases: !!(d.cases && d.cases.length), n: 'Industry ' + String(inds.indexOf(d) + 1).padStart(2,'0') }); })(),
+
+      industryList: inds.map((i, k) => ({
+        n: String(k + 1).padStart(2,'0'), name: i.name, blurb: i.blurb,
+        href: '#/industries/' + i.slug,
+        enter: () => { this._stageTarget = i.stage; }
+      })),
+      progRef: this.progRef, navRef: this.navRef, pinRef: this.pinRef, trackRef: this.trackRef,
+      lineRef: this.lineRef, ctaRef: this.ctaRef, heroL1: this.heroL1, heroL2: this.heroL2,
+      heroEyebrowRef: this.heroEyebrowRef, heroFootRef: this.heroFootRef,
+
+      tickerLoop: [0,1],
+      ticker: ['Product engineering','Web & mobile','AI & automation','SaaS platforms','CRM & ERP','Cloud & DevOps','100+ engineers','42 case studies','Noida','Hyderabad','Dallas','Melbourne'],
+
+      services: [
+        {n:'01', name:'Product engineering', tag:'Discovery, architecture, build, handover', stage:0, href:'#/services/product-engineering'},
+        {n:'02', name:'Web & mobile', tag:'React, Next.js, React Native, Flutter', stage:1, href:'#/services/web-mobile'},
+        {n:'03', name:'AI & automation', tag:'Assistants, agents, retrieval, evaluation', stage:2, href:'#/ai'},
+        {n:'04', name:'SaaS & platforms', tag:'Multi-tenancy, billing, scale', stage:2, href:'#/services/saas-platforms'},
+        {n:'05', name:'CRM & ERP', tag:'Implementation, customisation, integration', stage:3, href:'#/services/crm-erp'},
+        {n:'06', name:'Cloud & infrastructure', tag:'AWS, Azure, GCP, Kubernetes, IaC', stage:4, href:'#/services/cloud-infrastructure'},
+        {n:'07', name:'UI/UX & product design', tag:'Research, flows, interface systems', stage:1, href:'#/services/design'},
+        {n:'08', name:'QA & test automation', tag:'Coverage, performance, security, gates', stage:2, href:'#/services/qa-testing'},
+        {n:'09', name:'Data & analytics', tag:'Pipelines, warehousing, BI, reporting', stage:3, href:'#/services/data-analytics'},
+        {n:'10', name:'Blockchain & Web3', tag:'Contracts, wallets, audits, tokens', stage:0, href:'#/services/blockchain'},
+        {n:'11', name:'Managed IT & support', tag:'Monitoring, helpdesk, incident response', stage:4, href:'#/services/managed-it'},
+        {n:'12', name:'Hire resources', tag:'Dedicated teams and staff augmentation', stage:0, href:'#/hire'}
+      ].map(s => ({ ...s, enter: () => { this._stageTarget = s.stage; } })),
+
+      work: [
+        {n:'01', name:'Skydo', sector:'Fintech', body:'Cross-border payments for exporters. App, web and admin built around a ledger that has to reconcile to the cent.', img: B+'img/cs/skydo/Skydo1.png', url: B+'case-study/skydo', stack:['React','Node','AWS']},
+        {n:'02', name:'Eka Care', sector:'Healthcare', body:'Patient records and telemedicine at national scale, with the consent and audit model the category demands.', img: B+'img/cs/eka.care/eka.care2.png', url: B+'case-study/ekacare', stack:['Flutter','Python','Azure']},
+        {n:'03', name:'Snitch', sector:'E-commerce', body:'Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.', img: B+'img/cs/snitch/snitch1.png', url: B+'case-study/snitch', stack:['Next.js','Postgres','Redis']},
+        {n:'04', name:'Graphy', sector:'Edtech', body:'Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.', img: B+'img/cs/graphy/graphy1.png', url: B+'case-study/graphy', stack:['React','Node','GCP']},
+        {n:'05', name:'MILKRUN', sector:'Quick commerce', body:'Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.', img: B+'img/cs/milkrun/milkrun1.png', url: B+'case-study/milkrun', stack:['React Native','Kubernetes','Maps']},
+        {n:'06', name:'Airwallex', sector:'Fintech', body:'Global business accounts and FX. Interfaces and services for money moving across borders.', img: B+'img/cs/airwallex/AirWallex4.png', url: B+'case-study/airwallex', stack:['TypeScript','Java','AWS']}
+      ],
+
+      stats: [
+        {value:100, suffix:'+', display:'100+', label:'Engineers on staff'},
+        {value:300, suffix:'+', display:'300+', label:'Products shipped'},
+        {value:10, suffix:'+', display:'10+', label:'Industries served'},
+        {value:4, suffix:'', display:'4', label:'Countries, one team'}
+      ],
+
+      techCats: Object.keys(tech).map(label => ({
+        label, count: String(tech[label].length).padStart(2,'0'),
+        pick: () => this.setState({tech: label}),
+        color: active === label ? accent : '#F4F1EA',
+        dim: active === label ? 1 : .45
+      })),
+      techItems: tech[active] || tech.Frontend,
+      techCount: Object.keys(tech).reduce((a,k) => a + tech[k].length, 0),
+
+      pillars: [
+        {n:'01', title:'Strategy', body:'We start by finding the version of the product that is worth building, then price it honestly.'},
+        {n:'02', title:'Design', body:'Research, flows and interface systems delivered as design your engineers can actually build.'},
+        {n:'03', title:'Engineering', body:'Senior people writing production code from week one. No juniors hidden behind an account manager.'},
+        {n:'04', title:'Scale', body:'The infrastructure, monitoring and support to keep it running long after launch week.'}
+      ],
+
+      process: [
+        {n:'01', title:'Discover', body:'Paid discovery that turns a brief into architecture and a fixed number.'},
+        {n:'02', title:'Define', body:'Scope, milestones and the tradeoffs written down before anyone commits.'},
+        {n:'03', title:'Design', body:'Flows and interfaces prototyped against real constraints.'},
+        {n:'04', title:'Build', body:'Two-week sprints, a demo at the end of each, a board open every day.'},
+        {n:'05', title:'Launch', body:'Staged rollout with pipelines and monitoring already in place.'},
+        {n:'06', title:'Scale', body:'Capacity that flexes and a team that stays past year one.'}
+      ],
+
+      industries: inds.map((i) => ({ name: i.name, href: '#/industries/' + i.slug, enter: () => { this._stageTarget = i.stage; } }))
+    };
+  }
+}
+</script>
+</body>
+</html>

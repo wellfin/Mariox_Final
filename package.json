@@ -1,0 +1,26 @@
+{
+  "name": "mariox-final",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 9601",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@studio-freight/lenis": "1.0.42",
+    "gsap": "3.12.5",
+    "next": "15.2.4",
+    "next-seo": "^6.5.0",
+    "nodemailer": "^6.9.15",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-phone-input-2": "^2.15.1",
+    "three": "0.128.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "15.2.4"
+  }
+}

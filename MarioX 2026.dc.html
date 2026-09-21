@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#08070A}
+  body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#F4F1EA;text-decoration:none}
+  a:hover{color:#F04423}
+  input,textarea,button{font:inherit;color:inherit}
+  ::selection{background:#F04423;color:#08070A}
+  @keyframes mxDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+  @keyframes mxPulse{0%,100%{opacity:1}50%{opacity:.25}}
+  @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+</style>
+</helmet>
+
+<div style="background:#08070A;color:#F4F1EA;font-family:'Schibsted Grotesk','Helvetica Neue',Helvetica,sans-serif;position:relative">
+
+  <canvas ref="{{ canvasRef }}" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+  <div style="position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at 50% 45%,rgba(8,7,10,0) 0%,rgba(8,7,10,.55) 62%,rgba(8,7,10,.9) 100%)"></div>
+  <div style="position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.05;background-image:url(&quot;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E&quot;)"></div>
+
+  <div ref="{{ dotRef }}" style="position:fixed;top:0;left:0;width:8px;height:8px;border-radius:50%;background:#F04423;z-index:9999;pointer-events:none;transform:translate3d(-100px,-100px,0);will-change:transform"></div>
+  <div ref="{{ ringRef }}" style="position:fixed;top:0;left:0;width:56px;height:56px;border-radius:50%;border:1px solid rgba(244,241,234,.35);z-index:9998;pointer-events:none;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#08070A;transform:translate3d(-100px,-100px,0) scale(.35);will-change:transform;overflow:hidden"><span ref="{{ ringLabelRef }}" style="opacity:0;white-space:nowrap"></span></div>
+
+  <div ref="{{ progRef }}" style="position:fixed;top:0;left:0;height:2px;width:0%;background:#F04423;z-index:9990;pointer-events:none"></div>
+
+  <header ref="{{ navRef }}" style="position:sticky;top:0;z-index:900;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 32px;padding:20px clamp(18px,4vw,60px);border-bottom:1px solid rgba(244,241,234,0);transition:background .5s cubic-bezier(.2,.8,.2,1),border-color .5s,padding .5s,backdrop-filter .5s">
+    <a href="#top" data-cursor="1" style="display:flex;align-items:center;gap:11px;flex-shrink:0">
+      <div style="width:17px;height:17px;background:#F04423;flex-shrink:0"></div>
+      <span style="font-size:16px;font-weight:800;letter-spacing:-.035em;text-transform:uppercase">Mariox <span style="font-weight:400;opacity:.5">Software</span></span>
+    </a>
+    <nav style="display:flex;flex-wrap:wrap;align-items:center;gap:14px clamp(16px,2.4vw,36px);margin-left:auto">
+      <a href="#work" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Work</a>
+      <a href="#services" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Services</a>
+      <a href="#expertise" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase">Expertise</a>
+      <a href="#about" data-cursor="1" style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase">About</a>
+      <a href="#contact" data-cursor="start" style="display:flex;align-items:center;gap:10px;background:#F04423;color:#08070A;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:13px 18px;white-space:nowrap;transition:background .3s" style-hover="background:#F4F1EA;color:#08070A">Start a project <span>&#8594;</span></a>
+    </nav>
+  </header>
+
+  <main id="top" style="position:relative;z-index:3">
+
+    <section style="position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,8vw,110px) clamp(18px,4vw,60px) clamp(40px,6vw,80px)">
+      <div ref="{{ heroEyebrowRef }}" style="display:flex;align-items:center;gap:12px;margin-bottom:clamp(24px,3.4vw,44px);opacity:0">
+        <span style="width:7px;height:7px;background:#F04423;animation:mxPulse 2.2s ease-in-out infinite"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:#8E8A85">Mariox Software &nbsp;/&nbsp; Digital product engineering</span>
+      </div>
+      <h1 style="margin:0;font-size:clamp(3.2rem,13vw,13rem);line-height:.82;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span ref="{{ heroL1 }}" style="display:block;transform:translateY(115%)">We build</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.04em"><span ref="{{ heroL2 }}" style="display:block;transform:translateY(115%)">what&#8217;s <span style="color:#F04423">next.</span></span></span>
+      </h1>
+      <div ref="{{ heroFootRef }}" style="display:flex;flex-wrap:wrap;gap:clamp(24px,4vw,72px);align-items:flex-end;justify-content:space-between;margin-top:clamp(32px,4.5vw,64px);opacity:0">
+        <p style="margin:0;max-width:36ch;font-size:clamp(16px,1.4vw,20px);line-height:1.45;color:#B7B2AA">We design, engineer and scale digital products for ambitious companies.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center">
+          <a href="#contact" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F4F1EA;color:#08070A;padding:19px 26px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s,color .35s" style-hover="background:#F04423;color:#08070A">Start a project <span>&#8594;</span></a>
+          <a href="#work" data-cursor="view" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:19px 26px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Explore our work</a>
+        </div>
+      </div>
+    </section>
+
+    <section style="border-top:1px solid rgba(244,241,234,.1);border-bottom:1px solid rgba(244,241,234,.1);overflow:hidden;background:rgba(8,7,10,.55)">
+      <div style="display:flex;width:max-content;animation:mxDrift 44s linear infinite">
+        <sc-for list="{{ tickerLoop }}" as="t" hint-placeholder-count="2">
+          <div style="display:flex;align-items:center">
+            <sc-for list="{{ ticker }}" as="w" hint-placeholder-count="8">
+              <span style="display:flex;align-items:center;gap:clamp(20px,2.6vw,40px);padding:15px clamp(10px,1.3vw,20px);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8E8A85;white-space:nowrap">{{ w }}<span style="width:5px;height:5px;background:#F04423;display:inline-block"></span></span>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(80px,13vw,220px) clamp(18px,4vw,60px)">
+      <h2 style="margin:0;max-width:20ch;font-size:clamp(2.2rem,7.4vw,7rem);line-height:.9;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">We don&#8217;t just</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">write code.</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">We build businesses</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">that run on it.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,80px);margin-top:clamp(40px,5.5vw,90px);max-width:1100px">
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Mariox is a software engineering company of 100+ people working across four countries. Founders come to us with a product to prove. Enterprises come to us with systems that have to keep running while they change.</p>
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Both get the same thing: senior engineers who own the outcome, a plan with real numbers attached, and code you hold the keys to from the first commit.</p>
+      </div>
+    </section>
+
+    <section id="services" style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(32px,4.5vw,70px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">What we do</h2>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">Hover to shift the system</span>
+      </div>
+      <div style="border-top:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="6">
+          <div data-row="1" data-stage="{{ s.stage }}" data-cursor="1" onMouseEnter="{{ s.enter }}" style="position:relative;display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(16px,3vw,48px);align-items:center;padding:clamp(20px,2.6vw,34px) clamp(6px,1.6vw,24px);border-bottom:1px solid rgba(244,241,234,.14);transition:background .45s cubic-bezier(.2,.8,.2,1),padding-left .45s cubic-bezier(.2,.8,.2,1),color .45s" style-hover="background:#F04423;color:#08070A;padding-left:clamp(18px,3.4vw,56px)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;opacity:.5">{{ s.n }}</span>
+            <div style="display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline;justify-content:space-between">
+              <span style="font-size:clamp(1.2rem,3.4vw,2.9rem);font-weight:700;letter-spacing:-.035em;line-height:1.02;text-transform:uppercase">{{ s.name }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;opacity:.62;max-width:34ch">{{ s.tag }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="work" ref="{{ pinRef }}" style="position:relative;overflow:hidden;padding:clamp(48px,7vw,100px) 0;border-top:1px solid rgba(244,241,234,.1);border-bottom:1px solid rgba(244,241,234,.1);background:rgba(8,7,10,.4)">
+      <div style="padding:0 clamp(18px,4vw,60px);display:flex;flex-wrap:wrap;gap:16px;align-items:baseline;justify-content:space-between;margin-bottom:clamp(28px,3.6vw,56px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Selected work</h2>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">42 case studies published</span>
+      </div>
+      <div ref="{{ trackRef }}" style="display:flex;gap:clamp(14px,1.6vw,26px);width:max-content;padding:0 clamp(18px,4vw,60px);will-change:transform">
+        <sc-for list="{{ work }}" as="w" hint-placeholder-count="5">
+          <a href="{{ w.url }}" target="_blank" rel="noopener" data-cursor="view" style="display:flex;flex-direction:column;width:clamp(280px,42vw,620px);border:1px solid rgba(244,241,234,.14);background:rgba(8,7,10,.7);transition:border-color .4s" style-hover="border-color:#F04423">
+            <div style="overflow:hidden;aspect-ratio:16/10;background:#111013">
+              <img src="{{ w.img }}" alt="{{ w.name }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.8,.2,1);filter:saturate(.85)" style-hover="transform:scale(1.07)">
+            </div>
+            <div style="padding:clamp(20px,2.4vw,36px);display:flex;flex-direction:column;gap:14px;border-top:1px solid rgba(244,241,234,.14)">
+              <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85"><span>Project {{ w.n }}</span><span style="color:#F04423">{{ w.sector }}</span></div>
+              <div style="font-size:clamp(1.35rem,2.6vw,2.3rem);font-weight:700;letter-spacing:-.035em;line-height:1.02;text-transform:uppercase">{{ w.name }}</div>
+              <p style="margin:0;font-size:14.5px;line-height:1.55;color:#B7B2AA;max-width:46ch">{{ w.body }}</p>
+              <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:2px">
+                <sc-for list="{{ w.stack }}" as="t" hint-placeholder-count="3">
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(244,241,234,.2);padding:6px 9px;color:#B7B2AA">{{ t }}</span>
+                </sc-for>
+              </div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(80px,12vw,200px) clamp(18px,4vw,60px)">
+      <h2 style="margin:0 0 clamp(40px,6vw,100px);font-size:clamp(2.2rem,7.4vw,7rem);line-height:.88;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">From idea</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">to production.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(28px,4vw,64px)">
+        <sc-for list="{{ stats }}" as="s" hint-placeholder-count="4">
+          <div data-fade="1" style="border-top:1px solid rgba(244,241,234,.22);padding-top:clamp(18px,2.2vw,28px)">
+            <div data-count="{{ s.value }}" data-suffix="{{ s.suffix }}" style="font-size:clamp(3rem,7.5vw,7rem);line-height:.86;font-weight:800;letter-spacing:-.055em">{{ s.display }}</div>
+            <div style="margin-top:clamp(14px,1.6vw,22px);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="expertise" style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(32px,4vw,60px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">Technology</h2>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">{{ techCount }} tools in production</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(24px,4vw,72px);align-items:start">
+        <div style="display:flex;flex-direction:column">
+          <sc-for list="{{ techCats }}" as="c" hint-placeholder-count="7">
+            <div onClick="{{ c.pick }}" data-cursor="1" style="cursor:pointer;display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding:clamp(13px,1.5vw,19px) 0;border-bottom:1px solid rgba(244,241,234,.14);color:{{ c.color }};transition:color .3s">
+              <span style="font-size:clamp(1.05rem,2vw,1.65rem);font-weight:700;letter-spacing:-.03em;text-transform:uppercase">{{ c.label }}</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;opacity:{{ c.dim }}">{{ c.count }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start;min-height:200px">
+          <sc-for list="{{ techItems }}" as="t" hint-placeholder-count="8">
+            <span style="font-size:clamp(14px,1.15vw,16.5px);border:1px solid rgba(244,241,234,.2);padding:11px 15px;color:#F4F1EA;transition:border-color .3s,color .3s" style-hover="border-color:#F04423;color:#F04423">{{ t }}</span>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:clamp(70px,10vw,170px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 style="margin:0 0 clamp(36px,5vw,80px);font-size:clamp(2.2rem,7.4vw,7rem);line-height:.88;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Built for</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">ambition.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(244,241,234,.14);border:1px solid rgba(244,241,234,.14)">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+          <div data-fade="1" style="background:rgba(8,7,10,.82);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:16px;min-height:270px;transition:background .4s,color .4s" style-hover="background:#F04423;color:#08070A">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:.55">{{ p.n }}</span>
+            <span style="margin-top:auto;font-size:clamp(1.4rem,2.6vw,2.2rem);font-weight:800;letter-spacing:-.035em;line-height:1;text-transform:uppercase">{{ p.title }}</span>
+            <p style="margin:0;font-size:14.5px;line-height:1.55;opacity:.78">{{ p.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(32px,4vw,64px)">
+        <h2 style="margin:0;font-size:clamp(1.9rem,5.4vw,4.6rem);line-height:.92;letter-spacing:-.04em;font-weight:800;text-transform:uppercase">How it runs</h2>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">Six stages</span>
+      </div>
+      <div style="position:relative;padding-top:34px">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:rgba(244,241,234,.16)"></div>
+        <div ref="{{ lineRef }}" style="position:absolute;top:0;left:0;width:0%;height:1px;background:#F04423"></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:clamp(20px,2.6vw,40px)">
+          <sc-for list="{{ process }}" as="p" hint-placeholder-count="6">
+            <div data-fade="1">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;color:#F04423;margin-bottom:14px">{{ p.n }}</div>
+              <div style="font-size:clamp(1.1rem,1.9vw,1.55rem);font-weight:700;letter-spacing:-.03em;text-transform:uppercase">{{ p.title }}</div>
+              <p style="margin:10px 0 0;font-size:14px;line-height:1.55;color:#B7B2AA">{{ p.body }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding:clamp(60px,9vw,140px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <div data-fade="1" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#8E8A85;margin-bottom:clamp(28px,3.4vw,50px)">Industries</div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,1.4vw,20px) clamp(20px,3vw,52px);align-items:baseline">
+        <sc-for list="{{ industries }}" as="i" hint-placeholder-count="10">
+          <span data-cursor="1" onMouseEnter="{{ i.enter }}" style="font-size:clamp(1.5rem,4.6vw,4.2rem);font-weight:800;letter-spacing:-.045em;line-height:1.05;text-transform:uppercase;color:rgba(244,241,234,.62);transition:color .35s cubic-bezier(.2,.8,.2,1)" style-hover="color:#F04423">{{ i.name }}</span>
+        </sc-for>
+      </div>
+    </section>
+
+    <section id="about" style="padding:clamp(80px,12vw,200px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1)">
+      <h2 style="margin:0;max-width:22ch;font-size:clamp(2.2rem,7vw,6.6rem);line-height:.9;letter-spacing:-.045em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Technology</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">moves fast.</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">So should the people</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">building with it.</span></span>
+      </h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(24px,4vw,80px);margin-top:clamp(40px,5.5vw,90px);max-width:1100px">
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">Mariox Software was founded by Mohit Garg and Rahul Garg. What began as a small engineering team is now 100+ people across Noida, Hyderabad, Dallas and Wyndham Vale, with 42 published case studies behind us.</p>
+        <p data-fade="1" style="margin:0;font-size:clamp(15.5px,1.25vw,18px);line-height:1.6;color:#B7B2AA">We work as an engineering partner, not a vendor. That means the people in the pitch are the people who write the code, and we tell you when an idea is worth killing before it costs you a quarter.</p>
+      </div>
+    </section>
+
+    <section id="contact" ref="{{ ctaRef }}" style="padding:clamp(90px,14vw,240px) clamp(18px,4vw,60px);border-top:1px solid rgba(244,241,234,.1);text-align:center">
+      <h2 style="margin:0 auto;max-width:14ch;font-size:clamp(2.6rem,10vw,10rem);line-height:.86;letter-spacing:-.05em;font-weight:800;text-transform:uppercase">
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block">Have a big idea?</span></span>
+        <span style="display:block;overflow:hidden;padding-bottom:.05em"><span data-line="1" style="display:block;color:#F04423">Let&#8217;s build it.</span></span>
+      </h2>
+      <div data-fade="1" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:clamp(36px,4.5vw,72px)">
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="start" style="display:flex;align-items:center;gap:14px;background:#F04423;color:#08070A;padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;transition:background .35s" style-hover="background:#F4F1EA">Start a project <span>&#8599;</span></a>
+        <a href="tel:+919599287045" data-cursor="1" style="display:flex;align-items:center;gap:14px;border:1px solid rgba(244,241,234,.3);padding:21px 30px;font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;transition:border-color .35s,color .35s" style-hover="border-color:#F04423;color:#F04423">Talk to our team</a>
+      </div>
+      <div data-fade="1" style="margin-top:clamp(28px,3.4vw,52px);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#8E8A85">Reply within one business day</div>
+    </section>
+
+  </main>
+
+  <footer style="position:relative;z-index:3;border-top:1px solid rgba(244,241,234,.12);padding:clamp(40px,5.5vw,80px) clamp(18px,4vw,60px) clamp(24px,3vw,40px);background:rgba(8,7,10,.9)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(28px,4vw,72px);margin-bottom:clamp(36px,4.5vw,70px)">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;gap:11px">
+          <div style="width:15px;height:15px;background:#F04423"></div>
+          <span style="font-size:15px;font-weight:800;letter-spacing:-.03em;text-transform:uppercase">Mariox Software</span>
+        </div>
+        <p style="margin:0;font-size:14.5px;line-height:1.55;color:#8E8A85;max-width:26ch">Build digital products that matter.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#57544F;margin-bottom:4px">Navigate</span>
+        <a href="#work" data-cursor="1" style="color:#B7B2AA">Work</a>
+        <a href="#services" data-cursor="1" style="color:#B7B2AA">Services</a>
+        <a href="#expertise" data-cursor="1" style="color:#B7B2AA">Expertise</a>
+        <a href="#about" data-cursor="1" style="color:#B7B2AA">About</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#57544F;margin-bottom:4px">Connect</span>
+        <a href="https://www.linkedin.com/company/marioxsoftwares" target="_blank" rel="noopener" data-cursor="1" style="color:#B7B2AA">LinkedIn</a>
+        <a href="https://www.instagram.com/marioxsoftware" target="_blank" rel="noopener" data-cursor="1" style="color:#B7B2AA">Instagram</a>
+        <a href="https://www.youtube.com/@MarioxSoftware" target="_blank" rel="noopener" data-cursor="1" style="color:#B7B2AA">YouTube</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:11px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase">
+        <span style="color:#57544F;margin-bottom:4px">Contact</span>
+        <a href="mailto:admin@marioxsoftware.com" data-cursor="1" style="color:#B7B2AA;text-transform:none;letter-spacing:.06em">admin@marioxsoftware.com</a>
+        <a href="tel:+919599287045" data-cursor="1" style="color:#B7B2AA;letter-spacing:.08em">+91 9599287045</a>
+        <span style="color:#B7B2AA">Noida &middot; Hyderabad &middot; Dallas</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;justify-content:space-between;border-top:1px solid rgba(244,241,234,.1);padding-top:clamp(18px,2.2vw,28px);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#57544F">
+      <span>&#169; 2026 Mariox Software</span>
+      <div style="display:flex;gap:24px">
+        <a href="https://www.marioxsoftware.com/" target="_blank" rel="noopener" data-cursor="1" style="color:#57544F">marioxsoftware.com</a>
+        <span>Privacy</span>
+        <span>Terms</span>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#F04423&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#F04423&quot;,&quot;#E43C13&quot;,&quot;#FF5C2B&quot;,&quot;#F4F1EA&quot;],&quot;section&quot;:&quot;Brand&quot;},&quot;particleCount&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:8000,&quot;min&quot;:1200,&quot;max&quot;:12000,&quot;step&quot;:400,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;3D&quot;},&quot;showCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;smoothScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { tech: 'Frontend' };
+
+  constructor(p){
+    super(p);
+    ['canvasRef','dotRef','ringRef','ringLabelRef','progRef','navRef','pinRef','trackRef','lineRef','ctaRef','heroL1','heroL2','heroEyebrowRef','heroFootRef']
+      .forEach(k => { this[k] = React.createRef(); });
+    this._m = {x:-200,y:-200}; this._r = {x:-200,y:-200}; this._label = '';
+    this._tilt = {x:0,y:0}; this._stage = 0; this._stageTarget = 0; this._focus = 0;
+  }
+
+  componentDidMount(){
+    this.cursor();
+    this.reveal();
+    this.intro();
+    this.scrollFx();
+    this.loadLibs();
+  }
+  componentWillUnmount(){
+    cancelAnimationFrame(this._raf); cancelAnimationFrame(this._raf3);
+    window.removeEventListener('mousemove', this._onMove);
+    window.removeEventListener('scroll', this._onScroll);
+    window.removeEventListener('resize', this._onResize);
+    if (this._io) this._io.disconnect();
+    if (this._ro) this._ro.disconnect();
+    if (window.ScrollTrigger) window.ScrollTrigger.getAll().forEach(t => t.kill(true));
+    if (this._lenis) this._lenis.destroy();
+  }
+
+  loadScript(src, test){
+    if (test()) return Promise.resolve();
+    if (!window.__mxS) window.__mxS = {};
+    if (window.__mxS[src]) return window.__mxS[src];
+    window.__mxS[src] = new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = src; s.async = false; s.onload = res; s.onerror = rej;
+      document.head.appendChild(s);
+    });
+    return window.__mxS[src];
+  }
+
+  loadLibs(){
+    const C = 'https://cdnjs.cloudflare.com/ajax/libs/';
+    const R = window.__resources || {};
+    this.loadScript(R.three || (C + 'three.js/r128/three.min.js'), () => window.THREE)
+      .then(() => this.three()).catch(() => {});
+    this.loadScript(R.gsap || (C + 'gsap/3.12.5/gsap.min.js'), () => window.gsap)
+      .then(() => this.loadScript(R.scrolltrigger || (C + 'gsap/3.12.5/ScrollTrigger.min.js'), () => window.ScrollTrigger))
+      .then(() => this.gsapInit()).catch(() => {});
+    if (this.props.smoothScroll !== false && !this.reduced()){
+      this.loadScript(R.lenis || 'https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js', () => window.Lenis)
+        .then(() => this.lenis()).catch(() => {});
+    }
+  }
+
+  reduced(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+  touch(){ return window.matchMedia('(hover: none)').matches; }
+
+  lenis(){
+    if (!window.Lenis || this._lenis) return;
+    const L = window.Lenis.default || window.Lenis;
+    this._lenis = new L({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+    const raf = (t) => { this._lenis.raf(t); this._lrf = requestAnimationFrame(raf); };
+    this._lrf = requestAnimationFrame(raf);
+    if (window.ScrollTrigger){ this._lenis.on('scroll', window.ScrollTrigger.update); window.ScrollTrigger.refresh(); }
+  }
+
+  cursor(){
+    if (this.props.showCursor === false || this.touch()) return;
+    this._onMove = (e) => {
+      this._m.x = e.clientX; this._m.y = e.clientY;
+      const t = e.target.closest ? e.target.closest('[data-cursor],a,button') : null;
+      const kind = t ? (t.getAttribute('data-cursor') || '1') : '';
+      this._label = kind === 'view' ? 'View' : kind === 'start' ? 'Start' : '';
+      this._hot = !!t;
+    };
+    window.addEventListener('mousemove', this._onMove, {passive:true});
+    const tick = () => {
+      const d = this.dotRef.current, r = this.ringRef.current, l = this.ringLabelRef.current;
+      if (d && r){
+        this._r.x += (this._m.x - this._r.x) * 0.13;
+        this._r.y += (this._m.y - this._r.y) * 0.13;
+        d.style.transform = 'translate3d(' + (this._m.x - 4) + 'px,' + (this._m.y - 4) + 'px,0) scale(' + (this._hot ? 0 : 1) + ')';
+        d.style.transition = 'transform .15s linear';
+        const s = this._label ? 1 : this._hot ? .62 : .35;
+        r.style.transform = 'translate3d(' + (this._r.x - 28) + 'px,' + (this._r.y - 28) + 'px,0) scale(' + s + ')';
+        r.style.background = this._label ? '#F04423' : 'transparent';
+        r.style.borderColor = this._hot ? '#F04423' : 'rgba(244,241,234,.35)';
+        if (l && l.textContent !== this._label) l.textContent = this._label;
+        if (l) l.style.opacity = this._label ? 1 : 0;
+      }
+      this._raf = requestAnimationFrame(tick);
+    };
+    tick();
+  }
+
+  intro(){
+    const q = [[this.heroL1, 260], [this.heroL2, 400]];
+    q.forEach(([ref, delay]) => {
+      const el = ref.current; if (!el) return;
+      el.style.transition = 'transform 1.25s cubic-bezier(.16,1,.3,1) ' + delay + 'ms';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.transform = 'translateY(0)'; }));
+    });
+    [[this.heroEyebrowRef, 120], [this.heroFootRef, 780]].forEach(([ref, delay]) => {
+      const el = ref.current; if (!el) return;
+      el.style.transition = 'opacity 1s ease ' + delay + 'ms, transform 1s cubic-bezier(.16,1,.3,1) ' + delay + 'ms';
+      el.style.transform = 'translateY(18px)';
+      requestAnimationFrame(() => requestAnimationFrame(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }));
+    });
+    clearTimeout(this._fs);
+    this._fs = setTimeout(() => {
+      [this.heroL1, this.heroL2].forEach(r => { if (r.current){ r.current.style.transition = 'none'; r.current.style.transform = 'translateY(0)'; } });
+      [this.heroEyebrowRef, this.heroFootRef].forEach(r => { if (r.current){ r.current.style.opacity = '1'; r.current.style.transform = 'none'; } });
+    }, 2400);
+  }
+
+  reveal(){
+    if (this._io) this._io.disconnect();
+    requestAnimationFrame(() => {
+      const els = Array.from(document.querySelectorAll('[data-fade]'));
+      els.forEach(el => {
+        el.style.opacity = '0'; el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity .9s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1)';
+      });
+      this._io = new IntersectionObserver((ent) => {
+        ent.forEach((e, i) => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          el.style.transitionDelay = (i * 80) + 'ms';
+          el.style.opacity = '1'; el.style.transform = 'none';
+          const n = el.querySelector('[data-count]');
+          if (n) this.count(n);
+          this._io.unobserve(el);
+        });
+      }, {threshold: .12, rootMargin: '0px 0px -6% 0px'});
+      els.forEach(el => this._io.observe(el));
+      clearTimeout(this._rfs);
+      this._rfs = setTimeout(() => {
+        els.forEach(el => {
+          if (el.getBoundingClientRect().top < window.innerHeight * 1.15){ el.style.opacity = '1'; el.style.transform = 'none'; }
+        });
+      }, 2000);
+    });
+  }
+
+  count(el){
+    if (el._d) return; el._d = true;
+    const target = parseFloat(el.getAttribute('data-count'));
+    if (!target) return;
+    const suffix = el.getAttribute('data-suffix') || '';
+    const t0 = performance.now(), dur = 1600;
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * e) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  scrollFx(){
+    this._onScroll = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      const p = max > 0 ? window.scrollY / max : 0;
+      const pr = this.progRef.current;
+      if (pr) pr.style.width = (p * 100) + '%';
+      const nav = this.navRef.current;
+      if (nav){
+        const on = window.scrollY > 40;
+        nav.style.background = on ? 'rgba(8,7,10,.82)' : 'transparent';
+        nav.style.borderBottomColor = on ? 'rgba(244,241,234,.12)' : 'rgba(244,241,234,0)';
+        nav.style.backdropFilter = on ? 'blur(16px)' : 'none';
+        nav.style.paddingTop = on ? '14px' : '20px';
+        nav.style.paddingBottom = on ? '14px' : '20px';
+      }
+      if (!window.ScrollTrigger) this._stageTarget = p * 4;
+    };
+    window.addEventListener('scroll', this._onScroll, {passive:true});
+    this._onScroll();
+  }
+
+  gsapInit(){
+    if (!window.gsap || !window.ScrollTrigger || this._g) return;
+    const gsap = window.gsap, ST = window.ScrollTrigger;
+    gsap.registerPlugin(ST);
+    this._g = true;
+    if (this.reduced()) return;
+
+    gsap.utils.toArray('[data-line]').forEach((el) => {
+      gsap.fromTo(el, { yPercent: 112 }, { yPercent: 0, duration: 1.15, ease: 'expo.out', immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 94%', once: true } });
+    });
+
+    gsap.utils.toArray('[data-row]').forEach((el) => {
+      gsap.fromTo(el, { xPercent: -3, opacity: 0 }, { xPercent: 0, opacity: 1, duration: .8, ease: 'power3.out', immediateRender: false,
+        scrollTrigger: { trigger: el, start: 'top 96%', once: true } });
+    });
+
+    const pin = this.pinRef.current, track = this.trackRef.current;
+    if (pin && track){
+      const dist = () => Math.max(0, track.scrollWidth - window.innerWidth + 60);
+      ST.matchMedia({
+        '(min-width: 901px)': () => {
+          pin.style.overflowX = 'visible';
+          track.style.transform = '';
+          const tw = gsap.to(track, { x: () => -dist(), ease: 'none',
+            scrollTrigger: { trigger: pin, start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .8, invalidateOnRefresh: true, anticipatePin: 1 } });
+          return () => { tw.scrollTrigger && tw.scrollTrigger.kill(true); tw.kill(); track.style.transform = ''; };
+        },
+        '(max-width: 900px)': () => {
+          pin.style.overflowX = 'auto';
+          track.style.transform = '';
+          return () => { pin.style.overflowX = 'visible'; };
+        }
+      });
+    }
+
+    const line = this.lineRef.current;
+    if (line){
+      gsap.to(line, { width: '100%', ease: 'none',
+        scrollTrigger: { trigger: line.parentElement, start: 'top 80%', end: 'bottom 60%', scrub: .6 } });
+    }
+
+    ST.create({ trigger: document.body, start: 'top top', end: 'bottom bottom', scrub: true,
+      onUpdate: (self) => { this._stageTarget = self.progress * 4; } });
+
+    const cta = this.ctaRef.current;
+    if (cta){
+      ST.create({ trigger: cta, start: 'top 80%', end: 'bottom bottom',
+        onUpdate: (self) => { this._focus = self.progress; }, onLeaveBack: () => { this._focus = 0; } });
+    }
+
+    ST.refresh();
+    setTimeout(() => ST.refresh(), 1000);
+  }
+
+  shape(kind, i, n){
+    const g = 2.399963;
+    if (kind === 0){
+      const y = 1 - (i / (n - 1)) * 2, r = Math.sqrt(Math.max(0, 1 - y * y)), th = g * i;
+      const k = 6.6 * (0.82 + 0.18 * Math.sin(i * 0.7));
+      return [Math.cos(th) * r * k, y * k, Math.sin(th) * r * k];
+    }
+    if (kind === 1){
+      const s = Math.ceil(Math.cbrt(n)), x = i % s, y = Math.floor(i / s) % s, z = Math.floor(i / (s * s));
+      const c = (s - 1) / 2, u = 9.2 / s;
+      return [(x - c) * u, (y - c) * u, (z - c) * u];
+    }
+    if (kind === 2){
+      const p = 2, q = 3, t = (i / n) * Math.PI * 2 * q;
+      const rr = 3.4 + 1.5 * Math.cos(p * t / q * 3);
+      const j = (i % 9) * 0.11 - 0.44;
+      return [(rr + j) * Math.cos(t), (1.5 + j) * Math.sin(p * t / q * 3), (rr + j) * Math.sin(t)];
+    }
+    if (kind === 3){
+      const s = Math.ceil(Math.sqrt(n)), x = i % s, z = Math.floor(i / s), c = (s - 1) / 2, u = 19 / s;
+      const dx = (x - c) * u, dz = (z - c) * u;
+      return [dx, Math.sin(Math.sqrt(dx * dx + dz * dz) * 0.55) * 1.15 - 1.4, dz];
+    }
+    const a = g * i, rr = 6.4 * Math.pow(i / n, 0.62);
+    return [Math.cos(a) * rr * 0.5, (i / n - 0.5) * 7.6, Math.sin(a) * rr * 0.5];
+  }
+
+  three(){
+    const cv = this.canvasRef.current;
+    if (!cv || !window.THREE || this._t) return;
+    if (!cv.clientWidth){ setTimeout(() => this.three(), 120); return; }
+    const THREE = window.THREE;
+    this._t = true;
+    const mobile = window.innerWidth < 760;
+    const N = Math.max(900, Math.min(12000, this.props.particleCount || (mobile ? 2600 : 8000)));
+    const W = () => cv.clientWidth || 1, H = () => cv.clientHeight || 1;
+
+    const scene = new THREE.Scene();
+    const cam = new THREE.PerspectiveCamera(48, W() / H(), 0.1, 200);
+    cam.position.set(0, 0, 20);
+    const rnd = new THREE.WebGLRenderer({ canvas: cv, alpha: true, antialias: !mobile, powerPreference: 'high-performance' });
+    rnd.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2));
+    rnd.setSize(W(), H(), false);
+
+    const accent = new THREE.Color(this.props.accentColor || '#F04423');
+    const ivory = new THREE.Color('#F4F1EA');
+
+    const targets = [0,1,2,3,4].map(k => {
+      const a = new Float32Array(N * 3);
+      for (let i = 0; i < N; i++){ const p = this.shape(k, i, N); a[i*3] = p[0]; a[i*3+1] = p[1]; a[i*3+2] = p[2]; }
+      return a;
+    });
+
+    const pos = new Float32Array(N * 3), col = new Float32Array(N * 3), seed = new Float32Array(N);
+    for (let i = 0; i < N; i++){
+      const r = 34;
+      pos[i*3] = (Math.random()-.5)*r; pos[i*3+1] = (Math.random()-.5)*r; pos[i*3+2] = (Math.random()-.5)*r;
+      const c = (i % 11 === 0) ? accent : ivory;
+      col[i*3] = c.r; col[i*3+1] = c.g; col[i*3+2] = c.b;
+      seed[i] = Math.random();
+    }
+
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const pts = new THREE.Points(geo, new THREE.PointsMaterial({
+      size: mobile ? 0.075 : 0.055, vertexColors: true, transparent: true, opacity: 0.72,
+      sizeAttenuation: true, blending: THREE.AdditiveBlending, depthWrite: false
+    }));
+    const group = new THREE.Group();
+    group.add(pts);
+
+    const LN = Math.min(420, Math.floor(N / 14));
+    const lgeo = new THREE.BufferGeometry();
+    const lpos = new Float32Array(LN * 2 * 3);
+    lgeo.setAttribute('position', new THREE.BufferAttribute(lpos, 3));
+    const lines = new THREE.LineSegments(lgeo, new THREE.LineBasicMaterial({ color: accent, transparent: true, opacity: 0.14, blending: THREE.AdditiveBlending, depthWrite: false }));
+    group.add(lines);
+    scene.add(group);
+
+    const clock = new THREE.Clock();
+    let assemble = 0;
+
+    this._onResize = () => { if (!cv.clientWidth) return; cam.aspect = W()/H(); cam.updateProjectionMatrix(); rnd.setSize(W(), H(), false); };
+    window.addEventListener('resize', this._onResize);
+    if (window.ResizeObserver){ this._ro = new ResizeObserver(this._onResize); this._ro.observe(cv); }
+
+    const P = geo.attributes.position.array;
+    const loop = () => {
+      const t = clock.getElapsedTime();
+      const dt = Math.min(0.05, clock.getDelta ? 0.016 : 0.016);
+      assemble = Math.min(1, assemble + 0.0075);
+      const ease = 1 - Math.pow(1 - assemble, 3);
+
+      this._stage += (this._stageTarget - this._stage) * 0.045;
+      const s = Math.max(0, Math.min(3.999, this._stage));
+      const i0 = Math.floor(s), i1 = Math.min(4, i0 + 1), mix = s - i0;
+      const A = targets[i0], B = targets[i1];
+      const focus = this._focus || 0;
+
+      for (let i = 0; i < N; i++){
+        const ix = i * 3;
+        const tx = A[ix] + (B[ix] - A[ix]) * mix;
+        const ty = A[ix+1] + (B[ix+1] - A[ix+1]) * mix;
+        const tz = A[ix+2] + (B[ix+2] - A[ix+2]) * mix;
+        const bo = 0.34 * (0.4 + seed[i]);
+        const wx = tx + Math.sin(t * 0.55 + seed[i] * 9.4) * bo;
+        const wy = ty + Math.cos(t * 0.47 + seed[i] * 7.1) * bo;
+        const wz = tz + Math.sin(t * 0.51 + seed[i] * 5.3) * bo;
+        const cf = 1 - focus * 0.72;
+        const gx = wx * cf, gy = wy * cf, gz = wz * cf;
+        const k = 0.055 + ease * 0.055;
+        P[ix]   += (gx - P[ix]) * k;
+        P[ix+1] += (gy - P[ix+1]) * k;
+        P[ix+2] += (gz - P[ix+2]) * k;
+      }
+      geo.attributes.position.needsUpdate = true;
+
+      if (!this._lskip){
+        for (let j = 0; j < LN; j++){
+          const a = (j * 13) % N, b = (j * 13 + 7) % N;
+          const o = j * 6;
+          lpos[o]   = P[a*3];   lpos[o+1] = P[a*3+1]; lpos[o+2] = P[a*3+2];
+          lpos[o+3] = P[b*3];   lpos[o+4] = P[b*3+1]; lpos[o+5] = P[b*3+2];
+        }
+        lgeo.attributes.position.needsUpdate = true;
+      }
+      this._lskip = !this._lskip;
+      lines.material.opacity = 0.16 * (1 - Math.min(1, s / 2.2)) * ease;
+
+      const mx = (this._m.x / window.innerWidth - 0.5) || 0;
+      const my = (this._m.y / window.innerHeight - 0.5) || 0;
+      this._tilt.x += (my * 0.34 - this._tilt.x) * 0.04;
+      this._tilt.y += (mx * 0.5 - this._tilt.y) * 0.04;
+      group.rotation.x = this._tilt.x;
+      group.rotation.y = t * 0.055 + this._tilt.y;
+      pts.material.opacity = (0.28 + 0.46 * ease) * (1 - focus * 0.15);
+      cam.position.z = 20 - ease * 2.2 - focus * 3.4;
+
+      rnd.render(scene, cam);
+      this._raf3 = requestAnimationFrame(loop);
+    };
+    loop();
+  }
+
+  renderVals(){
+    const accent = this.props.accentColor || '#F04423';
+    const B = 'https://www.marioxsoftware.com/';
+
+    const tech = {
+      Frontend: ['React','Next.js','TypeScript','Vue','Angular','Tailwind','GSAP','Three.js'],
+      Backend: ['Node.js','.NET','Java / Spring','Python / Django','Laravel','Go','GraphQL','REST'],
+      Mobile: ['React Native','Flutter','SwiftUI','Kotlin','Jetpack Compose','Expo'],
+      AI: ['OpenAI','Anthropic','Llama','PyTorch','LangChain','Hugging Face','Vector search'],
+      Cloud: ['AWS','Azure','GCP','Kubernetes','Terraform','Docker','Cloudflare'],
+      Database: ['PostgreSQL','MongoDB','Redis','MySQL','Snowflake','Elasticsearch'],
+      DevOps: ['GitHub Actions','GitLab CI','Jenkins','Datadog','Grafana','Sentry']
+    };
+    const active = this.state.tech;
+
+    return {
+      canvasRef: this.canvasRef, dotRef: this.dotRef, ringRef: this.ringRef, ringLabelRef: this.ringLabelRef,
+      progRef: this.progRef, navRef: this.navRef, pinRef: this.pinRef, trackRef: this.trackRef,
+      lineRef: this.lineRef, ctaRef: this.ctaRef, heroL1: this.heroL1, heroL2: this.heroL2,
+      heroEyebrowRef: this.heroEyebrowRef, heroFootRef: this.heroFootRef,
+
+      tickerLoop: [0,1],
+      ticker: ['Product engineering','Web & mobile','AI & automation','SaaS platforms','CRM & ERP','Cloud & DevOps','100+ engineers','42 case studies','Noida','Hyderabad','Dallas','Melbourne'],
+
+      services: [
+        {n:'01', name:'Product engineering', tag:'Discovery, architecture, build, handover', stage:0},
+        {n:'02', name:'Web & mobile', tag:'React, Next.js, React Native, Flutter', stage:1},
+        {n:'03', name:'AI & automation', tag:'Assistants, agents, retrieval, evaluation', stage:2},
+        {n:'04', name:'SaaS & platforms', tag:'Multi-tenancy, billing, scale', stage:2},
+        {n:'05', name:'CRM & ERP', tag:'Implementation, customisation, integration', stage:3},
+        {n:'06', name:'Cloud & infrastructure', tag:'AWS, Azure, GCP, Kubernetes, IaC', stage:4}
+      ].map(s => ({ ...s, enter: () => { this._stageTarget = s.stage; } })),
+
+      work: [
+        {n:'01', name:'Skydo', sector:'Fintech', body:'Cross-border payments for exporters. App, web and admin built around a ledger that has to reconcile to the cent.', img: B+'img/cs/skydo/Skydo1.png', url: B+'case-study/skydo', stack:['React','Node','AWS']},
+        {n:'02', name:'Eka Care', sector:'Healthcare', body:'Patient records and telemedicine at national scale, with the consent and audit model the category demands.', img: B+'img/cs/eka.care/eka.care2.png', url: B+'case-study/ekacare', stack:['Flutter','Python','Azure']},
+        {n:'03', name:'Snitch', sector:'E-commerce', body:'Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.', img: B+'img/cs/snitch/snitch1.png', url: B+'case-study/snitch', stack:['Next.js','Postgres','Redis']},
+        {n:'04', name:'Graphy', sector:'Edtech', body:'Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.', img: B+'img/cs/graphy/graphy1.png', url: B+'case-study/graphy', stack:['React','Node','GCP']},
+        {n:'05', name:'MILKRUN', sector:'Quick commerce', body:'Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.', img: B+'img/cs/milkrun/milkrun1.png', url: B+'case-study/milkrun', stack:['React Native','Kubernetes','Maps']},
+        {n:'06', name:'Airwallex', sector:'Fintech', body:'Global business accounts and FX. Interfaces and services for money moving across borders.', img: B+'img/cs/airwallex/AirWallex4.png', url: B+'case-study/airwallex', stack:['TypeScript','Java','AWS']}
+      ],
+
+      stats: [
+        {value:100, suffix:'+', display:'100+', label:'Engineers on staff'},
+        {value:300, suffix:'+', display:'300+', label:'Products shipped'},
+        {value:10, suffix:'+', display:'10+', label:'Industries served'},
+        {value:4, suffix:'', display:'4', label:'Countries, one team'}
+      ],
+
+      techCats: Object.keys(tech).map(label => ({
+        label, count: String(tech[label].length).padStart(2,'0'),
+        pick: () => this.setState({tech: label}),
+        color: active === label ? accent : '#F4F1EA',
+        dim: active === label ? 1 : .45
+      })),
+      techItems: tech[active] || tech.Frontend,
+      techCount: Object.keys(tech).reduce((a,k) => a + tech[k].length, 0),
+
+      pillars: [
+        {n:'01', title:'Strategy', body:'We start by finding the version of the product that is worth building, then price it honestly.'},
+        {n:'02', title:'Design', body:'Research, flows and interface systems delivered as design your engineers can actually build.'},
+        {n:'03', title:'Engineering', body:'Senior people writing production code from week one. No juniors hidden behind an account manager.'},
+        {n:'04', title:'Scale', body:'The infrastructure, monitoring and support to keep it running long after launch week.'}
+      ],
+
+      process: [
+        {n:'01', title:'Discover', body:'Paid discovery that turns a brief into architecture and a fixed number.'},
+        {n:'02', title:'Define', body:'Scope, milestones and the tradeoffs written down before anyone commits.'},
+        {n:'03', title:'Design', body:'Flows and interfaces prototyped against real constraints.'},
+        {n:'04', title:'Build', body:'Two-week sprints, a demo at the end of each, a board open every day.'},
+        {n:'05', title:'Launch', body:'Staged rollout with pipelines and monitoring already in place.'},
+        {n:'06', title:'Scale', body:'Capacity that flexes and a team that stays past year one.'}
+      ],
+
+      industries: ['Healthcare','Fintech','Real estate','Education','E-commerce','Travel','Logistics','Media','Startups','Enterprise']
+        .map((name, i) => ({ name, enter: () => { this._stageTarget = (i % 5); } }))
+    };
+  }
+}
+</script>
+</body>
+</html>
