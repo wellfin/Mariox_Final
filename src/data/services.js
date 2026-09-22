@@ -21,7 +21,7 @@ export const services = [
     tech:['TypeScript','Node.js','React','PostgreSQL','Docker','Terraform','AWS','GitHub Actions'],
     approach:'Discovery is paid and short, because free discovery produces optimistic estimates. After that we work in two-week sprints with a demo at the end of every one, and you see the same board we do.'
   },
-  { slug:'web-mobile', name:'Web & mobile', tag:'React, Next.js, React Native, Flutter', stage:1,
+  { slug:'web-mobile', name:'Web & mobile', tag:'React, Next.js, React Native, Flutter', stage:1, href:'/web-and-app-development',
     label:'Service 02 / Web & mobile',
     h1a:'Interfaces', h1b:'that stay fast.',
     sub:'Web applications and native apps from first wireframe to store release, engineered to stay quick under load and easy to change six months later.',

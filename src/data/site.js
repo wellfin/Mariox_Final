@@ -89,18 +89,19 @@ export const offices = [
 export const ticker = ['Product engineering', 'Web & mobile', 'AI & automation', 'SaaS platforms', 'CRM & ERP', 'Cloud & DevOps', '100+ engineers', '42 case studies', 'Noida', 'Hyderabad', 'Dallas', 'Melbourne'];
 
 export const serviceList = [
-  { n: '01', name: 'Product engineering', tag: 'Discovery, architecture, build, handover', stage: 0, href: '/services/product-engineering' },
-  { n: '02', name: 'Web & mobile', tag: 'React, Next.js, React Native, Flutter', stage: 1, href: '/services/web-mobile' },
+  { n: '01', name: 'Product engineering', tag: 'Discovery, architecture, build, handover', stage: 0, href: '/product-engineering' },
+  { n: '02', name: 'Web & mobile', tag: 'React, Next.js, React Native, Flutter', stage: 1, href: '/web-and-app-development' },
   { n: '03', name: 'AI & automation', tag: 'Assistants, agents, retrieval, evaluation', stage: 2, href: '/ai' },
-  { n: '04', name: 'SaaS & platforms', tag: 'Multi-tenancy, billing, scale', stage: 2, href: '/services/saas-platforms' },
-  { n: '05', name: 'CRM & ERP', tag: 'Implementation, customisation, integration', stage: 3, href: '/services/crm-erp' },
-  { n: '06', name: 'Cloud & infrastructure', tag: 'AWS, Azure, GCP, Kubernetes, IaC', stage: 4, href: '/services/cloud-infrastructure' },
-  { n: '07', name: 'UI/UX & product design', tag: 'Research, flows, interface systems', stage: 1, href: '/services/design' },
-  { n: '08', name: 'QA & test automation', tag: 'Coverage, performance, security, gates', stage: 2, href: '/services/qa-testing' },
-  { n: '09', name: 'Data & analytics', tag: 'Pipelines, warehousing, BI, reporting', stage: 3, href: '/services/data-analytics' },
-  { n: '10', name: 'Blockchain & Web3', tag: 'Contracts, wallets, audits, tokens', stage: 0, href: '/services/blockchain' },
-  { n: '11', name: 'Managed IT & support', tag: 'Monitoring, helpdesk, incident response', stage: 4, href: '/services/managed-it' },
-  { n: '12', name: 'Hire resources', tag: 'Dedicated teams and staff augmentation', stage: 0, href: '/hire' },
+  { n: '04', name: 'SaaS & platforms', tag: 'Multi-tenancy, billing, scale', stage: 2, href: '/saas-platforms' },
+  { n: '05', name: 'CRM & ERP', tag: 'Implementation, customisation, integration', stage: 3, href: '/crm-erp' },
+  { n: '06', name: 'Cloud & infrastructure', tag: 'AWS, Azure, GCP, Kubernetes, IaC', stage: 4, href: '/cloud-infrastructure' },
+  { n: '07', name: 'UI/UX & product design', tag: 'Research, flows, interface systems', stage: 1, href: '/design' },
+  { n: '08', name: 'QA & test automation', tag: 'Coverage, performance, security, gates', stage: 2, href: '/qa-testing' },
+  { n: '09', name: 'Data & analytics', tag: 'Pipelines, warehousing, BI, reporting', stage: 3, href: '/data-analytics' },
+  { n: '10', name: 'Blockchain & Web3', tag: 'Contracts, wallets, audits, tokens', stage: 0, href: '/blockchain' },
+  { n: '11', name: 'Managed IT & support', tag: 'Monitoring, helpdesk, incident response', stage: 4, href: '/managed-it' },
+  { n: '12', name: 'Software development', tag: 'Custom software, end to end', stage: 0, href: '/software-development-company' },
+  { n: '13', name: 'Hire resources', tag: 'Dedicated teams and staff augmentation', stage: 0, href: '/hire' },
 ];
 
 export const featuredWork = [

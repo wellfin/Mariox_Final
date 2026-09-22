@@ -1,10 +1,14 @@
 import React from 'react';
 import ServiceCityPage from '@/components/ServiceCityPage';
 import TopCompanies from '@/components/TopCompanies';
+import ServicePage from '@/components/ServicePage';
+import { localServiceAt, servicePageProps } from '@/data/growthServices';
 
-// SEO landing pages (e.g. /android-app-development-company-in-noida) served by the
-// content API, exactly as on the live site: unknown slugs or API failures go home.
-export default function DynamicPage({ pageDetails, serviceCity }) {
+// Service pages from src/data (e.g. /web-development), then SEO landing pages
+// (e.g. /android-app-development-company-in-noida) served by the content API,
+// exactly as on the live site: unknown slugs or API failures go home.
+export default function DynamicPage({ svc, rows, parent, pageDetails, serviceCity }) {
+  if (svc) return <ServicePage svc={svc} rows={rows} parent={parent} />;
   const data = (pageDetails && pageDetails.data) || {};
   if (data.isTopCity === true) {
     return <TopCompanies data={data} companies={data.companies || []} serviceCity={serviceCity} />;
@@ -16,6 +20,8 @@ const home = { redirect: { destination: '/', permanent: false } };
 
 export async function getServerSideProps({ params }) {
   const { serviceCity } = params;
+  const local = serviceCity && localServiceAt(serviceCity);
+  if (local) return servicePageProps(local.slug);
   if (!serviceCity || serviceCity.trim() === '' || !process.env.NEXT_PUBLIC_BASE_API_URL) return home;
 
   const controller = new AbortController();

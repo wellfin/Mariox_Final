@@ -5,6 +5,7 @@ import El from './El';
 import { A, MONO } from './ui';
 import { CONTACT, navLinks, socialLinks } from '@/data/site';
 import { industries } from '@/data/industries';
+import { groupedServices } from '@/data/growthServices';
 import {
   initCursor, initScroll, initThree, initGsap, initLenis,
   intro, reveal, syncScene, killScene, scrollTop,
@@ -64,6 +65,12 @@ function Footer() {
           <A href="/about" data-cursor="1" css={FOOT_LINK}>Company</A>
           <A href="/career" data-cursor="1" css={FOOT_LINK}>Careers</A>
           <A href="/contact" data-cursor="1" css={FOOT_LINK}>Contact</A>
+        </El>
+        <El css={FOOT_COL}>
+          <El as="span" css={FOOT_HEAD}>Services</El>
+          {groupedServices.map((g) => (
+            <A key={g.slug} href={g.href} data-cursor="1" css={FOOT_LINK}>{g.name}</A>
+          ))}
         </El>
         <El css={FOOT_COL}>
           <El as="span" css={FOOT_HEAD}>Industries</El>

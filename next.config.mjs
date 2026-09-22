@@ -23,6 +23,13 @@ const nextConfig = {
       { source: '/case-study-magicfinserv', destination: '/case-study/magicfinserv', permanent: true },
       { source: '/case-study-numberdekho', destination: '/case-study/numberdekho', permanent: true },
       { source: '/case-study-vimal-wires-and-cable', destination: '/case-study/vimal-wires-and-cable', permanent: true },
+      // Service pages moved from /services/<slug> to /<slug>.
+      { source: '/services/web-mobile', destination: '/web-and-app-development', permanent: true },
+      { source: '/services/web-development', destination: '/website-development-company', permanent: true },
+      { source: '/services/digital-marketing', destination: '/digital-marketing-agency', permanent: true },
+      { source: '/web-development', destination: '/website-development-company', permanent: true },
+      { source: '/digital-marketing', destination: '/digital-marketing-agency', permanent: true },
+      { source: '/services/:slug', destination: '/:slug', permanent: true },
     ];
   },
 };
