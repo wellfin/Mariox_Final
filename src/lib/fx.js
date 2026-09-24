@@ -137,6 +137,10 @@ export function reveal() {
       (ent) => {
         ent.forEach((e, i) => {
           if (!e.isIntersecting) return;
+          // A block taller than the viewport can never reach the 12% ratio, so
+          // long API content (e.g. /app-development) reveals on first contact.
+          const tall = e.boundingClientRect.height > window.innerHeight * 0.9;
+          if (e.intersectionRatio < 0.12 && !tall) return;
           const el = e.target;
           el.dataset.mxShown = '1';
           el.style.transitionDelay = i * 80 + 'ms';
@@ -147,7 +151,7 @@ export function reveal() {
           io.unobserve(el);
         });
       },
-      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }
+      { threshold: [0, 0.12], rootMargin: '0px 0px -6% 0px' }
     );
     els.forEach((el) => { if (!el.dataset.mxShown) io.observe(el); });
     clearTimeout(revealTimer);
