@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import El from './El';
 import { MONO } from './ui';
 import { isolateScroll } from '@/lib/fx';
+import { validatePhone } from '@/lib/phone';
 
 // Same lead flow as the live site: POST /api/contact (team email + acknowledgement),
 // POST to the enquiries backend, Google Ads conversion on success, honeypot for bots.
@@ -33,20 +34,14 @@ const empty = () => ({
   services: Object.fromEntries(SERVICES.map((s) => [s.serviceId, false])),
 });
 
-function validate(v) {
+// country comes from the phone input, so every country gets its own rule.
+function validate(v, country) {
   const e = {};
   if (!v.name.trim()) e.name = 'Name is required';
   if (!v.email.trim()) e.email = 'Email is required';
   else if (!EMAIL_RE.test(v.email.trim())) e.email = 'Invalid email address';
-  if (!v.mobile) e.mobile = 'Mobile number is required';
-  else {
-    const [dialCode, number = ''] = v.mobile.split('-');
-    if (dialCode === '91') {
-      if (!/^[0-9]{10}$/.test(number)) e.mobile = 'Indian mobile number must be exactly 10 digits';
-    } else if (number.length < 4) {
-      e.mobile = 'Mobile number is too short';
-    }
-  }
+  const phone = validatePhone(v.mobile.replace('-', ''), country, { required: true });
+  if (phone) e.mobile = phone === 'Phone number is required' ? 'Mobile number is required' : phone;
   if (!v.message.trim()) e.message = 'Message is required';
   return e;
 }
@@ -57,6 +52,7 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
   const [status, setStatus] = useState({ state: 'idle', note: 'Reply within one business day' });
   const [pageUrl, setPageUrl] = useState('');
   const phoneRef = useRef(null);
+  const [country, setCountry] = useState({ dialCode: '91', name: 'India', format: '+.. .....-.....' });
 
   useEffect(() => isolateScroll(phoneRef.current), []);
 
@@ -69,7 +65,7 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
 
   const onSubmit = async (ev) => {
     ev.preventDefault();
-    const e = validate(values);
+    const e = validate(values, country);
     setErrors(e);
     if (Object.keys(e).length) {
       setStatus({ state: 'error', note: 'Please fix the highlighted fields.' });
@@ -107,8 +103,11 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
 
       const results = await Promise.allSettled(requests);
       const ok = results.map((r) => r.status === 'fulfilled' && r.value.ok);
+      // The email is what decides success. The enquiries backend is best-effort,
+      // so an outage there never costs us the lead or makes people resend.
+      if (results[1] && !ok[1]) console.error('Inquiry API failed', results[1]);
 
-      if (ok.every(Boolean)) {
+      if (ok[0]) {
         setStatus({ state: 'sent', note: 'Your message has been sent successfully!' });
         if (typeof window !== 'undefined' && window.gtag) {
           window.gtag('event', 'conversion', { send_to: 'AW-11065360955/7n7CCLmx7-IZELuEsJwp' });
@@ -116,8 +115,7 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
         setValues(empty());
         setErrors({});
       } else {
-        if (!ok[0]) console.error('Contact API failed', results[0]);
-        if (results[1] && !ok[1]) console.error('Inquiry API failed', results[1]);
+        console.error('Contact API failed', results[0]);
         const rateLimited = results[0].status === 'fulfilled' && results[0].value.status === 429;
         setStatus({
           state: 'error',
@@ -182,6 +180,7 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
           value={values.mobile ? values.mobile.replace('-', '') : ''}
           onChange={(value, data) => {
             const raw = value.slice(data.dialCode.length);
+            setCountry(data);
             setValues((v) => ({ ...v, mobile: `${data.dialCode}-${raw}` }));
           }}
           specialLabel=""

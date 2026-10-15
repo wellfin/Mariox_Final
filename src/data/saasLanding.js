@@ -8,6 +8,16 @@ export const heroTrust = [
   { b: 'NDA', t: 'before the first call' },
 ];
 
+// Certification and review badges under the hero.
+export const heroBadges = [
+  { t: 'AWS', s: 'Certified', c: '#9B968F' },
+  { t: 'Azure', s: 'Certified', c: '#9B968F' },
+  { t: 'Google Cloud', s: 'Certified', c: '#9B968F' },
+  { t: 'Google', s: '4.8 ★ · 138', c: '#F04423' },
+  { t: 'Clutch', s: 'Verified', c: '#9B968F' },
+  { t: 'ISO 27001', s: 'Practices', c: '#9B968F' },
+];
+
 export const brands = ['Airwallex', 'Zeller', 'Kogan', 'Lunar', 'Soldo', 'HotDoc', 'Healthengine', 'Fynd', 'Testbook', 'Teachmint', 'OnBuy', 'Livi', 'Skydo', 'Learnosity'];
 
 export const stats = [
