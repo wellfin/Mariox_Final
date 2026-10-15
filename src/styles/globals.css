@@ -8,6 +8,7 @@ input,textarea,button,select{font:inherit;color:inherit}
 ::selection{background:#F04423;color:#08070A}
 @keyframes mxDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @keyframes mxPulse{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes mxTick{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 @keyframes mxSpin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
 #mx-nav{display:flex}
@@ -43,6 +44,12 @@ textarea.mx-field{resize:vertical;min-height:120px;font-size:clamp(15px,1.3vw,17
 .mx-phone.react-tel-input .country-list .no-entries-message{color:#8E8A85;padding:10px 12px}
 .mx-phone.react-tel-input .country-list .search-box{width:100%;margin:0;background:transparent;border:1px solid rgba(244,241,234,.3);color:#F4F1EA;border-radius:0;padding:9px 10px;font-size:14px;outline:none}
 .mx-phone.react-tel-input .country-list .search-box::placeholder{color:#8E8A85}
+
+/* Lead-form fields on the SaaS landing (design's hairline inputs). */
+.mx-lead-field{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(244,241,234,.26);padding:10px 0;font-size:16px;color:#F4F1EA;outline:none;border-radius:0;transition:border-color .3s}
+.mx-lead-field:focus{border-bottom-color:#F04423}
+.mx-lead-field::placeholder{color:#77736C;opacity:1}
+.mx-lead-field:-webkit-autofill,.mx-lead-field:-webkit-autofill:focus{-webkit-text-fill-color:#F4F1EA;-webkit-box-shadow:0 0 0 1000px #0E0D11 inset;caret-color:#F4F1EA;transition:background-color 9999s}
 
 /* Rich text coming from the CMS / legal copy. */
 .mx-prose{font-size:clamp(15.5px,1.25vw,18px);line-height:1.65;color:#B7B2AA;max-width:72ch}

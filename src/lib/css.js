@@ -63,6 +63,7 @@ export const HOVERS = [
   'background:#F4F1EA;color:#08070A',
   'background:#F04423',
   'border-color:#F04423;color:#F04423;background:rgba(240,68,35,.08)',
+  'transform:scale(1.08)',
 ];
 
 export function hoverClass(str) {
