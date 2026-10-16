@@ -91,9 +91,9 @@ export default function LeadForm({
     if (!name) e.name = 'Name is required';
     if (!email) e.email = 'Work email is required';
     else if (!EMAIL_RE.test(email)) e.email = 'Invalid email address';
-    // Hero: phone or email is enough, but a typed number must still be valid.
-    const phoneMsg = validatePhone(phone.national, phone.country, { required: !hero });
-    if (phoneMsg) e.phone = phoneMsg;
+    // Both email and a valid phone number are required on every landing form.
+    const phoneMsg = validatePhone(phone.national, phone.country, { required: true });
+    if (phoneMsg) e.phone = phoneMsg === 'Phone number is required' ? 'Mobile number is required' : phoneMsg;
     const message = hero
       ? values.message.trim()
       : (briefRef && briefRef.current ? briefRef.current.value.trim() : (briefValue || '').trim());
