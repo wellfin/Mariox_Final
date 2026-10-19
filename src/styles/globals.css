@@ -12,8 +12,6 @@ input,textarea,button,select{font:inherit;color:inherit}
 @keyframes mxSpin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion: reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
 #mx-nav{display:flex}
-#work{overflow-x:hidden}
-@media (max-width:900px){#work{overflow-x:auto}}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto !important}
 .lenis.lenis-stopped{overflow:hidden}
