@@ -17,9 +17,15 @@ export default function MarioxWebsite({ Component, pageProps }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
       </Head>
-      <Layout>
+      {/* Pages marked `bare` (the v4 home page) ship their own header,
+          footer, cursor and canvas, so the site chrome is skipped. */}
+      {Component.bare ? (
         <Component {...pageProps} />
-      </Layout>
+      ) : (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )}
     </>
   );
 }

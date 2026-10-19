@@ -76,3 +76,20 @@ textarea.mx-field{resize:vertical;min-height:120px;font-size:clamp(15px,1.3vw,17
 .mx-prose td,.mx-prose th{border:1px solid rgba(244,241,234,.14);padding:10px;text-align:left}
 
 .mx-visually-hidden{position:absolute !important;left:-9999px !important;width:1px !important;height:1px !important;opacity:0 !important}
+
+/* ---- "Mariox Home v4" home page ---- */
+@keyframes mxMarquee{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+/* Industry tiles: the photo fades in behind the label on hover. */
+.mx-ind:hover .mx-ind-img{opacity:.42;transform:scale(1)}
+
+/* Process strip scrolls sideways; GSAP pins it above 900px. */
+.mx-ptrack{scrollbar-width:none;-ms-overflow-style:none}
+.mx-ptrack::-webkit-scrollbar{display:none}
+
+/* Home contact form fields (design's hairline inputs, Geist). */
+.mx-v4-field{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(244,241,234,.28);padding:9px 0;font-size:17px;color:#F4F1EA;outline:none;border-radius:0;font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;transition:border-color .3s}
+.mx-v4-field:focus{border-bottom-color:#F04423}
+.mx-v4-field::placeholder{color:#77736C;opacity:1}
+.mx-v4-field:-webkit-autofill,.mx-v4-field:-webkit-autofill:focus{-webkit-text-fill-color:#F4F1EA;-webkit-box-shadow:0 0 0 1000px #0E0D11 inset;caret-color:#F4F1EA;transition:background-color 9999s}
+.mx-phone-v4.react-tel-input .form-control{font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;font-size:17px;padding:9px 0 9px 58px;border-bottom-color:rgba(244,241,234,.28)}
