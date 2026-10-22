@@ -42,7 +42,7 @@ const LEADERS = [
   { n: '02', name: 'Tripta Mittal', role: 'Co-founder', src: '/assets/company/tripta-mittal-crop.jpg', line: 'Co-founder who oversees operations and client delivery, keeping teams and projects running to plan.' },
   { n: '03', name: 'Saswat Sahu', role: 'Co-founder', src: '/assets/company/saswat-sahu.png', line: 'Co-leads the company and shapes how Mariox designs, builds and delivers.' },
   { n: '04', name: 'Akash Bhardwaj', role: 'Business Head', src: '/assets/company/akash-bhardwaj.png', line: 'Leads business development and the first conversation with every new client.' },
-  { n: '05', name: 'Parveen Jakhar', role: 'Senior Developer', src: '', line: 'Senior engineer on the products we build, from architecture to release.' },
+  { n: '05', name: 'Parveen Jakhar', role: 'Senior Developer', src: '/assets/company/parveen-jakhar.jpg', line: 'Senior engineer on the products we build, from architecture to release.' },
 ];
 
 const LIFE = [
