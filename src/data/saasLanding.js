@@ -74,9 +74,9 @@ export const stories = [
 ];
 
 export const cases = [
-  { name: 'Graphy', sector: 'Creator SaaS', region: 'India', scope: 'App + web', img: '/img/cs/graphy/graphy1.png', url: '/case-study/graphy', body: 'Course delivery, live cohorts and creator payouts inside one platform, where every creator runs their own branded school.' },
-  { name: 'Learnosity', sector: 'Assessment platform', region: 'Global', scope: 'Web', img: '/img/cs/learnosity/learnosity2.png', url: '/case-study/learnosity', body: 'Assessment infrastructure embedded and extended by the teams integrating it, behind a versioned API surface.' },
-  { name: 'Fynd', sector: 'Commerce technology', region: 'India', scope: 'App + web + admin', img: '/img/cs/fynd/fynd1.png', url: '/case-study/fynd', body: 'Commerce technology connecting online ordering with retail operations, with one inventory service read by every channel.' },
+  { name: 'Graphy', sector: 'Creator SaaS', region: 'India', scope: 'App + web', img: '/img/cs/graphy/graphy1.png', url: '/work/graphy', body: 'Course delivery, live cohorts and creator payouts inside one platform, where every creator runs their own branded school.' },
+  { name: 'Learnosity', sector: 'Assessment platform', region: 'Global', scope: 'Web', img: '/img/cs/learnosity/learnosity2.png', url: '/work/learnosity', body: 'Assessment infrastructure embedded and extended by the teams integrating it, behind a versioned API surface.' },
+  { name: 'Fynd', sector: 'Commerce technology', region: 'India', scope: 'App + web + admin', img: '/img/cs/fynd/fynd1.png', url: '/work/fynd', body: 'Commerce technology connecting online ordering with retail operations, with one inventory service read by every channel.' },
 ];
 
 export const steps = [

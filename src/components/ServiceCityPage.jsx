@@ -185,7 +185,7 @@ export default function ServiceCityPage({ data = {}, serviceCity = '' }) {
       </Section>
 
       <Section pad="clamp(60px,9vw,140px)">
-        <SectionHead title="Case study" href="/case-study" link={'All work ↗'} mb="clamp(26px,3.4vw,50px)" />
+        <SectionHead title="Case study" href="/work" link={'All work ↗'} mb="clamp(26px,3.4vw,50px)" />
         <CardGrid>
           {featuredWork.map((w) => (
             <CaseCard key={w.url} c={{ ...w, slug: w.url }} label={w.sector} />

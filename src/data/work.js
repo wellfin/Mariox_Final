@@ -17,7 +17,7 @@ const clip = (text, max = 170) => {
   return cut.slice(0, cut.lastIndexOf(' ')) + '…';
 };
 
-export const slugFromUrl = (url) => url.replace(/^\/case-study\//, '');
+export const slugFromUrl = (url) => url.replace(/^\/work\//, '');
 
 // One entry per case study, in the live site's order, shaped for the design's work cards.
 export function getWorkList() {

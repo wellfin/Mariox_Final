@@ -56,7 +56,7 @@ function Footer() {
         </El>
         <El css={FOOT_COL}>
           <El as="span" css={FOOT_HEAD}>Navigate</El>
-          <A href="/case-study" data-cursor="1" css={FOOT_LINK}>Work</A>
+          <A href="/work" data-cursor="1" css={FOOT_LINK}>Work</A>
           <A href="/services" data-cursor="1" css={FOOT_LINK}>Services</A>
           <A href="/ai" data-cursor="1" css={FOOT_LINK}>AI</A>
           <A href="/hire" data-cursor="1" css={FOOT_LINK}>Hire resources</A>

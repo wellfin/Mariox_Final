@@ -12,13 +12,13 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.marioxs
 // Primary navigation. As in the design, an item lights up on its own route;
 // `prefix` also lights it on child routes (industry detail pages).
 export const navLinks = [
-  { href: '/case-study', label: 'Work' },
+  { href: '/work', label: 'Work' },
   { href: '/services', label: 'Services' },
   { href: '/industries', label: 'Industries', prefix: true },
   { href: '/ai', label: 'AI' },
   { href: '/hire', label: 'Hire' },
   { href: '/technologies', label: 'Technology' },
-  { href: '/about', label: 'Company' },
+  { href: '/company', label: 'Company' },
 ];
 
 export const tech = {
@@ -96,7 +96,7 @@ export const serviceList = [
   { n: '05', name: 'CRM & ERP', tag: 'Implementation, customisation, integration', stage: 3, href: '/crm-erp' },
   { n: '06', name: 'Cloud & infrastructure', tag: 'AWS, Azure, GCP, Kubernetes, IaC', stage: 4, href: '/cloud-infrastructure' },
   { n: '07', name: 'UI/UX & product design', tag: 'Research, flows, interface systems', stage: 1, href: '/design' },
-  { n: '08', name: 'QA & test automation', tag: 'Coverage, performance, security, gates', stage: 2, href: '/qa-testing' },
+  { n: '08', name: 'QA & test automation', tag: 'Coverage, performance, security, gates', stage: 2, href: '/qa-and-testing' },
   { n: '09', name: 'Data & analytics', tag: 'Pipelines, warehousing, BI, reporting', stage: 3, href: '/data-analytics' },
   { n: '10', name: 'Blockchain & Web3', tag: 'Contracts, wallets, audits, tokens', stage: 0, href: '/blockchain' },
   { n: '11', name: 'Managed IT & support', tag: 'Monitoring, helpdesk, incident response', stage: 4, href: '/managed-it' },
@@ -105,12 +105,12 @@ export const serviceList = [
 ];
 
 export const featuredWork = [
-  { n: '01', name: 'Skydo', sector: 'Fintech', body: 'Cross-border payments for exporters. App, web and admin built around a ledger that has to reconcile to the cent.', img: '/img/cs/skydo/Skydo1.png', url: '/case-study/skydo', stack: ['React', 'Node', 'AWS'] },
-  { n: '02', name: 'Eka Care', sector: 'Healthcare', body: 'Patient records and telemedicine at national scale, with the consent and audit model the category demands.', img: '/img/cs/eka.care/eka.care2.png', url: '/case-study/ekacare', stack: ['Flutter', 'Python', 'Azure'] },
-  { n: '03', name: 'Snitch', sector: 'E-commerce', body: 'Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.', img: '/img/cs/snitch/snitch1.png', url: '/case-study/snitch', stack: ['Next.js', 'Postgres', 'Redis'] },
-  { n: '04', name: 'Graphy', sector: 'Edtech', body: 'Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.', img: '/img/cs/graphy/graphy1.png', url: '/case-study/graphy', stack: ['React', 'Node', 'GCP'] },
-  { n: '05', name: 'MILKRUN', sector: 'Quick commerce', body: 'Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.', img: '/img/cs/milkrun/milkrun1.png', url: '/case-study/milkrun', stack: ['React Native', 'Kubernetes', 'Maps'] },
-  { n: '06', name: 'Airwallex', sector: 'Fintech', body: 'Global business accounts and FX. Interfaces and services for money moving across borders.', img: '/img/cs/airwallex/AirWallex4.png', url: '/case-study/airwallex', stack: ['TypeScript', 'Java', 'AWS'] },
+  { n: '01', name: 'Skydo', sector: 'Fintech', body: 'Cross-border payments for exporters. App, web and admin built around a ledger that has to reconcile to the cent.', img: '/img/cs/skydo/Skydo1.png', url: '/work/skydo', stack: ['React', 'Node', 'AWS'] },
+  { n: '02', name: 'Eka Care', sector: 'Healthcare', body: 'Patient records and telemedicine at national scale, with the consent and audit model the category demands.', img: '/img/cs/eka.care/eka.care2.png', url: '/work/ekacare', stack: ['Flutter', 'Python', 'Azure'] },
+  { n: '03', name: 'Snitch', sector: 'E-commerce', body: 'Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.', img: '/img/cs/snitch/snitch1.png', url: '/work/snitch', stack: ['Next.js', 'Postgres', 'Redis'] },
+  { n: '04', name: 'Graphy', sector: 'Edtech', body: 'Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.', img: '/img/cs/graphy/graphy1.png', url: '/work/graphy', stack: ['React', 'Node', 'GCP'] },
+  { n: '05', name: 'MILKRUN', sector: 'Quick commerce', body: 'Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.', img: '/img/cs/milkrun/milkrun1.png', url: '/work/milkrun', stack: ['React Native', 'Kubernetes', 'Maps'] },
+  { n: '06', name: 'Airwallex', sector: 'Fintech', body: 'Global business accounts and FX. Interfaces and services for money moving across borders.', img: '/img/cs/airwallex/AirWallex4.png', url: '/work/airwallex', stack: ['TypeScript', 'Java', 'AWS'] },
 ];
 
 export const stats = [

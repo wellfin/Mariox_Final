@@ -107,56 +107,32 @@ export default function LeadForm({
     setNote('');
     setState('sending');
 
-    const lines = [
-      message || (hero ? 'Estimate request from the landing page.' : 'Architect review request.'),
-      picked.needs.length ? '\nNeeds: ' + picked.needs.join(', ') : '',
-      picked.budget ? '\nBudget: ' + picked.budget : '',
-      picked.timeline ? '\nTimeline: ' + picked.timeline : '',
-      values.company.trim() ? '\nCompany: ' + values.company.trim() : '',
-      '\nSource: ' + (hero ? 'landing-hero' : 'landing-architect'),
-    ].join('');
-
     const mobile = national ? `${phone.dialCode}-${national}` : '';
+    // The message carries only what they wrote; what they picked travels as its
+    // own field, so the notification email can show each in its own row.
     const payload = {
       name,
       email,
       mobile,
-      message: lines,
+      message: message || (hero ? 'Estimate request from the landing page.' : 'Architect review request.'),
+      budget: picked.budget,
+      timeline: picked.timeline,
+      source: hero ? 'landing-hero' : 'landing-architect',
+      subject: values.company.trim() ? `Company: ${values.company.trim()}` : '',
       company: values.hp, // honeypot, same field name the API checks
       pageUrl: typeof window !== 'undefined' ? window.location.href : '',
       services: Object.fromEntries(picked.needs.map((n) => [n, true])),
     };
 
     try {
-      const requests = [
-        fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) }),
-      ];
-      const inquiriesApi = process.env.NEXT_PUBLIC_BASE_INQUIRES_API_URL;
-      if (inquiriesApi) {
-        requests.push(
-          fetch(`${inquiriesApi}/user/inquires`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              fullName: name,
-              email,
-              phoneNumber: mobile,
-              slug: payload.pageUrl,
-              city: '',
-              service: picked.needs.join(', '),
-              message: lines,
-            }),
-          })
-        );
-      }
-      const results = await Promise.allSettled(requests);
-      const mailed = results[0].status === 'fulfilled' && results[0].value.ok;
-      // The enquiry also goes to the CRM, but the email is what decides success:
-      // if the CRM is unreachable we still have the lead, so don't make the
-      // visitor send it again.
-      if (results[1] && !(results[1].status === 'fulfilled' && results[1].value.ok)) {
-        console.error('Inquiry API failed', results[1]);
-      }
+      // /api/contact mails the team, acknowledges the sender and forwards the
+      // lead to the CRM server-side, so this is the only call the page makes.
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const mailed = res.ok;
       if (mailed) {
         if (typeof window !== 'undefined' && window.gtag) {
           window.gtag('event', 'generate_lead', { form: hero ? 'hero' : 'architect', budget: picked.budget });
@@ -164,9 +140,11 @@ export default function LeadForm({
         }
         setState('sent');
       } else {
-        console.error('Contact API failed', results[0]);
-        const limited = results[0].status === 'fulfilled' && results[0].value.status === 429;
-        setNote(limited ? 'Too many requests. Please try again later.' : 'Something went wrong. Please try again or call us.');
+        console.error('Contact API failed', res.status);
+        const limited = res.status === 429;
+        setNote(limited
+          ? 'Too many requests. Please try again in a few minutes.'
+          : 'We could not send that. Please email admin@marioxsoftware.com or call +91 95992 87045.');
         setState('idle');
       }
     } catch (err) {

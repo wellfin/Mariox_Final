@@ -4,10 +4,11 @@ import El from '@/components/El';
 import MarketingLanding from '@/components/MarketingLanding';
 import { A, ServiceRows } from '@/components/ui';
 import { groupRows } from '@/data/growthServices';
-import { apps, cases, faq, heroNeeds, heroBudgets } from '@/data/enterpriseLanding';
+import { apps, cases, faq, heroNeeds, heroBudgets, appIncluded, appPlatforms } from '@/data/enterpriseLanding';
 
-// "Mariox Enterprise Landing" design, with the App Demos animation in the
-// models panel and the app-development service links kept for internal linking.
+// The design's app-development landing (`landing-app-development`), with the
+// App Demos animation in the models panel and the app service links kept for
+// internal linking.
 const MONO = "font-family:'JetBrains Mono',monospace";
 
 export default function AppDevelopment({ rows }) {
@@ -24,14 +25,21 @@ export default function AppDevelopment({ rows }) {
       key={start}
       startApp={start}
       seo={{
-        title: 'Custom Software & App Development Company — Mariox Software',
-        description: 'The engineering team behind products for Airwallex, Kogan, Zeller, HotDoc and Lunar. Talk to a solution architect about your next platform.',
+        title: 'Mobile App Development Company — iOS, Android & Flutter Apps | Mariox Software',
+        description: 'Mobile app development company for iOS, Android, Flutter and React Native apps. 300+ products shipped by 100+ senior engineers. Free estimate in one business day.',
       }}
-      eyebrow={<>Trusted by Airwallex, Zeller, Kogan &amp; HotDoc</>}
-      h1={<>Custom Software &amp; App Development Company</>}
-      h1Accent="for serious products."
-      sub="Web apps, mobile apps, CRM, ERP, SaaS and AI, built by 100+ senior engineers for startups and enterprises. Get a fixed-scope estimate within one business day."
-      formTitle="Get a free project estimate"
+      eyebrow={<>App development &#183; trusted by MILKRUN, Graphy, Fampay &amp; HotDoc</>}
+      h1={<>Mobile App Development Company.</>}
+      h1Accent="Apps people open every day."
+      sub="iOS, Android, Flutter and React Native apps, from first wireframe to store release and beyond. Built by 100+ senior engineers, with a fixed-scope estimate in one business day."
+      formTitle="Get a free app estimate"
+      included={{
+        a: 'Everything an app needs',
+        b: 'to work.',
+        sub: 'The app is only the visible part. We build the backend, admin panel, payments and analytics behind it.',
+        items: appIncluded,
+        get: appPlatforms,
+      }}
       heroNeeds={heroNeeds}
       heroBudgets={heroBudgets}
       appsTitle={'Looking to build an app like…'}

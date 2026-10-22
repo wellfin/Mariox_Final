@@ -11,7 +11,7 @@ const norm = (x) => x.toLowerCase().replace(/[^a-z0-9]/g, '');
 const SLUGS = Object.keys(caseStudies).reduce((m, k) => { m[norm(k)] = k; return m; }, {});
 const caseHref = (path) => {
   const k = SLUGS[norm(String(path).split('/')[0])];
-  return k ? '/case-study/' + k : '/case-study';
+  return k ? '/work/' + k : '/work';
 };
 
 export const clients = ['Airwallex', 'Zeller', 'Kogan', 'HotDoc', 'Fynd', 'Graphy', 'Testbook', 'Teachmint', 'Learnosity', 'Eka Care', 'Skydo', 'Lunar', 'Snitch', 'OnBuy', 'StockGro', 'MILKRUN'];

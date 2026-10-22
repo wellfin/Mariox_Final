@@ -16,9 +16,9 @@ export const apps = [
 ];
 
 export const cases = [
-  { name: 'Airwallex', sector: 'Fintech', region: 'Global', scope: 'App + web', img: '/img/cs/airwallex/AirWallex4.png', url: '/case-study/airwallex', body: 'Cross-border payments where the ledger must balance to the cent across providers, currencies and retries.' },
-  { name: 'Kogan', sector: 'Marketplace', region: 'Australia', scope: 'Marketplace + web + admin', img: '/img/cs/kogan/kogan2.png', url: '/case-study/kogan', body: 'A large third-party seller base, where catalogue quality and seller tooling decide whether the marketplace scales.' },
-  { name: 'HotDoc', sector: 'Healthcare', region: 'Australia', scope: 'App + web + provider platform', img: '/img/cs/hotdoc/hotdoc1.png', url: '/case-study/hotdoc', body: 'Booking and practice management where the provider side decides whether the patient side works at all.' },
+  { name: 'Airwallex', sector: 'Fintech', region: 'Global', scope: 'App + web', img: '/img/cs/airwallex/AirWallex4.png', url: '/work/airwallex', body: 'Cross-border payments where the ledger must balance to the cent across providers, currencies and retries.' },
+  { name: 'Kogan', sector: 'Marketplace', region: 'Australia', scope: 'Marketplace + web + admin', img: '/img/cs/kogan/kogan2.png', url: '/work/kogan', body: 'A large third-party seller base, where catalogue quality and seller tooling decide whether the marketplace scales.' },
+  { name: 'HotDoc', sector: 'Healthcare', region: 'Australia', scope: 'App + web + provider platform', img: '/img/cs/hotdoc/hotdoc1.png', url: '/work/hotdoc', body: 'Booking and practice management where the provider side decides whether the patient side works at all.' },
 ];
 
 export const faq = [
@@ -30,3 +30,21 @@ export const faq = [
 
 export const heroNeeds = ['Mobile app', 'Web app', 'CRM / ERP', 'SaaS', 'AI', 'Dedicated team'];
 export const heroBudgets = ['Under $25k', '$25k–$75k', '$75k–$150k', '$150k+', 'Not sure'];
+
+// Copy from the final folder's `landing-app-development` variant of this design:
+// the same page, written for the mobile-app campaign.
+export const appIncluded = [
+  { n: '01', t: 'Native-feel UI', b: 'Interfaces designed for each platform, tested on real devices.' },
+  { n: '02', t: 'Backend & APIs', b: 'The services, database and auth the app depends on.' },
+  { n: '03', t: 'Admin panel', b: 'Users, orders, content and support tools for your team.' },
+  { n: '04', t: 'Payments', b: 'UPI, cards, wallets and subscriptions, reconciled.' },
+  { n: '05', t: 'Push & analytics', b: 'Notifications, events and funnels from day one.' },
+  { n: '06', t: 'Store release', b: 'App Store and Play Store submission, then updates.' },
+];
+
+export const appPlatforms = [
+  { n: 'iOS', t: 'Swift / SwiftUI', b: 'For products where iPhone experience matters most.' },
+  { n: 'Android', t: 'Kotlin', b: 'For device features and the widest reach in India.' },
+  { n: 'Cross-platform', t: 'Flutter / React Native', b: 'One codebase, both stores, faster to market.' },
+  { n: 'After launch', t: 'Support & iteration', b: 'Crash monitoring, OS updates and new releases.' },
+];

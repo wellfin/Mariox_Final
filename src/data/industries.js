@@ -1,5 +1,5 @@
 // Industry pages, ported verbatim from the Mariox Software Site design.
-const cs = (name, slug, img, body) => ({ name, slug, url: '/case-study/' + slug, img: '/' + img, body });
+const cs = (name, slug, img, body) => ({ name, slug, url: '/work/' + slug, img: '/' + img, body });
 
 export const industries = [
   { slug:'healthcare', name:'Healthcare', stage:0,

@@ -72,42 +72,18 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
       return;
     }
     setStatus({ state: 'sending', note: 'Sending your enquiry…' });
-    const data = { ...values, pageUrl: pageUrl || window.location.href };
+    const data = { ...values, source: 'contact', pageUrl: pageUrl || window.location.href };
 
     try {
-      const requests = [
-        fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        }),
-      ];
-      const inquiriesApi = process.env.NEXT_PUBLIC_BASE_INQUIRES_API_URL;
-      if (inquiriesApi) {
-        requests.push(
-          fetch(`${inquiriesApi}/user/inquires`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              fullName: data.name,
-              email: data.email,
-              phoneNumber: data.mobile,
-              slug: data.pageUrl,
-              city: cityName,
-              service: '',
-              message: data.message,
-            }),
-          })
-        );
-      }
+      // /api/contact mails the team, acknowledges the sender and forwards the
+      // lead to the CRM server-side, so this is the only call the page makes.
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-      const results = await Promise.allSettled(requests);
-      const ok = results.map((r) => r.status === 'fulfilled' && r.value.ok);
-      // The email is what decides success. The enquiries backend is best-effort,
-      // so an outage there never costs us the lead or makes people resend.
-      if (results[1] && !ok[1]) console.error('Inquiry API failed', results[1]);
-
-      if (ok[0]) {
+      if (res.ok) {
         setStatus({ state: 'sent', note: 'Your message has been sent successfully!' });
         if (typeof window !== 'undefined' && window.gtag) {
           window.gtag('event', 'conversion', { send_to: 'AW-11065360955/7n7CCLmx7-IZELuEsJwp' });
@@ -115,8 +91,8 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
         setValues(empty());
         setErrors({});
       } else {
-        console.error('Contact API failed', results[0]);
-        const rateLimited = results[0].status === 'fulfilled' && results[0].value.status === 429;
+        console.error('Contact API failed', res.status);
+        const rateLimited = res.status === 429;
         setStatus({
           state: 'error',
           note: rateLimited ? 'Too many requests. Please try again later.' : 'One or more requests failed. Please try again.',

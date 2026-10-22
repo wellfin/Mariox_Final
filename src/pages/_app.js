@@ -19,7 +19,7 @@ export default function MarioxWebsite({ Component, pageProps }) {
       </Head>
       {/* Pages marked `bare` (the v4 home page) ship their own header,
           footer, cursor and canvas, so the site chrome is skipped. */}
-      {Component.bare ? (
+      {Component.bare || pageProps.bare ? (
         <Component {...pageProps} />
       ) : (
         <Layout>

@@ -2,12 +2,15 @@ import React from 'react';
 import ServiceCityPage from '@/components/ServiceCityPage';
 import TopCompanies from '@/components/TopCompanies';
 import ServicePage from '@/components/ServicePage';
+import ServiceDetail, { serviceProps } from '@/components/final/ServiceDetail';
 import { localServiceAt, servicePageProps } from '@/data/growthServices';
 
-// Service pages from src/data (e.g. /web-development), then SEO landing pages
-// (e.g. /android-app-development-company-in-noida) served by the content API,
-// exactly as on the live site: unknown slugs or API failures go home.
-export default function DynamicPage({ svc, rows, parent, pageDetails, serviceCity }) {
+// Every root-level slug: first the 72 design service pages (e.g. /crm-development),
+// then the older service pages from src/data (e.g. /web-development), then the SEO
+// landing pages served by the content API, exactly as on the live site. Unknown
+// slugs or API failures go home.
+export default function DynamicPage({ service, svc, rows, parent, pageDetails, serviceCity }) {
+  if (service) return <ServiceDetail {...service} />;
   if (svc) return <ServicePage svc={svc} rows={rows} parent={parent} />;
   const data = (pageDetails && pageDetails.data) || {};
   if (data.isTopCity === true) {
@@ -18,8 +21,16 @@ export default function DynamicPage({ svc, rows, parent, pageDetails, serviceCit
 
 const home = { redirect: { destination: '/', permanent: false } };
 
-export async function getServerSideProps({ params }) {
+export async function getServerSideProps({ params, res }) {
   const { serviceCity } = params;
+
+  // The design's service pages live at the root, so they are matched first.
+  const service = serviceCity && serviceProps(serviceCity);
+  if (service) {
+    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
+    return { props: { service, bare: true } };
+  }
+
   const local = serviceCity && localServiceAt(serviceCity);
   if (local) return servicePageProps(local.slug);
   if (!serviceCity || serviceCity.trim() === '' || !process.env.NEXT_PUBLIC_BASE_API_URL) return home;

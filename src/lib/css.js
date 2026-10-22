@@ -71,18 +71,39 @@ export const HOVERS = [
   'color:#08070A;background:#F4F1EA',
 ];
 
+// Hover values a newer design introduces get a deterministic hashed class
+// instead of a build error: the rule ships with the rest from the server and is
+// injected once in the browser for client-side navigation.
+const extra = new Map();
+
+function hash(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0).toString(36);
+}
+
+function rule(cls, str) {
+  const body = split(str).filter(Boolean).map((d) => d.trim() + ' !important').join(';');
+  return '.' + cls + ':hover{' + body + '}';
+}
+
 export function hoverClass(str) {
   const i = HOVERS.indexOf(str);
-  if (i < 0) throw new Error('Unknown hover style: ' + str);
-  return 'mxh' + i;
+  if (i >= 0) return 'mxh' + i;
+  const cls = 'mxx' + hash(str);
+  if (!extra.has(cls)) {
+    extra.set(cls, str);
+    if (typeof document !== 'undefined') {
+      let tag = document.getElementById('mx-hover-extra');
+      if (!tag) { tag = document.createElement('style'); tag.id = 'mx-hover-extra'; document.head.appendChild(tag); }
+      tag.appendChild(document.createTextNode(rule(cls, str)));
+    }
+  }
+  return cls;
 }
 
 export function hoverCss() {
-  return HOVERS.map((h, i) => {
-    const body = split(h)
-      .filter(Boolean)
-      .map((d) => d.trim() + ' !important')
-      .join(';');
-    return '.mxh' + i + ':hover{' + body + '}';
-  }).join('\n');
+  return HOVERS.map((h, i) => rule('mxh' + i, h))
+    .concat(Array.from(extra, ([cls, str]) => rule(cls, str)))
+    .join('\n');
 }

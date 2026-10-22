@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import El from '../El';
 import HomeLeadForm from './HomeLeadForm';
+import Nav from '../final/Nav';
+import { cats as svcCats, services as allServices } from '@/data/final/services';
 import {
   chapters, navLinks, clients, words, stats, stack, caseRows, filterNames,
   pillars, services, ai, aiStack, techTabs, industries, steps, engage, trust, faq, footerCols,
@@ -21,6 +23,13 @@ const LEAD = 'margin:0;max-width:42ch;font-size:16.5px;line-height:1.55;color:#B
 // Italic serif fragment inside a heading.
 const Em = ({ children }) => <El as="em" css={`${SERIF};font-weight:400;letter-spacing:-.03em`}>{children}</El>;
 
+// Short labels for the seven service disciplines in the home tab strip.
+const CAT_TAB = {
+  'product-engineering': 'Product', 'ai-data': 'AI & data', 'emerging-tech': 'Blockchain & emerging',
+  'business-software': 'Business software', 'digital-transformation': 'Transformation',
+  consulting: 'Consulting', 'teams-managed': 'Teams',
+};
+
 export default function HomeV4() {
   const root = useRef(null);
   const loader = useRef(null);
@@ -31,7 +40,6 @@ export default function HomeV4() {
   const curLabel = useRef(null);
   const follow = useRef(null);
   const rail = useRef(null);
-  const nav = useRef(null);
   const statement = useRef(null);
   const processRef = useRef(null);
   const ptrackWrap = useRef(null);
@@ -46,11 +54,13 @@ export default function HomeV4() {
   const [railOn, setRailOn] = useState(false);
   const [menu, setMenu] = useState(false);
   const [svc, setSvc] = useState(0);
+  const [svcCat, setSvcCat] = useState('product-engineering');
   const [filter, setFilter] = useState('All');
   const [tech, setTech] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
 
-  const activeService = services[svc] || services[0];
+  const catServices = allServices.filter((x) => x.cat === svcCat);
+  const activeService = catServices[svc] || catServices[0] || allServices[0];
   const rows = caseRows.filter((c) => filter === 'All' || c.group === filter);
 
   // Image that follows the cursor on work rows and service pillars.
@@ -80,18 +90,6 @@ export default function HomeV4() {
     };
     window.addEventListener('mousemove', onMove, { passive: true });
 
-    const onScroll = () => {
-      const n = nav.current;
-      if (!n) return;
-      const s = window.scrollY > 40;
-      n.style.paddingTop = n.style.paddingBottom = s ? '14px' : '24px';
-      n.style.background = s ? 'rgba(8,7,10,.86)' : 'rgba(8,7,10,0)';
-      n.style.backdropFilter = n.style.webkitBackdropFilter = s ? 'blur(14px)' : 'none';
-      n.style.borderBottomColor = s ? 'rgba(244,241,234,.1)' : 'rgba(244,241,234,0)';
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
     // Custom cursor + follow image
     const coarse = window.matchMedia('(pointer: coarse)').matches;
     if (cur.current && coarse) cur.current.style.display = 'none';
@@ -118,7 +116,15 @@ export default function HomeV4() {
       if (!L || k.loaderGone) return;
       k.loaderGone = true;
       if (force || !window.gsap) { L.style.display = 'none'; k.assemble = 1; return; }
-      window.gsap.to(L, { yPercent: -100, duration: 1.05, ease: 'expo.inOut', onComplete: () => { L.style.display = 'none'; } });
+      const g = window.gsap;
+      const top = L.querySelector('[data-lp="top"]'), bot = L.querySelector('[data-lp="bot"]'), c = L.querySelector('[data-lc]');
+      g.timeline({ onComplete: () => { L.style.display = 'none'; } })
+        .to(L.querySelectorAll('[data-ll]'), { yPercent: -110, duration: 0.55, ease: 'expo.in', stagger: 0.03 }, 0)
+        .to(L.querySelectorAll('[data-lw]'), { opacity: 0, duration: 0.3 }, 0)
+        .to(loaderSq.current, { scale: 0, rotate: 90, duration: 0.5, ease: 'expo.in' }, 0.1)
+        .to(c, { opacity: 0, duration: 0.2 }, 0.5)
+        .to(top, { yPercent: -100, duration: 1, ease: 'expo.inOut' }, 0.5)
+        .to(bot, { yPercent: 100, duration: 1, ease: 'expo.inOut' }, 0.5);
     };
     const loaderFallback = setTimeout(() => hideLoader(true), 4000);
 
@@ -148,13 +154,15 @@ export default function HomeV4() {
       }
 
       ctx = g.context(() => {
-        const num = loaderNum.current, sq = loaderSq.current, o = { v: 0 };
+        const num = loaderNum.current, sq = loaderSq.current;
         if (reduce) {
           hideLoader(true);
         } else {
           g.timeline()
-            .to(o, { v: 100, duration: 1.3, ease: 'power2.inOut', onUpdate: () => { if (num) num.textContent = Math.round(o.v); } }, 0)
-            .fromTo(sq, { scale: 0.2 }, { scale: 1, duration: 1.3, ease: 'power2.inOut' }, 0)
+            .fromTo(sq, { scale: 0, rotate: -90 }, { scale: 1, rotate: 0, duration: 0.8, ease: 'expo.out' }, 0)
+            .from(q('[data-ll]'), { yPercent: 110, duration: 0.9, ease: 'expo.out', stagger: 0.055 }, 0.12)
+            .fromTo(num, { scaleX: 0 }, { scaleX: 1, duration: 1.15, ease: 'power2.inOut' }, 0.2)
+            .from(q('[data-lw]'), { opacity: 0, y: 8, duration: 0.45, ease: 'power2.out', stagger: 0.07 }, 0.4)
             .add(() => { hideLoader(false); g.to(k, { assemble: 1, duration: 2.6, ease: 'expo.out' }); }, 1.35)
             .from(q('[data-line]'), { yPercent: 115, duration: 1.5, ease: 'expo.out', stagger: 0.1 }, 1.65)
             .from(q('[data-hf]'), { opacity: 0, y: 18, duration: 1.2, ease: 'expo.out', stagger: 0.08 }, 2.1);
@@ -324,7 +332,6 @@ export default function HomeV4() {
       cancelAnimationFrame(rafC);
       cancelAnimationFrame(raf3);
       window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('scroll', onScroll);
       if (onResize3) window.removeEventListener('resize', onResize3);
       mqNarrow.removeEventListener('change', onMq);
       mqRail.removeEventListener('change', onMq);
@@ -341,28 +348,35 @@ export default function HomeV4() {
   return (
     <El ref={root} css="position:relative;background:#08070A;color:#F4F1EA;font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;overflow-x:clip">
 
-      {/* Loader */}
-      <El ref={loader} aria-hidden="true" css={`position:fixed;inset:0;z-index:100;background:#08070A;display:flex;flex-direction:column;justify-content:space-between;padding:${PAD_X}`}>
-        <El css={`display:flex;justify-content:space-between;${MONO};font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#8E8A85`}><span>Mariox Software</span><span>Est. engineering partner</span></El>
-        <El css="display:flex;align-items:flex-end;justify-content:space-between;gap:20px">
-          <El ref={loaderSq} css="width:clamp(56px,7vw,110px);height:clamp(56px,7vw,110px);background:#F04423;transform-origin:0 100%" />
-          <El ref={loaderNum} css="font-size:clamp(5rem,16vw,16rem);font-weight:300;letter-spacing:-.07em;line-height:.8">0</El>
+      {/* Loader: the panels split apart once the wordmark has drawn itself */}
+      <El ref={loader} aria-hidden="true" css="position:fixed;inset:0;z-index:100;pointer-events:none">
+        <El data-lp="top" css="position:absolute;left:0;right:0;top:0;height:50.2%;background:#08070A;pointer-events:auto" />
+        <El data-lp="bot" css="position:absolute;left:0;right:0;bottom:0;height:50.2%;background:#08070A;pointer-events:auto" />
+        <El data-lc="1" css={`position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(18px,2.4vw,30px);padding:${PAD_X}`}>
+          <El css="display:flex;align-items:center;gap:clamp(14px,1.8vw,26px)">
+            <El ref={loaderSq} css="width:clamp(44px,5.4vw,84px);height:clamp(44px,5.4vw,84px);background:#F04423;flex-shrink:0" />
+            <El css="display:flex;font-size:clamp(3.4rem,10vw,9.5rem);font-weight:500;letter-spacing:-.07em;line-height:.85;color:#F4F1EA">
+              {'MARIOX'.split('').map((ch, i) => (
+                <El as="span" key={ch + i} css="display:inline-block;overflow:hidden;padding-bottom:.04em">
+                  <El as="span" data-ll="1" css="display:inline-block">{ch}</El>
+                </El>
+              ))}
+            </El>
+          </El>
+          <El css="width:min(560px,78vw);height:1px;background:rgba(244,241,234,.14);overflow:hidden">
+            <El ref={loaderNum} css="height:100%;background:#F04423;transform:scaleX(0);transform-origin:left" />
+          </El>
+          <El css={`display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;${MONO};font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8E8A85`}>
+            <El as="span" data-lw="1">Strategy</El><El as="span" data-lw="1" css="color:#3A3740">/</El>
+            <El as="span" data-lw="1">Design</El><El as="span" data-lw="1" css="color:#3A3740">/</El>
+            <El as="span" data-lw="1">Engineering</El><El as="span" data-lw="1" css="color:#3A3740">/</El>
+            <El as="span" data-lw="1" css="color:#F04423">Scale</El>
+          </El>
+          <El css={`position:absolute;left:${PAD_X};right:${PAD_X};bottom:clamp(18px,3vw,40px);display:flex;justify-content:space-between;gap:16px;${MONO};font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8E8A85`}>
+            <El as="span" data-lw="1">Mariox Software</El><El as="span" data-lw="1">Since 2016 &#183; 100+ engineers</El>
+          </El>
         </El>
       </El>
-
-      {/* Mobile menu */}
-      {narrow && menu ? (
-        <El css="position:fixed;inset:0;z-index:80;background:#08070A;display:flex;flex-direction:column;padding:96px 22px 32px">
-          <El as="nav" aria-label="Mobile" css="display:flex;flex-direction:column;border-top:1px solid rgba(244,241,234,.14)">
-            {chapters.map((n) => (
-              <El as="a" key={n.id} href={n.href} onClick={() => setMenu(false)} css="display:flex;align-items:baseline;justify-content:space-between;padding:18px 0;border-bottom:1px solid rgba(244,241,234,.14);font-size:clamp(2rem,9vw,3rem);font-weight:500;letter-spacing:-.05em">
-                <span>{n.label}</span><El as="span" css={`${MONO};font-size:12px;color:#8E8A85`}>{n.n}</El>
-              </El>
-            ))}
-          </El>
-          <El as="a" href="#contact" onClick={() => setMenu(false)} css="margin-top:auto;display:flex;justify-content:space-between;align-items:center;background:#F04423;color:#08070A;padding:20px 22px;border-radius:999px;font-size:16px;font-weight:500">Start a project <span>&#8594;</span></El>
-        </El>
-      ) : null}
 
       <El as="canvas" ref={canvas} aria-hidden="true" css="position:fixed;inset:0;width:100vw;height:100vh;z-index:0;display:block;pointer-events:none;background:radial-gradient(55% 55% at 62% 50%,#191613 0%,#08070A 72%)" />
 
@@ -382,29 +396,12 @@ export default function HomeV4() {
         ))}
       </El>
 
-      {/* Header */}
-      <El as="header" ref={nav} // The menu overlay sits at z-80; the header goes above it while open so the
-      // close button stays tappable.
-      css={`position:fixed;top:0;left:0;right:0;z-index:${menu ? 85 : 70};display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px ${PAD_X};border-bottom:1px solid rgba(244,241,234,0);transition:padding .45s cubic-bezier(.2,.8,.2,1),background .45s,border-color .45s`}>
-        <El as="a" href="#top" aria-label="Mariox Software home" css="display:flex;align-items:center;gap:11px;color:#F4F1EA">
-          <El as="span" css="width:18px;height:18px;background:#F04423" />
-          <El as="span" css="font-size:17px;font-weight:600;letter-spacing:-.04em">MARIOX</El>
-          <El as="span" css={`${MONO};font-size:10.5px;letter-spacing:.14em;color:#8E8A85;text-transform:uppercase`}>Software</El>
-        </El>
-        {!narrow ? (
-          <El css="display:flex;align-items:center;gap:clamp(18px,2.4vw,36px)">
-            {navLinks.map((n) => <El as="a" key={n.href} href={n.href} css="font-size:14px;color:#D9D5CD">{n.label}</El>)}
-            <El as="a" href="#contact" data-cursor="Start" css="display:flex;align-items:center;gap:10px;background:#F4F1EA;color:#08070A;padding:12px 18px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap;transition:background .3s" hover="background:#F04423;color:#08070A">Start a project <span>&#8594;</span></El>
-          </El>
-        ) : (
-          <El as="button" type="button" onClick={() => setMenu((m) => !m)} css={`background:transparent;border:1px solid rgba(244,241,234,.3);color:#F4F1EA;border-radius:999px;padding:11px 18px;min-height:44px;${MONO};font-size:12px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer`}>{menu ? 'Close' : 'Menu'}</El>
-        )}
-      </El>
+      <Nav active="home" ctaHref="#contact" ctaLabel="Start a project" />
 
-      <El as="main" id="top" css="position:relative;z-index:1">
+      <El as="main" id="top" css="position:relative;z-index:1;padding-top:74px">
 
         {/* 01 Hero */}
-        <El as="section" css={`position:relative;min-height:100svh;display:grid;grid-template-rows:1fr auto;padding:130px ${PAD_X} clamp(24px,3vw,40px)`}>
+        <El as="section" css={`position:relative;min-height:calc(100svh - 74px);display:grid;grid-template-rows:1fr auto;padding:clamp(56px,7vw,110px) ${PAD_X} clamp(24px,3vw,40px)`}>
           <El aria-hidden="true" css="position:absolute;left:0;right:0;bottom:0;height:46%;background:linear-gradient(to top,#08070A 12%,rgba(8,7,10,0));pointer-events:none" />
           <El css="position:relative;align-self:end">
             <El data-hf="1" css="display:flex;align-items:center;gap:12px;margin-bottom:clamp(18px,2.4vw,30px)">
@@ -537,7 +534,7 @@ export default function HomeV4() {
                 </El>
               ))}
             </El>
-            <El as={Link} href="/case-study" css="display:inline-flex;align-items:center;gap:12px;margin-top:28px;border-bottom:1px solid #F04423;padding-bottom:6px;font-size:15px">Open the full archive <span>&#8594;</span></El>
+            <El as={Link} href="/work" css="display:inline-flex;align-items:center;gap:12px;margin-top:28px;border-bottom:1px solid #F04423;padding-bottom:6px;font-size:15px">Open the full archive <span>&#8594;</span></El>
           </El>
         </El>
 
@@ -569,16 +566,27 @@ export default function HomeV4() {
 
           <El css="margin-top:clamp(64px,8vw,130px)">
             <El css="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(22px,2.6vw,34px)">
-              <El as="h3" data-rv="1" css="margin:0;font-size:clamp(1.8rem,3.4vw,3.2rem);letter-spacing:-.055em;font-weight:500">Seventeen services. <Em>Pick one, or all.</Em></El>
+              <El as="h3" data-rv="1" css="margin:0;font-size:clamp(1.8rem,3.4vw,3.2rem);letter-spacing:-.055em;font-weight:500">{allServices.length} software services. <Em>Pick one, or all.</Em></El>
               <El as="span" css={`${MONO};font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A55`}>Hover to explore</El>
             </El>
             <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,4vw,72px);align-items:start">
               <El css="border-top:1px solid rgba(8,7,10,.18)">
-                {services.map((s, i) => {
+                <El css="display:flex;flex-wrap:wrap;gap:6px;padding:14px 0;border-bottom:1px solid rgba(8,7,10,.18)">
+                  {svcCats.map((c) => {
+                    const on = svcCat === c.id;
+                    const count = allServices.filter((x) => x.cat === c.id).length;
+                    return (
+                      <El as="button" type="button" key={c.id} onClick={() => { setSvcCat(c.id); setSvc(0); }} css={`cursor:pointer;min-height:38px;white-space:nowrap;border-radius:999px;padding:7px 14px;border:1px solid ${on ? '#08070A' : 'rgba(8,7,10,.25)'};background:${on ? '#08070A' : 'transparent'};color:${on ? '#F4F1EA' : '#08070A'};font-family:Geist,sans-serif;font-size:13px;transition:all .25s`}>
+                        {CAT_TAB[c.id] || c.name} <El as="span" css="opacity:.6;margin-left:3px">{count}</El>
+                      </El>
+                    );
+                  })}
+                </El>
+                {catServices.map((s, i) => {
                   const on = i === svc;
                   return (
-                    <El as="button" type="button" key={s.name} onMouseEnter={() => setSvc(i)} onFocus={() => setSvc(i)} onClick={() => setSvc(i)} css={`width:100%;background:transparent;border:0;border-bottom:1px solid rgba(8,7,10,.14);padding:clamp(12px,1.3vw,16px) 0;cursor:pointer;display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:baseline;text-align:left;color:${on ? '#F04423' : '#08070A'};font-family:Geist,sans-serif;transition:color .25s,padding-left .4s cubic-bezier(.2,.8,.2,1);padding-left:${on ? '12px' : '0px'}`}>
-                      <El as="span" css={`${MONO};font-size:11px;color:#5E5A55`}>{s.n}</El>
+                    <El as={Link} key={s.slug} href={`/${s.slug}`} data-cursor="Open" onMouseEnter={() => setSvc(i)} onFocus={() => setSvc(i)} css={`width:100%;background:transparent;border:0;border-bottom:1px solid rgba(8,7,10,.14);padding:clamp(12px,1.3vw,16px) 0;cursor:pointer;display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:baseline;text-align:left;color:${on ? '#F04423' : '#08070A'};font-family:Geist,sans-serif;transition:color .25s,padding-left .4s cubic-bezier(.2,.8,.2,1);padding-left:${on ? '12px' : '0px'}`}>
+                      <El as="span" css={`${MONO};font-size:11px;color:#5E5A55`}>{String(i + 1).padStart(2, '0')}</El>
                       <El as="span" css="font-size:clamp(1.1rem,1.8vw,1.6rem);font-weight:500;letter-spacing:-.04em;line-height:1.05">{s.name}</El>
                       <El as="span" css={`font-size:15px;color:#F04423;opacity:${on ? 1 : 0}`}>&#8594;</El>
                     </El>
@@ -587,18 +595,21 @@ export default function HomeV4() {
               </El>
               <El css="position:sticky;top:110px;background:#08070A;color:#F4F1EA">
                 <El css="aspect-ratio:16/9;overflow:hidden;background:#141216">
-                  <El as="img" src={activeService.img} alt={activeService.alt} loading="lazy" css="width:100%;height:100%;object-fit:cover;display:block" />
+                  <El as="img" src={activeService.hero} alt={`${activeService.name} product screen`} loading="lazy" css="width:100%;height:100%;object-fit:cover;display:block" />
                 </El>
                 <El css="padding:clamp(22px,2.6vw,36px);display:flex;flex-direction:column;gap:18px">
-                  <El css={`${MONO};font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#F04423`}>Service {activeService.n}</El>
+                  <El css={`${MONO};font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#F04423`}>Service {String(svc + 1).padStart(2, '0')}</El>
                   <El as="h3" css="margin:0;font-size:clamp(1.8rem,3vw,2.8rem);line-height:.95;letter-spacing:-.055em;font-weight:500">{activeService.name}</El>
                   <El as="p" css="margin:0;font-size:16px;line-height:1.55;color:#B7B2AA">{activeService.desc}</El>
                   <El css="display:flex;flex-wrap:wrap;gap:8px">
-                    {activeService.get.map((d) => <El as="span" key={d} css="border:1px solid rgba(244,241,234,.22);border-radius:999px;padding:7px 13px;font-size:13.5px;color:#D9D5CD">{d}</El>)}
+                    {activeService.offers.slice(0, 3).map((o) => <El as="span" key={o.t} css="border:1px solid rgba(244,241,234,.22);border-radius:999px;padding:7px 13px;font-size:13.5px;color:#D9D5CD">{o.t}</El>)}
                   </El>
                   <El css="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;border-top:1px solid rgba(244,241,234,.16);padding-top:18px">
-                    <El as="span" css={`${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8E8A85`}>From our work &#183; {activeService.client}</El>
-                    <El as="a" href="#contact" data-cursor="Start" css="display:flex;align-items:center;gap:10px;background:#F04423;color:#08070A;padding:13px 18px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap">Discuss this <span>&#8594;</span></El>
+                    <El as="span" css={`${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8E8A85`}>From our work &#183; {activeService.client ? activeService.client.name : 'Mariox'}</El>
+                    <El css="display:flex;gap:8px;flex-wrap:wrap">
+                      <El as={Link} href={`/${activeService.slug}`} data-cursor="Open" css="display:flex;align-items:center;gap:10px;border:1px solid rgba(244,241,234,.3);color:#F4F1EA;padding:13px 18px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap">View service <span>&#8599;</span></El>
+                      <El as="a" href="#contact" data-cursor="Start" css="display:flex;align-items:center;gap:10px;background:#F04423;color:#08070A;padding:13px 18px;border-radius:999px;font-size:14px;font-weight:500;white-space:nowrap">Discuss this <span>&#8594;</span></El>
+                    </El>
                   </El>
                 </El>
               </El>

@@ -91,3 +91,23 @@ textarea.mx-field{resize:vertical;min-height:120px;font-size:clamp(15px,1.3vw,17
 .mx-v4-field::placeholder{color:#77736C;opacity:1}
 .mx-v4-field:-webkit-autofill,.mx-v4-field:-webkit-autofill:focus{-webkit-text-fill-color:#F4F1EA;-webkit-box-shadow:0 0 0 1000px #0E0D11 inset;caret-color:#F4F1EA;transition:background-color 9999s}
 .mx-phone-v4.react-tel-input .form-control{font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;font-size:17px;padding:9px 0 9px 58px;border-bottom-color:rgba(244,241,234,.28)}
+
+/* ---- "final-website" design pages ---- */
+@keyframes mxFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes mxFloat2{0%,100%{transform:translateY(0)}50%{transform:translateY(12px)}}
+
+/* Estimate card on ivory (hairline inputs on light ground). */
+.mx-ivory-field{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(8,7,10,.3);padding:9px 0;font-size:16px;color:#08070A;outline:none;border-radius:0;font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;transition:border-color .3s}
+.mx-ivory-field:focus{border-bottom-color:#F04423}
+.mx-ivory-field::placeholder{color:#8A857E;opacity:1}
+.mx-phone-ivory.react-tel-input .form-control{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(8,7,10,.3);border-radius:0;color:#08070A;font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;font-size:16px;padding:9px 0 9px 58px;height:auto}
+.mx-phone-ivory.react-tel-input .form-control:focus{border-bottom-color:#F04423;box-shadow:none}
+.mx-phone-ivory.react-tel-input .flag-dropdown,.mx-phone-ivory.react-tel-input .selected-flag,.mx-phone-ivory.react-tel-input .selected-flag:hover,.mx-phone-ivory.react-tel-input .flag-dropdown.open .selected-flag{background:transparent;border:0;border-radius:0}
+.mx-phone-ivory.react-tel-input .selected-flag .arrow{border-top-color:#5E5A55}
+.mx-phone-ivory.react-tel-input .country-list{background:#F4F1EA;color:#08070A;border:1px solid rgba(8,7,10,.18);border-radius:0;width:340px;max-width:calc(100vw - 48px)}
+.mx-phone-ivory.react-tel-input .country-list .country:hover,.mx-phone-ivory.react-tel-input .country-list .country.highlight{background:#F04423;color:#08070A}
+.mx-phone-ivory.react-tel-input .country-list .search{background:#F4F1EA;border-bottom:1px solid rgba(8,7,10,.14)}
+.mx-phone-ivory.react-tel-input .country-list .search-box{background:transparent;border:1px solid rgba(8,7,10,.3);color:#08070A;border-radius:0}
+@keyframes mxKen{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
+/* Work gallery cards: the orange veil rises on hover. */
+.mx-card:hover .mx-card-veil{opacity:1;transform:translateY(0)}

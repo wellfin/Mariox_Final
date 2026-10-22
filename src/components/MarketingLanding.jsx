@@ -232,7 +232,7 @@ export default function MarketingLanding({
               </El>
               <El css="display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;padding-top:18px;border-top:1px solid rgba(244,241,234,.14)">
                 {active.case ? (
-                  <A href={'/case-study/' + active.case} data-cursor="view" css={`${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9B968F;border-bottom:1px solid rgba(244,241,234,.3);padding-bottom:3px`}>{active.proof} &#8599;</A>
+                  <A href={'/work/' + active.case} data-cursor="view" css={`${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9B968F;border-bottom:1px solid rgba(244,241,234,.3);padding-bottom:3px`}>{active.proof} &#8599;</A>
                 ) : (
                   <El as="span" css={`${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9B968F`}>{active.proof}</El>
                 )}
