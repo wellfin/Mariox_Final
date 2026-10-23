@@ -5,12 +5,13 @@ import { cases } from '@/data/final/cases';
 import { aiServices } from '@/data/final/ai';
 import { industries as legacyIndustries } from '@/data/industries';
 import { growthServices } from '@/data/growthServices';
+import { posts } from '@/data/final/blog';
 
 // Sitemap for the pages this app renders. The keyword sitemaps the old site
 // shipped stay in /public and are listed from sitemap.xml; this one covers the
 // new services, industries, work, AI, hire and company pages.
 
-const STATIC = ['', '/services', '/industries', '/work', '/ai', '/hire', '/company', '/contact', '/career', '/process', '/technologies', '/terms-and-conditions', '/saas-platforms', '/app-development', '/custom-crm-development', '/erp-software-development', '/enterprise-software-development-company'];
+const STATIC = ['', '/services', '/industries', '/work', '/ai', '/hire', '/company', '/contact', '/careers', '/blog', '/process', '/technologies', '/terms-and-conditions', '/saas-platforms', '/app-development', '/custom-crm-development', '/erp-software-development', '/enterprise-software-development-company'];
 
 function urlset(paths) {
   const today = new Date().toISOString().slice(0, 10);
@@ -28,6 +29,7 @@ export async function getServerSideProps({ res }) {
     ...industries.map((i) => `/industries/${i.slug}`),
     ...cases.map((c) => `/work/${c.slug}`),
     ...aiServices.map((a) => `/ai/${a.slug}`),
+    ...posts.map((p) => `/blog/${p.slug}`),
     ...(legacyIndustries || []).map((i) => `/industries/${i.slug}`),
     ...legacy,
   ].filter((p, i, a) => a.indexOf(p) === i);

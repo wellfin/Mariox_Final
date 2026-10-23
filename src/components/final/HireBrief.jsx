@@ -57,10 +57,12 @@ export default function HireBrief({ team, bump, headcount }) {
       email,
       mobile,
       message: values.message.trim() || 'Hiring enquiry from the hire page.',
-      budget: `Seniority: ${level}`,
+      seniority: level,
+      team: roleLines,
+      companyName: values.companyName.trim(),
       timeline: dur,
       source: 'hire',
-      subject: `Team: ${roleLines}${values.companyName.trim() ? ` · Company: ${values.companyName.trim()}` : ''}`,
+      subject: '',
       company: values.hp, // honeypot
       pageUrl: typeof window !== 'undefined' ? window.location.href : '',
       services: Object.fromEntries(list.map((t) => [t.name, true])),
@@ -108,7 +110,7 @@ export default function HireBrief({ team, bump, headcount }) {
             <span>Your team</span><span>{headcount} {headcount === 1 ? 'person' : 'people'}</span>
           </El>
           {list.length === 0 ? (
-            <El as="p" css="margin:0;font-size:16px;line-height:1.5;color:#4A4741">No roles added yet. <El as="a" href="#roles" css="border-bottom:1px solid #08070A">Browse roles</El> and press &ldquo;+ Add&rdquo;.</El>
+            <El as="p" css="margin:0;font-size:16px;line-height:1.5;color:#4A4741">No roles added yet. <El as="a" href="#roles" css="color:#08070A;font-weight:500;border-bottom:1px solid #08070A">Browse roles</El> and press &ldquo;+ Add&rdquo;.</El>
           ) : (
             <El css="display:flex;flex-direction:column">
               {list.map((t) => (
@@ -175,6 +177,21 @@ export default function HireBrief({ team, bump, headcount }) {
                 <El as="label" css="display:block">
                   <El as="span" css={labelCss}>Company</El>
                   <input className="mx-v4-field" type="text" name="companyName" placeholder="Optional" autoComplete="organization" value={values.companyName} onChange={set('companyName')} />
+                </El>
+              </El>
+              {/* The team they built above, in the form itself, so nothing is
+                  sent without them seeing what is in it. */}
+              <El as="div" css="display:block">
+                <El as="span" css={labelCss}>Roles you need</El>
+                <El css="display:flex;flex-wrap:wrap;gap:8px">
+                  {list.length === 0
+                    ? <El as="span" css="font-size:14px;color:#8E8A85">No roles yet. <El as="a" href="#roles" css="border-bottom:1px solid currentColor">Browse the roles</El> and press &ldquo;+ Add&rdquo;.</El>
+                    : list.map((t) => (
+                      <El as="span" key={t.slug} css="display:inline-flex;align-items:center;gap:8px;border:1px solid #F04423;border-radius:999px;padding:7px 8px 7px 14px;font-size:14px">
+                        {t.count} &#215; {t.name}
+                        <El as="button" type="button" onClick={bump(t.slug, -1)} aria-label={`Remove one ${t.name}`} css="cursor:pointer;width:24px;height:24px;border-radius:50%;border:0;background:rgba(244,241,234,.12);color:#F4F1EA;font-size:13px;line-height:1">&#215;</El>
+                      </El>
+                    ))}
                 </El>
               </El>
               <El as="label" css="display:block">

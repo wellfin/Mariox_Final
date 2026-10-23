@@ -29,7 +29,8 @@ export default function Footer({ activeSlug = '' }) {
             { t: 'Company', href: '/company' },
             { t: 'Hire engineers', href: '/hire' },
             { t: 'Contact', href: '/contact' },
-            { t: 'Careers', href: '/career' },
+            { t: 'Careers', href: '/careers' },
+            { t: 'Blog', href: '/blog' },
             { t: 'Terms', href: '/terms-and-conditions' },
           ].map((l) => (
             <El as={Link} key={l.href} href={l.href} css="display:block;padding:4px 0;font-size:14px;color:#D9D5CD">{l.t}</El>

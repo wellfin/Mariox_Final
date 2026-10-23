@@ -94,7 +94,6 @@ Allow: /blog/wp-includes/js/
 Allow: /blog/embedded-software-development/
 Allow: /press-release/wp-includes/js/
 Allow: /press-release/wp-includes/images/
-Allow: /press-release/topdevelopers-names-appinventiv-top-mobile-app-development-company-in-usa/
 
 Sitemap: https://www.marioxsoftware.com/sitemap.xml
 Sitemap: https://www.marioxsoftware.com/sitemap-pages.xml

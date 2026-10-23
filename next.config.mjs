@@ -14,6 +14,8 @@ const nextConfig = {
     return [
       // Design routes map onto the URLs the live site already ranks for.
       { source: '/technology', destination: '/technologies', permanent: true },
+      // Careers moved to /careers with the new design.
+      { source: '/career', destination: '/careers', permanent: true },
       // The company page replaces the old about page.
       { source: '/about', destination: '/company', permanent: true },
       { source: '/about-us', destination: '/company', permanent: true },

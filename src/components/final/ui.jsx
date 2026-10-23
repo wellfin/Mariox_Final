@@ -143,7 +143,7 @@ export function WhyBand({ items = WHY_MARIOX, title }) {
 // shell has to set them.
 export function Shell({ children, ...rest }) {
   return (
-    <El css="position:relative;background:#08070A;color:#F4F1EA;font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;overflow-x:clip" {...rest}>
+    <El className="mx-shell" css="position:relative;background:#08070A;color:#F4F1EA;font-family:Geist,'Helvetica Neue',Helvetica,sans-serif;overflow-x:clip" {...rest}>
       {children}
     </El>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import El from '@/components/El';
 import { Seo, JsonLd } from '@/components/sections';
 import Nav from '@/components/final/Nav';
@@ -62,6 +62,29 @@ export default function Hire() {
   const [faqOpen, setFaqOpen] = useState(0);
   const [team, setTeam] = useState({});
   useReveal([grp]);
+
+  // The team survives a reload or a trip to another page and back, so a brief
+  // started before lunch is still there afterwards.
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem('mx-hire-team') || '{}');
+      if (saved && typeof saved === 'object' && Object.keys(saved).length) setTeam(saved);
+    } catch (e) { /* storage off — the page works without it */ }
+  }, []);
+  useEffect(() => {
+    try { sessionStorage.setItem('mx-hire-team', JSON.stringify(team)); } catch (e) { /* ignore */ }
+  }, [team]);
+
+  // While someone is adding people from the list, a bar keeps the running team
+  // in sight and takes them to the brief; it steps aside once the brief is open.
+  const [briefOpen, setBriefOpen] = useState(false);
+  useEffect(() => {
+    const el = document.getElementById('brief');
+    if (!el || typeof IntersectionObserver === 'undefined') return undefined;
+    const io = new IntersectionObserver(([e]) => setBriefOpen(e.isIntersecting), { threshold: 0.05 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const bump = (slug, by) => () => setTeam((t) => {
     const n = Math.max(0, (t[slug] || 0) + by);
@@ -144,13 +167,13 @@ export default function Hire() {
               {shown.map((r) => {
                 const n = team[r.slug] || 0;
                 return (
-                  <El key={r.slug} css={`display:grid;grid-template-columns:48px minmax(0,2fr) minmax(0,2.4fr) auto;gap:10px clamp(16px,2.4vw,32px);align-items:center;padding:clamp(14px,1.6vw,20px) 0;border-bottom:1px solid rgba(244,241,234,.16);background:${n ? 'rgba(240,68,35,.07)' : 'transparent'};transition:background .3s`}>
+                  <El key={r.slug} className="mx-role-row" css={`display:grid;grid-template-columns:48px minmax(0,2fr) minmax(0,2.4fr) auto;gap:10px clamp(16px,2.4vw,32px);align-items:center;padding:clamp(14px,1.6vw,20px) 0;border-bottom:1px solid rgba(244,241,234,.16);background:${n ? 'rgba(240,68,35,.07)' : 'transparent'};transition:background .3s`}>
                     <El as="span" css={`${MONO};font-size:11px;color:#8E8A85`}>{r.n}</El>
                     <El css="display:flex;flex-direction:column;gap:4px">
                       <El as="span" css="font-size:clamp(1.2rem,2vw,1.8rem);font-weight:500;letter-spacing:-.045em;line-height:1">{r.name}</El>
                       <El as="span" css={`${MONO};font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8E8A85`}>{r.group}</El>
                     </El>
-                    <El as="span" css="display:flex;flex-wrap:wrap;gap:6px">
+                    <El as="span" className="mx-role-skills" css="display:flex;flex-wrap:wrap;gap:6px">
                       {r.skills.slice(0, 4).map((s) => <El as="span" key={s} css="border:1px solid rgba(244,241,234,.2);border-radius:999px;padding:5px 11px;font-size:12.5px;color:#D9D5CD">{s}</El>)}
                     </El>
                     <El as="span" css="display:flex;align-items:center;gap:6px">
@@ -265,6 +288,12 @@ export default function Hire() {
                 );
               })}
             </El>
+          </El>
+
+          {/* Running total while browsing the roles */}
+          <El css={`position:fixed;left:50%;transform:translateX(-50%) translateY(${headcount && !briefOpen ? '0' : '130%'});bottom:22px;z-index:60;display:flex;align-items:center;gap:14px;background:#F4F1EA;color:#08070A;border-radius:999px;padding:10px 10px 10px 20px;box-shadow:0 18px 40px rgba(0,0,0,.4);transition:transform .45s cubic-bezier(.22,1,.36,1);pointer-events:${headcount && !briefOpen ? 'auto' : 'none'}`} aria-hidden={headcount && !briefOpen ? undefined : 'true'}>
+            <El as="span" css="font-size:15px;white-space:nowrap">{headcount} {headcount === 1 ? 'person' : 'people'} in your team</El>
+            <El as="a" href="#brief" css="display:flex;align-items:center;gap:8px;background:#F04423;color:#08070A;border-radius:999px;padding:11px 18px;font-size:14.5px;font-weight:500;white-space:nowrap">Review brief <El as="span" css="font-size:13px">&#8595;</El></El>
           </El>
 
           {/* 08 Brief */}

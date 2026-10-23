@@ -48,6 +48,12 @@ export default async function handler(req, res) {
     // Extra context the forms send: what they picked, their budget and timeline,
     // which page and which form the enquiry came from.
     const { budget = "", timeline = "", source = "", subject = "" } = req.body;
+    // The hire brief also carries the team they assembled and the seniority.
+    const { team = "", seniority = "", companyName = "" } = req.body;
+    // Careers applications go to the careers inbox. Only this fixed list is
+    // allowed, so the endpoint can never be used to mail anyone else.
+    const INBOXES = { "career@marioxsoftware.com": true };
+    const recipient = INBOXES[req.body.to] ? req.body.to : process.env.TO_EMAIL;
 
     // Honeypot: real users never fill this hidden field, bots often do
     if (company) {
@@ -91,7 +97,7 @@ export default async function handler(req, res) {
                   <td style="font-weight: bold;">Page URL:</td>
                   <td><a href="${safe(pageUrl)}" style="color: #3498db;">${safe(pageUrl) || "—"}</a></td>
                 </tr>`;
-    const detailRows = [["Budget", budget], ["Timeline", timeline], ["Enquiry about", subject]]
+    const detailRows = [["Company", companyName], ["Team", team], ["Seniority", seniority], ["Budget", budget], ["Timeline", timeline], ["Enquiry about", subject]]
       .filter(([, v]) => v)
       .map(([k, v]) => row(k, v))
       .join("");
@@ -146,14 +152,17 @@ export default async function handler(req, res) {
 
     const mailOptions = {
       from: process.env.FROM_EMAIL,
-      to: process.env.TO_EMAIL,
-      subject: "New Contact Form Submission",
+      to: recipient,
+      subject: source === "careers" ? "New Job Application" : "New Contact Form Submission",
       html: htmlTemplate,
       text: [
         `Name: ${name}`,
         `Email: ${email}`,
         `Mobile: ${mobile}`,
         `Services: ${selectedServices || "None selected"}`,
+        companyName ? `Company: ${companyName}` : "",
+        team ? `Team: ${team}` : "",
+        seniority ? `Seniority: ${seniority}` : "",
         budget ? `Budget: ${budget}` : "",
         timeline ? `Timeline: ${timeline}` : "",
         subject ? `Enquiry about: ${subject}` : "",
@@ -231,6 +240,9 @@ export default async function handler(req, res) {
         `Email: ${email}`,
         `Mobile: ${mobile}`,
         `Services: ${selectedServices || "None selected"}`,
+        companyName ? `Company: ${companyName}` : "",
+        team ? `Team: ${team}` : "",
+        seniority ? `Seniority: ${seniority}` : "",
         budget ? `Budget: ${budget}` : "",
         timeline ? `Timeline: ${timeline}` : "",
         subject ? `Enquiry about: ${subject}` : "",
@@ -254,7 +266,7 @@ export default async function handler(req, res) {
       phoneNumber: mobile,
       slug: pageUrl || "",
       city: req.body.city || "",
-      service: [subject, selectedServices].filter(Boolean).join(" · "),
+      service: [subject, team, selectedServices].filter(Boolean).join(" · "),
       message,
     };
 

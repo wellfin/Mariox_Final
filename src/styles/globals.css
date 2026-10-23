@@ -111,3 +111,16 @@ textarea.mx-field{resize:vertical;min-height:120px;font-size:clamp(15px,1.3vw,17
 @keyframes mxKen{from{transform:scale(1.04) translate(0,0)}to{transform:scale(1.14) translate(-2%,-1.5%)}}
 /* Work gallery cards: the orange veil rises on hover. */
 .mx-card:hover .mx-card-veil{opacity:1;transform:translateY(0)}
+/* Native selects inside the dark design forms. */
+.mx-select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:22px;background-image:linear-gradient(45deg,transparent 50%,#F04423 50%),linear-gradient(135deg,#F04423 50%,transparent 50%);background-position:calc(100% - 10px) calc(50% + 2px),calc(100% - 5px) calc(50% + 2px);background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.mx-select option{background:#141216;color:#F4F1EA}
+/* In the design pages a link takes the colour of the band it sits in, so links
+   on the ivory sections are not stuck with the site's default ivory. */
+.mx-shell a{color:inherit}
+
+/* Hire: the role rows stack on narrow screens so the name, the skills and the
+   add button stop fighting for the same line. */
+@media (max-width: 760px){
+  .mx-role-row{grid-template-columns:34px minmax(0,1fr) auto!important;align-items:start!important}
+  .mx-role-row .mx-role-skills{grid-column:1/-1;margin-top:4px}
+}
