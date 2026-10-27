@@ -1,26 +1,19 @@
 import React from 'react';
-import MarketingLanding from '@/components/MarketingLanding';
-import { seo, hero, heroNeeds, heroBudgets, included, apps, cases, faq } from '@/data/erpLanding';
+import ServiceDetail from '@/components/final/ServiceDetail';
+import { landingServiceProps } from '@/data/serviceAdapters';
+import { hero, included, cases, faq } from '@/data/erpLanding';
 
-// ERP.dc design.
+// ERP landing. Rendered in the design's service layout, from this page's own copy.
 export default function ErpSoftwareDevelopment() {
-  return (
-    <MarketingLanding
-      seo={seo}
-      eyebrow={hero.eyebrow}
-      h1={hero.h1}
-      h1Accent={hero.h1Accent}
-      sub={hero.sub}
-      formTitle={hero.formTitle}
-      heroNeeds={heroNeeds}
-      heroBudgets={heroBudgets}
-      included={included}
-      appsTitle={'Looking to build an ERP like…'}
-      appsHint="Pick a model to see how we'd build it"
-      apps={apps}
-      quotePrefix="We want to build an ERP like"
-      cases={cases}
-      faq={faq}
-    />
-  );
+  return <ServiceDetail {...landingServiceProps({
+    slug: 'erp-software-development',
+    name: 'ERP software development',
+    tagline: hero.h1Accent,
+    desc: hero.sub,
+    included,
+    cases,
+    faq,
+  })} />;
 }
+
+ErpSoftwareDevelopment.bare = true;

@@ -302,3 +302,31 @@ export function servicePageProps(slug) {
 
 // The entry rendered at a root URL segment, if any.
 export const localServiceAt = (segment) => allServices.find((s) => s.includes && urlOf(s) === '/' + segment);
+
+// These older entries render in the design's service layout, so their fields are
+// reshaped to match what the panel sends. `extra` carries what the panel has no
+// field for: the deliverables grid and the technology list.
+export function codedServiceProps(slug) {
+  const s = bySlug(slug);
+  if (!s) return null;
+  const rows = groupRows(slug) || (groupRows((parentGroup(slug) || {}).slug) || []);
+  return {
+    panel: {
+      slug,
+      pageName: s.name,
+      h1Text: s.name,
+      h2Text: s.tag || '',
+      h1Desc: s.sub || '',
+      aboutService: s.approach ? `<p>${s.approach}</p>` : '',
+      images: (s.includes || []).map((i) => ({ title: i.title, content: `<p>${i.body}</p>` })),
+      topServices: [],
+      faqs: [],
+    },
+    extra: {
+      deliverables: (s.deliverables || []).map((d) => ({ t: d.title, b: d.body })),
+      tech: s.tech || [],
+      techTitle: s.stackTitle || 'Technology we use',
+      related: rows.map((r) => ({ slug: r.href.replace(/^\//, ''), pageName: r.name })),
+    },
+  };
+}

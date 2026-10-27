@@ -51,3 +51,5 @@ DEPLOY*.txt
 .DS_Store
 Thumbs.db
 desktop.ini
+
+SERVICE_SLUGS_FOR_ADMIN.txt
