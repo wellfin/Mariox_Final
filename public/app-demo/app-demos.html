@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mariox Software — App demos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>window.OM_SCENES = '[{"name":"Order","dur":4,"desc":"The customer picks an option and confirms in the customer app"},{"name":"Kitchen","dur":4,"desc":"The request lands in the operator panel, is accepted and the progress bar fills"},{"name":"Dispatch","dur":4,"desc":"The third app takes over: map, live call, player or booking calendar"},{"name":"Delivered","dur":5,"desc":"The camera pulls back to show all three apps with the closing line, then fade"}]';</script>
+<script>window.OM_PLAYBACK = '{"mode":"loop"}';</script>
+<script>window.TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{"motionEditor":true,"app":"astrotalk","accent":"#F04423"}/*EDITMODE-END*/;</script>
+<style>
+  html,body{margin:0;padding:0;background:#08070A;height:100%}
+  a{color:#F04423}
+  a:hover{color:#F4F1EA}
+</style>
+</helmet>
+<div style="position:fixed;inset:0;background:#08070A">
+  <x-import component-from-global-scope="MarioxAppDemo" from="./animations-v3.jsx ./tweaks-panel.jsx ./mariox-app-demo.jsx" hint-size="100%,100%" style="position:absolute;inset:0"></x-import>
+</div>
+</x-dc>
+</body>
+</html>
