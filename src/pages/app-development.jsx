@@ -29,11 +29,24 @@ const TAG = `${MONO};font-size:11px;letter-spacing:.08em;border:1px solid rgba(2
 
 // Inline styles cannot express :focus, so the one focus rule the design uses
 // rides along as a stylesheet.
-const FOCUS_CSS = '.mxad input:focus,.mxad textarea:focus,.mxad select:focus{border-bottom-color:#F04423}';
+const FOCUS_CSS = '.mxad input:focus,.mxad textarea:focus,.mxad select:focus{border-bottom-color:#F04423 !important}';
 
 const chipOn = (on) => `border:1px solid ${on ? ORANGE : 'rgba(244,241,234,.22)'};background:${on ? ORANGE : 'transparent'};color:${on ? '#08070A' : '#B7B2AA'}`;
 
 const UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'];
+
+// Each country allows its own number length, so the message names the country
+// and the digits it expects. Returns '' when the number is usable.
+function phoneError(code, digits) {
+  if (!digits) return '';
+  const [min, max, where] = PHONE_LEN[code] || [6, 14, ''];
+  if (digits.length < min || digits.length > max) {
+    const len = min === max ? `${min}` : `${min}–${max}`;
+    return `Please enter a valid ${where} phone number (${len} digits).`;
+  }
+  if (code === '+91' && !/^[6-9]/.test(digits)) return 'Indian mobile numbers start with 6, 7, 8 or 9.';
+  return '';
+}
 
 // The ad parameters that brought the visitor here, kept for the whole session.
 function tracking() {
@@ -48,20 +61,39 @@ function tracking() {
   return out;
 }
 
-// Without a form endpoint the lead opens the visitor's mail client, as the
-// design's README describes.
-function deliver(data, subject) {
-  const endpoint = process.env.NEXT_PUBLIC_LEAD_ENDPOINT || '';
-  if (endpoint) {
-    try {
-      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
-    } catch (e) { /* ignore */ }
-  } else {
-    const body = Object.entries(data).map(([k, v]) => `${k}: ${v || '—'}`).join('\n');
-    window.location.href = `mailto:admin@marioxsoftware.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+// /api/contact mails the team, acknowledges the sender and forwards the lead
+// to the CRM server-side, so this is the only call the page makes. It throws
+// with the status attached when the lead was not taken.
+async function sendLead(payload) {
+  const res = await fetch('/api/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (!res.ok) {
+    const err = new Error('contact-api');
+    err.status = res.status;
+    throw err;
   }
-  if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { form: data.source, budget: data.budget });
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'generate_lead', { form: payload.source, budget: payload.budget });
+    window.gtag('event', 'conversion', { send_to: 'AW-11065360955/7n7CCLmx7-IZELuEsJwp' });
+  }
+  return true;
 }
+
+// The enquiry email has no field for ad parameters, so they ride at the foot
+// of the message instead of being lost.
+function withTracking(message) {
+  const t = tracking();
+  const keys = Object.keys(t);
+  if (!keys.length) return message;
+  return [message, '', '--- Campaign ---'].concat(keys.map((k) => k + ': ' + t[k])).join('\n');
+}
+
+const sendFailed = (status) => (status === 429
+  ? 'Too many requests. Please try again in a few minutes.'
+  : 'We could not send that. Please email admin@marioxsoftware.com or call +91 95992 87045.');
 
 function scrollToTalk(prefill) {
   const t = document.getElementById('talk');
@@ -85,7 +117,10 @@ export default function AppDevelopment() {
   const [hNeeds, setHNeeds] = useState([]);
   const [hBudget, setHBudget] = useState('');
   const [hError, setHError] = useState('');
+  const [phoneBad, setPhoneBad] = useState('');
   const [hSent, setHSent] = useState(false);
+  const [hSending, setHSending] = useState(false);
+  const hHp = useRef(null);
 
   // Architect form
   const fName = useRef(null); const fCompany = useRef(null); const fEmail = useRef(null); const fPhone = useRef(null);
@@ -94,6 +129,8 @@ export default function AppDevelopment() {
   const [timeline, setTimeline] = useState('');
   const [error, setError] = useState('');
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const fHp = useRef(null);
 
   useEffect(() => {
     try {
@@ -132,6 +169,7 @@ export default function AppDevelopment() {
     d = d.slice(0, max);
     if (e.target.value !== d) e.target.value = d;
     setHError('');
+    setPhoneBad('');
   }, []);
 
   const onCodeChange = useCallback(() => {
@@ -139,43 +177,80 @@ export default function AppDevelopment() {
     setHCodeV(hCode.current ? hCode.current.value : '+91');
   }, [onPhoneInput]);
 
+  // Checked when the field loses focus, so nothing is flagged mid-typing.
+  const onPhoneBlur = useCallback(() => {
+    const code = hCode.current ? hCode.current.value : '+91';
+    const digits = (hPhone.current ? hPhone.current.value : '').replace(/[^0-9]/g, '');
+    setPhoneBad(phoneError(code, digits));
+  }, []);
+
   const submitHero = () => {
+    if (hSending) return undefined;
     const v = (r) => (r.current ? r.current.value.trim() : '');
     const name = v(hName); const email = v(hEmail);
     const num = v(hPhone).replace(/[^0-9]/g, '');
     const code = hCode.current ? hCode.current.value : '+91';
-    const rule = PHONE_LEN[code] || [6, 14];
     if (!name) return setHError('Please add your name.');
     if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return setHError('Please enter a valid email address.');
-    if (!email && !num) return setHError('Please add your phone number or email.');
-    if (num && (num.length < rule[0] || num.length > rule[1])) {
-      const len = rule[0] === rule[1] ? rule[0] : `${rule[0]}–${rule[1]}`;
-      return setHError(`Please enter a valid ${rule[2]} phone number (${len} digits).`);
+    if (!email && !num) {
+      setPhoneBad('Please add your phone number or email.');
+      return setHError('Please add your phone number or email.');
     }
-    if (num && code === '+91' && !/^[6-9]/.test(num)) return setHError('Indian mobile numbers start with 6, 7, 8 or 9.');
-    const data = {
-      name, email, phone: num ? `${code} ${num}` : '', company: v(hCompany), message: v(hMsg),
-      needs: hNeeds.join(', '), budget: hBudget, page: 'app-development', source: 'hero', ...tracking(),
-    };
-    deliver(data, `Estimate request — ${name}${data.company ? ` (${data.company})` : ''}`);
+    const bad = phoneError(code, num);
+    if (bad) {
+      setPhoneBad(bad);
+      if (hPhone.current) hPhone.current.focus();
+      return setHError(bad);
+    }
+    setPhoneBad('');
     setHError('');
-    setHSent(true);
+    setHSending(true);
+    // `company` is the API's honeypot, so the real company name goes as
+    // `companyName` and the hidden field travels under `company`.
+    sendLead({
+      name,
+      email,
+      mobile: num ? `${code}-${num}` : '',
+      message: withTracking(v(hMsg) || 'App estimate request.'),
+      companyName: v(hCompany),
+      company: hHp.current ? hHp.current.value : '',
+      budget: hBudget,
+      subject: 'Mobile app development',
+      source: 'app-development-hero',
+      services: Object.fromEntries(hNeeds.map((n) => [n, true])),
+      pageUrl: window.location.href,
+    })
+      .then(() => setHSent(true))
+      .catch((err) => setHError(sendFailed(err.status)))
+      .finally(() => setHSending(false));
     return undefined;
   };
 
   const submitArchitect = () => {
+    if (sending) return undefined;
     const v = (r) => (r.current ? r.current.value.trim() : '');
     const name = v(fName); const email = v(fEmail);
     if (!name || !email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       return setError('Please add your name and a valid work email.');
     }
-    const data = {
-      name, email, company: v(fCompany), phone: v(fPhone), budget, timeline,
-      brief: v(brief), page: 'app-development', source: 'architect', ...tracking(),
-    };
-    deliver(data, `Enterprise enquiry — ${name}${data.company ? ` (${data.company})` : ''}`);
     setError('');
-    setSent(true);
+    setSending(true);
+    sendLead({
+      name,
+      email,
+      mobile: v(fPhone),
+      message: withTracking(v(brief) || 'Architect review request.'),
+      companyName: v(fCompany),
+      company: fHp.current ? fHp.current.value : '',
+      budget,
+      timeline,
+      subject: 'Mobile app development',
+      source: 'app-development-architect',
+      pageUrl: window.location.href,
+    })
+      .then(() => setSent(true))
+      .catch((err) => setError(sendFailed(err.status)))
+      .finally(() => setSending(false));
     return undefined;
   };
 
@@ -269,6 +344,8 @@ export default function AppDevelopment() {
             </El>
           ) : (
             <El css="display:grid;gap:18px">
+              {/* Bots fill this; people never see it. */}
+              <El as="input" ref={hHp} type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
               <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:16px">
                 {[
                   { label: 'Name', ph: 'Your name', type: 'text', ref: hName, auto: 'name' },
@@ -284,12 +361,19 @@ export default function AppDevelopment() {
 
               <El>
                 <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:8px`}>Phone / WhatsApp</El>
-                <El css="display:flex;gap:12px;align-items:flex-end">
-                  <El as="select" ref={hCode} defaultValue="+91" onChange={onCodeChange} aria-label="Country code" css={`flex-shrink:0;width:112px;${FIELD};cursor:pointer`}>
+                <El css="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap">
+                  <El as="select" ref={hCode} defaultValue="+91" onChange={onCodeChange} aria-label="Country code" css={`${FIELD};width:116px;flex:0 0 116px;cursor:pointer`}>
                     {DIAL_CODES.map((c) => <option key={c.l} value={c.v} style={{ background: '#0E0D11', color: '#F4F1EA' }}>{c.l}</option>)}
                   </El>
-                  <El as="input" type="tel" inputMode="numeric" ref={hPhone} onInput={onPhoneInput} maxLength={phoneRule[1]} placeholder={phonePh} autoComplete="tel-national" css={`flex:1;min-width:0;${FIELD}`} />
+                  <El
+                    as="input" type="tel" inputMode="numeric" ref={hPhone}
+                    onInput={onPhoneInput} onBlur={onPhoneBlur}
+                    maxLength={phoneRule[1]} placeholder={phonePh} autoComplete="tel-national"
+                    aria-label="Phone number" aria-invalid={phoneBad ? 'true' : 'false'}
+                    css={`${FIELD};width:auto;flex:1 1 150px;min-width:0${phoneBad ? `;border-bottom-color:${ORANGE}` : ''}`}
+                  />
                 </El>
+                {phoneBad ? <El as="span" role="alert" css={`display:block;margin-top:8px;font-size:12.5px;line-height:1.45;color:${ORANGE}`}>{phoneBad}</El> : null}
               </El>
 
               <El as="label" css="display:block">
@@ -322,8 +406,8 @@ export default function AppDevelopment() {
                 </El>
               </El>
 
-              <El as="span" role="button" tabIndex={0} onClick={submitHero} hover="background:#F4F1EA" css={`cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;background:${ORANGE};color:#08070A;padding:19px 22px;${MONO};font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background .3s`}>
-                <span>Get my free estimate</span><span>→</span>
+              <El as="span" role="button" tabIndex={0} aria-busy={hSending} onClick={submitHero} hover="background:#F4F1EA" css={`cursor:${hSending ? 'wait' : 'pointer'};opacity:${hSending ? '.65' : '1'};display:flex;align-items:center;justify-content:space-between;gap:14px;background:${ORANGE};color:#08070A;padding:19px 22px;${MONO};font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background .3s`}>
+                <span>{hSending ? 'Sending…' : 'Get my free estimate'}</span><span>→</span>
               </El>
               <El as="span" css={`font-size:13px;line-height:1.5;color:${hError ? ORANGE : '#77736C'}`}>{hError || 'No spam, no sales sequence. 100% confidential.'}</El>
             </El>
@@ -763,6 +847,8 @@ export default function AppDevelopment() {
               </El>
             ) : (
               <El css="display:grid;gap:clamp(20px,2.4vw,28px)">
+                {/* Bots fill this; people never see it. */}
+                <El as="input" ref={fHp} type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
                 <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:clamp(16px,2vw,24px)">
                   {[
                     { label: 'Name', ph: 'Your name', type: 'text', ref: fName, auto: 'name' },
@@ -800,8 +886,8 @@ export default function AppDevelopment() {
                   <El as="textarea" id="mxad-brief" ref={brief} rows={3} placeholder="Platform, users, integrations, anything already decided" css={`${FIELD};padding:10px 0;font-size:15.5px;resize:vertical;font-family:Archivo,sans-serif;line-height:1.5`} />
                 </El>
 
-                <El as="span" role="button" tabIndex={0} onClick={submitArchitect} hover="background:#F4F1EA" css={`cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;background:${ORANGE};color:#08070A;padding:20px 24px;${MONO};font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background .3s`}>
-                  <span>Request architect review</span><span>→</span>
+                <El as="span" role="button" tabIndex={0} aria-busy={sending} onClick={submitArchitect} hover="background:#F4F1EA" css={`cursor:${sending ? 'wait' : 'pointer'};opacity:${sending ? '.65' : '1'};display:flex;align-items:center;justify-content:space-between;gap:14px;background:${ORANGE};color:#08070A;padding:20px 24px;${MONO};font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background .3s`}>
+                  <span>{sending ? 'Sending…' : 'Request architect review'}</span><span>→</span>
                 </El>
                 <El as="span" css={`font-size:13px;line-height:1.5;color:${error ? ORANGE : '#77736C'}`}>{error || 'An architect replies within one business day. No sales sequence.'}</El>
               </El>

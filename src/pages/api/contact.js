@@ -271,11 +271,13 @@ export default async function handler(req, res) {
     };
 
     try {
-      // Send notification email to the team & acknowledgement email to the user
-      await Promise.all([
-        transporter.sendMail(mailOptions),
-        transporter.sendMail(ackMailOptions),
-      ]);
+      // Send notification email to the team & acknowledgement email to the user.
+      // Some forms take a phone number instead of an email; without an address
+      // there is nobody to acknowledge, and sending anyway would fail the whole
+      // call and lose the team's copy too.
+      const jobs = [transporter.sendMail(mailOptions)];
+      if (email) jobs.push(transporter.sendMail(ackMailOptions));
+      await Promise.all(jobs);
       res.status(200).json({ message: "Email sent successfully" });
       // Best-effort, after the visitor already has their confirmation.
       forwardToCrm(crmLead);
