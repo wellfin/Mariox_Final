@@ -28,13 +28,12 @@ export const DIAL_CODES = [
   ['+49', 'Germany +49'], ['+33', 'France +33'], ['+31', 'Netherlands +31'], ['+41', 'Switzerland +41'],
   ['+46', 'Sweden +46'], ['+353', 'Ireland +353'], ['+34', 'Spain +34'], ['+39', 'Italy +39'],
   ['+977', 'Nepal +977'], ['+880', 'Bangladesh +880'], ['+94', 'Sri Lanka +94'],
-].map(([v, l]) => ({ v, l }));
+].map(([v, l]) => ({ v, l, short: (l.startsWith('India') ? '🇮🇳 ' : '') + v }));
 
 export const heroTrust = [
   { b: '300+', t: 'products shipped' },
-  { b: '4.8★', t: 'from 138 Google reviews' },
-  { b: 'AWS · Azure · GCP', t: 'certified' },
-  { b: 'NDA', t: 'before the first call' },
+  { b: '4.8★', t: 'Google rating' },
+  { b: 'Free', t: 'NDA & estimate' },
 ];
 
 export const heroBadges = [

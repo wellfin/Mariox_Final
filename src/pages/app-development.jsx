@@ -5,7 +5,7 @@ import Footer from '@/components/final/Footer';
 import { Seo, JsonLd } from '@/components/sections';
 import { SITE_URL } from '@/data/site';
 import {
-  DEMO, FILM, PHONE_LEN, DIAL_CODES, heroTrust, heroBadges, heroNeeds, heroBudgets,
+  DEMO, FILM, PHONE_LEN, DIAL_CODES, heroTrust, heroBadges,
   logoWall, brands, stats, teamFacts, appIncluded, appPlatforms, apps, industries,
   aiServices, aiStack, howCards, stories, cases, steps, certs, trust, leaders, offices,
   enterpriseBudgets, enterpriseTimelines, faq,
@@ -27,9 +27,17 @@ const SERIF_ACCENT = `font-family:'Instrument Serif',serif;font-weight:400;lette
 const CTA = `cursor:pointer;display:flex;align-items:center;gap:12px;background:${ORANGE};color:#08070A;padding:16px 22px;${MONO};font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;transition:background .3s`;
 const TAG = `${MONO};font-size:11px;letter-spacing:.08em;border:1px solid rgba(244,241,234,.22);color:#D9D5CE;padding:9px 12px`;
 
-// Inline styles cannot express :focus, so the one focus rule the design uses
-// rides along as a stylesheet.
-const FOCUS_CSS = '.mxad input:focus,.mxad textarea:focus,.mxad select:focus{border-bottom-color:#F04423 !important}';
+// The hero card sits on ivory and uses rounded, outlined fields; the rest of
+// the page keeps the hairline fields on black.
+const LIGHT_FIELD = 'width:100%;box-sizing:border-box;min-height:52px;background:#FFFFFF;border:1.5px solid #DAD5CC;border-radius:12px;padding:13px 15px;font-size:16px;color:#08070A;outline:none;font-family:inherit;transition:border-color .2s,box-shadow .2s';
+const LIGHT_LABEL = 'display:block;font-size:14px;font-weight:600;color:#2E2B28;margin-bottom:7px';
+
+// Inline styles cannot express :focus, so the focus rules ride along as a
+// stylesheet. Both need !important because every field sets its border inline.
+const FOCUS_CSS = [
+  '.mxad input:focus,.mxad textarea:focus,.mxad select:focus{border-bottom-color:#F04423 !important}',
+  '.mxad-light input:focus,.mxad-light textarea:focus,.mxad-light select:focus{border-color:#F04423 !important;border-bottom-color:#F04423 !important;box-shadow:0 0 0 4px rgba(240,68,35,.14)}',
+].join('');
 
 const chipOn = (on) => `border:1px solid ${on ? ORANGE : 'rgba(244,241,234,.22)'};background:${on ? ORANGE : 'transparent'};color:${on ? '#08070A' : '#B7B2AA'}`;
 
@@ -37,8 +45,8 @@ const UTM = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_conten
 
 // Each country allows its own number length, so the message names the country
 // and the digits it expects. Returns '' when the number is usable.
-function phoneError(code, digits) {
-  if (!digits) return '';
+function phoneError(code, digits, required) {
+  if (!digits) return required ? 'Mobile number is required.' : '';
   const [min, max, where] = PHONE_LEN[code] || [6, 14, ''];
   if (digits.length < min || digits.length > max) {
     const len = min === max ? `${min}` : `${min}–${max}`;
@@ -95,6 +103,81 @@ const sendFailed = (status) => (status === 429
   ? 'Too many requests. Please try again in a few minutes.'
   : 'We could not send that. Please email admin@marioxsoftware.com or call +91 95992 87045.');
 
+// A country code and a national number, kept together. Digits only, trimmed
+// to the length that country allows, and checked when the field loses focus.
+function usePhoneField(required) {
+  const codeRef = useRef(null);
+  const phoneRef = useRef(null);
+  const [code, setCode] = useState('+91');
+  const [error, setError] = useState('');
+
+  const digits = useCallback(() => (phoneRef.current ? phoneRef.current.value : '').replace(/[^0-9]/g, ''), []);
+  const codeNow = useCallback(() => (codeRef.current ? codeRef.current.value : '+91'), []);
+
+  const onInput = useCallback((e) => {
+    const c = codeNow();
+    const max = (PHONE_LEN[c] || [6, 14])[1];
+    let d = e.target.value.replace(/[^0-9]/g, '');
+    if (c === '+91' && d.length > 10 && d.startsWith('91')) d = d.slice(2);
+    if (d.length && d[0] === '0' && c !== '+39') d = d.replace(/^0+/, '');
+    d = d.slice(0, max);
+    if (e.target.value !== d) e.target.value = d;
+    setError('');
+  }, [codeNow]);
+
+  const onCodeChange = useCallback(() => {
+    if (phoneRef.current) onInput({ target: phoneRef.current });
+    setCode(codeNow());
+  }, [onInput, codeNow]);
+
+  const onBlur = useCallback(() => setError(phoneError(codeNow(), digits(), required)), [codeNow, digits, required]);
+
+  // Called on submit: returns the message to show, '' when the number is fine.
+  const check = useCallback(() => {
+    const msg = phoneError(codeNow(), digits(), required);
+    setError(msg);
+    if (msg && phoneRef.current) phoneRef.current.focus();
+    return msg;
+  }, [codeNow, digits, required]);
+
+  // What the enquiry email carries, e.g. "+91-9876543210".
+  const value = useCallback(() => (digits() ? `${codeNow()}-${digits()}` : ''), [codeNow, digits]);
+
+  return { codeRef, phoneRef, code, error, setError, digits, onInput, onCodeChange, onBlur, check, value };
+}
+
+function PhoneField({ label, field, required, light }) {
+  const rule = PHONE_LEN[field.code] || [6, 14];
+  const placeholder = rule[0] === rule[1] ? `${rule[0]}-digit number` : `${rule[0]}–${rule[1]} digits`;
+  const base = light ? LIGHT_FIELD : FIELD;
+  const bad = field.error ? (light ? ';border-color:#C2310F' : `;border-bottom-color:${ORANGE}`) : '';
+  return (
+    <El>
+      <El as="span" css={light ? LIGHT_LABEL : `display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:8px`}>
+        {label}{required && !light ? <El as="span" css={`color:${ORANGE}`}> *</El> : null}
+      </El>
+      <El css={`display:flex;gap:${light ? '8px' : '12px'};align-items:${light ? 'stretch' : 'flex-end'};flex-wrap:wrap`}>
+        <El
+          as="select" ref={field.codeRef} defaultValue="+91" onChange={field.onCodeChange} aria-label="Country code"
+          css={`${base};${light ? 'width:auto;flex:0 0 auto;padding:13px 10px' : 'width:116px;flex:0 0 116px'};cursor:pointer`}
+        >
+          {DIAL_CODES.map((c) => (
+            <option key={c.l} value={c.v} style={light ? undefined : { background: '#0E0D11', color: '#F4F1EA' }}>{light ? c.short : c.l}</option>
+          ))}
+        </El>
+        <El
+          as="input" type="tel" inputMode="numeric" ref={field.phoneRef}
+          onInput={field.onInput} onBlur={field.onBlur}
+          maxLength={rule[1]} placeholder={placeholder} autoComplete="tel-national" enterKeyHint="next"
+          required={required} aria-label={label} aria-invalid={field.error ? 'true' : 'false'}
+          css={`${base};width:auto;flex:1 1 150px;min-width:0${bad}`}
+        />
+      </El>
+      {field.error ? <El as="span" role="alert" css={`display:block;margin-top:${light ? '7px' : '8px'};font-size:${light ? '13.5px' : '12.5px'};line-height:1.45;color:${light ? '#C2310F' : ORANGE}`}>{field.error}</El> : null}
+    </El>
+  );
+}
+
 function scrollToTalk(prefill) {
   const t = document.getElementById('talk');
   if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
@@ -111,19 +194,16 @@ export default function AppDevelopment() {
   const [video, setVideo] = useState(null);
 
   // Hero form
-  const hName = useRef(null); const hEmail = useRef(null); const hCompany = useRef(null);
-  const hPhone = useRef(null); const hCode = useRef(null); const hMsg = useRef(null);
-  const [hCodeV, setHCodeV] = useState('+91');
-  const [hNeeds, setHNeeds] = useState([]);
-  const [hBudget, setHBudget] = useState('');
+  const hName = useRef(null); const hEmail = useRef(null); const hMsg = useRef(null);
+  const hPhoneField = usePhoneField(true);
   const [hError, setHError] = useState('');
-  const [phoneBad, setPhoneBad] = useState('');
   const [hSent, setHSent] = useState(false);
   const [hSending, setHSending] = useState(false);
   const hHp = useRef(null);
 
   // Architect form
-  const fName = useRef(null); const fCompany = useRef(null); const fEmail = useRef(null); const fPhone = useRef(null);
+  const fName = useRef(null); const fCompany = useRef(null); const fEmail = useRef(null);
+  const fPhoneField = usePhoneField(true);
   const brief = useRef(null);
   const [budget, setBudget] = useState('');
   const [timeline, setTimeline] = useState('');
@@ -138,7 +218,7 @@ export default function AppDevelopment() {
       UTM.forEach((k) => { const v = qs.get(k); if (v) sessionStorage.setItem('mx_' + k, v); });
     } catch (e) { /* private mode */ }
 
-    const mq = window.matchMedia('(max-width: 560px)');
+    const mq = window.matchMedia('(max-width: 760px)');
     const onMq = () => {
       setNarrow(mq.matches);
       document.body.style.paddingBottom = mq.matches ? '72px' : '';
@@ -160,49 +240,19 @@ export default function AppDevelopment() {
     };
   }, []);
 
-  const onPhoneInput = useCallback((e) => {
-    const code = (hCode.current && hCode.current.value) || '+91';
-    const max = (PHONE_LEN[code] || [6, 14])[1];
-    let d = e.target.value.replace(/[^0-9]/g, '');
-    if (code === '+91' && d.length > 10 && d.startsWith('91')) d = d.slice(2);
-    if (d.length && d[0] === '0' && code !== '+39') d = d.replace(/^0+/, '');
-    d = d.slice(0, max);
-    if (e.target.value !== d) e.target.value = d;
-    setHError('');
-    setPhoneBad('');
-  }, []);
-
-  const onCodeChange = useCallback(() => {
-    if (hPhone.current) onPhoneInput({ target: hPhone.current });
-    setHCodeV(hCode.current ? hCode.current.value : '+91');
-  }, [onPhoneInput]);
-
-  // Checked when the field loses focus, so nothing is flagged mid-typing.
-  const onPhoneBlur = useCallback(() => {
-    const code = hCode.current ? hCode.current.value : '+91';
-    const digits = (hPhone.current ? hPhone.current.value : '').replace(/[^0-9]/g, '');
-    setPhoneBad(phoneError(code, digits));
-  }, []);
-
   const submitHero = () => {
     if (hSending) return undefined;
     const v = (r) => (r.current ? r.current.value.trim() : '');
     const name = v(hName); const email = v(hEmail);
-    const num = v(hPhone).replace(/[^0-9]/g, '');
-    const code = hCode.current ? hCode.current.value : '+91';
     if (!name) return setHError('Please add your name.');
-    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return setHError('Please enter a valid email address.');
-    if (!email && !num) {
-      setPhoneBad('Please add your phone number or email.');
-      return setHError('Please add your phone number or email.');
+    if (!hPhoneField.digits()) {
+      hPhoneField.setError('Please add your phone number so we can call you back.');
+      return setHError('Please add your phone number so we can call you back.');
     }
-    const bad = phoneError(code, num);
-    if (bad) {
-      setPhoneBad(bad);
-      if (hPhone.current) hPhone.current.focus();
-      return setHError(bad);
-    }
-    setPhoneBad('');
+    const bad = hPhoneField.check();
+    if (bad) return setHError(bad);
+    if (!email) return setHError('Please add your email address.');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return setHError('Please check your email address.');
     setHError('');
     setHSending(true);
     // `company` is the API's honeypot, so the real company name goes as
@@ -210,14 +260,11 @@ export default function AppDevelopment() {
     sendLead({
       name,
       email,
-      mobile: num ? `${code}-${num}` : '',
+      mobile: hPhoneField.value(),
       message: withTracking(v(hMsg) || 'App estimate request.'),
-      companyName: v(hCompany),
       company: hHp.current ? hHp.current.value : '',
-      budget: hBudget,
       subject: 'Mobile app development',
       source: 'app-development-hero',
-      services: Object.fromEntries(hNeeds.map((n) => [n, true])),
       pageUrl: window.location.href,
     })
       .then(() => setHSent(true))
@@ -233,12 +280,14 @@ export default function AppDevelopment() {
     if (!name || !email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       return setError('Please add your name and a valid work email.');
     }
+    const badPhone = fPhoneField.check();
+    if (badPhone) return setError(badPhone);
     setError('');
     setSending(true);
     sendLead({
       name,
       email,
-      mobile: v(fPhone),
+      mobile: fPhoneField.value(),
       message: withTracking(v(brief) || 'Architect review request.'),
       companyName: v(fCompany),
       company: fHp.current ? fHp.current.value : '',
@@ -255,14 +304,12 @@ export default function AppDevelopment() {
   };
 
   const active = apps[app];
-  const phoneRule = PHONE_LEN[hCodeV] || [6, 14];
-  const phonePh = phoneRule[0] === phoneRule[1] ? `${phoneRule[0]}-digit number` : `${phoneRule[0]}–${phoneRule[1]} digits`;
 
   const description = 'Mobile app development company for iOS, Android, Flutter and React Native apps. 300+ products shipped by 100+ senior engineers. Free app estimate in one business day.';
 
   return (
     <El as="div" className="mxad" css="background:#08070A;color:#F4F1EA;font-family:Archivo,'Helvetica Neue',Helvetica,sans-serif;min-height:100vh">
-      <Seo title="Mobile App Development Company — iOS, Android & Flutter Apps | Mariox Software" description={description} />
+      <Seo title="Mobile App Development Company in India — iOS, Android & Flutter | Mariox Software" description={description} />
       <style dangerouslySetInnerHTML={{ __html: FOCUS_CSS }} />
       <JsonLd
         id="app-development-faq"
@@ -288,132 +335,94 @@ export default function AppDevelopment() {
       <Nav active="app-development" ctaHref="#enquiry" ctaLabel="Get free estimate" />
 
       {/* Phone-only action bar, pinned above the fold's bottom edge. */}
-      <El css={`display:${narrow ? 'flex' : 'none'};position:fixed;left:0;right:0;bottom:0;z-index:60;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(8,7,10,.94);backdrop-filter:blur(12px);border-top:1px solid rgba(244,241,234,.14)`}>
-        <El as="a" href="tel:+919599287045" aria-label="Call Mariox" css={`flex:1;min-height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(244,241,234,.3);color:#F4F1EA;${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase`}>Call</El>
-        <El as="a" href="https://wa.me/919599287045?text=Hi%20Mariox%2C%20I%20want%20to%20build%20an%20app" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Mariox" css={`flex:1;min-height:48px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(244,241,234,.3);color:#F4F1EA;${MONO};font-size:11px;letter-spacing:.12em;text-transform:uppercase`}>WhatsApp</El>
-        <El as="a" href="#enquiry" css={`flex:1.6;min-height:48px;display:flex;align-items:center;justify-content:center;background:${ORANGE};color:#08070A;${MONO};font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase`}>Free estimate</El>
+      <El css={`display:${narrow ? 'flex' : 'none'};position:fixed;left:0;right:0;bottom:0;z-index:80;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid #E4DFD6`}>
+        <El as="a" href="tel:+919599287045" aria-label="Call Mariox" css="flex:1;min-height:50px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;border:1.5px solid #08070A;color:#08070A;font-weight:700;font-size:15px">Call</El>
+        <El as="a" href="https://wa.me/919599287045?text=Hi%20Mariox%2C%20I%20want%20to%20build%20an%20app" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Mariox" css="flex:1;min-height:50px;display:flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;background:#1F9D55;color:#FFFFFF;font-weight:700;font-size:15px">WhatsApp</El>
+        <El as="a" href="#enquiry" css={`flex:1.3;min-height:50px;display:flex;align-items:center;justify-content:center;border-radius:12px;background:${ORANGE};color:#FFFFFF;font-weight:700;font-size:15px`}>Free estimate</El>
       </El>
 
-      {/* Hero: the pitch on the left, the estimate form on the right. */}
-      <El as="section" css={`display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:clamp(32px,5vw,80px);align-items:start;padding:clamp(40px,6vw,96px) ${PAD} clamp(40px,5vw,80px)`}>
-        <El css="padding-top:clamp(0px,1.5vw,20px)">
-          <El css="display:flex;align-items:center;gap:11px;margin-bottom:clamp(18px,2.4vw,28px)">
-            <El as="span" css={`width:8px;height:8px;background:${ORANGE}`} />
-            <El as="span" css={`${MONO};font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#9B968F`}>App development · trusted by MILKRUN, Graphy, Fampay &amp; HotDoc</El>
-          </El>
-          <El as="h1" css="margin:0;max-width:17ch;font-size:clamp(2.4rem,5.4vw,4.6rem);line-height:.95;letter-spacing:-.045em;font-weight:800;text-wrap:balance">
-            Mobile App Development Company. <El as="span" css={`color:${ORANGE}`}>Apps people open every day.</El>
-          </El>
-          <El as="p" css="margin:clamp(20px,2.6vw,30px) 0 0;max-width:46ch;font-size:clamp(16px,1.35vw,19px);line-height:1.55;color:#B7B2AA;text-wrap:pretty">iOS, Android, Flutter and React Native apps, from first wireframe to store release and beyond. Built by 100+ senior engineers, with a fixed-scope estimate in one business day.</El>
-
-          <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px 28px;margin-top:clamp(26px,3.2vw,40px);max-width:560px">
-            {heroTrust.map((h) => (
-              <El key={h.b} css="display:flex;gap:12px;align-items:baseline">
-                <El as="span" css={`width:7px;height:7px;background:${ORANGE};flex-shrink:0;transform:translateY(-2px)`} />
-                <El as="span" css="font-size:15px;line-height:1.4"><strong style={{ fontWeight: 700 }}>{h.b}</strong> <El as="span" css="color:#9B968F">{h.t}</El></El>
-              </El>
-            ))}
-          </El>
-
-          <El css="margin-top:clamp(28px,3.4vw,44px);max-width:560px;border-top:1px solid rgba(244,241,234,.14);padding-top:clamp(18px,2.2vw,24px)">
-            <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9B968F;margin-bottom:14px`}>Certified engineers &amp; verified reviews</El>
-            <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));gap:8px">
-              {heroBadges.map((b) => (
-                <El key={b.t} css="border:1px solid rgba(244,241,234,.16);padding:12px 12px 11px;display:flex;flex-direction:column;gap:5px;min-height:66px;justify-content:center">
-                  <El as="span" css="font-size:14px;font-weight:800;letter-spacing:-.02em;line-height:1.1">{b.t}</El>
-                  <El as="span" css={`${MONO};font-size:10.5px;letter-spacing:.08em;color:${b.c}`}>{b.s}</El>
+      {/* Hero: the pitch on the left, the estimate card on the right. */}
+      <El as="section" className="mxad-light" css={`background:#F4F1EA;color:#08070A;padding:clamp(28px,6vw,88px) ${PAD} clamp(32px,5vw,72px)`}>
+        <El css="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(28px,5vw,72px);align-items:center">
+          <El>
+            <El css="display:inline-flex;align-items:center;gap:10px;background:#FFFFFF;border:1px solid #E4DFD6;border-radius:999px;padding:8px 14px 8px 10px;margin-bottom:clamp(18px,2.6vw,28px)">
+              <El as="span" aria-hidden="true" css="width:8px;height:8px;border-radius:50%;background:#1F9D55;box-shadow:0 0 0 4px rgba(31,157,85,.15)" />
+              <El as="span" css="font-size:13.5px;font-weight:600;color:#2E2B28">App, web &amp; software development company · since 2016</El>
+            </El>
+            <El as="h1" css="margin:0;font-size:clamp(2.5rem,7vw,5.4rem);line-height:.93;letter-spacing:-.055em;font-weight:800;text-wrap:balance">
+              Your idea, built into <El as="span" css={`color:${ORANGE}`}>software your customers love.</El>
+            </El>
+            <El as="p" css="margin:clamp(16px,2.4vw,26px) 0 0;max-width:44ch;font-size:clamp(16.5px,1.4vw,19.5px);line-height:1.5;color:#4A4741;text-wrap:pretty">
+              Mobile apps, websites, SaaS, CRM, ERP and AI, designed and built by 100+ senior in-house engineers. Share your idea and get a fixed-price estimate within one business day.
+            </El>
+            <El css="display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:clamp(20px,2.8vw,30px)">
+              {heroTrust.map((h) => (
+                <El as="span" key={h.b} css="display:flex;align-items:center;gap:8px;font-size:15px;color:#2E2B28">
+                  <El as="span" aria-hidden="true" css={`width:20px;height:20px;border-radius:50%;background:${ORANGE};color:#FFFFFF;display:inline-flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0`}>✓</El>
+                  <strong style={{ fontWeight: 700 }}>{h.b}</strong> {h.t}
                 </El>
               ))}
             </El>
           </El>
 
-          <El as="a" href="tel:+919599287045" css={`display:inline-flex;align-items:center;gap:12px;margin-top:clamp(26px,3.2vw,40px);${MONO};font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#F4F1EA;border-bottom:1px solid ${ORANGE};padding-bottom:5px`}>Or call +91 9599287045 ↗</El>
+          <El id="enquiry" css="background:#FFFFFF;border-radius:22px;box-shadow:0 1px 0 rgba(8,7,10,.04),0 24px 60px -20px rgba(8,7,10,.22);padding:clamp(22px,3vw,36px);border:1px solid #ECE7DE">
+            {hSent ? (
+              <El css="display:flex;flex-direction:column;gap:14px;align-items:flex-start;padding:clamp(8px,2vw,20px) 0">
+                <El as="span" aria-hidden="true" css="width:52px;height:52px;border-radius:50%;background:#1F9D55;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800">✓</El>
+                <El css="font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.04em;line-height:1.08">Thank you. We’ll call you within one business day.</El>
+                <El as="a" href="https://wa.me/919599287045" target="_blank" rel="noopener noreferrer" css="display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 20px;border-radius:12px;background:#08070A;color:#FFFFFF;font-weight:700">Can’t wait? Chat on WhatsApp →</El>
+              </El>
+            ) : (
+              <El css="display:flex;flex-direction:column;gap:16px">
+                <El>
+                  <El css="font-size:clamp(1.35rem,2.2vw,1.7rem);font-weight:800;letter-spacing:-.035em;line-height:1.1">Get your project estimate</El>
+                  <El css="margin-top:6px;font-size:14.5px;color:#6B6862">Takes 30 seconds. We reply within one business day.</El>
+                </El>
+
+                {/* Bots fill this; people never see it. */}
+                <El as="input" ref={hHp} type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+
+                <El as="label" css="display:block">
+                  <El as="span" css={LIGHT_LABEL}>Your name</El>
+                  <El as="input" type="text" ref={hName} placeholder="Full name" autoComplete="name" enterKeyHint="next" css={LIGHT_FIELD} />
+                </El>
+
+                <PhoneField label="Phone / WhatsApp" field={hPhoneField} required light />
+
+                <El as="label" css="display:block">
+                  <El as="span" css={LIGHT_LABEL}>Email</El>
+                  <El as="input" type="email" ref={hEmail} placeholder="you@company.com" autoComplete="email" inputMode="email" enterKeyHint="next" css={LIGHT_FIELD} />
+                </El>
+
+                <El as="label" css="display:block">
+                  <El as="span" css={LIGHT_LABEL}>Message <El as="span" css="font-weight:400;color:#8E8A85">(optional)</El></El>
+                  <El as="textarea" ref={hMsg} rows={3} placeholder="What do you want to build?" css={`${LIGHT_FIELD};resize:vertical;line-height:1.45;min-height:96px`} />
+                </El>
+
+                <El
+                  as="button" type="button" onClick={submitHero} disabled={hSending} aria-busy={hSending} hover="background:#D63918"
+                  css={`cursor:${hSending ? 'wait' : 'pointer'};opacity:${hSending ? '.7' : '1'};border:0;min-height:58px;border-radius:14px;background:${ORANGE};color:#FFFFFF;font-family:inherit;font-size:17px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 10px 24px -10px rgba(240,68,35,.7);transition:background .2s,transform .2s`}
+                >
+                  {hSending ? 'Sending…' : 'Get my free estimate'} <span>→</span>
+                </El>
+                <El css={`font-size:13.5px;line-height:1.45;text-align:center;color:${hError ? '#C2310F' : '#6B6862'}`}>{hError || '🔒 100% confidential. No spam, ever.'}</El>
+              </El>
+            )}
+          </El>
         </El>
 
-        <El id="enquiry" css="border:1px solid rgba(244,241,234,.2);background:#0E0D11;padding:clamp(22px,2.6vw,36px)">
-          <El css="display:flex;align-items:baseline;gap:11px;padding-bottom:14px;border-bottom:1px solid rgba(244,241,234,.16);margin-bottom:clamp(18px,2.2vw,24px)">
-            <El as="span" css={`width:8px;height:8px;background:${ORANGE};align-self:center`} />
-            <El as="span" css="font-size:17px;font-weight:800;letter-spacing:-.02em">Get a free app estimate</El>
-            <El as="span" css={`margin-left:auto;${MONO};font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F`}>2 min</El>
+        <El css="max-width:1280px;margin:clamp(28px,4vw,56px) auto 0;padding-top:clamp(20px,2.6vw,30px);border-top:1px solid #E1DBD1;display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;justify-content:space-between">
+          <El as="span" css="font-size:14px;font-weight:600;color:#6B6862">Trusted by MILKRUN, Graphy, Fampay, HotDoc, Airwallex &amp; 300+ products</El>
+          <El css="display:flex;flex-wrap:wrap;gap:8px">
+            {heroBadges.map((b) => (
+              <El as="span" key={b.t} css="display:inline-flex;align-items:baseline;gap:6px;background:#FFFFFF;border:1px solid #E4DFD6;border-radius:999px;padding:8px 13px;font-size:13px">
+                <strong style={{ fontWeight: 800 }}>{b.t}</strong><El as="span" css="color:#6B6862">{b.s}</El>
+              </El>
+            ))}
           </El>
-
-          {hSent ? (
-            <El css="display:grid;gap:14px;padding:clamp(12px,2vw,24px) 0">
-              <El css="font-size:clamp(1.4rem,2.4vw,1.9rem);font-weight:800;letter-spacing:-.04em;line-height:1.05">Thank you. We’ll be in touch within one business day.</El>
-              <El as="p" css="margin:0;font-size:15px;line-height:1.55;color:#B7B2AA">A senior engineer will review your requirement and reply with first questions and an estimate range.</El>
-            </El>
-          ) : (
-            <El css="display:grid;gap:18px">
-              {/* Bots fill this; people never see it. */}
-              <El as="input" ref={hHp} type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
-              <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:16px">
-                {[
-                  { label: 'Name', ph: 'Your name', type: 'text', ref: hName, auto: 'name' },
-                  { label: 'Work email', ph: 'you@company.com', type: 'email', ref: hEmail, auto: 'email' },
-                  { label: 'Company', ph: 'Optional', type: 'text', ref: hCompany, auto: 'organization' },
-                ].map((f) => (
-                  <El as="label" key={f.label} css="display:block">
-                    <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:8px`}>{f.label}</El>
-                    <El as="input" type={f.type} placeholder={f.ph} ref={f.ref} autoComplete={f.auto} css={FIELD} />
-                  </El>
-                ))}
-              </El>
-
-              <El>
-                <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:8px`}>Phone / WhatsApp</El>
-                <El css="display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap">
-                  <El as="select" ref={hCode} defaultValue="+91" onChange={onCodeChange} aria-label="Country code" css={`${FIELD};width:116px;flex:0 0 116px;cursor:pointer`}>
-                    {DIAL_CODES.map((c) => <option key={c.l} value={c.v} style={{ background: '#0E0D11', color: '#F4F1EA' }}>{c.l}</option>)}
-                  </El>
-                  <El
-                    as="input" type="tel" inputMode="numeric" ref={hPhone}
-                    onInput={onPhoneInput} onBlur={onPhoneBlur}
-                    maxLength={phoneRule[1]} placeholder={phonePh} autoComplete="tel-national"
-                    aria-label="Phone number" aria-invalid={phoneBad ? 'true' : 'false'}
-                    css={`${FIELD};width:auto;flex:1 1 150px;min-width:0${phoneBad ? `;border-bottom-color:${ORANGE}` : ''}`}
-                  />
-                </El>
-                {phoneBad ? <El as="span" role="alert" css={`display:block;margin-top:8px;font-size:12.5px;line-height:1.45;color:${ORANGE}`}>{phoneBad}</El> : null}
-              </El>
-
-              <El as="label" css="display:block">
-                <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:8px`}>Message</El>
-                <El as="textarea" ref={hMsg} rows={3} placeholder="Tell us about the app: what it does, who it is for, any deadline" css={`${FIELD};resize:vertical;font-family:inherit;line-height:1.45`} />
-              </El>
-
-              <El>
-                <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:10px`}>I need</El>
-                <El css="display:flex;flex-wrap:wrap;gap:7px">
-                  {heroNeeds.map((label) => {
-                    const on = hNeeds.includes(label);
-                    return (
-                      <El
-                        as="span" key={label} role="button" tabIndex={0}
-                        onClick={() => setHNeeds(on ? hNeeds.filter((x) => x !== label) : hNeeds.concat(label))}
-                        css={`${CHIP};${chipOn(on)}`}
-                      >{label}</El>
-                    );
-                  })}
-                </El>
-              </El>
-
-              <El>
-                <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:10px`}>Budget</El>
-                <El css="display:flex;flex-wrap:wrap;gap:7px">
-                  {heroBudgets.map((label) => (
-                    <El as="span" key={label} role="button" tabIndex={0} onClick={() => setHBudget(label)} css={`${CHIP};${chipOn(hBudget === label)}`}>{label}</El>
-                  ))}
-                </El>
-              </El>
-
-              <El as="span" role="button" tabIndex={0} aria-busy={hSending} onClick={submitHero} hover="background:#F4F1EA" css={`cursor:${hSending ? 'wait' : 'pointer'};opacity:${hSending ? '.65' : '1'};display:flex;align-items:center;justify-content:space-between;gap:14px;background:${ORANGE};color:#08070A;padding:19px 22px;${MONO};font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:background .3s`}>
-                <span>{hSending ? 'Sending…' : 'Get my free estimate'}</span><span>→</span>
-              </El>
-              <El as="span" css={`font-size:13px;line-height:1.5;color:${hError ? ORANGE : '#77736C'}`}>{hError || 'No spam, no sales sequence. 100% confidential.'}</El>
-            </El>
-          )}
         </El>
       </El>
+
 
       {/* Client wall */}
       <El as="section" id="clients" css={`padding:clamp(40px,5vw,72px) ${PAD}`}>
@@ -854,7 +863,6 @@ export default function AppDevelopment() {
                     { label: 'Name', ph: 'Your name', type: 'text', ref: fName, auto: 'name' },
                     { label: 'Company', ph: 'Company', type: 'text', ref: fCompany, auto: 'organization' },
                     { label: 'Work email', ph: 'you@company.com', type: 'email', ref: fEmail, auto: 'email' },
-                    { label: 'Phone', ph: 'Optional', type: 'tel', ref: fPhone, auto: 'tel' },
                   ].map((f) => (
                     <El as="label" key={f.label} css="display:block">
                       <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:9px`}>{f.label}</El>
@@ -862,6 +870,8 @@ export default function AppDevelopment() {
                     </El>
                   ))}
                 </El>
+
+                <PhoneField label="Mobile number" field={fPhoneField} required />
 
                 <El>
                   <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9B968F;margin-bottom:12px`}>Project budget</El>
