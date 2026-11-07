@@ -6,7 +6,7 @@ import Footer from '@/components/final/Footer';
 import ApplyForm from '@/components/final/ApplyForm';
 import { MONO, PAD, Em, Shell } from '@/components/final/ui';
 import { useReveal } from '@/components/final/fx';
-import { roles, teams, locations } from '@/data/final/careers';
+import { roles, locations } from '@/data/final/careers';
 import { SITE_URL } from '@/data/site';
 
 // Careers page from the design's `Mariox Careers`: the open roles table with
@@ -74,7 +74,6 @@ function LocalTime({ tz }) {
 }
 
 export default function Careers() {
-  const [team, setTeam] = useState('All');
   const [loc, setLoc] = useState('All');
   const [q, setQ] = useState('');
   const [open, setOpen] = useState(-1);
@@ -82,7 +81,7 @@ export default function Careers() {
   const [wide, setWide] = useState(true);
   const [role, setRole] = useState('General application');
   const [office, setOffice] = useState('Open to any');
-  useReveal([team, loc, q, open]);
+  useReveal([loc, q, open]);
 
   useEffect(() => {
     const mq = window.matchMedia('(min-width: 900px)');
@@ -95,10 +94,9 @@ export default function Careers() {
   const query = q.trim().toLowerCase();
   const list = roles
     .map((r, i) => ({ ...r, i }))
-    .filter((r) => (team === 'All' || r.team === team)
-      && (loc === 'All' || r.locs.includes(loc))
+    .filter((r) => (loc === 'All' || r.locs.includes(loc))
       && (!query || `${r.title} ${r.team} ${r.stack.join(' ')}`.toLowerCase().includes(query)));
-  const filtered = team !== 'All' || loc !== 'All' || !!query;
+  const filtered = loc !== 'All' || !!query;
 
   const applyTo = (r) => () => {
     setRole(r.title);
@@ -184,14 +182,6 @@ export default function Careers() {
             </El>
 
             <El css="position:sticky;top:64px;z-index:5;background:rgba(8,7,10,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);display:flex;flex-direction:column;gap:12px;padding:16px 0;border-bottom:1px solid rgba(244,241,234,.14)">
-              <El css="display:flex;flex-wrap:wrap;gap:7px;align-items:center">
-                <El as="span" css={`${MONO};font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8E8A85;min-width:64px`}>Team</El>
-                {teams.map((t) => (
-                  <El as="button" type="button" key={t} aria-pressed={team === t} onClick={() => { setTeam(t); setOpen(-1); }} css={chip(team === t)}>
-                    {t} <El as="span" css="opacity:.6;margin-left:4px">{t === 'All' ? roles.length : roles.filter((r) => r.team === t).length}</El>
-                  </El>
-                ))}
-              </El>
               <El css="display:flex;flex-wrap:wrap;gap:7px;align-items:center;justify-content:space-between">
                 <El css="display:flex;flex-wrap:wrap;gap:7px;align-items:center">
                   <El as="span" css={`${MONO};font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#8E8A85;min-width:64px`}>City</El>
