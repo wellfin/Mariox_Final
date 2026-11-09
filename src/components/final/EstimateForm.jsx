@@ -4,6 +4,7 @@ import El from '../El';
 import { MONO } from './ui';
 import { isolateScroll } from '@/lib/fx';
 import { validatePhone, nationalDigits } from '@/lib/phone';
+import { useFilledIn } from '@/lib/formGuard';
 
 // "Get a free estimate" card from the design. The design posted to a
 // configurable endpoint or fell back to mailto; here it uses the site's own
@@ -39,6 +40,8 @@ export default function EstimateForm({
   const [state, setState] = useState('idle');
   const [note, setNote] = useState('');
   const phoneRef = useRef(null);
+  // Reported with the enquiry so the API can drop instant submissions.
+  const filledIn = useFilledIn();
 
   useEffect(() => isolateScroll(phoneRef.current), []);
 
@@ -82,6 +85,7 @@ export default function EstimateForm({
       subject,
       source,
       company: values.hp, // honeypot, same field name the API checks
+      filledIn: filledIn(), // how long the form was on screen
       pageUrl: typeof window !== 'undefined' ? window.location.href : '',
       // Only what the visitor ticked; the page's own service rides in `subject`.
       services: chosen,

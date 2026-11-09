@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/onceit/onceit.png',
   galleryImages: [
-    '/img/cs/onceit/onceit1.png',
-    '/img/cs/onceit/onceit2.png',
-    '/img/cs/onceit/onceit3.png',
-    '/img/cs/onceit/onceit4.png',
+    '/site-img/img_cs_onceit_onceit1.webp',
+    '/site-img/img_cs_onceit_onceit2.webp',
+    '/site-img/img_cs_onceit_onceit3.webp',
+    '/site-img/img_cs_onceit_onceit4.webp',
   ],
   sections: [
     {

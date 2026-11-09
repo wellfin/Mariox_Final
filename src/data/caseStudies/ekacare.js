@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/eka.care/eka.care.png',
   galleryImages: [
-    '/img/cs/eka.care/eka.care1.png',
-    '/img/cs/eka.care/eka.care2.png',
-    '/img/cs/eka.care/eka.care3.png',
-    '/img/cs/eka.care/eka.care4.png',
+    '/site-img/img_cs_eka.care_eka.care1.webp',
+    '/site-img/img_cs_eka.care_eka.care2.webp',
+    '/site-img/img_cs_eka.care_eka.care3.webp',
+    '/site-img/img_cs_eka.care_eka.care4.webp',
   ],
   sections: [
     {

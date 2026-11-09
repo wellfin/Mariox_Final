@@ -9,7 +9,9 @@ import { MONO, PAD, Em, Shell, Marquee } from '@/components/final/ui';
 import { ProofSection } from '@/components/final/sections';
 import { useReveal } from '@/components/final/fx';
 import { cases } from '@/data/final/cases';
+import { conceptIndex } from '@/data/final/conceptIndex';
 import { clients } from '@/data/homeV4';
+import { mix } from '@/lib/brand';
 import { SITE_URL } from '@/data/site';
 
 // Work hub from the design's `work.dc.html`: the portfolio browser with
@@ -59,6 +61,23 @@ const catOf = (c) => {
   return 'consumer';
 };
 const n2 = (n) => String(n).padStart(2, '0');
+
+// The four product ideas the design puts on this page, with the one-line
+// summary of what each build would contain.
+const CONCEPT_PICKS = [
+  ['aignosis', 'Partner portal, parent app, district dashboards'],
+  ['hostie', 'Adapter framework, owner console, takeout bridge'],
+  ['sprout-family', 'Leave planner, HR console, partner APIs'],
+  ['tonys-chocolonely', 'Traceability data, Ally portal, bar-to-farm'],
+];
+
+const TRUST_STRIP = [
+  { k: 'Since', v: '2016', s: 'Ten years building products' },
+  { k: 'Team', v: '100+', s: 'In-house engineers, no freelancers' },
+  { k: 'Rating', v: '4.8 ★', s: '138 reviews on Google' },
+  { k: 'Cloud', v: 'AWS · Azure · GCP', s: 'Certified engineers' },
+  { k: 'Security', v: 'NDA first', s: 'Signed before you share details' },
+];
 const platOk = (c, p) => p === 'all' || (c.scope || '').toLowerCase().indexOf(p) >= 0;
 
 export default function WorkHub() {
@@ -350,7 +369,47 @@ export default function WorkHub() {
             </El>
           </El>
 
+          {/* Product ideas */}
+          <El as="section" id="concepts" css={`position:relative;background:#0E0D11;border-top:1px solid rgba(244,241,234,.08);border-bottom:1px solid rgba(244,241,234,.08);padding:clamp(90px,11vw,160px) ${PAD}`}>
+            <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(36px,5vw,64px)">
+              <El>
+                <El data-rv="1" css={`${MONO};font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#F04423;margin-bottom:18px`}>Product ideas &#183; Not client projects</El>
+                <El as="h2" data-rv="1" css="margin:0;font-size:clamp(2.6rem,6vw,6rem);line-height:.88;letter-spacing:-.065em;font-weight:500">What we&#8217;d build for <Em>{conceptIndex.length} brands.</Em></El>
+              </El>
+              <El css="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+                <El as="p" data-rv="1" css="margin:0;max-width:48ch;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:#B7B2AA">Free product ideas for brands from IKEA to Huel: the gap we see, the three things we would build and how long it would take. See how we think before you talk to us. None of these companies are Mariox clients.</El>
+                <El as={Link} href="/concepts" data-rv="1" css="display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 22px;background:#F04423;color:#08070A;font-weight:500;font-size:16px;transition:background .3s,color .3s" hover="background:#F4F1EA;color:#08070A">See all {conceptIndex.length} ideas &#8594;</El>
+              </El>
+            </El>
+            <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:clamp(10px,1.2vw,16px)">
+              {CONCEPT_PICKS.map(([slug, modules]) => {
+                const p = conceptIndex.find((x) => x.slug === slug);
+                if (!p) return null;
+                return (
+                  <El as={Link} key={slug} href={`/concepts/${slug}`} data-rv="1" css={`position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:220px;padding:clamp(22px,2.4vw,30px);background:${mix(p.brand || '#F04423', '#08070A', 0.22)};border:1px solid rgba(244,241,234,.08);transition:border-color .3s`} hover="border-color:#F04423">
+                    <El as="span" css={`${MONO};font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#B7B2AA`}>{p.sector} &#183; {p.country}</El>
+                    <El as="span" css="font-size:clamp(1.8rem,2.6vw,2.4rem);font-weight:500;letter-spacing:-.06em;line-height:1">{p.name}</El>
+                    <El as="span" css="font-size:14px;color:#D9D5CD">{modules} &#8594;</El>
+                  </El>
+                );
+              })}
+            </El>
+          </El>
+
           <ProofSection clients={clients} eyebrow="Proof" />
+
+          {/* Why clients trust Mariox */}
+          <El as="section" aria-label="Why clients trust Mariox" css={`position:relative;background:#08070A;padding:0 ${PAD} clamp(70px,8vw,120px)`}>
+            <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));border-top:1px solid rgba(244,241,234,.14);border-left:1px solid rgba(244,241,234,.14)">
+              {TRUST_STRIP.map((t) => (
+                <El key={t.k} data-rv="1" css="border-right:1px solid rgba(244,241,234,.14);border-bottom:1px solid rgba(244,241,234,.14);padding:clamp(20px,2.2vw,30px);display:flex;flex-direction:column;gap:12px;min-height:150px">
+                  <El as="span" css={`${MONO};font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#F04423`}>{t.k}</El>
+                  <El as="span" css="font-size:clamp(1.4rem,2.2vw,2rem);font-weight:500;letter-spacing:-.05em;line-height:1">{t.v}</El>
+                  <El as="span" css="font-size:14px;line-height:1.4;color:#B7B2AA">{t.s}</El>
+                </El>
+              ))}
+            </El>
+          </El>
 
           {/* Contact */}
           <El as="section" id="contact" css={`position:relative;padding:clamp(100px,11vw,170px) ${PAD};background:#0E0D11;border-top:1px solid rgba(244,241,234,.08)`}>

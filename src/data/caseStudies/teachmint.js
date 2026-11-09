@@ -7,7 +7,7 @@ const caseStudy = {
     'EdTech',
     'App + Web',
   ],
-  heroImage: '/img/cs/teachmint/teachmint.png',
+  heroImage: '/site-img/img_cs_teachmint_teachmint.webp',
   galleryImages: [
     '/img/cs/teachmint/teachmint1.png',
     '/img/cs/teachmint/teachmint2.png',

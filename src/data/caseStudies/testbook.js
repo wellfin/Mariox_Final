@@ -9,9 +9,9 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/testbook/testbook.png',
   galleryImages: [
-    '/img/cs/testbook/testbook1.png',
-    '/img/cs/testbook/testbook2.png',
-    '/img/cs/testbook/testbook3.png',
+    '/site-img/img_cs_testbook_testbook1.webp',
+    '/site-img/img_cs_testbook_testbook2.webp',
+    '/site-img/img_cs_testbook_testbook3.webp',
   ],
   sections: [
     {

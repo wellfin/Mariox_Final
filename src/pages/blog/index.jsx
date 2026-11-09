@@ -5,6 +5,7 @@ import { Seo, JsonLd } from '@/components/sections';
 import Nav from '@/components/final/Nav';
 import Footer from '@/components/final/Footer';
 import Newsletter from '@/components/final/Newsletter';
+import EstimateForm from '@/components/final/EstimateForm';
 import { MONO, PAD, Em, Shell } from '@/components/final/ui';
 import { useReveal } from '@/components/final/fx';
 import { posts, cats, catLabel } from '@/data/final/blog';
@@ -165,6 +166,8 @@ export default function BlogIndex() {
             <El as="h2" css="margin:0;max-width:16ch;font-size:clamp(2.4rem,5.4vw,5.4rem);line-height:.9;letter-spacing:-.06em;font-weight:500">Reading is good. <Em>Building is better.</Em></El>
             <El as={Link} href="/contact" css="display:flex;align-items:center;gap:14px;background:#F4F1EA;color:#08070A;padding:20px 28px;border-radius:999px;font-size:16px;font-weight:500;white-space:nowrap;transition:background .3s" hover="background:#F04423;color:#08070A">Start a project <span>&#8594;</span></El>
           </El>
+
+          <EstimateForm id="estimate" source="blog" subject="Enquiry from the blog" />
 
           <Footer />
         </El>

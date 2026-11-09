@@ -9,8 +9,8 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/nirogstreet/nirogstreet.png',
   galleryImages: [
-    '/img/cs/nirogstreet/nirogstreet1.png',
-    '/img/cs/nirogstreet/nirogstreet2.png',
+    '/site-img/img_cs_nirogstreet_nirogstreet1.webp',
+    '/site-img/img_cs_nirogstreet_nirogstreet2.webp',
   ],
   sections: [
     {

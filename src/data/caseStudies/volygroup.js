@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/volygroup/volygroup.png',
   galleryImages: [
-    '/img/cs/volygroup/volygroup1.png',
-    '/img/cs/volygroup/volygroup2.png',
-    '/img/cs/volygroup/volygroup3.png',
-    '/img/cs/volygroup/volygroup4.png',
+    '/site-img/img_cs_volygroup_volygroup1.webp',
+    '/site-img/img_cs_volygroup_volygroup2.webp',
+    '/site-img/img_cs_volygroup_volygroup3.webp',
+    '/site-img/img_cs_volygroup_volygroup4.webp',
   ],
   sections: [
     {

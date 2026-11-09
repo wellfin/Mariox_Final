@@ -9,7 +9,7 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/jaypore/jaypore.png',
   galleryImages: [
-    '/img/cs/jaypore/jaypore1.png',
+    '/site-img/img_cs_jaypore_jaypore1.webp',
   ],
   sections: [
     {

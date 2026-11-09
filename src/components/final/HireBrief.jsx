@@ -4,6 +4,7 @@ import El from '../El';
 import { MONO, PAD, Em } from './ui';
 import { isolateScroll } from '@/lib/fx';
 import { validatePhone, nationalDigits } from '@/lib/phone';
+import { useFilledIn } from '@/lib/formGuard';
 import { roles } from '@/data/final/hire';
 
 // "Your team, in one brief" from the design's hire page: the team the visitor
@@ -28,6 +29,8 @@ export default function HireBrief({ team, bump, headcount }) {
   const [state, setState] = useState('idle');
   const [note, setNote] = useState('');
   const phoneRef = useRef(null);
+  // Reported with the enquiry so the API can drop instant submissions.
+  const filledIn = useFilledIn();
   useEffect(() => isolateScroll(phoneRef.current), []);
 
   const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
@@ -64,6 +67,7 @@ export default function HireBrief({ team, bump, headcount }) {
       source: 'hire',
       subject: '',
       company: values.hp, // honeypot
+      filledIn: filledIn(), // how long the form was on screen
       pageUrl: typeof window !== 'undefined' ? window.location.href : '',
       services: Object.fromEntries(list.map((t) => [t.name, true])),
     };

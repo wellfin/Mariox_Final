@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/thegrocart/thegrocart.png',
   galleryImages: [
-    '/img/cs/thegrocart/thegrocart1.png',
-    '/img/cs/thegrocart/thegrocart2.png',
-    '/img/cs/thegrocart/thegrocart3.png',
-    '/img/cs/thegrocart/thegrocart4.png',
+    '/site-img/img_cs_thegrocart_thegrocart1.webp',
+    '/site-img/img_cs_thegrocart_thegrocart2.webp',
+    '/site-img/img_cs_thegrocart_thegrocart3.webp',
+    '/site-img/img_cs_thegrocart_thegrocart4.webp',
     '/img/cs/thegrocart/thegrocart5.png',
   ],
   sections: [

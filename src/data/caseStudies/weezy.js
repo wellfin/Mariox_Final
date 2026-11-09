@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/weezy/weezy.png',
   galleryImages: [
-    '/img/cs/weezy/weezy1.png',
-    '/img/cs/weezy/weezy2.png',
-    '/img/cs/weezy/weezy3.png',
-    '/img/cs/weezy/weezy4.png',
+    '/site-img/img_cs_weezy_weezy1.webp',
+    '/site-img/img_cs_weezy_weezy2.webp',
+    '/site-img/img_cs_weezy_weezy3.webp',
+    '/site-img/img_cs_weezy_weezy4.webp',
   ],
   sections: [
     {

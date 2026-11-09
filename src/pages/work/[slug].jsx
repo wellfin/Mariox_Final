@@ -23,7 +23,7 @@ const SECTOR_PHOTO = {
   web: '1498050108023-c5249f4df085',
 };
 
-export default function CaseStudy({ c, images, meta, chapters, delivered, mosaic, next, more, moreLabel, total }) {
+export default function CaseStudy({ c, images, meta, chapters, delivered, mosaic, glance, layers, next, more, moreLabel, total }) {
   const [lb, setLb] = useState(-1);
   useReveal([c.slug]);
   useScrollFx(null, null);
@@ -93,7 +93,20 @@ export default function CaseStudy({ c, images, meta, chapters, delivered, mosaic
             </El>
           </El>
 
-          {/* 03 Overview */}
+          {/* 03 At a glance */}
+          <El as="section" css={`padding:clamp(28px,3vw,44px) ${PAD} 0`}>
+            <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));border-top:1px solid rgba(244,241,234,.16);border-left:1px solid rgba(244,241,234,.16)">
+              {glance.map((g) => (
+                <El key={g.k} data-rv="1" css="border-right:1px solid rgba(244,241,234,.16);border-bottom:1px solid rgba(244,241,234,.16);padding:clamp(20px,2.4vw,32px);display:flex;flex-direction:column;gap:14px;min-height:150px">
+                  <El as="span" css={`${MONO};letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:#8E8A85`}>{g.k}</El>
+                  <El as="span" css="margin-top:auto;font-size:clamp(1.5rem,2.4vw,2.2rem);font-weight:500;letter-spacing:-.05em;line-height:1">{g.v}</El>
+                  <El as="span" css="font-size:14px;color:#B7B2AA;line-height:1.4">{g.s}</El>
+                </El>
+              ))}
+            </El>
+          </El>
+
+          {/* 04 Overview */}
           <El as="section" css={`padding:clamp(80px,10vw,150px) ${PAD};display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(36px,5vw,96px);align-items:start`}>
             <El data-rv="1" css={`${MONO};font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#8E8A85`}>Overview</El>
             <El as="p" data-rv="1" css="grid-column:span 2;min-width:min(100%,320px);margin:0;font-size:clamp(1.6rem,3.2vw,3rem);line-height:1.08;letter-spacing:-.045em;font-weight:400;text-wrap:pretty">{c.body}</El>
@@ -186,7 +199,35 @@ export default function CaseStudy({ c, images, meta, chapters, delivered, mosaic
             </El>
           </El>
 
-          {/* 08 Next */}
+          {/* 08 Architecture */}
+          {layers.length ? (
+            <El as="section" css={`padding:0 ${PAD} clamp(80px,10vw,140px)`}>
+              <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(28px,4vw,72px);align-items:end;margin-bottom:clamp(28px,3.4vw,48px)">
+                <El>
+                  <El data-rv="1" css={`${MONO};letter-spacing:.16em;text-transform:uppercase;font-size:11.5px;color:#F04423;margin-bottom:16px`}>Architecture</El>
+                  <El as="h2" data-rv="1" css="margin:0;font-size:clamp(2.2rem,4.6vw,4.4rem);line-height:.9;letter-spacing:-.06em;font-weight:500">How {c.name} <Em>is built.</Em></El>
+                </El>
+                <El as="p" data-rv="1" css="margin:0;max-width:46ch;font-size:16.5px;line-height:1.55;color:#B7B2AA">The stack, layer by layer, from what customers touch to the infrastructure underneath.</El>
+              </El>
+              <El css="display:flex;flex-direction:column;gap:8px">
+                {layers.map((l) => (
+                  <El key={l.name} data-rv="1" css={`display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:clamp(14px,2vw,32px);align-items:center;padding:clamp(16px,2vw,24px) clamp(18px,2.2vw,30px);border-radius:14px;background:${l.bg};color:${l.fg}`}>
+                    <El as="span" css="display:flex;flex-direction:column;gap:4px">
+                      <El as="span" css={`${MONO};letter-spacing:.16em;text-transform:uppercase;font-size:10.5px;color:${l.numC}`}>{l.n}</El>
+                      <El as="span" css="font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:500;letter-spacing:-.035em">{l.name}</El>
+                    </El>
+                    <El as="span" css="display:flex;flex-wrap:wrap;gap:8px">
+                      {l.items.map((t) => (
+                        <El as="span" key={t} css={`padding:9px 15px;border-radius:999px;background:${l.chip};color:${l.fg};font-size:14.5px;letter-spacing:-.01em`}>{t}</El>
+                      ))}
+                    </El>
+                  </El>
+                ))}
+              </El>
+            </El>
+          ) : null}
+
+          {/* 09 Next */}
           <El as="section" css={`padding:0 ${PAD}`}>
             <El as={Link} href={`/work/${next.slug}`} css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));border-top:1px solid rgba(244,241,234,.16);border-bottom:1px solid rgba(244,241,234,.16);color:#F4F1EA" hover="color:#F04423">
               <El css="padding:clamp(28px,3.4vw,52px) clamp(0px,3vw,48px) clamp(28px,3.4vw,52px) 0;display:flex;flex-direction:column;justify-content:space-between;gap:24px">
@@ -197,7 +238,7 @@ export default function CaseStudy({ c, images, meta, chapters, delivered, mosaic
             </El>
           </El>
 
-          {/* 09 More */}
+          {/* 10 More */}
           <El as="section" css={`padding:clamp(70px,8vw,120px) ${PAD}`}>
             <El css="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(22px,2.6vw,34px)">
               <El as="h2" css="margin:0;font-size:clamp(1.8rem,3.4vw,3.2rem);letter-spacing:-.055em;font-weight:500">More {moreLabel} <Em>work.</Em></El>
@@ -218,7 +259,7 @@ export default function CaseStudy({ c, images, meta, chapters, delivered, mosaic
             </El>
           </El>
 
-          {/* 10 Start */}
+          {/* 11 Start */}
           <El as="section" id="start" css={`background:#F04423;color:#08070A;padding:clamp(80px,10vw,150px) ${PAD};display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(36px,5vw,80px);align-items:start`}>
             <El>
               <El as="h2" css="margin:0;font-size:clamp(2.6rem,6.4vw,6.4rem);line-height:.86;letter-spacing:-.07em;font-weight:500">Building something <Em>like {c.name}?</Em></El>
@@ -290,6 +331,44 @@ export async function getStaticProps({ params }) {
   if (/marketplace/.test(scope)) delivered.push('Seller and partner tooling');
   delivered.push('Architecture, CI/CD and handover docs');
 
+  // The stack, grouped into the layers the architecture strip shows. Each
+  // technology lands in the first layer that recognises it.
+  const LAYER_RULES = [
+    ['Apps & interfaces', /react|next|vue|angular|flutter|swift|kotlin|ios|android|typescript|javascript|tailwind|figma|webrtc|maps/i],
+    ['Services & APIs', /node|java|spring|\.net|python|django|go\b|golang|graphql|rest|ruby|php|laravel|express|nest/i],
+    ['Data', /postgres|mysql|mongo|redis|kafka|elastic|bigquery|snowflake|dynamo|sql|clickhouse|cassandra/i],
+    ['Cloud & infrastructure', /aws|gcp|google cloud|azure|kubernetes|docker|terraform|cloudflare|firebase|vercel|lambda|ci\/cd|github/i],
+  ];
+  const stack = c.stack || [];
+  const claimed = new Set();
+  const grouped = LAYER_RULES.map(([name, re]) => {
+    const items = stack.filter((t) => !claimed.has(t) && re.test(t));
+    items.forEach((t) => claimed.add(t));
+    return [name, items];
+  });
+  const leftover = stack.filter((t) => !claimed.has(t));
+  if (leftover.length) grouped.push(['Integrations & AI', leftover]);
+  const layers = grouped.filter((l) => l[1].length).map(([name, items], i) => {
+    const lead = i === 0;
+    return {
+      n: String(i + 1).padStart(2, '0'),
+      name,
+      items,
+      bg: lead ? '#F04423' : (i % 2 ? '#0E0D11' : '#141216'),
+      fg: lead ? '#08070A' : '#F4F1EA',
+      chip: lead ? 'rgba(8,7,10,.12)' : 'rgba(244,241,234,.08)',
+      numC: lead ? '#08070A' : '#8E8A85',
+    };
+  });
+
+  const platforms = (c.scope || '').split('+').map((x) => x.trim()).filter(Boolean);
+  const glance = [
+    { k: 'Platforms', v: String(platforms.length || 1), s: c.scope || '' },
+    { k: 'Sector', v: (c.sector || '').split(',')[0], s: 'Industry' },
+    { k: 'Technologies', v: String(stack.length), s: stack.slice(0, 3).join(' · ') },
+    { k: 'Engagement', v: 'End to end', s: 'Design, engineering and support' },
+  ];
+
   const next = cases[(idx + 1) % cases.length];
   const same = cases.filter((x) => x.slug !== c.slug && x.key === c.key);
   const more = (same.length >= 3 ? same : same.concat(cases.filter((x) => x.slug !== c.slug && x.key !== c.key))).slice(0, 3);
@@ -300,6 +379,8 @@ export async function getStaticProps({ params }) {
       total: cases.length,
       images,
       mosaic,
+      glance,
+      layers,
       delivered,
       meta: [
         { k: 'Client', v: c.name },

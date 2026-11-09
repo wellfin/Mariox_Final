@@ -116,12 +116,12 @@ export const apps = [
 
 export const industries = [
   ['Ride-hailing & taxi', 'Mobility', 'Rider app, driver app, live dispatch and fare engine', '', 'Watch the demo', `${DEMO}?app=uber`, '/assets/ai/robot-workflow-office.jpg'],
-  ['Grocery & quick commerce', 'Delivery', 'Customer app, picker app, rider app and store inventory', 'MILKRUN · Zupit · Grokart', 'See the work', '/work', `${CS}img/cs/milkrun/milkrun1.png`],
-  ['Food delivery', 'Delivery', 'Ordering app, restaurant panel and rider tracking', '', 'Watch the demo', `${DEMO}?app=zomato`, `${CS}img/cs/volygroup/volygroup2.png`],
-  ['Fintech & payments', 'Finance', 'Wallets, business accounts, cards and payouts', 'Airwallex · Zeller · Skydo', 'See the work', '/industries/fintech', `${CS}img/cs/skydo/Skydo1.png`],
-  ['Healthcare', 'Health', 'Appointments, telemedicine and patient records', 'HotDoc · Eka Care', 'See the work', '/industries/healthcare', `${CS}img/cs/hotdoc/hotdoc1.png`],
-  ['Education', 'Learning', 'Course apps, live classes and test prep', 'Graphy · Testbook · Teachmint', 'See the work', '/industries/education', `${CS}img/cs/graphy/graphy1.png`],
-  ['E-commerce & fashion', 'Retail', 'Shopping apps that survive a sale or a drop', 'Snitch · Kogan · OnBuy', 'See the work', '/industries/ecommerce', `${CS}img/cs/snitch/snitch1.png`],
+  ['Grocery & quick commerce', 'Delivery', 'Customer app, picker app, rider app and store inventory', 'MILKRUN · Zupit · Grokart', 'See the work', '/work', '/site-img/img_cs_milkrun_milkrun1.webp'],
+  ['Food delivery', 'Delivery', 'Ordering app, restaurant panel and rider tracking', '', 'Watch the demo', `${DEMO}?app=zomato`, '/site-img/img_cs_volygroup_volygroup2.webp'],
+  ['Fintech & payments', 'Finance', 'Wallets, business accounts, cards and payouts', 'Airwallex · Zeller · Skydo', 'See the work', '/industries/fintech', '/site-img/img_cs_skydo_Skydo1.webp'],
+  ['Healthcare', 'Health', 'Appointments, telemedicine and patient records', 'HotDoc · Eka Care', 'See the work', '/industries/healthcare', '/site-img/img_cs_hotdoc_hotdoc1.webp'],
+  ['Education', 'Learning', 'Course apps, live classes and test prep', 'Graphy · Testbook · Teachmint', 'See the work', '/industries/education', '/site-img/img_cs_graphy_graphy1.webp'],
+  ['E-commerce & fashion', 'Retail', 'Shopping apps that survive a sale or a drop', 'Snitch · Kogan · OnBuy', 'See the work', '/industries/ecommerce', '/site-img/img_cs_snitch_snitch1.webp'],
   ['AI-powered apps', 'AI', 'Copilots, voice, vision and recommendations inside the app', 'Built on your data', 'Explore AI', '/ai', '/assets/ai/robot-arm-brain.jpg'],
 ].map((r, k) => ({ n: String(k + 1).padStart(2, '0'), name: r[0], tag: r[1], apps: r[2], proof: r[3] || 'Example build', cta: r[4], href: r[5], bg: `url("${r[6]}")` }));
 
@@ -149,9 +149,9 @@ export const stories = [
 ];
 
 export const cases = [
-  { name: 'MILKRUN', sector: 'Quick commerce app', region: 'Australia', scope: 'App + web + admin', img: `${CS}img/cs/milkrun/milkrun1.png`, body: 'Grocery delivery with rider dispatch and live tracking, engineered for a sub-ten-minute promise.' },
-  { name: 'Fampay', sector: 'Fintech app', region: 'India', scope: 'App + web + admin', img: `${CS}img/cs/famapp/famapp4.png`, body: 'A payments app for teenagers, with UPI, cards and parental controls on one account.' },
-  { name: 'Graphy', sector: 'Creator app', region: 'India', scope: 'App + web', img: `${CS}img/cs/graphy/graphy1.png`, body: 'Course delivery, live cohorts and creator payouts across web and mobile.' },
+  { name: 'MILKRUN', sector: 'Quick commerce app', region: 'Australia', scope: 'App + web + admin', img: '/site-img/img_cs_milkrun_milkrun1.webp', body: 'Grocery delivery with rider dispatch and live tracking, engineered for a sub-ten-minute promise.' },
+  { name: 'Fampay', sector: 'Fintech app', region: 'India', scope: 'App + web + admin', img: '/site-img/img_cs_famapp_famapp4.webp', body: 'A payments app for teenagers, with UPI, cards and parental controls on one account.' },
+  { name: 'Graphy', sector: 'Creator app', region: 'India', scope: 'App + web', img: '/site-img/img_cs_graphy_graphy1.webp', body: 'Course delivery, live cohorts and creator payouts across web and mobile.' },
 ];
 
 export const steps = [

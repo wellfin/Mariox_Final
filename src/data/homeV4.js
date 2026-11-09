@@ -3,7 +3,9 @@
 
 import { caseStudies } from './caseStudies';
 
-const B = '/img/cs/';
+// Case screens ship as webp under /site-img with the folder in the file name.
+// Paths below are still written folder-first, so they are translated here.
+const B = (p) => '/site-img/img_cs_' + p.replace(/\//g, '_').replace(/\.(png|jpg|jpeg)$/i, '.webp');
 
 // Each image sits in a folder named after the client, so the case-study page
 // for a row is found by matching that folder against the case-study keys.
@@ -71,14 +73,14 @@ export const stack = [
         { name: 'Graphy', sector: 'Creator SaaS', scope: 'App + web', img: 'graphy1.png', path: 'graphy/', body: 'Course delivery, live cohorts and creator payouts, where every creator runs their own branded school.', system: 'Live sessions and course delivery are separate services, so a spike in one cannot degrade the other. Payouts derive from immutable event records.', tech: ['React', 'React Native', 'Node.js', 'WebRTC', 'GCP'] },
         { name: 'Airwallex', sector: 'Fintech', scope: 'App + web', img: 'AirWallex4.png', path: 'airwallex/', body: 'Global business accounts and FX: interfaces and services for money moving across borders.', system: 'Every balance is derived from an append-only record rather than stored and mutated, so history can be rebuilt at any point.', tech: ['TypeScript', 'Java / Spring', 'Kafka', 'AWS', 'Terraform'] },
         { name: 'Snitch', sector: 'E-commerce', scope: 'App + web + admin', img: 'snitch1.png', path: 'snitch/', body: 'Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.', system: 'One inventory service feeds every surface, so the storefront cannot promise stock the warehouse does not hold.', tech: ['Next.js', 'Node.js', 'Elasticsearch', 'Redis', 'Cloudflare'] }
-      ].map((c, i) => ({ ...c, n: String(i + 1).padStart(2, '0'), img: B + c.path + c.img, alt: c.name + ' product screen', href: caseHref(c.path) }));
+      ].map((c, i) => ({ ...c, n: String(i + 1).padStart(2, '0'), img: B(c.path + c.img), alt: c.name + ' product screen', href: caseHref(c.path) }));
 
 export const pillars = [
         { n: '01', t: 'Strategy', b: 'We start by finding the version of the product that is worth building, then price it honestly.', list: ['Product discovery', 'Technical audits', 'Roadmaps & estimates'], img: 'fynd/fynd1.png' },
         { n: '02', t: 'Design', b: 'Research, flows and interface systems delivered as design your engineers can actually build.', list: ['UX research', 'Interface design', 'Design systems'], img: 'jaypore/jaypore1.png' },
         { n: '03', t: 'Engineering', b: 'Senior people writing production code from week one. No juniors hidden behind an account manager.', list: ['Web & mobile apps', 'SaaS platforms', 'CRM & ERP', 'AI & automation'], img: 'graphy/graphy1.png' },
         { n: '04', t: 'Scale', b: 'The infrastructure, monitoring and support to keep it running long after launch week.', list: ['Cloud & DevOps', 'QA & testing', 'Managed support', 'Dedicated teams'], img: 'airwallex/AirWallex4.png' }
-      ].map((p) => ({ ...p, img: B + p.img }));
+      ].map((p) => ({ ...p, img: B(p.img) }));
 
 export const ai = [
         { n: '01', t: 'Agents & copilots', b: 'Assistants that act inside your product: drafting, searching, filing and following up.', e: 'support replies, sales follow-ups' },
@@ -108,7 +110,7 @@ export const industries = [
         ['Real Estate', 'Property platforms, CRM, marketplaces', '', 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=70&auto=format&fit=crop'],
         ['Travel', 'Booking, concierge, hotel technology', '', 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&q=70&auto=format&fit=crop'],
         ['Media', 'OTT, streaming, creator platforms', '', 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=1200&q=70&auto=format&fit=crop']
-].map((r, i) => ({ n: String(i + 1).padStart(2, '0'), name: r[0], what: r[1], clients: r[2], img: r[3].indexOf('http') === 0 ? r[3] : B + r[3], href: '/industries/' + INDUSTRY_SLUG[r[0]] }));
+].map((r, i) => ({ n: String(i + 1).padStart(2, '0'), name: r[0], what: r[1], clients: r[2], img: r[3].indexOf('http') === 0 ? r[3] : B(r[3]), href: '/industries/' + INDUSTRY_SLUG[r[0]] }));
 
 export const steps = [
         { n: '01', t: 'Discover', b: 'Workshops, research and a technical audit of what already exists.', out: 'Findings report' },
@@ -151,9 +153,9 @@ export const filterNames = ['All', 'Fintech', 'Edtech', 'Commerce', 'Healthcare'
 
 // Shaped for rendering.
 export const services = SV.map((s, i) => ({
-  n: String(i + 1).padStart(2, '0'), name: s[0], desc: s[1], get: s[2], img: B + s[3], client: s[4], alt: s[4] + ' product screen',
+  n: String(i + 1).padStart(2, '0'), name: s[0], desc: s[1], get: s[2], img: B(s[3]), client: s[4], alt: s[4] + ' product screen',
 }));
 
-export const caseRows = CASES.map((c) => ({ name: c[0], sector: c[1], scope: c[2], img: B + c[3], group: c[4], href: caseHref(c[3]) }));
+export const caseRows = CASES.map((c) => ({ name: c[0], sector: c[1], scope: c[2], img: B(c[3]), group: c[4], href: caseHref(c[3]) }));
 
 export const techTabs = TECH.map((t) => ({ label: t[0], items: t[1] }));

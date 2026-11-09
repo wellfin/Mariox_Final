@@ -9,9 +9,9 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/edtechhub/edtechhub.png',
   galleryImages: [
-    '/img/cs/edtechhub/edtechhub1.png',
-    '/img/cs/edtechhub/edtechhub2.png',
-    '/img/cs/edtechhub/edtechhub3.png',
+    '/site-img/img_cs_edtechhub_edtechhub1.webp',
+    '/site-img/img_cs_edtechhub_edtechhub2.webp',
+    '/site-img/img_cs_edtechhub_edtechhub3.webp',
   ],
   sections: [
     {

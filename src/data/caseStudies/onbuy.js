@@ -9,9 +9,9 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/onbuy/onbuy.png',
   galleryImages: [
-    '/img/cs/onbuy/onbuy1.png',
-    '/img/cs/onbuy/onbuy2.png',
-    '/img/cs/onbuy/onbuy3.png',
+    '/site-img/img_cs_onbuy_onbuy1.webp',
+    '/site-img/img_cs_onbuy_onbuy2.webp',
+    '/site-img/img_cs_onbuy_onbuy3.webp',
   ],
   sections: [
     {

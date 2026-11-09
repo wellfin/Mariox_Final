@@ -5,7 +5,7 @@ Generated: 29 Oct 2026   |   Repo: c:\parveen\mariox-code\Mariox_Final
 
 SUMMARY
 -------
-8 distinct form components. Every one posts to the SAME endpoint:
+9 distinct form components. Every one posts to the SAME endpoint:
 
     POST /api/contact        ->  src/pages/api/contact.js
 
@@ -14,6 +14,14 @@ That route does three things for each submission:
     2. Emails the sender       (acknowledgement — only if an email was given)
     3. Forwards to the CRM     (POST <INQUIRES_API_URL>/user/inquires,
                                 best-effort, failure is logged not fatal)
+
+The visitor does not wait for SMTP. The route gives the mail MAIL_GRACE_MS
+(1200 ms) to finish; if it is still going it answers 200 {"queued": true} and
+the send carries on in the background, with the same CRM fallback and the same
+"[lead] LOST ENQUIRY" log if both fail. A failure inside the grace window is
+still reported to the visitor as before. The transporter is pooled and built
+once per process, so only the first enquiry after a restart pays for the TLS
+handshake and login.
 
 There is NO second endpoint, no Formspree, no mailto anywhere.
 
@@ -68,6 +76,12 @@ USED ON THESE PAGES
   /industries/<slug>                        industry-estimate       industry:<slug>
   /work                                     work-estimate           work-hub
   /work/<slug>                              case-estimate           case:<slug>
+  /security                                 estimate                security
+  /testimonials                             estimate                testimonials
+  /awards-certifications                    estimate                awards-certifications
+  /engagement-models                        estimate                engagement-models
+  /concepts/<slug>  (99 product ideas)      estimate                concept:<slug>
+  /blog                                     estimate                blog
 
 
 ================================================================================
@@ -134,6 +148,7 @@ Used on   : /blog
 source    : "newsletter"
 
 Fields    : Email* (only field)
+Note      : /blog also carries the estimate form (source "blog") under it.
 Sent as   : name = the part before "@", message = "Newsletter signup from the blog."
 Honeypot  : yes (hidden field "company")
 Analytics : gtag newsletter_signup
@@ -179,10 +194,42 @@ Analytics : gtag generate_lead + conversion
 
 
 ================================================================================
+9. CONSULTATION BOOKING  (slot picker)
+================================================================================
+File      : src/pages/book-consultation.jsx  (inline)
+Used on   : /book-consultation   (anchor #book)
+source    : "consultation"
+subject   : "Consultation request: <topic>"
+
+Fields    : Topic chips*, Day*, Time slot*, Name*, Work email*, Phone*, Notes
+Topics    : New app or product | AI / automation | Improve an existing product
+            CRM / ERP | Hire a dedicated team | Something else
+Days      : the next 10 weekdays, built in the browser (the server cannot know
+            what "tomorrow" is for the visitor)
+Slots     : 10:00 | 11:30 | 13:00 | 15:00 | 16:30 | 18:30 | 20:30 IST, each also
+            shown in the visitor's own time zone
+Phone     : same 27 dial codes and digit rules as /app-development, imported
+            from src/data/appDevelopmentLanding.js (PHONE_LEN, DIAL_CODES)
+Honeypot  : yes (hidden field "company")
+Extra     : topic, requested slot and visitor time zone go in the message;
+            UTM parameters appended under "--- Campaign ---"
+Analytics : gtag generate_lead + conversion
+On success: redirects to /thank-you?from=consultation
+
+NOTE: the design posted this form to formsubmit.co. That was replaced with
+      /api/contact so the booking reaches the same inbox and CRM as every
+      other form on the site.
+
+
+================================================================================
 PAGES WITH NO SUBMIT FORM
 ================================================================================
   /404
   /blog/<slug>
+  /privacy-policy
+  /thank-you
+  /concepts  (the index; the 99 detail pages do have one)
+  /proposals  (internal outreach index)
   /process
   /services              (the services index)
   /technologies
@@ -201,12 +248,38 @@ UNUSED CODE (forms that exist but no page renders them)
 ================================================================================
 THINGS WORTH KNOWING
 ================================================================================
-* "company" IS THE HONEYPOT.
-  /api/contact treats any request with a non-empty "company" field as a bot and
-  silently returns 200 WITHOUT sending mail. The real company name must be sent
-  as "companyName" (HireBrief, app-development) or inside "subject"
-  (home page, LeadForm). Get this wrong on a new form and every lead vanishes
-  with no error.
+* BOT PROTECTION — three layers, none of them visible to a visitor.
+
+  1. Hidden field. /api/contact treats any request with a non-empty "company"
+     field as a bot and returns 200 WITHOUT sending mail. The real company name
+     must travel as "companyName" (HireBrief, app-development) or inside
+     "subject" (home page). Get this wrong on a new form and every lead
+     vanishes with no error.
+
+     In the MARKUP the trap input is named "company_website", never "company" —
+     a hidden input called "company" is exactly what a browser autofill offers
+     to fill with the visitor's organisation, which would drop a real lead in
+     silence. ContactForm, both /app-development forms and /book-consultation
+     were renamed on 9 Nov 2026 for this reason; the payload key is unchanged.
+
+  2. Time to fill. Every form except the newsletter reports "filledIn" — how
+     many milliseconds it was on screen before the submit (src/lib/formGuard.js,
+     useFilledIn). Under MIN_FILL_MS (1500) the enquiry is dropped the same
+     silent way. Nobody reads the labels and types a name, an email and a phone
+     number that fast; a script that loads the page and fills every input does.
+     The newsletter is left out on purpose: it is one email box a visitor can
+     paste into and send almost at once.
+
+     A drop is logged with the name, email and phone:
+       [lead] dropped: form filled in 120 ms {"source":...,"name":...}
+     so a false positive can be recovered by hand. Watch that line — the hidden
+     field practically never fires on a person, a stopwatch might.
+
+     The field is absent on anything posting straight to the API, and absence
+     is allowed, so a cached old page keeps working. A bot that omits it still
+     meets the hidden field and the rate limit.
+
+  3. Rate limit, below.
 
 * Rate limit: 20 submissions per IP per 15 minutes -> HTTP 429.
   All forms show "Too many requests. Please try again in a few minutes."
@@ -222,41 +295,59 @@ THINGS WORTH KNOWING
   land in the CRM.
 
 ================================================================================
-TEST RESULTS — 29 Oct 2026
+TEST RESULTS — 9 November 2026  (production build, real browser)
 ================================================================================
-Every form was submitted for real against a local dev server. The API returned
-200 "Email sent successfully" for all eight, and the server log showed no SMTP
-error.
+Every form was driven in a real browser against `next start`, three times each:
+with the phone left empty, with a 5-digit phone, then with a valid one. The
+first two must never reach the API; the third must return 200.
 
-  #  Form                        source                       Result
-  -  --------------------------  ---------------------------  ------
-  1  Home lead form              home                         PASS
-  2  Estimate form               service:crm-development      PASS
-  3  Contact form                contact                      PASS
-  4  Hire brief                  hire                         PASS
-  5  Careers apply               careers                      PASS  (to career@)
-  6  Newsletter                  newsletter                   PASS
-  7  App dev - hero estimate     app-development-hero         PASS
-  8  App dev - architect review  app-development-architect    PASS
+  #   Form                       source                     empty   short   valid
+  --  -------------------------  -------------------------  ------  ------  ----------
+  1   Home lead form             home                       block   block   200  10.9 s
+  2   Estimate form              service:crm-development     block   block   200   4.1 s
+  3   Contact form               contact                    block   block   200   3.8 s
+  4   Hire brief                 hire                       block   block   200   3.6 s
+  5   Careers apply              careers                    block   block   200   3.6 s
+  6   Newsletter                 newsletter                 n/a     n/a     200   3.6 s
+  7   App dev - hero             app-development-hero       block   block   200   3.6 s
+  8   App dev - architect        app-development-architect   block   block   200   4.1 s
+  9   Consultation booking       consultation               block   block   200   3.6 s
+  10  Blog estimate              blog                       block   block   200   3.6 s
 
-  Honeypot probe (company field filled) -> 200, NO mail sent. Correct.
+  Honeypot probe (company filled) -> 200 in 3 ms, no SMTP, no mail. Correct.
+  Server log across all ten: no SMTP errors. One "[lead] CRM responded 400",
+  from the newsletter, which has no phone number (see open issue B).
 
-Pages rendered (HTTP 200, form inputs present):
-  /  /contact  /careers  /hire  /blog  /company  /ai  /ai/<slug>
-  /industries  /industries/<slug>  /work  /work/<slug>
-  /crm-development  /app-development  /erp-software-development
-  /android-app-development-company  /android-app-development-company-in-noida
+Response times after the background-send change (9 Nov 2026), same forms:
+  Estimate 1.40 s · Contact 1.57 s · App dev hero 1.37 s ·
+  App dev architect 1.37 s · Consultation 1.34 s · direct API 1.21 s
+  (before: 3.6 s to 10.9 s). No mail errors logged for any of them, so every
+  background send completed.
 
-Phone validation (app-development forms) — 11 cases, all correct:
-  +91  9599287045  -> valid
-  +91  (empty)     -> "Mobile number is required."   (architect form)
-  +91  95992870    -> "Please enter a valid Indian phone number (10 digits)."
-  +91  5599287045  -> "Indian mobile numbers start with 6, 7, 8 or 9."
-  +971 50123456    -> "Please enter a valid UAE phone number (9 digits)."
-  +1   2125551234  -> valid      +49 1701234567 / 17012345678 -> both valid
+Phone messages shown to the visitor:
+  shared forms (1-6, 10)  "Mobile number is required"
+                          "Indian mobile numbers are 10 digits starting with 6-9"
+  app-development (7, 8)  "Mobile number is required."
+                          "Please enter a valid Indian phone number (10 digits)."
+  consultation (9)        "Please add your phone number."
+                          "Please enter a valid Indian phone number (10 digits)."
 
-The other six forms validate phones with src/lib/phone.js (libphonenumber-js),
-which covers every country.
+The estimate form appears on many pages. Each one was checked separately (the
+request was intercepted, so no extra mail was sent) to confirm it blocks an
+empty phone and sends the right `source`:
+
+  /security                  security                    /ai                  ai-hub
+  /testimonials              testimonials                /ai/<slug>           ai:<slug>
+  /awards-certifications     awards-certifications       /work                work-hub
+  /engagement-models         engagement-models           /work/<slug>         case:<slug>
+  /concepts/<slug>           concept:<slug>              /company             company
+  /saas-platforms            service:saas-platforms      /industries          industries-hub
+  /erp-software-development  service:erp-software-...    /industries/<slug>   industry:<slug>
+
+NOTE FOR WHOEVER TESTS THIS NEXT: the first text input inside the
+/app-development forms is the hidden honeypot, not the name field. Target the
+fields by autocomplete (input[autocomplete=name]) or you will fill the trap and
+the lead will be dropped silently.
 
 
 ================================================================================

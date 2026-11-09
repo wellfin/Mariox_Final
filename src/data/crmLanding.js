@@ -46,9 +46,9 @@ export const apps = [
 ];
 
 export const cases = [
-  { name: 'HotDoc', sector: 'Healthcare', region: 'Australia', scope: 'App + web', img: '/img/cs/hotdoc/hotdoc1.png', url: '/work/hotdoc', body: 'Appointment booking and patient engagement across a national network of clinics.' },
-  { name: 'Kogan', sector: 'Marketplace', region: 'Australia', scope: 'Web + seller tools', img: '/img/cs/kogan/kogan2.png', url: '/work/kogan', body: 'Marketplace with a large third-party seller base, and the seller tooling behind it.' },
-  { name: 'Fynd', sector: 'Retail operations', region: 'India', scope: 'App + web + admin', img: '/img/cs/fynd/fynd1.png', url: '/work/fynd', body: 'Commerce technology connecting online ordering with retail operations and customer data.' },
+  { name: 'HotDoc', sector: 'Healthcare', region: 'Australia', scope: 'App + web', img: '/site-img/img_cs_hotdoc_hotdoc1.webp', url: '/work/hotdoc', body: 'Appointment booking and patient engagement across a national network of clinics.' },
+  { name: 'Kogan', sector: 'Marketplace', region: 'Australia', scope: 'Web + seller tools', img: '/site-img/img_cs_kogan_kogan2.webp', url: '/work/kogan', body: 'Marketplace with a large third-party seller base, and the seller tooling behind it.' },
+  { name: 'Fynd', sector: 'Retail operations', region: 'India', scope: 'App + web + admin', img: '/site-img/img_cs_fynd_fynd1.webp', url: '/work/fynd', body: 'Commerce technology connecting online ordering with retail operations and customer data.' },
 ];
 
 export const faq = [

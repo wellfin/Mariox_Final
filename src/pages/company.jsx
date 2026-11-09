@@ -14,6 +14,16 @@ import { SITE_URL } from '@/data/site';
 // in-house promise, leadership, life at Mariox, the offices with live clocks
 // and the usual proof and contact bands.
 
+// The office, room by room. The November design shows six rooms, not two.
+const OUR_SPACE = [
+  ['office-workspace.jpg', 'The studio', 'Where the work happens', 'Mariox office workspace'],
+  ['office-meeting-room.jpg', 'Planning room', 'Roadmaps, reviews, demos', 'Project planning in the Mariox meeting room'],
+  ['office-atrium.png', 'The lounge', 'Quick syncs, long chats', 'Team working in the Mariox lounge'],
+  ['office-cafe.png', 'The cafe', 'Lunch, coffee, catch-ups', 'Cafe and open seating at the Mariox office'],
+  ['office-lounge.png', 'Open floor', 'Room for every squad', 'Open workspace with long tables'],
+  ['office-studio.png', 'Breakout area', 'Space to think', 'Colourful breakout area'],
+];
+
 const DECADE_FACTS = [
   { v: '10', u: ' yrs', k: 'Since 2016' },
   { v: '100', u: '+', k: 'In-house people' },
@@ -270,7 +280,7 @@ export default function Company() {
           {/* 08 Our space */}
           <El as="section" id="office" css={`position:relative;background:#08070A;padding:clamp(100px,12vw,190px) ${PAD} 0`}>
             <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:clamp(14px,1.6vw,24px)">
-              {[['office-workspace.png', 'The studio', 'Where the work happens', 'Mariox office workspace'], ['office-meeting-room.png', 'Planning room', 'Roadmaps, reviews, demos', 'Project planning in the Mariox meeting room']].map((f) => (
+              {OUR_SPACE.map((f) => (
                 <El as="figure" key={f[0]} data-rv="1" css="margin:0;display:flex;flex-direction:column;gap:14px">
                   <El css="aspect-ratio:3/2;overflow:hidden;background:#141216">
                     <El role="img" aria-label={f[3]} css={`width:100%;height:100%;background:url('/assets/company/${f[0]}') center/cover no-repeat;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)`} hover="transform:scale(1.04)" />

@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/yonder/yonder.png',
   galleryImages: [
-    '/img/cs/yonder/yonder1.png',
-    '/img/cs/yonder/yonder2.png',
-    '/img/cs/yonder/yonder3.png',
-    '/img/cs/yonder/yonder4.png',
+    '/site-img/img_cs_yonder_yonder1.webp',
+    '/site-img/img_cs_yonder_yonder2.webp',
+    '/site-img/img_cs_yonder_yonder3.webp',
+    '/site-img/img_cs_yonder_yonder4.webp',
   ],
   sections: [
     {

@@ -105,12 +105,12 @@ export const serviceList = [
 ];
 
 export const featuredWork = [
-  { n: '01', name: 'Skydo', sector: 'Fintech', body: 'Cross-border payments for exporters. App, web and admin built around a ledger that has to reconcile to the cent.', img: '/img/cs/skydo/Skydo1.png', url: '/work/skydo', stack: ['React', 'Node', 'AWS'] },
-  { n: '02', name: 'Eka Care', sector: 'Healthcare', body: 'Patient records and telemedicine at national scale, with the consent and audit model the category demands.', img: '/img/cs/eka.care/eka.care2.png', url: '/work/ekacare', stack: ['Flutter', 'Python', 'Azure'] },
-  { n: '03', name: 'Snitch', sector: 'E-commerce', body: 'Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.', img: '/img/cs/snitch/snitch1.png', url: '/work/snitch', stack: ['Next.js', 'Postgres', 'Redis'] },
-  { n: '04', name: 'Graphy', sector: 'Edtech', body: 'Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.', img: '/img/cs/graphy/graphy1.png', url: '/work/graphy', stack: ['React', 'Node', 'GCP'] },
-  { n: '05', name: 'MILKRUN', sector: 'Quick commerce', body: 'Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.', img: '/img/cs/milkrun/milkrun1.png', url: '/work/milkrun', stack: ['React Native', 'Kubernetes', 'Maps'] },
-  { n: '06', name: 'Airwallex', sector: 'Fintech', body: 'Global business accounts and FX. Interfaces and services for money moving across borders.', img: '/img/cs/airwallex/AirWallex4.png', url: '/work/airwallex', stack: ['TypeScript', 'Java', 'AWS'] },
+  { n: '01', name: 'Skydo', sector: 'Fintech', body: 'Cross-border payments for exporters. App, web and admin built around a ledger that has to reconcile to the cent.', img: '/site-img/img_cs_skydo_Skydo1.webp', url: '/work/skydo', stack: ['React', 'Node', 'AWS'] },
+  { n: '02', name: 'Eka Care', sector: 'Healthcare', body: 'Patient records and telemedicine at national scale, with the consent and audit model the category demands.', img: '/site-img/img_cs_eka.care_eka.care2.webp', url: '/work/ekacare', stack: ['Flutter', 'Python', 'Azure'] },
+  { n: '03', name: 'Snitch', sector: 'E-commerce', body: 'Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.', img: '/site-img/img_cs_snitch_snitch1.webp', url: '/work/snitch', stack: ['Next.js', 'Postgres', 'Redis'] },
+  { n: '04', name: 'Graphy', sector: 'Edtech', body: 'Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.', img: '/site-img/img_cs_graphy_graphy1.webp', url: '/work/graphy', stack: ['React', 'Node', 'GCP'] },
+  { n: '05', name: 'MILKRUN', sector: 'Quick commerce', body: 'Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.', img: '/site-img/img_cs_milkrun_milkrun1.webp', url: '/work/milkrun', stack: ['React Native', 'Kubernetes', 'Maps'] },
+  { n: '06', name: 'Airwallex', sector: 'Fintech', body: 'Global business accounts and FX. Interfaces and services for money moving across borders.', img: '/site-img/img_cs_airwallex_AirWallex4.webp', url: '/work/airwallex', stack: ['TypeScript', 'Java', 'AWS'] },
 ];
 
 export const stats = [

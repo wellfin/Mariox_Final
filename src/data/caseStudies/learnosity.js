@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/learnosity/learnosity.png',
   galleryImages: [
-    '/img/cs/learnosity/learnosity1.png',
-    '/img/cs/learnosity/learnosity2.png',
-    '/img/cs/learnosity/learnosity3.png',
-    '/img/cs/learnosity/learnosity4.png',
+    '/site-img/img_cs_learnosity_learnosity1.webp',
+    '/site-img/img_cs_learnosity_learnosity2.webp',
+    '/site-img/img_cs_learnosity_learnosity3.webp',
+    '/site-img/img_cs_learnosity_learnosity4.webp',
   ],
   sections: [
     {

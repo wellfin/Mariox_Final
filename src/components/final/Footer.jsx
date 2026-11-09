@@ -31,7 +31,14 @@ export default function Footer({ activeSlug = '' }) {
             { t: 'Contact', href: '/contact' },
             { t: 'Careers', href: '/careers' },
             { t: 'Blog', href: '/blog' },
+            { t: 'How we work', href: '/process' },
+            { t: 'Engagement models', href: '/engagement-models' },
+            { t: 'Client reviews', href: '/testimonials' },
+            { t: 'Certifications', href: '/awards-certifications' },
+            { t: 'Security', href: '/security' },
+            { t: 'Book a consultation', href: '/book-consultation' },
             { t: 'Terms', href: '/terms-and-conditions' },
+            { t: 'Privacy policy', href: '/privacy-policy' },
           ].map((l) => (
             <El as={Link} key={l.href} href={l.href} css="display:block;padding:4px 0;font-size:14px;color:#D9D5CD">{l.t}</El>
           ))}

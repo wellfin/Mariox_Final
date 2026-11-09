@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/zava/zavamed.png',
   galleryImages: [
-    '/img/cs/zava/zavamed1.png',
-    '/img/cs/zava/zavamed2.png',
-    '/img/cs/zava/zavamed3.png',
-    '/img/cs/zava/zavamed4.png',
+    '/site-img/img_cs_zava_zavamed1.webp',
+    '/site-img/img_cs_zava_zavamed2.webp',
+    '/site-img/img_cs_zava_zavamed3.webp',
+    '/site-img/img_cs_zava_zavamed4.webp',
   ],
   sections: [
     {

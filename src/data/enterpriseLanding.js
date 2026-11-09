@@ -16,9 +16,9 @@ export const apps = [
 ];
 
 export const cases = [
-  { name: 'Airwallex', sector: 'Fintech', region: 'Global', scope: 'App + web', img: '/img/cs/airwallex/AirWallex4.png', url: '/work/airwallex', body: 'Cross-border payments where the ledger must balance to the cent across providers, currencies and retries.' },
-  { name: 'Kogan', sector: 'Marketplace', region: 'Australia', scope: 'Marketplace + web + admin', img: '/img/cs/kogan/kogan2.png', url: '/work/kogan', body: 'A large third-party seller base, where catalogue quality and seller tooling decide whether the marketplace scales.' },
-  { name: 'HotDoc', sector: 'Healthcare', region: 'Australia', scope: 'App + web + provider platform', img: '/img/cs/hotdoc/hotdoc1.png', url: '/work/hotdoc', body: 'Booking and practice management where the provider side decides whether the patient side works at all.' },
+  { name: 'Airwallex', sector: 'Fintech', region: 'Global', scope: 'App + web', img: '/site-img/img_cs_airwallex_AirWallex4.webp', url: '/work/airwallex', body: 'Cross-border payments where the ledger must balance to the cent across providers, currencies and retries.' },
+  { name: 'Kogan', sector: 'Marketplace', region: 'Australia', scope: 'Marketplace + web + admin', img: '/site-img/img_cs_kogan_kogan2.webp', url: '/work/kogan', body: 'A large third-party seller base, where catalogue quality and seller tooling decide whether the marketplace scales.' },
+  { name: 'HotDoc', sector: 'Healthcare', region: 'Australia', scope: 'App + web + provider platform', img: '/site-img/img_cs_hotdoc_hotdoc1.webp', url: '/work/hotdoc', body: 'Booking and practice management where the provider side decides whether the patient side works at all.' },
 ];
 
 export const faq = [

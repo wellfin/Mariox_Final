@@ -4,6 +4,7 @@ import El from '../El';
 import { MONO } from './ui';
 import { isolateScroll } from '@/lib/fx';
 import { validatePhone, nationalDigits } from '@/lib/phone';
+import { useFilledIn } from '@/lib/formGuard';
 
 // Job application form from the design's careers page. The design opened the
 // applicant's mail app; here it posts through the site's own flow so the
@@ -26,6 +27,9 @@ export default function ApplyForm({ roleOptions, role, office, onRoleChange, onO
   const [state, setState] = useState('idle');
   const [note, setNote] = useState('');
   const phoneRef = useRef(null);
+  // Reported with the enquiry so the API can drop instant submissions.
+  const filledIn = useFilledIn();
+
   useEffect(() => isolateScroll(phoneRef.current), []);
 
   const set = (k) => (e) => setValues((v) => ({ ...v, [k]: e.target.value }));
@@ -60,6 +64,7 @@ export default function ApplyForm({ roleOptions, role, office, onRoleChange, onO
       source: 'careers',
       to: 'career@marioxsoftware.com',
       company: values.hp, // honeypot
+      filledIn: filledIn(), // how long the form was on screen
       pageUrl: typeof window !== 'undefined' ? window.location.href : '',
       services: { [role]: true, ...(values.link.trim() ? { [`Portfolio: ${values.link.trim()}`]: true } : {}) },
     };

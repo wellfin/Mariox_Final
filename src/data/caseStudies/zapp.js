@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/zapp/zaap.png',
   galleryImages: [
-    '/img/cs/zapp/zaap1.png',
-    '/img/cs/zapp/zaap2.png',
-    '/img/cs/zapp/zaap3.png',
-    '/img/cs/zapp/zaap4.png',
+    '/site-img/img_cs_zapp_zaap1.webp',
+    '/site-img/img_cs_zapp_zaap2.webp',
+    '/site-img/img_cs_zapp_zaap3.webp',
+    '/site-img/img_cs_zapp_zaap4.webp',
   ],
   sections: [
     {

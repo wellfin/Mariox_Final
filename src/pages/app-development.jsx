@@ -4,6 +4,7 @@ import Nav from '@/components/final/Nav';
 import Footer from '@/components/final/Footer';
 import { Seo, JsonLd } from '@/components/sections';
 import { SITE_URL } from '@/data/site';
+import { useFilledIn } from '@/lib/formGuard';
 import {
   DEMO, FILM, PHONE_LEN, DIAL_CODES, heroTrust, heroBadges,
   logoWall, brands, stats, teamFacts, appIncluded, appPlatforms, apps, industries,
@@ -200,6 +201,8 @@ export default function AppDevelopment() {
   const [hSent, setHSent] = useState(false);
   const [hSending, setHSending] = useState(false);
   const hHp = useRef(null);
+  // Reported with each enquiry so the API can drop instant submissions.
+  const filledIn = useFilledIn();
 
   // Architect form
   const fName = useRef(null); const fCompany = useRef(null); const fEmail = useRef(null);
@@ -263,6 +266,7 @@ export default function AppDevelopment() {
       mobile: hPhoneField.value(),
       message: withTracking(v(hMsg) || 'App estimate request.'),
       company: hHp.current ? hHp.current.value : '',
+      filledIn: filledIn(), // how long the form was on screen
       subject: 'Mobile app development',
       source: 'app-development-hero',
       pageUrl: window.location.href,
@@ -291,6 +295,7 @@ export default function AppDevelopment() {
       message: withTracking(v(brief) || 'Architect review request.'),
       companyName: v(fCompany),
       company: fHp.current ? fHp.current.value : '',
+      filledIn: filledIn(), // how long the form was on screen
       budget,
       timeline,
       subject: 'Mobile app development',
@@ -380,7 +385,7 @@ export default function AppDevelopment() {
                 </El>
 
                 {/* Bots fill this; people never see it. */}
-                <El as="input" ref={hHp} type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+                <El as="input" ref={hHp} type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
 
                 <El as="label" css="display:block">
                   <El as="span" css={LIGHT_LABEL}>Your name</El>
@@ -857,7 +862,7 @@ export default function AppDevelopment() {
             ) : (
               <El css="display:grid;gap:clamp(20px,2.4vw,28px)">
                 {/* Bots fill this; people never see it. */}
-                <El as="input" ref={fHp} type="text" name="company" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
+                <El as="input" ref={fHp} type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" css="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" />
                 <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:clamp(16px,2vw,24px)">
                   {[
                     { label: 'Name', ph: 'Your name', type: 'text', ref: fName, auto: 'name' },

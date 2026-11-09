@@ -4,6 +4,7 @@ import El from './El';
 import { MONO } from './ui';
 import { isolateScroll } from '@/lib/fx';
 import { validatePhone } from '@/lib/phone';
+import { useFilledIn } from '@/lib/formGuard';
 
 // Same lead flow as the live site: POST /api/contact (team email + acknowledgement),
 // POST to the enquiries backend, Google Ads conversion on success, honeypot for bots.
@@ -51,6 +52,8 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState({ state: 'idle', note: 'Reply within one business day' });
   const [pageUrl, setPageUrl] = useState('');
+  // Reported with the enquiry so the API can drop instant submissions.
+  const filledIn = useFilledIn();
   const phoneRef = useRef(null);
   const [country, setCountry] = useState({ dialCode: '91', name: 'India', format: '+.. .....-.....' });
 
@@ -72,7 +75,7 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
       return;
     }
     setStatus({ state: 'sending', note: 'Sending your enquiry…' });
-    const data = { ...values, source: 'contact', pageUrl: pageUrl || window.location.href };
+    const data = { ...values, source: 'contact', filledIn: filledIn(), pageUrl: pageUrl || window.location.href };
 
     try {
       // /api/contact mails the team, acknowledges the sender and forwards the
@@ -175,7 +178,7 @@ export default function ContactForm({ cityName, title = 'Get in touch', compact,
       {/* Honeypot: real users never fill this in, bots usually do */}
       <input
         type="text"
-        name="company"
+        name="company_website"
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"

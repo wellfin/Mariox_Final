@@ -9,9 +9,9 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/clueylearning/clueylearning.png',
   galleryImages: [
-    '/img/cs/clueylearning/clueylearning1.png',
-    '/img/cs/clueylearning/clueylearning2.png',
-    '/img/cs/clueylearning/clueylearning3.png',
+    '/site-img/img_cs_clueylearning_clueylearning1.webp',
+    '/site-img/img_cs_clueylearning_clueylearning2.webp',
+    '/site-img/img_cs_clueylearning_clueylearning3.webp',
   ],
   sections: [
     {

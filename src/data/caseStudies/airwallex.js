@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/airwallex/AirWallex.png',
   galleryImages: [
-    '/img/cs/airwallex/AirWallex1.png',
-    '/img/cs/airwallex/AirWallex2.png',
-    '/img/cs/airwallex/AirWallex3.png',
-    '/img/cs/airwallex/AirWallex4.png',
+    '/site-img/img_cs_airwallex_AirWallex1.webp',
+    '/site-img/img_cs_airwallex_AirWallex2.webp',
+    '/site-img/img_cs_airwallex_AirWallex3.webp',
+    '/site-img/img_cs_airwallex_AirWallex4.webp',
     '/img/cs/airwallex/AirWallex5.png',
   ],
   sections: [

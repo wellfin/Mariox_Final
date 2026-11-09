@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/skydo/Skydo.png',
   galleryImages: [
-    '/img/cs/skydo/Skydo1.png',
-    '/img/cs/skydo/Skydo2.png',
-    '/img/cs/skydo/Skydo3.png',
-    '/img/cs/skydo/Skydo4.png',
+    '/site-img/img_cs_skydo_Skydo1.webp',
+    '/site-img/img_cs_skydo_Skydo2.webp',
+    '/site-img/img_cs_skydo_Skydo3.webp',
+    '/site-img/img_cs_skydo_Skydo4.webp',
   ],
   sections: [
     {

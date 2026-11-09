@@ -1,4 +1,4 @@
-// 72 services in 7 categories (services-data.js)
+// 84 services in 7 categories (services-data.js)
 // Converted from the design's data file in /final-website; image paths point at
 // /public instead of the live site.
 export const cats = [
@@ -253,7 +253,7 @@ export const services = [
    "sector": "Lifestyle e-commerce",
    "line": "A craft-led lifestyle storefront with editorial merchandising and operations behind it.",
    "imgs": [
-    "/img/cs/jaypore/jaypore1.png"
+    "/site-img/img_cs_jaypore_jaypore1.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -268,7 +268,7 @@ export const services = [
     "a": "Yes. Files, libraries and assets sit in your workspace."
    }
   ],
-  "hero": "/img/cs/jaypore/jaypore1.png"
+  "hero": "/site-img/img_cs_jaypore_jaypore1.webp"
  },
  {
   "slug": "custom-software-development-company",
@@ -317,7 +317,7 @@ export const services = [
    "sector": "Commerce technology",
    "line": "Online ordering connected to retail operations through one inventory service.",
    "imgs": [
-    "/img/cs/fynd/fynd1.png"
+    "/site-img/img_cs_fynd_fynd1.webp"
    ]
   },
   "time": "12–24 weeks",
@@ -332,7 +332,7 @@ export const services = [
     "a": "Yes. Most custom builds integrate with ERPs, CRMs or legacy databases."
    }
   ],
-  "hero": "/img/cs/fynd/fynd1.png"
+  "hero": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "web-app-development",
@@ -381,7 +381,7 @@ export const services = [
    "sector": "Marketplace",
    "line": "Multi-seller listings, checkout, payouts and dispute handling.",
    "imgs": [
-    "/img/cs/onbuy/onbuy1.png"
+    "/site-img/img_cs_onbuy_onbuy1.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -396,7 +396,7 @@ export const services = [
     "a": "We build with server rendering, fast loads and clean markup, which search engines reward."
    }
   ],
-  "hero": "/img/cs/onbuy/onbuy1.png"
+  "hero": "/site-img/img_cs_onbuy_onbuy1.webp"
  },
  {
   "slug": "mobile-app-development-company",
@@ -445,10 +445,10 @@ export const services = [
    "sector": "Quick commerce",
    "line": "Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.",
    "imgs": [
-    "/img/cs/milkrun/milkrun1.png",
-    "/img/cs/milkrun/milkrun2.png",
-    "/img/cs/milkrun/milkrun3.png",
-    "/img/cs/milkrun/milkrun4.png"
+    "/site-img/img_cs_milkrun_milkrun1.webp",
+    "/site-img/img_cs_milkrun_milkrun2.webp",
+    "/site-img/img_cs_milkrun_milkrun3.webp",
+    "/site-img/img_cs_milkrun_milkrun4.webp"
    ]
   },
   "time": "10–16 weeks",
@@ -466,7 +466,7 @@ export const services = [
     "a": "Yes, including review responses and release management."
    }
   ],
-  "hero": "/img/cs/milkrun/milkrun1.png"
+  "hero": "/site-img/img_cs_milkrun_milkrun1.webp"
  },
  {
   "slug": "ios-app-development-company",
@@ -514,7 +514,7 @@ export const services = [
    "sector": "Digital banking",
    "line": "Accounts, payments and servicing customers expect without a branch.",
    "imgs": [
-    "/img/cs/lunar/luner1.png"
+    "/site-img/img_cs_lunar_luner1.webp"
    ]
   },
   "time": "10–16 weeks",
@@ -529,7 +529,7 @@ export const services = [
     "a": "Yes. We start with a code audit and stabilise before adding features."
    }
   ],
-  "hero": "/img/cs/lunar/luner1.png"
+  "hero": "/site-img/img_cs_lunar_luner1.webp"
  },
  {
   "slug": "android-app-development-company",
@@ -577,7 +577,7 @@ export const services = [
    "sector": "Youth payments",
    "line": "Payments and cards for a young audience, with parental controls built in.",
    "imgs": [
-    "/img/cs/famapp/famapp4.png"
+    "/site-img/img_cs_famapp_famapp4.webp"
    ]
   },
   "time": "10–16 weeks",
@@ -592,7 +592,7 @@ export const services = [
     "a": "Yes. We design offline-first when the use case needs it."
    }
   ],
-  "hero": "/img/cs/famapp/famapp4.png"
+  "hero": "/site-img/img_cs_famapp_famapp4.webp"
  },
  {
   "slug": "cross-platform-app-development-company",
@@ -640,10 +640,10 @@ export const services = [
    "sector": "Creator edtech",
    "line": "Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.",
    "imgs": [
-    "/img/cs/graphy/graphy1.png",
-    "/img/cs/graphy/graphy2.png",
-    "/img/cs/graphy/graphy3.png",
-    "/img/cs/graphy/graphy4.png"
+    "/site-img/img_cs_graphy_graphy1.webp",
+    "/site-img/img_cs_graphy_graphy2.webp",
+    "/site-img/img_cs_graphy_graphy3.webp",
+    "/site-img/img_cs_graphy_graphy4.webp"
    ]
   },
   "time": "8–14 weeks",
@@ -658,7 +658,7 @@ export const services = [
     "a": "Usually 30–40% less than two native apps, depending on scope."
    }
   ],
-  "hero": "/img/cs/graphy/graphy1.png"
+  "hero": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "pwa-development",
@@ -706,7 +706,7 @@ export const services = [
    "sector": "Fashion e-commerce",
    "line": "Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.",
    "imgs": [
-    "/img/cs/snitch/snitch1.png"
+    "/site-img/img_cs_snitch_snitch1.webp"
    ]
   },
   "time": "6–12 weeks",
@@ -721,7 +721,7 @@ export const services = [
     "a": "Yes, including install and push notifications on recent iOS versions."
    }
   ],
-  "hero": "/img/cs/snitch/snitch1.png"
+  "hero": "/site-img/img_cs_snitch_snitch1.webp"
  },
  {
   "slug": "saas-product-development",
@@ -770,10 +770,10 @@ export const services = [
    "sector": "Creator edtech",
    "line": "Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.",
    "imgs": [
-    "/img/cs/graphy/graphy1.png",
-    "/img/cs/graphy/graphy2.png",
-    "/img/cs/graphy/graphy3.png",
-    "/img/cs/graphy/graphy4.png"
+    "/site-img/img_cs_graphy_graphy1.webp",
+    "/site-img/img_cs_graphy_graphy2.webp",
+    "/site-img/img_cs_graphy_graphy3.webp",
+    "/site-img/img_cs_graphy_graphy4.webp"
    ]
   },
   "time": "12–20 weeks",
@@ -788,7 +788,7 @@ export const services = [
     "a": "Stripe, Razorpay, Chargebee and Paddle."
    }
   ],
-  "hero": "/img/cs/graphy/graphy1.png"
+  "hero": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "mvp-development",
@@ -836,7 +836,7 @@ export const services = [
    "sector": "Quick commerce",
    "line": "A focused first release for rapid delivery, built to carry version two.",
    "imgs": [
-    "/img/cs/zypit/zypit2.png"
+    "/site-img/img_cs_zypit_zypit2.webp"
    ]
   },
   "time": "6–10 weeks",
@@ -851,7 +851,7 @@ export const services = [
     "a": "No. We build MVPs on the same architecture we would use at scale."
    }
   ],
-  "hero": "/img/cs/zypit/zypit2.png"
+  "hero": "/site-img/img_cs_zypit_zypit2.webp"
  },
  {
   "slug": "qa-and-testing",
@@ -899,7 +899,7 @@ export const services = [
    "sector": "Edtech",
    "line": "Question banks, timed assessment and analytics for exam-day traffic.",
    "imgs": [
-    "/img/cs/testbook/testbook1.png"
+    "/site-img/img_cs_testbook_testbook1.webp"
    ]
   },
   "time": "Ongoing",
@@ -914,7 +914,7 @@ export const services = [
     "a": "Usually the critical paths and regressions. We advise per product."
    }
   ],
-  "hero": "/img/cs/testbook/testbook1.png"
+  "hero": "/site-img/img_cs_testbook_testbook1.webp"
  },
  {
   "slug": "product-management",
@@ -962,7 +962,7 @@ export const services = [
    "sector": "Investing",
    "line": "Portfolios, market data and the social layer around investing.",
    "imgs": [
-    "/img/cs/stockgro/stockgro1.png"
+    "/site-img/img_cs_stockgro_stockgro1.webp"
    ]
   },
   "time": "Ongoing",
@@ -977,7 +977,7 @@ export const services = [
     "a": "Full-time or part-time, depending on product stage."
    }
   ],
-  "hero": "/img/cs/stockgro/stockgro1.png"
+  "hero": "/site-img/img_cs_stockgro_stockgro1.webp"
  },
  {
   "slug": "ai-development",
@@ -1026,7 +1026,7 @@ export const services = [
    "sector": "Assessment platform",
    "line": "Assessment infrastructure embedded by the products that integrate it.",
    "imgs": [
-    "/img/cs/learnosity/learnosity2.png"
+    "/site-img/img_cs_learnosity_learnosity2.webp"
    ]
   },
   "time": "6–12 weeks",
@@ -1041,7 +1041,7 @@ export const services = [
     "a": "Agreed test sets and metrics before launch, tracked continuously after."
    }
   ],
-  "hero": "/img/cs/learnosity/learnosity2.png"
+  "hero": "/site-img/img_cs_learnosity_learnosity2.webp"
  },
  {
   "slug": "generative-ai-and-llm-apps",
@@ -1090,10 +1090,10 @@ export const services = [
    "sector": "Creator edtech",
    "line": "Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.",
    "imgs": [
-    "/img/cs/graphy/graphy1.png",
-    "/img/cs/graphy/graphy2.png",
-    "/img/cs/graphy/graphy3.png",
-    "/img/cs/graphy/graphy4.png"
+    "/site-img/img_cs_graphy_graphy1.webp",
+    "/site-img/img_cs_graphy_graphy2.webp",
+    "/site-img/img_cs_graphy_graphy3.webp",
+    "/site-img/img_cs_graphy_graphy4.webp"
    ]
   },
   "time": "6–10 weeks",
@@ -1108,7 +1108,7 @@ export const services = [
     "a": "Whichever fits quality, cost and privacy needs. Often more than one."
    }
   ],
-  "hero": "/img/cs/graphy/graphy1.png"
+  "hero": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "ai-agents-and-automation",
@@ -1157,7 +1157,7 @@ export const services = [
    "sector": "Spend management",
    "line": "Company cards, budgets and expense reporting for finance teams.",
    "imgs": [
-    "/img/cs/soldo/soldo.png"
+    "/site-img/img_cs_soldo_soldo.webp"
    ]
   },
   "time": "6–12 weeks",
@@ -1172,7 +1172,7 @@ export const services = [
     "a": "The repetitive, high-volume task with clear rules and measurable time saved."
    }
   ],
-  "hero": "/img/cs/soldo/soldo.png"
+  "hero": "/site-img/img_cs_soldo_soldo.webp"
  },
  {
   "slug": "machine-learning",
@@ -1220,7 +1220,7 @@ export const services = [
    "sector": "Investing",
    "line": "Portfolios, market data and the social layer around investing.",
    "imgs": [
-    "/img/cs/stockgro/stockgro1.png"
+    "/site-img/img_cs_stockgro_stockgro1.webp"
    ]
   },
   "time": "8–14 weeks",
@@ -1235,7 +1235,7 @@ export const services = [
     "a": "We set up retraining and monitoring, and can run it or hand it over."
    }
   ],
-  "hero": "/img/cs/stockgro/stockgro1.png"
+  "hero": "/site-img/img_cs_stockgro_stockgro1.webp"
  },
  {
   "slug": "data-engineering",
@@ -1284,10 +1284,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Cross-border payments for exporters, built around a ledger that reconciles to the cent.",
    "imgs": [
-    "/img/cs/skydo/Skydo1.png",
-    "/img/cs/skydo/Skydo2.png",
-    "/img/cs/skydo/Skydo3.png",
-    "/img/cs/skydo/Skydo4.png"
+    "/site-img/img_cs_skydo_Skydo1.webp",
+    "/site-img/img_cs_skydo_Skydo2.webp",
+    "/site-img/img_cs_skydo_Skydo3.webp",
+    "/site-img/img_cs_skydo_Skydo4.webp"
    ]
   },
   "time": "6–12 weeks",
@@ -1302,7 +1302,7 @@ export const services = [
     "a": "Yes. Cleaning and documenting it is usually the first job."
    }
   ],
-  "hero": "/img/cs/skydo/Skydo1.png"
+  "hero": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "data-analytics-and-bi",
@@ -1350,7 +1350,7 @@ export const services = [
    "sector": "Business payments",
    "line": "Business payments on app and web, from merchant onboarding to settlement reporting.",
    "imgs": [
-    "/img/cs/myzelller/myzeller5.png"
+    "/site-img/img_cs_myzelller_myzeller5.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -1365,7 +1365,7 @@ export const services = [
     "a": "A shared metrics layer that every dashboard reads from."
    }
   ],
-  "hero": "/img/cs/myzelller/myzeller5.png"
+  "hero": "/site-img/img_cs_myzelller_myzeller5.webp"
  },
  {
   "slug": "big-data-engineering",
@@ -1413,7 +1413,7 @@ export const services = [
    "sector": "Investing",
    "line": "Portfolios, market data and the social layer around investing.",
    "imgs": [
-    "/img/cs/stockgro/stockgro1.png"
+    "/site-img/img_cs_stockgro_stockgro1.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -1428,7 +1428,7 @@ export const services = [
     "a": "Either. Most clients choose AWS, Azure or Google Cloud."
    }
   ],
-  "hero": "/img/cs/stockgro/stockgro1.png"
+  "hero": "/site-img/img_cs_stockgro_stockgro1.webp"
  },
  {
   "slug": "legacy-modernization",
@@ -1477,7 +1477,7 @@ export const services = [
    "sector": "Marketplace",
    "line": "A marketplace with a large third-party seller base and the seller tooling behind it.",
    "imgs": [
-    "/img/cs/kogan/kogan2.png"
+    "/site-img/img_cs_kogan_kogan2.webp"
    ]
   },
   "time": "12–36 weeks",
@@ -1492,7 +1492,7 @@ export const services = [
     "a": "Reverse-engineering and documenting it is part of the assessment."
    }
   ],
-  "hero": "/img/cs/kogan/kogan2.png"
+  "hero": "/site-img/img_cs_kogan_kogan2.webp"
  },
  {
   "slug": "cloud-migration",
@@ -1540,10 +1540,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
    "imgs": [
-    "/img/cs/airwallex/AirWallex4.png",
-    "/img/cs/airwallex/AirWallex1.png",
-    "/img/cs/airwallex/AirWallex2.png",
-    "/img/cs/airwallex/AirWallex3.png"
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
    ]
   },
   "time": "6–16 weeks",
@@ -1558,7 +1558,7 @@ export const services = [
     "a": "We plan cutovers for minimal or zero downtime and rehearse them first."
    }
   ],
-  "hero": "/img/cs/airwallex/AirWallex4.png"
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "devops-and-ci-cd",
@@ -1607,10 +1607,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Cross-border payments for exporters, built around a ledger that reconciles to the cent.",
    "imgs": [
-    "/img/cs/skydo/Skydo1.png",
-    "/img/cs/skydo/Skydo2.png",
-    "/img/cs/skydo/Skydo3.png",
-    "/img/cs/skydo/Skydo4.png"
+    "/site-img/img_cs_skydo_Skydo1.webp",
+    "/site-img/img_cs_skydo_Skydo2.webp",
+    "/site-img/img_cs_skydo_Skydo3.webp",
+    "/site-img/img_cs_skydo_Skydo4.webp"
    ]
   },
   "time": "4–12 weeks",
@@ -1625,7 +1625,7 @@ export const services = [
     "a": "Yes. We improve what you have before replacing anything."
    }
   ],
-  "hero": "/img/cs/skydo/Skydo1.png"
+  "hero": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "cybersecurity",
@@ -1673,7 +1673,7 @@ export const services = [
    "sector": "Digital banking",
    "line": "Accounts, payments and servicing customers expect without a branch.",
    "imgs": [
-    "/img/cs/lunar/luner1.png"
+    "/site-img/img_cs_lunar_luner1.webp"
    ]
   },
   "time": "2–8 weeks",
@@ -1688,7 +1688,7 @@ export const services = [
     "a": "Yes. Our engineers can remediate and retest."
    }
   ],
-  "hero": "/img/cs/lunar/luner1.png"
+  "hero": "/site-img/img_cs_lunar_luner1.webp"
  },
  {
   "slug": "erp-development",
@@ -1736,7 +1736,7 @@ export const services = [
    "sector": "Quick commerce",
    "line": "Ordering, inventory and fulfilment operations for rapid grocery delivery.",
    "imgs": [
-    "/img/cs/volygroup/volygroup2.png"
+    "/site-img/img_cs_volygroup_volygroup2.webp"
    ]
   },
   "time": "14–28 weeks",
@@ -1751,7 +1751,7 @@ export const services = [
     "a": "Yes, including Tally, Zoho Books and QuickBooks."
    }
   ],
-  "hero": "/img/cs/volygroup/volygroup2.png"
+  "hero": "/site-img/img_cs_volygroup_volygroup2.webp"
  },
  {
   "slug": "crm-development",
@@ -1799,7 +1799,7 @@ export const services = [
    "sector": "Business payments",
    "line": "Business payments on app and web, from merchant onboarding to settlement reporting.",
    "imgs": [
-    "/img/cs/myzelller/myzeller5.png"
+    "/site-img/img_cs_myzelller_myzeller5.webp"
    ]
   },
   "time": "8–14 weeks",
@@ -1814,7 +1814,7 @@ export const services = [
     "a": "Yes, contacts, deals and history included."
    }
   ],
-  "hero": "/img/cs/myzelller/myzeller5.png"
+  "hero": "/site-img/img_cs_myzelller_myzeller5.webp"
  },
  {
   "slug": "e-commerce-app-development-company",
@@ -1863,7 +1863,7 @@ export const services = [
    "sector": "Fashion e-commerce",
    "line": "Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.",
    "imgs": [
-    "/img/cs/snitch/snitch1.png"
+    "/site-img/img_cs_snitch_snitch1.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -1878,7 +1878,7 @@ export const services = [
     "a": "Yes. We load-test to your peak and beyond before launch."
    }
   ],
-  "hero": "/img/cs/snitch/snitch1.png"
+  "hero": "/site-img/img_cs_snitch_snitch1.webp"
  },
  {
   "slug": "api-and-integrations",
@@ -1927,10 +1927,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Cross-border payments for exporters, built around a ledger that reconciles to the cent.",
    "imgs": [
-    "/img/cs/skydo/Skydo1.png",
-    "/img/cs/skydo/Skydo2.png",
-    "/img/cs/skydo/Skydo3.png",
-    "/img/cs/skydo/Skydo4.png"
+    "/site-img/img_cs_skydo_Skydo1.webp",
+    "/site-img/img_cs_skydo_Skydo2.webp",
+    "/site-img/img_cs_skydo_Skydo3.webp",
+    "/site-img/img_cs_skydo_Skydo4.webp"
    ]
   },
   "time": "3–8 weeks",
@@ -1945,7 +1945,7 @@ export const services = [
     "a": "Yes, OpenAPI specs and developer guides."
    }
   ],
-  "hero": "/img/cs/skydo/Skydo1.png"
+  "hero": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "blockchain-development",
@@ -1993,10 +1993,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
    "imgs": [
-    "/img/cs/airwallex/AirWallex4.png",
-    "/img/cs/airwallex/AirWallex1.png",
-    "/img/cs/airwallex/AirWallex2.png",
-    "/img/cs/airwallex/AirWallex3.png"
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -2011,7 +2011,7 @@ export const services = [
     "a": "Chosen by cost, speed and ecosystem. Ethereum, Polygon and others."
    }
   ],
-  "hero": "/img/cs/airwallex/AirWallex4.png"
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "iot-development",
@@ -2059,10 +2059,10 @@ export const services = [
    "sector": "Quick commerce",
    "line": "Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.",
    "imgs": [
-    "/img/cs/milkrun/milkrun1.png",
-    "/img/cs/milkrun/milkrun2.png",
-    "/img/cs/milkrun/milkrun3.png",
-    "/img/cs/milkrun/milkrun4.png"
+    "/site-img/img_cs_milkrun_milkrun1.webp",
+    "/site-img/img_cs_milkrun_milkrun2.webp",
+    "/site-img/img_cs_milkrun_milkrun3.webp",
+    "/site-img/img_cs_milkrun_milkrun4.webp"
    ]
   },
   "time": "10–20 weeks",
@@ -2077,7 +2077,7 @@ export const services = [
     "a": "Yes, with buffering and edge processing."
    }
   ],
-  "hero": "/img/cs/milkrun/milkrun1.png"
+  "hero": "/site-img/img_cs_milkrun_milkrun1.webp"
  },
  {
   "slug": "ar-vr-development",
@@ -2125,7 +2125,7 @@ export const services = [
    "sector": "Lifestyle e-commerce",
    "line": "A craft-led lifestyle storefront with editorial merchandising and operations behind it.",
    "imgs": [
-    "/img/cs/jaypore/jaypore1.png"
+    "/site-img/img_cs_jaypore_jaypore1.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -2140,7 +2140,7 @@ export const services = [
     "a": "Yes, or work from your existing CAD and product files."
    }
   ],
-  "hero": "/img/cs/jaypore/jaypore1.png"
+  "hero": "/site-img/img_cs_jaypore_jaypore1.webp"
  },
  {
   "slug": "it-consulting",
@@ -2187,7 +2187,7 @@ export const services = [
    "sector": "Commerce technology",
    "line": "Online ordering connected to retail operations through one inventory service.",
    "imgs": [
-    "/img/cs/fynd/fynd1.png"
+    "/site-img/img_cs_fynd_fynd1.webp"
    ]
   },
   "time": "2–6 weeks",
@@ -2250,10 +2250,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
    "imgs": [
-    "/img/cs/airwallex/AirWallex4.png",
-    "/img/cs/airwallex/AirWallex1.png",
-    "/img/cs/airwallex/AirWallex2.png",
-    "/img/cs/airwallex/AirWallex3.png"
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
    ]
   },
   "time": "2–6 weeks",
@@ -2268,7 +2268,7 @@ export const services = [
     "a": "Yes, with options, trade-offs and recommendations."
    }
   ],
-  "hero": "/img/cs/airwallex/AirWallex4.png"
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "fintech-software-development-company",
@@ -2316,10 +2316,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
    "imgs": [
-    "/img/cs/airwallex/AirWallex4.png",
-    "/img/cs/airwallex/AirWallex1.png",
-    "/img/cs/airwallex/AirWallex2.png",
-    "/img/cs/airwallex/AirWallex3.png"
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
    ]
   },
   "time": "3–6 weeks",
@@ -2334,7 +2334,7 @@ export const services = [
     "a": "Yes. Our fintech team can take the plan straight into build."
    }
   ],
-  "hero": "/img/cs/airwallex/AirWallex4.png"
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "mobile-app-consulting",
@@ -2381,10 +2381,10 @@ export const services = [
    "sector": "Quick commerce",
    "line": "Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.",
    "imgs": [
-    "/img/cs/milkrun/milkrun1.png",
-    "/img/cs/milkrun/milkrun2.png",
-    "/img/cs/milkrun/milkrun3.png",
-    "/img/cs/milkrun/milkrun4.png"
+    "/site-img/img_cs_milkrun_milkrun1.webp",
+    "/site-img/img_cs_milkrun_milkrun2.webp",
+    "/site-img/img_cs_milkrun_milkrun3.webp",
+    "/site-img/img_cs_milkrun_milkrun4.webp"
    ]
   },
   "time": "1–3 weeks",
@@ -2399,7 +2399,7 @@ export const services = [
     "a": "Yes, with ranked recommendations and costs."
    }
   ],
-  "hero": "/img/cs/milkrun/milkrun1.png"
+  "hero": "/site-img/img_cs_milkrun_milkrun1.webp"
  },
  {
   "slug": "product-discovery",
@@ -2446,7 +2446,7 @@ export const services = [
    "sector": "Quick commerce",
    "line": "A focused first release for rapid delivery, built to carry version two.",
    "imgs": [
-    "/img/cs/zypit/zypit2.png"
+    "/site-img/img_cs_zypit_zypit2.webp"
    ]
   },
   "time": "2–4 weeks",
@@ -2509,7 +2509,7 @@ export const services = [
    "sector": "Assessment platform",
    "line": "Assessment infrastructure embedded by the products that integrate it.",
    "imgs": [
-    "/img/cs/learnosity/learnosity2.png"
+    "/site-img/img_cs_learnosity_learnosity2.webp"
    ]
   },
   "time": "2–3 weeks",
@@ -2524,7 +2524,7 @@ export const services = [
     "a": "Yes, or hand the plan to your own team."
    }
   ],
-  "hero": "/img/cs/learnosity/learnosity2.png"
+  "hero": "/site-img/img_cs_learnosity_learnosity2.webp"
  },
  {
   "slug": "dedicated-teams",
@@ -2571,7 +2571,7 @@ export const services = [
    "sector": "Digital banking",
    "line": "Accounts, payments and servicing customers expect without a branch.",
    "imgs": [
-    "/img/cs/lunar/luner1.png"
+    "/site-img/img_cs_lunar_luner1.webp"
    ]
   },
   "time": "Start in 2–3 weeks",
@@ -2634,7 +2634,7 @@ export const services = [
    "sector": "Youth payments",
    "line": "Payments and cards for a young audience, with parental controls built in.",
    "imgs": [
-    "/img/cs/famapp/famapp4.png"
+    "/site-img/img_cs_famapp_famapp4.webp"
    ]
   },
   "time": "Start in 1–2 weeks",
@@ -2697,7 +2697,7 @@ export const services = [
    "sector": "Spend management",
    "line": "Company cards, budgets and expense reporting for finance teams.",
    "imgs": [
-    "/img/cs/soldo/soldo.png"
+    "/site-img/img_cs_soldo_soldo.webp"
    ]
   },
   "time": "Ongoing",
@@ -2712,7 +2712,7 @@ export const services = [
     "a": "Yes, after an onboarding review."
    }
   ],
-  "hero": "/assets/company/team-office-wide.png"
+  "hero": "/assets/company/team-office-wide.jpg"
  },
  {
   "slug": "support-and-maintenance",
@@ -2759,7 +2759,7 @@ export const services = [
    "sector": "Healthcare",
    "line": "Appointment booking and patient engagement across a national clinic network.",
    "imgs": [
-    "/img/cs/hotdoc/hotdoc1.png"
+    "/site-img/img_cs_hotdoc_hotdoc1.webp"
    ]
   },
   "time": "Ongoing",
@@ -2774,7 +2774,7 @@ export const services = [
     "a": "A monthly retainer with a set number of hours, unused hours reported."
    }
   ],
-  "hero": "/assets/company/team-office-wide.png"
+  "hero": "/assets/company/team-office-wide.jpg"
  },
  {
   "slug": "website-development-company",
@@ -2822,7 +2822,7 @@ export const services = [
    "sector": "Fashion e-commerce",
    "line": "Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.",
    "imgs": [
-    "/img/cs/snitch/snitch1.png"
+    "/site-img/img_cs_snitch_snitch1.webp"
    ]
   },
   "time": "3–8 weeks",
@@ -2837,7 +2837,7 @@ export const services = [
     "a": "We build the technical SEO foundations and work with your marketing team on content."
    }
   ],
-  "hero": "/img/cs/snitch/snitch1.png"
+  "hero": "/site-img/img_cs_snitch_snitch1.webp"
  },
  {
   "slug": "frontend-development",
@@ -2885,7 +2885,7 @@ export const services = [
    "sector": "Marketplace",
    "line": "Multi-seller listings, checkout, payouts and dispute handling.",
    "imgs": [
-    "/img/cs/onbuy/onbuy1.png"
+    "/site-img/img_cs_onbuy_onbuy1.webp"
    ]
   },
   "time": "6–14 weeks",
@@ -2900,7 +2900,7 @@ export const services = [
     "a": "Yes. Unit, component and end-to-end tests are part of every build."
    }
   ],
-  "hero": "/img/cs/onbuy/onbuy1.png"
+  "hero": "/site-img/img_cs_onbuy_onbuy1.webp"
  },
  {
   "slug": "backend-development",
@@ -2948,10 +2948,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Cross-border payments for exporters, built around a ledger that reconciles to the cent.",
    "imgs": [
-    "/img/cs/skydo/Skydo1.png",
-    "/img/cs/skydo/Skydo2.png",
-    "/img/cs/skydo/Skydo3.png",
-    "/img/cs/skydo/Skydo4.png"
+    "/site-img/img_cs_skydo_Skydo1.webp",
+    "/site-img/img_cs_skydo_Skydo2.webp",
+    "/site-img/img_cs_skydo_Skydo3.webp",
+    "/site-img/img_cs_skydo_Skydo4.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -2966,7 +2966,7 @@ export const services = [
     "a": "Yes. We start with a performance review and fix the biggest bottleneck first."
    }
   ],
-  "hero": "/img/cs/skydo/Skydo1.png"
+  "hero": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "enterprise-software-development",
@@ -3014,7 +3014,7 @@ export const services = [
    "sector": "Commerce technology",
    "line": "Online ordering connected to retail operations through one inventory service.",
    "imgs": [
-    "/img/cs/fynd/fynd1.png"
+    "/site-img/img_cs_fynd_fynd1.webp"
    ]
   },
   "time": "16–32 weeks",
@@ -3029,7 +3029,7 @@ export const services = [
     "a": "Yes, as well as private and public cloud."
    }
   ],
-  "hero": "/img/cs/fynd/fynd1.png"
+  "hero": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "ai-chatbot-development",
@@ -3077,7 +3077,7 @@ export const services = [
    "sector": "Healthcare",
    "line": "Appointment booking and patient engagement across a national clinic network.",
    "imgs": [
-    "/img/cs/hotdoc/hotdoc1.png"
+    "/site-img/img_cs_hotdoc_hotdoc1.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -3092,7 +3092,7 @@ export const services = [
     "a": "Web, mobile apps, WhatsApp, Slack and Microsoft Teams."
    }
   ],
-  "hero": "/img/cs/hotdoc/hotdoc1.png"
+  "hero": "/site-img/img_cs_hotdoc_hotdoc1.webp"
  },
  {
   "slug": "computer-vision",
@@ -3140,7 +3140,7 @@ export const services = [
    "sector": "Quick commerce",
    "line": "Ordering, inventory and fulfilment operations for rapid grocery delivery.",
    "imgs": [
-    "/img/cs/volygroup/volygroup2.png"
+    "/site-img/img_cs_volygroup_volygroup2.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -3155,7 +3155,7 @@ export const services = [
     "a": "Yes. Models can run on edge devices on site."
    }
   ],
-  "hero": "/img/cs/volygroup/volygroup2.png"
+  "hero": "/site-img/img_cs_volygroup_volygroup2.webp"
  },
  {
   "slug": "nlp-development",
@@ -3203,7 +3203,7 @@ export const services = [
    "sector": "Assessment platform",
    "line": "Assessment infrastructure embedded by the products that integrate it.",
    "imgs": [
-    "/img/cs/learnosity/learnosity2.png"
+    "/site-img/img_cs_learnosity_learnosity2.webp"
    ]
   },
   "time": "6–12 weeks",
@@ -3218,7 +3218,7 @@ export const services = [
     "a": "Yes. Open-source models can run privately on your infrastructure."
    }
   ],
-  "hero": "/img/cs/learnosity/learnosity2.png"
+  "hero": "/site-img/img_cs_learnosity_learnosity2.webp"
  },
  {
   "slug": "rpa-and-process-automation",
@@ -3266,7 +3266,7 @@ export const services = [
    "sector": "Spend management",
    "line": "Company cards, budgets and expense reporting for finance teams.",
    "imgs": [
-    "/img/cs/soldo/soldo.png"
+    "/site-img/img_cs_soldo_soldo.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -3281,7 +3281,7 @@ export const services = [
     "a": "We monitor bots and update them under a support plan."
    }
   ],
-  "hero": "/img/cs/soldo/soldo.png"
+  "hero": "/site-img/img_cs_soldo_soldo.webp"
  },
  {
   "slug": "data-science",
@@ -3329,7 +3329,7 @@ export const services = [
    "sector": "Investing",
    "line": "Portfolios, market data and the social layer around investing.",
    "imgs": [
-    "/img/cs/stockgro/stockgro1.png"
+    "/site-img/img_cs_stockgro_stockgro1.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -3344,7 +3344,7 @@ export const services = [
     "a": "Yes. Notebooks and models are handed over with documentation."
    }
   ],
-  "hero": "/img/cs/stockgro/stockgro1.png"
+  "hero": "/site-img/img_cs_stockgro_stockgro1.webp"
  },
  {
   "slug": "mlops-and-llmops",
@@ -3392,10 +3392,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
    "imgs": [
-    "/img/cs/airwallex/AirWallex4.png",
-    "/img/cs/airwallex/AirWallex1.png",
-    "/img/cs/airwallex/AirWallex2.png",
-    "/img/cs/airwallex/AirWallex3.png"
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
    ]
   },
   "time": "6–12 weeks",
@@ -3410,7 +3410,7 @@ export const services = [
     "a": "Yes, including evaluation, guardrails and cost monitoring."
    }
   ],
-  "hero": "/img/cs/airwallex/AirWallex4.png"
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "smart-contract-development",
@@ -3458,10 +3458,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Cross-border payments for exporters, built around a ledger that reconciles to the cent.",
    "imgs": [
-    "/img/cs/skydo/Skydo1.png",
-    "/img/cs/skydo/Skydo2.png",
-    "/img/cs/skydo/Skydo3.png",
-    "/img/cs/skydo/Skydo4.png"
+    "/site-img/img_cs_skydo_Skydo1.webp",
+    "/site-img/img_cs_skydo_Skydo2.webp",
+    "/site-img/img_cs_skydo_Skydo3.webp",
+    "/site-img/img_cs_skydo_Skydo4.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -3476,7 +3476,7 @@ export const services = [
     "a": "Ethereum, Polygon, BNB Chain, Arbitrum, Base and Solana."
    }
   ],
-  "hero": "/img/cs/skydo/Skydo1.png"
+  "hero": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "defi-development",
@@ -3524,10 +3524,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
    "imgs": [
-    "/img/cs/airwallex/AirWallex4.png",
-    "/img/cs/airwallex/AirWallex1.png",
-    "/img/cs/airwallex/AirWallex2.png",
-    "/img/cs/airwallex/AirWallex3.png"
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
    ]
   },
   "time": "10–20 weeks",
@@ -3542,7 +3542,7 @@ export const services = [
     "a": "Yes, with the changes, testing and licence checks that requires."
    }
   ],
-  "hero": "/img/cs/airwallex/AirWallex4.png"
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "nft-marketplace-development",
@@ -3590,7 +3590,7 @@ export const services = [
    "sector": "Marketplace",
    "line": "Multi-seller listings, checkout, payouts and dispute handling.",
    "imgs": [
-    "/img/cs/onbuy/onbuy1.png"
+    "/site-img/img_cs_onbuy_onbuy1.webp"
    ]
   },
   "time": "8–14 weeks",
@@ -3605,7 +3605,7 @@ export const services = [
     "a": "We compare fees, speed and audience, and often recommend Polygon or Base."
    }
   ],
-  "hero": "/img/cs/onbuy/onbuy1.png"
+  "hero": "/site-img/img_cs_onbuy_onbuy1.webp"
  },
  {
   "slug": "crypto-wallet-development",
@@ -3653,7 +3653,7 @@ export const services = [
    "sector": "Youth payments",
    "line": "Payments and cards for a young audience, with parental controls built in.",
    "imgs": [
-    "/img/cs/famapp/famapp4.png"
+    "/site-img/img_cs_famapp_famapp4.webp"
    ]
   },
   "time": "10–16 weeks",
@@ -3668,7 +3668,7 @@ export const services = [
     "a": "Yes, through KYC partners for custodial products."
    }
   ],
-  "hero": "/img/cs/famapp/famapp4.png"
+  "hero": "/site-img/img_cs_famapp_famapp4.webp"
  },
  {
   "slug": "web3-and-dapp-development",
@@ -3716,10 +3716,10 @@ export const services = [
    "sector": "Creator edtech",
    "line": "Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.",
    "imgs": [
-    "/img/cs/graphy/graphy1.png",
-    "/img/cs/graphy/graphy2.png",
-    "/img/cs/graphy/graphy3.png",
-    "/img/cs/graphy/graphy4.png"
+    "/site-img/img_cs_graphy_graphy1.webp",
+    "/site-img/img_cs_graphy_graphy2.webp",
+    "/site-img/img_cs_graphy_graphy3.webp",
+    "/site-img/img_cs_graphy_graphy4.webp"
    ]
   },
   "time": "8–16 weeks",
@@ -3734,7 +3734,7 @@ export const services = [
     "a": "We will tell you honestly. Often a normal database is the better choice."
    }
   ],
-  "hero": "/img/cs/graphy/graphy1.png"
+  "hero": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "metaverse-and-3d-experiences",
@@ -3782,7 +3782,7 @@ export const services = [
    "sector": "Lifestyle e-commerce",
    "line": "A craft-led lifestyle storefront with editorial merchandising and operations behind it.",
    "imgs": [
-    "/img/cs/jaypore/jaypore1.png"
+    "/site-img/img_cs_jaypore_jaypore1.webp"
    ]
   },
   "time": "10–20 weeks",
@@ -3797,7 +3797,7 @@ export const services = [
     "a": "Yes, from CAD, product renders or existing models."
    }
   ],
-  "hero": "/img/cs/jaypore/jaypore1.png"
+  "hero": "/site-img/img_cs_jaypore_jaypore1.webp"
  },
  {
   "slug": "wearable-app-development",
@@ -3845,7 +3845,7 @@ export const services = [
    "sector": "Healthcare",
    "line": "Patient records and telemedicine at national scale.",
    "imgs": [
-    "/img/cs/eka.care/eka.care2.png"
+    "/site-img/img_cs_eka.care_eka.care2.webp"
    ]
   },
   "time": "8–14 weeks",
@@ -3860,7 +3860,7 @@ export const services = [
     "a": "Yes, over Bluetooth Low Energy, working with your hardware team."
    }
   ],
-  "hero": "/img/cs/eka.care/eka.care2.png"
+  "hero": "/site-img/img_cs_eka.care_eka.care2.webp"
  },
  {
   "slug": "game-development",
@@ -3908,7 +3908,7 @@ export const services = [
    "sector": "Edtech",
    "line": "Course content, practice and the mechanics that bring learners back.",
    "imgs": [
-    "/img/cs/senecalearning/senecalearning1.png"
+    "/site-img/img_cs_senecalearning_senecalearning1.webp"
    ]
   },
   "time": "10–24 weeks",
@@ -3923,7 +3923,7 @@ export const services = [
     "a": "Yes. Gamification modules fit into most apps."
    }
   ],
-  "hero": "/img/cs/senecalearning/senecalearning1.png"
+  "hero": "/site-img/img_cs_senecalearning_senecalearning1.webp"
  },
  {
   "slug": "hrms-development",
@@ -3971,7 +3971,7 @@ export const services = [
    "sector": "Business payments",
    "line": "Business payments on app and web, from merchant onboarding to settlement reporting.",
    "imgs": [
-    "/img/cs/myzelller/myzeller5.png"
+    "/site-img/img_cs_myzelller_myzeller5.webp"
    ]
   },
   "time": "10–20 weeks",
@@ -3986,7 +3986,7 @@ export const services = [
     "a": "Yes, most attendance devices can be integrated."
    }
   ],
-  "hero": "/img/cs/myzelller/myzeller5.png"
+  "hero": "/site-img/img_cs_myzelller_myzeller5.webp"
  },
  {
   "slug": "lms-development",
@@ -4034,10 +4034,10 @@ export const services = [
    "sector": "Creator edtech",
    "line": "Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.",
    "imgs": [
-    "/img/cs/graphy/graphy1.png",
-    "/img/cs/graphy/graphy2.png",
-    "/img/cs/graphy/graphy3.png",
-    "/img/cs/graphy/graphy4.png"
+    "/site-img/img_cs_graphy_graphy1.webp",
+    "/site-img/img_cs_graphy_graphy2.webp",
+    "/site-img/img_cs_graphy_graphy3.webp",
+    "/site-img/img_cs_graphy_graphy4.webp"
    ]
   },
   "time": "10–20 weeks",
@@ -4052,7 +4052,7 @@ export const services = [
     "a": "Yes, with payments, coupons and subscriptions."
    }
   ],
-  "hero": "/img/cs/graphy/graphy1.png"
+  "hero": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "cms-development-company",
@@ -4100,7 +4100,7 @@ export const services = [
    "sector": "Edtech",
    "line": "Course content, practice and the mechanics that bring learners back.",
    "imgs": [
-    "/img/cs/senecalearning/senecalearning1.png"
+    "/site-img/img_cs_senecalearning_senecalearning1.webp"
    ]
   },
   "time": "6–12 weeks",
@@ -4115,7 +4115,7 @@ export const services = [
     "a": "Yes, with redirects so search rankings are kept."
    }
   ],
-  "hero": "/img/cs/senecalearning/senecalearning1.png"
+  "hero": "/site-img/img_cs_senecalearning_senecalearning1.webp"
  },
  {
   "slug": "salesforce-development",
@@ -4163,7 +4163,7 @@ export const services = [
    "sector": "Marketplace",
    "line": "A marketplace with a large third-party seller base and the seller tooling behind it.",
    "imgs": [
-    "/img/cs/kogan/kogan2.png"
+    "/site-img/img_cs_kogan_kogan2.webp"
    ]
   },
   "time": "6–16 weeks",
@@ -4178,7 +4178,7 @@ export const services = [
     "a": "Yes, starting with an org health check."
    }
   ],
-  "hero": "/img/cs/kogan/kogan2.png"
+  "hero": "/site-img/img_cs_kogan_kogan2.webp"
  },
  {
   "slug": "microsoft-dynamics-365",
@@ -4226,7 +4226,7 @@ export const services = [
    "sector": "Digital banking",
    "line": "Accounts, payments and servicing customers expect without a branch.",
    "imgs": [
-    "/img/cs/lunar/luner1.png"
+    "/site-img/img_cs_lunar_luner1.webp"
    ]
   },
   "time": "8–20 weeks",
@@ -4241,7 +4241,7 @@ export const services = [
     "a": "Yes, role-based training for every team that uses it."
    }
   ],
-  "hero": "/img/cs/lunar/luner1.png"
+  "hero": "/site-img/img_cs_lunar_luner1.webp"
  },
  {
   "slug": "shopify-development-company",
@@ -4289,7 +4289,7 @@ export const services = [
    "sector": "Fashion e-commerce",
    "line": "Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.",
    "imgs": [
-    "/img/cs/snitch/snitch1.png"
+    "/site-img/img_cs_snitch_snitch1.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -4304,7 +4304,7 @@ export const services = [
     "a": "Yes, including products, customers and order history."
    }
   ],
-  "hero": "/img/cs/snitch/snitch1.png"
+  "hero": "/site-img/img_cs_snitch_snitch1.webp"
  },
  {
   "slug": "wordpress-development-company",
@@ -4352,7 +4352,7 @@ export const services = [
    "sector": "Lifestyle e-commerce",
    "line": "A craft-led lifestyle storefront with editorial merchandising and operations behind it.",
    "imgs": [
-    "/img/cs/jaypore/jaypore1.png"
+    "/site-img/img_cs_jaypore_jaypore1.webp"
    ]
   },
   "time": "3–8 weeks",
@@ -4367,7 +4367,7 @@ export const services = [
     "a": "Yes. We audit it and fix the biggest causes first."
    }
   ],
-  "hero": "/img/cs/jaypore/jaypore1.png"
+  "hero": "/site-img/img_cs_jaypore_jaypore1.webp"
  },
  {
   "slug": "cloud-consulting",
@@ -4415,10 +4415,10 @@ export const services = [
    "sector": "Fintech",
    "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
    "imgs": [
-    "/img/cs/airwallex/AirWallex4.png",
-    "/img/cs/airwallex/AirWallex1.png",
-    "/img/cs/airwallex/AirWallex2.png",
-    "/img/cs/airwallex/AirWallex3.png"
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
    ]
   },
   "time": "2–6 weeks",
@@ -4433,7 +4433,7 @@ export const services = [
     "a": "No. We work across AWS, Azure and Google Cloud."
    }
   ],
-  "hero": "/img/cs/airwallex/AirWallex4.png"
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "kubernetes-and-containers",
@@ -4481,10 +4481,10 @@ export const services = [
    "sector": "Quick commerce",
    "line": "Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.",
    "imgs": [
-    "/img/cs/milkrun/milkrun1.png",
-    "/img/cs/milkrun/milkrun2.png",
-    "/img/cs/milkrun/milkrun3.png",
-    "/img/cs/milkrun/milkrun4.png"
+    "/site-img/img_cs_milkrun_milkrun1.webp",
+    "/site-img/img_cs_milkrun_milkrun2.webp",
+    "/site-img/img_cs_milkrun_milkrun3.webp",
+    "/site-img/img_cs_milkrun_milkrun4.webp"
    ]
   },
   "time": "4–10 weeks",
@@ -4499,7 +4499,7 @@ export const services = [
     "a": "Yes, under a monthly managed plan."
    }
   ],
-  "hero": "/img/cs/milkrun/milkrun1.png"
+  "hero": "/site-img/img_cs_milkrun_milkrun1.webp"
  },
  {
   "slug": "penetration-testing",
@@ -4547,7 +4547,7 @@ export const services = [
    "sector": "Digital banking",
    "line": "Accounts, payments and servicing customers expect without a branch.",
    "imgs": [
-    "/img/cs/lunar/luner1.png"
+    "/site-img/img_cs_lunar_luner1.webp"
    ]
   },
   "time": "1–4 weeks",
@@ -4562,7 +4562,7 @@ export const services = [
     "a": "A detailed report, a retest after fixes and a summary letter for customers and auditors."
    }
   ],
-  "hero": "/img/cs/lunar/luner1.png"
+  "hero": "/site-img/img_cs_lunar_luner1.webp"
  },
  {
   "slug": "data-migration",
@@ -4610,7 +4610,7 @@ export const services = [
    "sector": "Commerce technology",
    "line": "Online ordering connected to retail operations through one inventory service.",
    "imgs": [
-    "/img/cs/fynd/fynd1.png"
+    "/site-img/img_cs_fynd_fynd1.webp"
    ]
   },
   "time": "2–8 weeks",
@@ -4625,7 +4625,7 @@ export const services = [
     "a": "Every table is validated with counts and checksums."
    }
   ],
-  "hero": "/img/cs/fynd/fynd1.png"
+  "hero": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "ai-consulting",
@@ -4673,7 +4673,7 @@ export const services = [
    "sector": "Assessment platform",
    "line": "Assessment infrastructure embedded by the products that integrate it.",
    "imgs": [
-    "/img/cs/learnosity/learnosity2.png"
+    "/site-img/img_cs_learnosity_learnosity2.webp"
    ]
   },
   "time": "2–6 weeks",
@@ -4688,7 +4688,7 @@ export const services = [
     "a": "No. Often an existing tool is the right answer."
    }
   ],
-  "hero": "/img/cs/learnosity/learnosity2.png"
+  "hero": "/site-img/img_cs_learnosity_learnosity2.webp"
  },
  {
   "slug": "digital-transformation-consulting",
@@ -4736,7 +4736,7 @@ export const services = [
    "sector": "Commerce technology",
    "line": "Online ordering connected to retail operations through one inventory service.",
    "imgs": [
-    "/img/cs/fynd/fynd1.png"
+    "/site-img/img_cs_fynd_fynd1.webp"
    ]
   },
   "time": "3–8 weeks",
@@ -4751,7 +4751,7 @@ export const services = [
     "a": "Yes. Our engineering team can build what the roadmap recommends."
    }
   ],
-  "hero": "/img/cs/fynd/fynd1.png"
+  "hero": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "offshore-development-centre",
@@ -4798,7 +4798,7 @@ export const services = [
    "sector": "Marketplace",
    "line": "A marketplace with a large third-party seller base and the seller tooling behind it.",
    "imgs": [
-    "/img/cs/kogan/kogan2.png"
+    "/site-img/img_cs_kogan_kogan2.webp"
    ]
   },
   "time": "Start in 3–6 weeks",
@@ -4813,7 +4813,779 @@ export const services = [
     "a": "Yes. Clients visit our Noida and Bangalore offices."
    }
   ],
-  "hero": "/img/cs/kogan/kogan2.png"
+  "hero": "/site-img/img_cs_kogan_kogan2.webp"
+ },
+ {
+  "slug": "sap-commerce-development",
+  "name": "SAP Commerce Cloud",
+  "cat": "business-software",
+  "tagline": "SAP Commerce, built for enterprise scale",
+  "desc": "SAP Commerce Cloud (Hybris) implementation, upgrades and integration for B2B and B2C brands selling across regions, catalogues and channels.",
+  "offers": [
+   {
+    "t": "Implementation",
+    "b": "Storefronts on SAP Commerce Cloud and Composable Storefront."
+   },
+   {
+    "t": "Upgrades & migration",
+    "b": "Hybris to SAP Commerce Cloud, on schedule."
+   },
+   {
+    "t": "B2B commerce",
+    "b": "Contract pricing, quotes and punch-out."
+   },
+   {
+    "t": "ERP integration",
+    "b": "Orders, stock and prices synced with SAP S/4HANA."
+   },
+   {
+    "t": "Performance tuning",
+    "b": "Faster pages and checkout under peak load."
+   },
+   {
+    "t": "Managed support",
+    "b": "Releases, monitoring and SLAs."
+   }
+  ],
+  "tech": [
+   "SAP Commerce Cloud",
+   "Hybris",
+   "Spartacus",
+   "Java",
+   "S/4HANA",
+   "SAP BTP",
+   "Solr"
+  ],
+  "client": {
+   "key": "fynd",
+   "name": "Fynd",
+   "sector": "Commerce technology",
+   "line": "Online ordering connected to retail operations through one inventory service.",
+   "imgs": [
+    "/site-img/img_cs_fynd_fynd1.webp"
+   ]
+  },
+  "time": "12–28 weeks",
+  "model": "Fixed or monthly",
+  "faq": [
+   {
+    "q": "Can you upgrade an old Hybris version?",
+    "a": "Yes. We audit extensions first, then upgrade in stages so the store stays live."
+   },
+   {
+    "q": "Do you work with SAP S/4HANA?",
+    "a": "Yes, including order, pricing and inventory sync."
+   }
+  ],
+  "hero": "/site-img/img_cs_fynd_fynd1.webp"
+ },
+ {
+  "slug": "odoo-development",
+  "name": "Odoo development",
+  "cat": "business-software",
+  "tagline": "Odoo ERP, set up around your business",
+  "desc": "Odoo implementation, custom modules and integrations for sales, inventory, manufacturing, accounting and HR, on Odoo Community or Enterprise.",
+  "offers": [
+   {
+    "t": "Implementation",
+    "b": "Odoo configured around your workflows."
+   },
+   {
+    "t": "Custom modules",
+    "b": "Python modules for what Odoo lacks."
+   },
+   {
+    "t": "Migration",
+    "b": "Version upgrades and data moved from Tally or Excel."
+   },
+   {
+    "t": "Integrations",
+    "b": "E-commerce, payment gateways and logistics."
+   },
+   {
+    "t": "GST & localisation",
+    "b": "Indian tax, invoicing and reports."
+   },
+   {
+    "t": "Support & training",
+    "b": "Monthly changes and user training."
+   }
+  ],
+  "tech": [
+   "Odoo",
+   "Python",
+   "PostgreSQL",
+   "OWL",
+   "XML-RPC",
+   "Docker"
+  ],
+  "client": {
+   "key": "milkrun",
+   "name": "MILKRUN",
+   "sector": "Quick commerce",
+   "line": "Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.",
+   "imgs": [
+    "/site-img/img_cs_milkrun_milkrun1.webp",
+    "/site-img/img_cs_milkrun_milkrun2.webp",
+    "/site-img/img_cs_milkrun_milkrun3.webp",
+    "/site-img/img_cs_milkrun_milkrun4.webp"
+   ]
+  },
+  "time": "6–16 weeks",
+  "model": "Fixed or monthly",
+  "faq": [
+   {
+    "q": "Community or Enterprise?",
+    "a": "We recommend based on the modules you need and your user count."
+   },
+   {
+    "q": "Can you move us from Tally?",
+    "a": "Yes, with opening balances, masters and history migrated."
+   }
+  ],
+  "hero": "/site-img/img_cs_milkrun_milkrun1.webp"
+ },
+ {
+  "slug": "server-management",
+  "name": "Server management",
+  "cat": "teams-managed",
+  "tagline": "Servers kept fast, patched and online",
+  "desc": "Monitoring, patching, hardening and performance tuning for cloud and on-premise servers, run by our in-house operations team.",
+  "offers": [
+   {
+    "t": "Server monitoring",
+    "b": "CPU, memory, disk and services watched around the clock."
+   },
+   {
+    "t": "Patching",
+    "b": "OS and package updates on an agreed schedule."
+   },
+   {
+    "t": "Security hardening",
+    "b": "Firewalls, SSH, users and access locked down."
+   },
+   {
+    "t": "Performance tuning",
+    "b": "Web servers, databases and caches tuned."
+   },
+   {
+    "t": "Control panels",
+    "b": "cPanel, Plesk and custom setups managed."
+   },
+   {
+    "t": "Monthly reports",
+    "b": "Uptime, incidents and changes in one report."
+   }
+  ],
+  "tech": [
+   "Linux",
+   "Windows Server",
+   "Nginx",
+   "Apache",
+   "Ansible",
+   "Zabbix"
+  ],
+  "client": {
+   "key": "teachmint",
+   "name": "Teachmint",
+   "sector": "Edtech",
+   "line": "Classroom, fees and school operations on one platform.",
+   "imgs": [
+    "/site-img/img_cs_teachmint_teachmint.webp"
+   ]
+  },
+  "time": "Start in 1 week",
+  "model": "Monthly",
+  "faq": [
+   {
+    "q": "Can you manage servers we set up ourselves?",
+    "a": "Yes. We start with an audit, then take over monitoring and maintenance."
+   },
+   {
+    "q": "Do you manage on-premise servers?",
+    "a": "Yes, as well as AWS, Azure, Google Cloud, DigitalOcean and dedicated hosting."
+   }
+  ],
+  "hero": "/site-img/img_cs_teachmint_teachmint.webp"
+ },
+ {
+  "slug": "cloud-hosting-infrastructure",
+  "name": "Cloud hosting & infrastructure",
+  "cat": "digital-transformation",
+  "tagline": "Infrastructure sized for your traffic",
+  "desc": "Cloud hosting designed, built and run for web apps, mobile backends and SaaS products, with infrastructure as code from day one.",
+  "offers": [
+   {
+    "t": "Architecture design",
+    "b": "Networks, compute and storage planned for your load."
+   },
+   {
+    "t": "Infrastructure as code",
+    "b": "Every resource defined in Terraform."
+   },
+   {
+    "t": "Load balancing & CDN",
+    "b": "Traffic spread and content cached close to users."
+   },
+   {
+    "t": "Autoscaling",
+    "b": "Capacity that follows demand."
+   },
+   {
+    "t": "Environments",
+    "b": "Separate dev, staging and production."
+   },
+   {
+    "t": "Managed hosting",
+    "b": "We run it and report monthly."
+   }
+  ],
+  "tech": [
+   "AWS",
+   "Azure",
+   "Google Cloud",
+   "Terraform",
+   "Cloudflare",
+   "Docker"
+  ],
+  "client": {
+   "key": "snitch",
+   "name": "Snitch",
+   "sector": "Fashion e-commerce",
+   "line": "Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.",
+   "imgs": [
+    "/site-img/img_cs_snitch_snitch1.webp"
+   ]
+  },
+  "time": "2–6 weeks",
+  "model": "Fixed or monthly",
+  "faq": [
+   {
+    "q": "Which cloud should we use?",
+    "a": "We recommend based on your stack, team and budget, and explain the trade-offs."
+   },
+   {
+    "q": "Who owns the cloud account?",
+    "a": "You do. Accounts, code and credentials are in your name."
+   }
+  ],
+  "hero": "/site-img/img_cs_snitch_snitch1.webp"
+ },
+ {
+  "slug": "aws-services",
+  "name": "AWS services",
+  "cat": "digital-transformation",
+  "tagline": "AWS, set up and run properly",
+  "desc": "Architecture, migration, DevOps and managed operations on Amazon Web Services from AWS-certified engineers.",
+  "offers": [
+   {
+    "t": "AWS architecture",
+    "b": "EC2, ECS, Lambda, RDS and S3 chosen for the workload."
+   },
+   {
+    "t": "Migration to AWS",
+    "b": "Applications and data moved with a rollback plan."
+   },
+   {
+    "t": "Landing zone",
+    "b": "Accounts, IAM and guardrails with AWS Organizations."
+   },
+   {
+    "t": "Serverless on AWS",
+    "b": "Lambda, API Gateway and DynamoDB."
+   },
+   {
+    "t": "Cost optimisation",
+    "b": "Savings Plans, rightsizing and idle resources removed."
+   },
+   {
+    "t": "Managed AWS",
+    "b": "Monitoring, patching and support."
+   }
+  ],
+  "tech": [
+   "AWS",
+   "EC2",
+   "Lambda",
+   "RDS",
+   "CloudFormation",
+   "Terraform"
+  ],
+  "client": {
+   "key": "airwallex",
+   "name": "Airwallex",
+   "sector": "Fintech",
+   "line": "Global business accounts and FX. Interfaces and services for money moving across borders.",
+   "imgs": [
+    "/site-img/img_cs_airwallex_AirWallex4.webp",
+    "/site-img/img_cs_airwallex_AirWallex1.webp",
+    "/site-img/img_cs_airwallex_AirWallex2.webp",
+    "/site-img/img_cs_airwallex_AirWallex3.webp"
+   ]
+  },
+  "time": "2–10 weeks",
+  "model": "Fixed or monthly",
+  "faq": [
+   {
+    "q": "Are your engineers AWS certified?",
+    "a": "Yes. Our cloud team holds AWS associate and professional certifications."
+   },
+   {
+    "q": "Can you review our current AWS setup?",
+    "a": "Yes, through a Well-Architected review with a prioritised list of fixes."
+   }
+  ],
+  "hero": "/site-img/img_cs_airwallex_AirWallex4.webp"
+ },
+ {
+  "slug": "azure-services",
+  "name": "Azure services",
+  "cat": "digital-transformation",
+  "tagline": "Azure for teams on the Microsoft stack",
+  "desc": "Azure architecture, migration and managed operations for .NET applications, Microsoft 365 organisations and enterprise workloads.",
+  "offers": [
+   {
+    "t": "Azure architecture",
+    "b": "App Service, AKS, Functions and Azure SQL."
+   },
+   {
+    "t": "Migration to Azure",
+    "b": "Servers and apps moved from on-premise."
+   },
+   {
+    "t": "Identity",
+    "b": "Entra ID, SSO and conditional access."
+   },
+   {
+    "t": "Azure DevOps",
+    "b": "Pipelines, boards and repos set up."
+   },
+   {
+    "t": "Cost management",
+    "b": "Reservations and rightsizing."
+   },
+   {
+    "t": "Managed Azure",
+    "b": "Monitoring and support under an SLA."
+   }
+  ],
+  "tech": [
+   "Azure",
+   "App Service",
+   "AKS",
+   "Azure SQL",
+   "Entra ID",
+   "Bicep"
+  ],
+  "client": {
+   "key": "lunar",
+   "name": "Lunar",
+   "sector": "Digital banking",
+   "line": "Accounts, payments and servicing customers expect without a branch.",
+   "imgs": [
+    "/site-img/img_cs_lunar_luner1.webp"
+   ]
+  },
+  "time": "2–10 weeks",
+  "model": "Fixed or monthly",
+  "faq": [
+   {
+    "q": "Can you move our on-premise servers to Azure?",
+    "a": "Yes, using Azure Migrate with a tested cutover plan."
+   },
+   {
+    "q": "Do you work with Azure credits from Microsoft programmes?",
+    "a": "Yes. We plan the setup to make good use of them."
+   }
+  ],
+  "hero": "/site-img/img_cs_lunar_luner1.webp"
+ },
+ {
+  "slug": "google-cloud-services",
+  "name": "Google Cloud services",
+  "cat": "digital-transformation",
+  "tagline": "Google Cloud for data-heavy products",
+  "desc": "Google Cloud architecture, migration and operations, from Cloud Run and GKE to BigQuery and Vertex AI.",
+  "offers": [
+   {
+    "t": "GCP architecture",
+    "b": "Cloud Run, GKE, Cloud SQL and Pub/Sub."
+   },
+   {
+    "t": "Migration to Google Cloud",
+    "b": "Workloads moved with minimal downtime."
+   },
+   {
+    "t": "BigQuery",
+    "b": "Data warehouse and analytics."
+   },
+   {
+    "t": "Vertex AI",
+    "b": "Machine learning on Google Cloud."
+   },
+   {
+    "t": "Firebase",
+    "b": "Backends for mobile apps."
+   },
+   {
+    "t": "Managed GCP",
+    "b": "Monitoring, security and cost control."
+   }
+  ],
+  "tech": [
+   "Google Cloud",
+   "Cloud Run",
+   "GKE",
+   "BigQuery",
+   "Firebase",
+   "Terraform"
+  ],
+  "client": {
+   "key": "graphy",
+   "name": "Graphy",
+   "sector": "Creator edtech",
+   "line": "Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.",
+   "imgs": [
+    "/site-img/img_cs_graphy_graphy1.webp",
+    "/site-img/img_cs_graphy_graphy2.webp",
+    "/site-img/img_cs_graphy_graphy3.webp",
+    "/site-img/img_cs_graphy_graphy4.webp"
+   ]
+  },
+  "time": "2–10 weeks",
+  "model": "Fixed or monthly",
+  "faq": [
+   {
+    "q": "Why choose Google Cloud?",
+    "a": "It is strong for data, analytics and Kubernetes. We recommend it when that fits."
+   },
+   {
+    "q": "Can you work with our Firebase app?",
+    "a": "Yes, including scaling it or moving parts to Cloud Run."
+   }
+  ],
+  "hero": "/site-img/img_cs_graphy_graphy1.webp"
+ },
+ {
+  "slug": "cloud-cost-optimisation",
+  "name": "Cloud cost optimisation",
+  "cat": "digital-transformation",
+  "tagline": "A smaller cloud bill, same reliability",
+  "desc": "A review of your AWS, Azure or Google Cloud spend, followed by the changes that cut it without slowing your product down.",
+  "offers": [
+   {
+    "t": "Spend analysis",
+    "b": "Where every rupee and dollar goes."
+   },
+   {
+    "t": "Rightsizing",
+    "b": "Instances and databases sized to real usage."
+   },
+   {
+    "t": "Idle resources",
+    "b": "Unused servers, disks and IPs removed."
+   },
+   {
+    "t": "Commitments",
+    "b": "Reserved instances and savings plans."
+   },
+   {
+    "t": "Architecture changes",
+    "b": "Serverless and spot where they fit."
+   },
+   {
+    "t": "Cost alerts",
+    "b": "Budgets and alerts so it stays low."
+   }
+  ],
+  "tech": [
+   "AWS Cost Explorer",
+   "Azure Cost Management",
+   "GCP Billing",
+   "Kubecost",
+   "Terraform",
+   "Grafana"
+  ],
+  "client": {
+   "key": "milkrun",
+   "name": "MILKRUN",
+   "sector": "Quick commerce",
+   "line": "Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.",
+   "imgs": [
+    "/site-img/img_cs_milkrun_milkrun1.webp",
+    "/site-img/img_cs_milkrun_milkrun2.webp",
+    "/site-img/img_cs_milkrun_milkrun3.webp",
+    "/site-img/img_cs_milkrun_milkrun4.webp"
+   ]
+  },
+  "time": "2–4 weeks",
+  "model": "Fixed scope",
+  "faq": [
+   {
+    "q": "How much can we save?",
+    "a": "It depends on your setup. We share estimated savings after the first review."
+   },
+   {
+    "q": "Will changes cause downtime?",
+    "a": "Changes are planned and rolled out in stages, usually without downtime."
+   }
+  ],
+  "hero": "/site-img/img_cs_milkrun_milkrun1.webp"
+ },
+ {
+  "slug": "monitoring-sre",
+  "name": "24/7 monitoring & SRE",
+  "cat": "teams-managed",
+  "tagline": "Problems found before your users find them",
+  "desc": "Round-the-clock monitoring, alerting and site reliability engineering for production systems, with agreed response times.",
+  "offers": [
+   {
+    "t": "24/7 monitoring",
+    "b": "Uptime, errors and latency watched around the clock."
+   },
+   {
+    "t": "Alerting & on-call",
+    "b": "The right person alerted, with escalation."
+   },
+   {
+    "t": "Incident response",
+    "b": "Issues fixed and written up afterwards."
+   },
+   {
+    "t": "SLOs",
+    "b": "Reliability targets agreed and tracked."
+   },
+   {
+    "t": "Observability",
+    "b": "Logs, metrics and traces in one place."
+   },
+   {
+    "t": "Reliability work",
+    "b": "Root causes fixed so incidents do not repeat."
+   }
+  ],
+  "tech": [
+   "Datadog",
+   "Grafana",
+   "Prometheus",
+   "PagerDuty",
+   "Sentry",
+   "New Relic"
+  ],
+  "client": {
+   "key": "fynd",
+   "name": "Fynd",
+   "sector": "Commerce technology",
+   "line": "Online ordering connected to retail operations through one inventory service.",
+   "imgs": [
+    "/site-img/img_cs_fynd_fynd1.webp"
+   ]
+  },
+  "time": "Start in 2 weeks",
+  "model": "Monthly",
+  "faq": [
+   {
+    "q": "What response times do you offer?",
+    "a": "Agreed per system in an SLA, with critical issues answered in minutes."
+   },
+   {
+    "q": "Do you monitor systems we built ourselves?",
+    "a": "Yes, after a short onboarding review."
+   }
+  ],
+  "hero": "/site-img/img_cs_fynd_fynd1.webp"
+ },
+ {
+  "slug": "backup-disaster-recovery",
+  "name": "Backup & disaster recovery",
+  "cat": "teams-managed",
+  "tagline": "Recover in minutes, not days",
+  "desc": "Backups, replication and disaster recovery plans for servers, databases and cloud, tested on a schedule.",
+  "offers": [
+   {
+    "t": "Backup setup",
+    "b": "Servers, databases and files backed up automatically."
+   },
+   {
+    "t": "Offsite copies",
+    "b": "Backups stored in a separate region or cloud."
+   },
+   {
+    "t": "Disaster recovery plan",
+    "b": "Recovery time and data loss targets agreed."
+   },
+   {
+    "t": "Replication",
+    "b": "Standby systems ready to take over."
+   },
+   {
+    "t": "Restore testing",
+    "b": "Restores tested, not just backups taken."
+   },
+   {
+    "t": "Ransomware protection",
+    "b": "Immutable backups that cannot be deleted."
+   }
+  ],
+  "tech": [
+   "AWS Backup",
+   "Azure Site Recovery",
+   "Veeam",
+   "Restic",
+   "PostgreSQL",
+   "Terraform"
+  ],
+  "client": {
+   "key": "skydo",
+   "name": "Skydo",
+   "sector": "Fintech",
+   "line": "Cross-border payments for exporters, built around a ledger that reconciles to the cent.",
+   "imgs": [
+    "/site-img/img_cs_skydo_Skydo1.webp",
+    "/site-img/img_cs_skydo_Skydo2.webp",
+    "/site-img/img_cs_skydo_Skydo3.webp",
+    "/site-img/img_cs_skydo_Skydo4.webp"
+   ]
+  },
+  "time": "2–6 weeks",
+  "model": "Fixed or monthly",
+  "faq": [
+   {
+    "q": "How often are restores tested?",
+    "a": "On an agreed schedule, usually monthly or quarterly, with a written result."
+   },
+   {
+    "q": "Can you protect on-premise servers?",
+    "a": "Yes, with backups copied to the cloud."
+   }
+  ],
+  "hero": "/site-img/img_cs_skydo_Skydo1.webp"
+ },
+ {
+  "slug": "server-administration",
+  "name": "Linux & Windows server administration",
+  "cat": "teams-managed",
+  "tagline": "Servers administered by people who know them",
+  "desc": "Linux and Windows Server administration for web, database and application servers, on-premise or in the cloud.",
+  "offers": [
+   {
+    "t": "Linux administration",
+    "b": "Ubuntu, RHEL, CentOS and Debian."
+   },
+   {
+    "t": "Windows Server",
+    "b": "Active Directory, IIS and Group Policy."
+   },
+   {
+    "t": "Web servers",
+    "b": "Nginx, Apache and IIS configured."
+   },
+   {
+    "t": "Database servers",
+    "b": "MySQL, PostgreSQL and SQL Server tuned."
+   },
+   {
+    "t": "Users & access",
+    "b": "Accounts, keys and permissions managed."
+   },
+   {
+    "t": "Upgrades",
+    "b": "OS upgrades planned and tested."
+   }
+  ],
+  "tech": [
+   "Linux",
+   "Windows Server",
+   "Active Directory",
+   "Nginx",
+   "MySQL",
+   "Ansible"
+  ],
+  "client": {
+   "key": "zeller",
+   "name": "Zeller",
+   "sector": "Business payments",
+   "line": "Business payments on app and web, from merchant onboarding to settlement reporting.",
+   "imgs": [
+    "/site-img/img_cs_myzelller_myzeller5.webp"
+   ]
+  },
+  "time": "Start in 1 week",
+  "model": "Monthly",
+  "faq": [
+   {
+    "q": "Do you offer hourly support?",
+    "a": "Yes, through a monthly retainer with a set number of hours."
+   },
+   {
+    "q": "Can you upgrade old servers?",
+    "a": "Yes. We plan the upgrade, test it on a copy and agree a cutover window."
+   }
+  ],
+  "hero": "/site-img/img_cs_myzelller_myzeller5.webp"
+ },
+ {
+  "slug": "serverless-development",
+  "name": "Serverless development",
+  "cat": "digital-transformation",
+  "tagline": "Backends with no servers to manage",
+  "desc": "APIs, background jobs and event-driven systems on AWS Lambda, Azure Functions and Google Cloud Functions, billed only when they run.",
+  "offers": [
+   {
+    "t": "Serverless APIs",
+    "b": "Lambda and API Gateway backends."
+   },
+   {
+    "t": "Event-driven systems",
+    "b": "Queues, streams and triggers."
+   },
+   {
+    "t": "Scheduled jobs",
+    "b": "Reports and syncs on a timer."
+   },
+   {
+    "t": "Serverless databases",
+    "b": "DynamoDB, Firestore and Aurora Serverless."
+   },
+   {
+    "t": "Migration to serverless",
+    "b": "Parts of existing apps moved over."
+   },
+   {
+    "t": "Monitoring",
+    "b": "Traces and cost per function tracked."
+   }
+  ],
+  "tech": [
+   "AWS Lambda",
+   "Azure Functions",
+   "Cloud Functions",
+   "DynamoDB",
+   "Node.js",
+   "Python"
+  ],
+  "client": {
+   "key": "zupit",
+   "name": "Zupit",
+   "sector": "Quick commerce",
+   "line": "A focused first release for rapid delivery, built to carry version two.",
+   "imgs": [
+    "/site-img/img_cs_zypit_zypit2.webp"
+   ]
+  },
+  "time": "4–10 weeks",
+  "model": "Fixed scope",
+  "faq": [
+   {
+    "q": "Is serverless cheaper?",
+    "a": "For uneven or low traffic, usually yes. For steady heavy load, containers can cost less, and we will say so."
+   },
+   {
+    "q": "Can you move our existing backend?",
+    "a": "Yes, one service at a time."
+   }
+  ],
+  "hero": "/site-img/img_cs_zypit_zypit2.webp"
  }
 ];
 

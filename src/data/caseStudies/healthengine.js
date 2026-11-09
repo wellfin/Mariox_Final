@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/healthengine/healthengine.png',
   galleryImages: [
-    '/img/cs/healthengine/healthengine1.png',
-    '/img/cs/healthengine/healthengine2.png',
-    '/img/cs/healthengine/healthengine3.png',
-    '/img/cs/healthengine/healthengine4.png',
+    '/site-img/img_cs_healthengine_healthengine1.webp',
+    '/site-img/img_cs_healthengine_healthengine2.webp',
+    '/site-img/img_cs_healthengine_healthengine3.webp',
+    '/site-img/img_cs_healthengine_healthengine4.webp',
   ],
   sections: [
     {

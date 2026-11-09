@@ -1,17 +1,35 @@
+# Mariox Software — https://www.marioxsoftware.com
+# Updated 9 November 2026 for the Next.js site.
+
 User-agent: *
+
+# Not for search results
+Disallow: /api/
+Disallow: /thank-you
+Disallow: /thank-you/
+Disallow: /proposals
+
+# Search, feeds and other machine endpoints
+Disallow: *?s=
+Disallow: *?p=
+Disallow: /search/
+Disallow: /polls/
+Disallow: */feed
+Disallow: */rss
+Disallow: */embed
+Disallow: */Resume.pdf
+Disallow: /amp/
+
+# Left over from the old WordPress blog and press-release installs
 Disallow: /cgi-bin/
+Disallow: /xmlrpc.php
+Disallow: /blog/xmlrpc.php/
 Disallow: /blog/wp-admin/
 Disallow: /blog/wp-includes/
-Disallow: /press-release/wp-admin/
-Disallow: /press-release/wp-includes/
-Disallow: /articles/
-Disallow: /blog/xmlrpc.php/
-Disallow: /staging/
-Disallow: /PHPExcel/
-Disallow: /ContactQueries.xlsx
+Disallow: /blog/amp
+Disallow: /blog/?p=
 Disallow: /blog/*?s=
 Disallow: /blog/category/*
-Disallow: /l/*
 Disallow: /blog/tag/*
 Disallow: /blog/page/*
 Disallow: /blog/2015/*
@@ -21,72 +39,18 @@ Disallow: /blog/2018/*
 Disallow: /blog/2019/*
 Disallow: /blog/2020/*
 Disallow: /blog/2021/*
-Disallow: /coming-soon/
+Disallow: /press-release/wp-admin/
+Disallow: /press-release/wp-includes/
 Disallow: /press-release/category/*
+Disallow: /articles/
+Disallow: /staging/
+Disallow: /coming-soon/
+Disallow: /PHPExcel/
+Disallow: /ContactQueries.xlsx
+Disallow: /l/*
 Disallow: /portfolio/supershe-edutainment-app-for-women/
-Disallow: /thank-you/
-Disallow: *?s=
-Disallow: /search/
-Disallow: /polls/
-Disallow: */feed
-Disallow: */rss
-Disallow: */embed
-Disallow: /xmlrpc.php
-Disallow: *?p=
-Disallow: /cgi-bin
-Disallow: /amp/
-Disallow: /blog/amp
-Disallow: /blog/wp-admin/
-Disallow: /blog/xmlrpc.php/
-Disallow: /blog/*?s=
-Disallow: /blog/category/*
-Disallow: /blog/wp-includes/
-Disallow: *?p=
-Disallow: *?s=
-Disallow: /search/
-Disallow: */feed
-Disallow: */Resume.pdf
-Disallow: */embed
-Disallow: */embed
-Disallow: /blog/?p=
 
-Disallow: /case-study/skydo
-Disallow: /case-study/famapp
-Disallow: /case-study/stockgro
-Disallow: /case-study/myzeller
-Disallow: /case-study/airwallex
-Disallow: /case-study/soldo
-Disallow: /case-study/yonder
-Disallow: /case-study/lunar
-Disallow: /case-study/graphy
-Disallow: /case-study/edtechhub
-Disallow: /case-study/testbook
-Disallow: /case-study/teachmint
-Disallow: /case-study/sunstone
-Disallow: /case-study/learnosity
-Disallow: /case-study/clueylearning
-Disallow: /case-study/senecalearning
-Disallow: /case-study/snitch
-Disallow: /case-study/fynd
-Disallow: /case-study/jaypore
-Disallow: /case-study/kogan
-Disallow: /case-study/onbuy
-Disallow: /case-study/onceit
-Disallow: /case-study/zypit
-Disallow: /case-study/thegrocart
-Disallow: /case-study/milkrun
-Disallow: /case-study/volygroup
-Disallow: /case-study/weezy
-Disallow: /case-study/zapp
-Disallow: /case-study/oda
-Disallow: /case-study/ekacare
-Disallow: /case-study/nirogstreet
-Disallow: /case-study/healthengine
-Disallow: /case-study/zava
-Disallow: /case-study/livi
-Disallow: /case-study/tend
-Disallow: /case-study/hotdoc
-
+# Kept crawlable from the old blog
 Allow: /blog/tag/new-google-assistant-apk
 Allow: /blog/tag/apps-built-with-flutter
 Allow: /blog/wp-includes/images/
@@ -94,6 +58,11 @@ Allow: /blog/wp-includes/js/
 Allow: /blog/embedded-software-development/
 Allow: /press-release/wp-includes/js/
 Allow: /press-release/wp-includes/images/
+
+# The 36 /case-study/<slug> URLs used to be blocked here. They now 301 to
+# /work/<slug> (next.config.mjs), and a blocked URL is never fetched, so the
+# redirect was never followed and the old links counted for nothing. Letting
+# them through is what moves that history onto the new pages.
 
 Sitemap: https://www.marioxsoftware.com/sitemap.xml
 Sitemap: https://www.marioxsoftware.com/sitemap-pages.xml

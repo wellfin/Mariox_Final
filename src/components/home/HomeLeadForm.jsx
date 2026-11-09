@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import El from '../El';
 import { isolateScroll } from '@/lib/fx';
 import { validatePhone, nationalDigits } from '@/lib/phone';
+import { useFilledIn } from '@/lib/formGuard';
 import { needs as NEEDS, budgets as BUDGETS } from '@/data/homeV4';
 
 // Contact form from the "Mariox Home v4" design. The design posted to a
@@ -49,6 +50,8 @@ export default function HomeLeadForm() {
   const [state, setState] = useState('idle');
   const [note, setNote] = useState('');
   const phoneRef = useRef(null);
+  // Reported with the enquiry so the API can drop instant submissions.
+  const filledIn = useFilledIn();
 
   // Keep the country list scrolling inside itself, not the page.
   useEffect(() => isolateScroll(phoneRef.current), []);
@@ -86,6 +89,7 @@ export default function HomeLeadForm() {
       source: 'home',
       subject: values.companyName.trim() ? `Company: ${values.companyName.trim()}` : '',
       company: values.hp, // honeypot, same field name the API checks
+      filledIn: filledIn(), // how long the form was on screen
       pageUrl: typeof window !== 'undefined' ? window.location.href : '',
       services: Object.fromEntries(picked.needs.map((n) => [n, true])),
     };

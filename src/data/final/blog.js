@@ -51,7 +51,7 @@ export const posts = [
   "excerpt": "In our other blogs, we talk about mobile application development services; in this blog, we talk about the factors to consider.",
   "cat": "mobile",
   "n": 1,
-  "img": "/img/cs/snitch/snitch1.png"
+  "img": "/site-img/img_cs_snitch_snitch1.webp"
  },
  {
   "slug": "demystifying-the-process-how-app-development-services-turn-ideas-into-reality",
@@ -59,7 +59,7 @@ export const posts = [
   "excerpt": "By the last year, globally, there has been a hike of 7–12% in mobile app development, driven by startup culture worldwide.",
   "cat": "mobile",
   "n": 2,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "the-game-changing-impact-of-serverless-revolution-on-web-development",
@@ -67,7 +67,7 @@ export const posts = [
   "excerpt": "In the ever-evolving landscape of technology, innovations often emerge like waves.",
   "cat": "web",
   "n": 3,
-  "img": "/img/cs/learnosity/learnosity2.png"
+  "img": "/site-img/img_cs_learnosity_learnosity2.webp"
  },
  {
   "slug": "mobile-app-development-a-business-game-changer-in-the-digital-landscape",
@@ -75,7 +75,7 @@ export const posts = [
   "excerpt": "The year 2024 is the year of entrepreneurial hegemony and tech expansion.",
   "cat": "mobile",
   "n": 4,
-  "img": "/img/cs/testbook/testbook1.png"
+  "img": "/site-img/img_cs_testbook_testbook1.webp"
  },
  {
   "slug": "the-impact-of-artificial-intelligence-on-mobile-app-development",
@@ -91,7 +91,7 @@ export const posts = [
   "excerpt": "Selecting the right tool for your project, like React or React Native, shapes everything that follows.",
   "cat": "frameworks",
   "n": 6,
-  "img": "/img/cs/stockgro/stockgro1.png"
+  "img": "/site-img/img_cs_stockgro_stockgro1.webp"
  },
  {
   "slug": "methods-to-enhance-the-conversion-rate-of-your-mobile-application",
@@ -99,7 +99,7 @@ export const posts = [
   "excerpt": "As the world moves towards mobile, it has become important for every business to have a mobile presence.",
   "cat": "mobile",
   "n": 7,
-  "img": "/img/cs/snitch/snitch1.png"
+  "img": "/site-img/img_cs_snitch_snitch1.webp"
  },
  {
   "slug": "devin-ai-software-engineer-2024-a-global-tech-menace-or-boon",
@@ -115,7 +115,7 @@ export const posts = [
   "excerpt": "APIs allow mobile applications to talk to one another and share data.",
   "cat": "mobile",
   "n": 9,
-  "img": "/img/cs/skydo/Skydo1.png"
+  "img": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "the-primary-highlights-of-native-app-development",
@@ -123,7 +123,7 @@ export const posts = [
   "excerpt": "In the present-day tech-driven world, mobile apps have become an integral part of life.",
   "cat": "frameworks",
   "n": 10,
-  "img": "/img/cs/testbook/testbook1.png"
+  "img": "/site-img/img_cs_testbook_testbook1.webp"
  },
  {
   "slug": "the-best-mobile-apps-developed-with-flutter-framework",
@@ -131,7 +131,7 @@ export const posts = [
   "excerpt": "Crafting applications for diverse platforms with minimal code adjustments is no longer a dream.",
   "cat": "frameworks",
   "n": 11,
-  "img": "/img/cs/stockgro/stockgro1.png"
+  "img": "/site-img/img_cs_stockgro_stockgro1.webp"
  },
  {
   "slug": "the-secret-digital-marketing-trends-for-2024",
@@ -139,7 +139,7 @@ export const posts = [
   "excerpt": "The digital marketing landscape is constantly evolving.",
   "cat": "marketing",
   "n": 12,
-  "img": "/assets/company/office-workspace.png"
+  "img": "/assets/company/office-workspace.jpg"
  },
  {
   "slug": "what-are-the-motives-for-using-kotlin-for-android-app-development",
@@ -147,7 +147,7 @@ export const posts = [
   "excerpt": "Looking for a programming language to help you develop better Android apps?",
   "cat": "frameworks",
   "n": 13,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "effective-ideas-for-reducing-cost-in-android-app-development",
@@ -155,7 +155,7 @@ export const posts = [
   "excerpt": "In today's competitive digital landscape, Android app development has become indispensable.",
   "cat": "mobile",
   "n": 14,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "the-value-of-ai-in-web-design-and-development",
@@ -171,7 +171,7 @@ export const posts = [
   "excerpt": "Complex, technical, intricate. These words often come to mind with heatmaps.",
   "cat": "design",
   "n": 16,
-  "img": "/img/cs/snitch/snitch1.png"
+  "img": "/site-img/img_cs_snitch_snitch1.webp"
  },
  {
   "slug": "ui-design-values-a-set-of-few-important-rules",
@@ -179,7 +179,7 @@ export const posts = [
   "excerpt": "If you've encountered the term UX/UI design, these rules are for you.",
   "cat": "design",
   "n": 17,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "trending-social-media-marketing-concepts-in-2024",
@@ -195,7 +195,7 @@ export const posts = [
   "excerpt": "How startups grow into larger companies after building a website that converts.",
   "cat": "web",
   "n": 19,
-  "img": "/img/cs/kogan/kogan2.png"
+  "img": "/site-img/img_cs_kogan_kogan2.webp"
  },
  {
   "slug": "the-secret-ios-app-development-trends-to-dominate-in-2024",
@@ -203,7 +203,7 @@ export const posts = [
   "excerpt": "With the rising use of iOS, these trends are worth watching.",
   "cat": "mobile",
   "n": 20,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "mobile-app-development-trends-what-to-expect-in-2024",
@@ -211,7 +211,7 @@ export const posts = [
   "excerpt": "Life brings unexpected situations, and so does tech.",
   "cat": "mobile",
   "n": 21,
-  "img": "/img/cs/skydo/Skydo1.png"
+  "img": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "reasons-for-software-development-project-failure",
@@ -227,7 +227,7 @@ export const posts = [
   "excerpt": "What web development frameworks are, and which ones to pick.",
   "cat": "frameworks",
   "n": 23,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "the-leading-methodologies-for-app-development-to-choose-in-2024",
@@ -235,7 +235,7 @@ export const posts = [
   "excerpt": "There is a big difference between a good app and a great one.",
   "cat": "mobile",
   "n": 24,
-  "img": "/img/cs/milkrun/milkrun1.png"
+  "img": "/site-img/img_cs_milkrun_milkrun1.webp"
  },
  {
   "slug": "what-is-application-integration-and-how-does-it-work",
@@ -243,7 +243,7 @@ export const posts = [
   "excerpt": "Seamless connection powers the modern business.",
   "cat": "web",
   "n": 25,
-  "img": "/img/cs/onbuy/onbuy1.png"
+  "img": "/site-img/img_cs_onbuy_onbuy1.webp"
  },
  {
   "slug": "navigating-the-future-2024-mobile-app-development-trends",
@@ -251,7 +251,7 @@ export const posts = [
   "excerpt": "We all saw how much 2023 changed mobile app development.",
   "cat": "mobile",
   "n": 26,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "saas-product-design-6-best-practices-and-tips-for-success",
@@ -259,7 +259,7 @@ export const posts = [
   "excerpt": "Build a business with SaaS design that customers keep using.",
   "cat": "design",
   "n": 27,
-  "img": "/img/cs/jaypore/jaypore1.png"
+  "img": "/site-img/img_cs_jaypore_jaypore1.webp"
  },
  {
   "slug": "10-flutter-advantages-for-internet-of-things-iot-and-mobile-app-development",
@@ -267,7 +267,7 @@ export const posts = [
   "excerpt": "Considering cross-platform app development for a connected product?",
   "cat": "frameworks",
   "n": 28,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "why-choosing-flutter-for-your-mvp-project",
@@ -275,7 +275,7 @@ export const posts = [
   "excerpt": "Thinking of building an MVP? Here is why Flutter fits.",
   "cat": "frameworks",
   "n": 29,
-  "img": "/img/cs/fynd/fynd1.png"
+  "img": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "10-best-android-frameworks-for-app-development-in-2024",
@@ -283,7 +283,7 @@ export const posts = [
   "excerpt": "We live in a world where everyone depends on applications.",
   "cat": "frameworks",
   "n": 30,
-  "img": "/img/cs/testbook/testbook1.png"
+  "img": "/site-img/img_cs_testbook_testbook1.webp"
  },
  {
   "slug": "complete-guide-to-web-application-development",
@@ -291,7 +291,7 @@ export const posts = [
   "excerpt": "Exploring the potential of web applications for your business.",
   "cat": "web",
   "n": 31,
-  "img": "/img/cs/fynd/fynd1.png"
+  "img": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "quick-guide-to-offshore-software-development-in-2024",
@@ -307,7 +307,7 @@ export const posts = [
   "excerpt": "What website design is, and why UI/UX decides whether a site works.",
   "cat": "design",
   "n": 33,
-  "img": "/img/cs/jaypore/jaypore1.png"
+  "img": "/site-img/img_cs_jaypore_jaypore1.webp"
  },
  {
   "slug": "custom-vs-template-websites-which-is-right-for-your-business",
@@ -315,7 +315,7 @@ export const posts = [
   "excerpt": "Designing a website takes more than placing content on a page.",
   "cat": "web",
   "n": 34,
-  "img": "/img/cs/kogan/kogan2.png"
+  "img": "/site-img/img_cs_kogan_kogan2.webp"
  },
  {
   "slug": "top-5-e-commerce-website-development-strategies-for-success",
@@ -323,7 +323,7 @@ export const posts = [
   "excerpt": "E-commerce development is the process of building and improving an online store.",
   "cat": "web",
   "n": 35,
-  "img": "/img/cs/onbuy/onbuy1.png"
+  "img": "/site-img/img_cs_onbuy_onbuy1.webp"
  },
  {
   "slug": "choosing-the-right-content-management-system-cms-for-your-website",
@@ -331,7 +331,7 @@ export const posts = [
   "excerpt": "There are over 1.5 billion websites. Choosing the right CMS matters.",
   "cat": "web",
   "n": 36,
-  "img": "/img/cs/fynd/fynd1.png"
+  "img": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "the-evolution-of-website-development-trends-to-see-in-2024",
@@ -339,7 +339,7 @@ export const posts = [
   "excerpt": "The best websites are like the best restaurants.",
   "cat": "web",
   "n": 37,
-  "img": "/img/cs/airwallex/AirWallex4.png"
+  "img": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "importance-of-e-commerce-mobile-applications-in-small-businesses",
@@ -347,7 +347,7 @@ export const posts = [
   "excerpt": "Your most unhappy customers are your greatest source of learning.",
   "cat": "mobile",
   "n": 38,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "how-to-monetize-your-mobile-app-strategies-for-success",
@@ -355,7 +355,7 @@ export const posts = [
   "excerpt": "Transform your mobile app into a revenue powerhouse.",
   "cat": "mobile",
   "n": 39,
-  "img": "/img/cs/skydo/Skydo1.png"
+  "img": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "why-is-lead-generation-an-important-part-of-your-company-s-procedures",
@@ -371,7 +371,7 @@ export const posts = [
   "excerpt": "Choosing the proper framework is confusing. Here is a clear comparison.",
   "cat": "frameworks",
   "n": 41,
-  "img": "/img/cs/stockgro/stockgro1.png"
+  "img": "/site-img/img_cs_stockgro_stockgro1.webp"
  },
  {
   "slug": "strategies-to-secure-your-website-against-malware-and-hackers",
@@ -379,7 +379,7 @@ export const posts = [
   "excerpt": "Thousands of websites get hacked every day. Here is how to protect yours.",
   "cat": "web",
   "n": 42,
-  "img": "/img/cs/airwallex/AirWallex4.png"
+  "img": "/site-img/img_cs_airwallex_AirWallex4.webp"
  },
  {
   "slug": "principal-distinction-between-react-js-and-angular-js",
@@ -387,7 +387,7 @@ export const posts = [
   "excerpt": "React and Angular are two giants of front-end development.",
   "cat": "frameworks",
   "n": 43,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "8-most-important-skills-web-developers-should-have",
@@ -395,7 +395,7 @@ export const posts = [
   "excerpt": "The skills that separate good web developers from great ones.",
   "cat": "frameworks",
   "n": 44,
-  "img": "/img/cs/fynd/fynd1.png"
+  "img": "/site-img/img_cs_fynd_fynd1.webp"
  },
  {
   "slug": "top-graphic-design-software-for-2024-you-need-to-know",
@@ -403,7 +403,7 @@ export const posts = [
   "excerpt": "The design tools worth knowing this year.",
   "cat": "design",
   "n": 45,
-  "img": "/img/cs/jaypore/jaypore1.png"
+  "img": "/site-img/img_cs_jaypore_jaypore1.webp"
  },
  {
   "slug": "tips-for-successful-mobile-app-testing-and-quality-assurance",
@@ -411,7 +411,7 @@ export const posts = [
   "excerpt": "Is your mobile app ready for the real world?",
   "cat": "mobile",
   "n": 46,
-  "img": "/img/cs/testbook/testbook1.png"
+  "img": "/site-img/img_cs_testbook_testbook1.webp"
  },
  {
   "slug": "case-studies-successful-mobile-apps-and-their-development-journey",
@@ -419,7 +419,7 @@ export const posts = [
   "excerpt": "Dreaming of building an app like your favourite brand? Explore how they did it.",
   "cat": "mobile",
   "n": 47,
-  "img": "/img/cs/myzelller/myzeller5.png"
+  "img": "/site-img/img_cs_myzelller_myzeller5.webp"
  },
  {
   "slug": "choosing-the-right-platform-ios-vs-android-app-development",
@@ -427,7 +427,7 @@ export const posts = [
   "excerpt": "iOS or Android? A never-ending debate, settled for your project.",
   "cat": "mobile",
   "n": 48,
-  "img": "/img/cs/milkrun/milkrun1.png"
+  "img": "/site-img/img_cs_milkrun_milkrun1.webp"
  },
  {
   "slug": "power-of-pay-per-click-advertising-how-to-boost-your-business",
@@ -451,7 +451,7 @@ export const posts = [
   "excerpt": "Free apps with in-app purchases tend to succeed more often.",
   "cat": "mobile",
   "n": 51,
-  "img": "/img/cs/skydo/Skydo1.png"
+  "img": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "effects-of-chat-gpt-on-seo-optimization",
@@ -467,7 +467,7 @@ export const posts = [
   "excerpt": "Bootcamps that equip students with the skills to start building.",
   "cat": "frameworks",
   "n": 53,
-  "img": "/img/cs/graphy/graphy1.png"
+  "img": "/site-img/img_cs_graphy_graphy1.webp"
  },
  {
   "slug": "9-innovative-mobile-app-development-trends",
@@ -475,7 +475,7 @@ export const posts = [
   "excerpt": "The mobile application industry keeps evolving. Here is what is next.",
   "cat": "mobile",
   "n": 54,
-  "img": "/img/cs/milkrun/milkrun1.png"
+  "img": "/site-img/img_cs_milkrun_milkrun1.webp"
  },
  {
   "slug": "explore-paid-advertising-and-sem-in-depth-what-you-must-know",
@@ -491,7 +491,7 @@ export const posts = [
   "excerpt": "Why backlinks still matter for search rankings.",
   "cat": "marketing",
   "n": 56,
-  "img": "/assets/company/team-office-wide.png"
+  "img": "/assets/company/team-office-wide.jpg"
  },
  {
   "slug": "best-7-app-development-companies-in-noida-in-2023-redefining-innovation-and-exce",
@@ -499,7 +499,7 @@ export const posts = [
   "excerpt": "The app development industry in Noida has grown fast.",
   "cat": "mobile",
   "n": 57,
-  "img": "/img/cs/skydo/Skydo1.png"
+  "img": "/site-img/img_cs_skydo_Skydo1.webp"
  },
  {
   "slug": "most-important-social-media-marketing-tips-and-trends-in-2023",
@@ -523,7 +523,7 @@ export const posts = [
   "excerpt": "A web page is one of the key ways to keep visitors engaged.",
   "cat": "web",
   "n": 60,
-  "img": "/img/cs/onbuy/onbuy1.png"
+  "img": "/site-img/img_cs_onbuy_onbuy1.webp"
  },
  {
   "slug": "voice-search-optimization-the-process-of-seo-optimization-in-the-future",
@@ -531,7 +531,7 @@ export const posts = [
   "excerpt": "As lifestyles modernise, people are switching to voice search.",
   "cat": "marketing",
   "n": 61,
-  "img": "/assets/company/team-office-wide.png"
+  "img": "/assets/company/team-office-wide.jpg"
  },
  {
   "slug": "google-ads-boost-revenue-through-effective-lead-generation",
@@ -539,7 +539,7 @@ export const posts = [
   "excerpt": "Marketing methods have changed, and so has the technology behind them.",
   "cat": "marketing",
   "n": 62,
-  "img": "/assets/company/office-workspace.png"
+  "img": "/assets/company/office-workspace.jpg"
  },
  {
   "slug": "finding-seo-services-for-small-businesses-a-complete-guide",

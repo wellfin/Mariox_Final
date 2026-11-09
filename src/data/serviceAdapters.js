@@ -33,7 +33,7 @@ const TEMPLATE = {
   'managed-it': 'managed-it-services',
 };
 
-const OFFICE = { hero: '/assets/company/office-workspace.png', caption: 'Mariox Software · Noida' };
+const OFFICE = { hero: '/assets/company/office-workspace.jpg', caption: 'Mariox Software · Noida' };
 
 const templateFor = (slug) => designBySlug[TEMPLATE[slug] || slug] || null;
 

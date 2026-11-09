@@ -8,9 +8,9 @@ export const cases = [
   "sector": "Consumer web & app",
   "scope": "App + web",
   "key": "web",
-  "img": "/img/starstell-thumb.webp",
+  "img": "/site-img/img_starstell-thumb.webp",
   "gallery": [
-   "/img/starstell-thumb.webp"
+   "/site-img/img_starstell-thumb.webp"
   ],
   "body": "A consumer-facing app and website sharing one content and account layer, so a change lands in both without a second build.",
   "proposition": "A consumer product is judged in the first thirty seconds, on a phone, on a bad connection.",
@@ -62,9 +62,9 @@ export const cases = [
   "sector": "Fintech platform",
   "scope": "E-commerce platform",
   "key": "fintech",
-  "img": "/img/magicfinserv-thumb.webp",
+  "img": "/site-img/img_magicfinserv-thumb.webp",
   "gallery": [
-   "/img/magicfinserv-thumb.webp"
+   "/site-img/img_magicfinserv-thumb.webp"
   ],
   "body": "A commerce and platform build for a financial technology business, spanning the customer-facing storefront and the administration behind it.",
   "proposition": "Financial platforms carry the risk; the interface only carries the blame.",
@@ -117,9 +117,9 @@ export const cases = [
   "sector": "Manufacturing",
   "scope": "ERP system",
   "key": "erp",
-  "img": "/img/vimal-cables-thumb.webp",
+  "img": "/site-img/img_vimal-cables-thumb.webp",
   "gallery": [
-   "/img/vimal-cables-thumb.webp"
+   "/site-img/img_vimal-cables-thumb.webp"
   ],
   "body": "An ERP covering production, inventory, procurement and operational reporting for a wires and cable manufacturer.",
   "proposition": "The system that runs a factory cannot be switched off to be improved.",
@@ -172,12 +172,12 @@ export const cases = [
   "sector": "Fintech",
   "scope": "App + web + admin",
   "key": "fintech",
-  "img": "/img/cs/skydo/Skydo1.png",
+  "img": "/site-img/img_cs_skydo_Skydo1.webp",
   "gallery": [
-   "/img/cs/skydo/Skydo1.png",
-   "/img/cs/skydo/Skydo2.png",
-   "/img/cs/skydo/Skydo3.png",
-   "/img/cs/skydo/Skydo4.png"
+   "/site-img/img_cs_skydo_Skydo1.webp",
+   "/site-img/img_cs_skydo_Skydo2.webp",
+   "/site-img/img_cs_skydo_Skydo3.webp",
+   "/site-img/img_cs_skydo_Skydo4.webp"
   ],
   "body": "Cross-border payments for exporters. App, web and admin built around a ledger that has to reconcile to the cent.",
   "proposition": "Money crossing a border is a reconciliation problem wearing a product’s clothes.",
@@ -230,12 +230,12 @@ export const cases = [
   "sector": "Fintech",
   "scope": "App + web + admin",
   "key": "fintech",
-  "img": "/img/cs/famapp/famapp4.png",
+  "img": "/site-img/img_cs_famapp_famapp4.webp",
   "gallery": [
-   "/img/cs/famapp/famapp4.png",
-   "/img/cs/famapp/famapp1.png",
-   "/img/cs/famapp/famapp2.png",
-   "/img/cs/famapp/famapp3.png"
+   "/site-img/img_cs_famapp_famapp4.webp",
+   "/site-img/img_cs_famapp_famapp1.webp",
+   "/site-img/img_cs_famapp_famapp2.webp",
+   "/site-img/img_cs_famapp_famapp3.webp"
   ],
   "body": "A fintech product across app, web and an internal admin console, covering onboarding, spending and the controls behind it.",
   "proposition": "Building for younger users means the compliance work is harder, not easier.",
@@ -288,11 +288,11 @@ export const cases = [
   "sector": "Fintech",
   "scope": "App + web",
   "key": "fintech",
-  "img": "/img/cs/stockgro/stockgro1.png",
+  "img": "/site-img/img_cs_stockgro_stockgro1.webp",
   "gallery": [
-   "/img/cs/stockgro/stockgro1.png",
-   "/img/cs/stockgro/stockgro2.png",
-   "/img/cs/stockgro/stockgro3.png"
+   "/site-img/img_cs_stockgro_stockgro1.webp",
+   "/site-img/img_cs_stockgro_stockgro2.webp",
+   "/site-img/img_cs_stockgro_stockgro3.webp"
   ],
   "body": "An investing platform on app and web, covering portfolios, market data and the social layer around them.",
   "proposition": "Market data is unforgiving: late is the same as wrong.",
@@ -345,12 +345,12 @@ export const cases = [
   "sector": "Fintech",
   "scope": "App + web",
   "key": "fintech",
-  "img": "/img/cs/myzelller/myzeller5.png",
+  "img": "/site-img/img_cs_myzelller_myzeller5.webp",
   "gallery": [
-   "/img/cs/myzelller/myzeller5.png",
-   "/img/cs/myzelller/myzeller1.png",
-   "/img/cs/myzelller/myzeller2.png",
-   "/img/cs/myzelller/myzeller3.png"
+   "/site-img/img_cs_myzelller_myzeller5.webp",
+   "/site-img/img_cs_myzelller_myzeller1.webp",
+   "/site-img/img_cs_myzelller_myzeller2.webp",
+   "/site-img/img_cs_myzelller_myzeller3.webp"
   ],
   "body": "A fintech product on app and web for business payments, spanning merchant onboarding, transactions and reporting.",
   "proposition": "Payments hardware and software fail differently, and both reach the same merchant.",
@@ -403,12 +403,12 @@ export const cases = [
   "sector": "Fintech",
   "scope": "App + web",
   "key": "fintech",
-  "img": "/img/cs/airwallex/AirWallex4.png",
+  "img": "/site-img/img_cs_airwallex_AirWallex4.webp",
   "gallery": [
-   "/img/cs/airwallex/AirWallex4.png",
-   "/img/cs/airwallex/AirWallex1.png",
-   "/img/cs/airwallex/AirWallex2.png",
-   "/img/cs/airwallex/AirWallex3.png"
+   "/site-img/img_cs_airwallex_AirWallex4.webp",
+   "/site-img/img_cs_airwallex_AirWallex1.webp",
+   "/site-img/img_cs_airwallex_AirWallex2.webp",
+   "/site-img/img_cs_airwallex_AirWallex3.webp"
   ],
   "body": "Global business accounts and FX. Interfaces and services for money moving across borders.",
   "proposition": "Business accounts across currencies mean the boring parts carry all the risk.",
@@ -461,9 +461,9 @@ export const cases = [
   "sector": "Fintech",
   "scope": "App + web",
   "key": "fintech",
-  "img": "/img/cs/soldo/soldo.png",
+  "img": "/site-img/img_cs_soldo_soldo.webp",
   "gallery": [
-   "/img/cs/soldo/soldo.png"
+   "/site-img/img_cs_soldo_soldo.webp"
   ],
   "body": "A spend management product on app and web, covering cards, budgets, approvals and expense reporting.",
   "proposition": "Spend controls are only useful if they hold at the moment of purchase.",
@@ -516,12 +516,12 @@ export const cases = [
   "sector": "Fintech",
   "scope": "App + web",
   "key": "fintech",
-  "img": "/img/cs/yonder/yonder2.png",
+  "img": "/site-img/img_cs_yonder_yonder2.webp",
   "gallery": [
-   "/img/cs/yonder/yonder2.png",
-   "/img/cs/yonder/yonder1.png",
-   "/img/cs/yonder/yonder3.png",
-   "/img/cs/yonder/yonder4.png"
+   "/site-img/img_cs_yonder_yonder2.webp",
+   "/site-img/img_cs_yonder_yonder1.webp",
+   "/site-img/img_cs_yonder_yonder3.webp",
+   "/site-img/img_cs_yonder_yonder4.webp"
   ],
   "body": "A card and rewards product across app and web, covering onboarding, spending and the rewards mechanics behind it.",
   "proposition": "A rewards product is a ledger problem wearing a lifestyle brand.",
@@ -574,11 +574,11 @@ export const cases = [
   "sector": "Digital banking",
   "scope": "App + web",
   "key": "banking",
-  "img": "/img/cs/lunar/luner1.png",
+  "img": "/site-img/img_cs_lunar_luner1.webp",
   "gallery": [
-   "/img/cs/lunar/luner1.png",
-   "/img/cs/lunar/luner2.png",
-   "/img/cs/lunar/luner3.png"
+   "/site-img/img_cs_lunar_luner1.webp",
+   "/site-img/img_cs_lunar_luner2.webp",
+   "/site-img/img_cs_lunar_luner3.webp"
   ],
   "body": "A digital banking product on app and web, covering accounts, payments and the servicing customers expect without a branch.",
   "proposition": "Digital banking has no branch to absorb a bad release.",
@@ -631,12 +631,12 @@ export const cases = [
   "sector": "Edtech",
   "scope": "App + web",
   "key": "edtech",
-  "img": "/img/cs/graphy/graphy1.png",
+  "img": "/site-img/img_cs_graphy_graphy1.webp",
   "gallery": [
-   "/img/cs/graphy/graphy1.png",
-   "/img/cs/graphy/graphy2.png",
-   "/img/cs/graphy/graphy3.png",
-   "/img/cs/graphy/graphy4.png"
+   "/site-img/img_cs_graphy_graphy1.webp",
+   "/site-img/img_cs_graphy_graphy2.webp",
+   "/site-img/img_cs_graphy_graphy3.webp",
+   "/site-img/img_cs_graphy_graphy4.webp"
   ],
   "body": "Course delivery, live cohorts and creator payouts inside one platform, on web and mobile.",
   "proposition": "Completion is the only metric that matters, and structure decides it before content does.",
@@ -689,11 +689,11 @@ export const cases = [
   "sector": "Edtech",
   "scope": "App + web",
   "key": "edtech",
-  "img": "/img/cs/edtechhub/edtechhub2.png",
+  "img": "/site-img/img_cs_edtechhub_edtechhub2.webp",
   "gallery": [
-   "/img/cs/edtechhub/edtechhub2.png",
-   "/img/cs/edtechhub/edtechhub1.png",
-   "/img/cs/edtechhub/edtechhub3.png"
+   "/site-img/img_cs_edtechhub_edtechhub2.webp",
+   "/site-img/img_cs_edtechhub_edtechhub1.webp",
+   "/site-img/img_cs_edtechhub_edtechhub3.webp"
   ],
   "body": "An education platform on app and web, covering content publishing, discovery and the workflow behind it.",
   "proposition": "Research only changes practice if the platform makes it findable.",
@@ -746,11 +746,11 @@ export const cases = [
   "sector": "Edtech",
   "scope": "App + web",
   "key": "edtech",
-  "img": "/img/cs/testbook/testbook1.png",
+  "img": "/site-img/img_cs_testbook_testbook1.webp",
   "gallery": [
-   "/img/cs/testbook/testbook1.png",
-   "/img/cs/testbook/testbook2.png",
-   "/img/cs/testbook/testbook3.png"
+   "/site-img/img_cs_testbook_testbook1.webp",
+   "/site-img/img_cs_testbook_testbook2.webp",
+   "/site-img/img_cs_testbook_testbook3.webp"
   ],
   "body": "A test preparation platform on app and web, covering question banks, timed assessment, marking and analytics.",
   "proposition": "Assessment at cohort scale is an infrastructure problem, not a quiz feature.",
@@ -803,9 +803,9 @@ export const cases = [
   "sector": "Edtech",
   "scope": "App + web",
   "key": "edtech",
-  "img": "/img/cs/teachmint/teachmint.png",
+  "img": "/site-img/img_cs_teachmint_teachmint.webp",
   "gallery": [
-   "/img/cs/teachmint/teachmint.png"
+   "/site-img/img_cs_teachmint_teachmint.webp"
   ],
   "body": "A classroom and school management platform on app and web, serving teachers, students, parents and administrators.",
   "proposition": "School software has four audiences who all think they are the primary one.",
@@ -858,12 +858,12 @@ export const cases = [
   "sector": "Edtech",
   "scope": "App + web",
   "key": "edtech",
-  "img": "/img/cs/sunstone/sunstone1.png",
+  "img": "/site-img/img_cs_sunstone_sunstone1.webp",
   "gallery": [
-   "/img/cs/sunstone/sunstone1.png",
-   "/img/cs/sunstone/sunstone2.png",
-   "/img/cs/sunstone/sunstone3.png",
-   "/img/cs/sunstone/sunstone4.png"
+   "/site-img/img_cs_sunstone_sunstone1.webp",
+   "/site-img/img_cs_sunstone_sunstone2.webp",
+   "/site-img/img_cs_sunstone_sunstone3.webp",
+   "/site-img/img_cs_sunstone_sunstone4.webp"
   ],
   "body": "An education platform on app and web, covering enrolment, learning delivery and student records.",
   "proposition": "Enrolment and outcomes are the same funnel viewed from different ends.",
@@ -916,12 +916,12 @@ export const cases = [
   "sector": "Edtech",
   "scope": "Web",
   "key": "edtech",
-  "img": "/img/cs/learnosity/learnosity2.png",
+  "img": "/site-img/img_cs_learnosity_learnosity2.webp",
   "gallery": [
-   "/img/cs/learnosity/learnosity2.png",
-   "/img/cs/learnosity/learnosity1.png",
-   "/img/cs/learnosity/learnosity3.png",
-   "/img/cs/learnosity/learnosity4.png"
+   "/site-img/img_cs_learnosity_learnosity2.webp",
+   "/site-img/img_cs_learnosity_learnosity1.webp",
+   "/site-img/img_cs_learnosity_learnosity3.webp",
+   "/site-img/img_cs_learnosity_learnosity4.webp"
   ],
   "body": "A web platform for assessment delivery, built to be embedded and extended by the teams integrating it.",
   "proposition": "Assessment infrastructure is judged by the products built on top of it.",
@@ -974,11 +974,11 @@ export const cases = [
   "sector": "Edtech",
   "scope": "App + web",
   "key": "edtech",
-  "img": "/img/cs/clueylearning/clueylearning1.png",
+  "img": "/site-img/img_cs_clueylearning_clueylearning1.webp",
   "gallery": [
-   "/img/cs/clueylearning/clueylearning1.png",
-   "/img/cs/clueylearning/clueylearning2.png",
-   "/img/cs/clueylearning/clueylearning3.png"
+   "/site-img/img_cs_clueylearning_clueylearning1.webp",
+   "/site-img/img_cs_clueylearning_clueylearning2.webp",
+   "/site-img/img_cs_clueylearning_clueylearning3.webp"
   ],
   "body": "A tutoring platform on app and web, covering session scheduling, delivery, progress and parent visibility.",
   "proposition": "Live tutoring at scale is a scheduling problem before it is a teaching one.",
@@ -1031,12 +1031,12 @@ export const cases = [
   "sector": "Edtech",
   "scope": "App + web",
   "key": "edtech",
-  "img": "/img/cs/senecalearning/senecalearning1.png",
+  "img": "/site-img/img_cs_senecalearning_senecalearning1.webp",
   "gallery": [
-   "/img/cs/senecalearning/senecalearning1.png",
-   "/img/cs/senecalearning/senecalearning2.png",
-   "/img/cs/senecalearning/senecalearning3.png",
-   "/img/cs/senecalearning/senecalearning4.png"
+   "/site-img/img_cs_senecalearning_senecalearning1.webp",
+   "/site-img/img_cs_senecalearning_senecalearning2.webp",
+   "/site-img/img_cs_senecalearning_senecalearning3.webp",
+   "/site-img/img_cs_senecalearning_senecalearning4.webp"
   ],
   "body": "A learning platform on app and web, covering course content, practice, progress and the mechanics that bring learners back.",
   "proposition": "Revision products win on habit mechanics, not content volume.",
@@ -1089,9 +1089,9 @@ export const cases = [
   "sector": "E-commerce",
   "scope": "App + web + admin",
   "key": "ecommerce",
-  "img": "/img/cs/snitch/snitch1.png",
+  "img": "/site-img/img_cs_snitch_snitch1.webp",
   "gallery": [
-   "/img/cs/snitch/snitch1.png"
+   "/site-img/img_cs_snitch_snitch1.webp"
   ],
   "body": "Fashion commerce that survives a drop. Storefront, ordering and operations tuned for peak traffic.",
   "proposition": "Most of the year is easy. The engineering exists for the twenty minutes that are not.",
@@ -1144,12 +1144,12 @@ export const cases = [
   "sector": "Commerce technology",
   "scope": "App + web + admin",
   "key": "ecommerce",
-  "img": "/img/cs/fynd/fynd1.png",
+  "img": "/site-img/img_cs_fynd_fynd1.webp",
   "gallery": [
-   "/img/cs/fynd/fynd1.png",
-   "/img/cs/fynd/fynd2.png",
-   "/img/cs/fynd/fynd3.png",
-   "/img/cs/fynd/fynd4.png"
+   "/site-img/img_cs_fynd_fynd1.webp",
+   "/site-img/img_cs_fynd_fynd2.webp",
+   "/site-img/img_cs_fynd_fynd3.webp",
+   "/site-img/img_cs_fynd_fynd4.webp"
   ],
   "body": "A commerce technology build across app, web and admin, connecting online ordering with retail operations.",
   "proposition": "Commerce technology has to work for the store as well as the storefront.",
@@ -1202,9 +1202,9 @@ export const cases = [
   "sector": "Lifestyle e-commerce",
   "scope": "App + web + admin",
   "key": "ecommerce",
-  "img": "/img/cs/jaypore/jaypore1.png",
+  "img": "/site-img/img_cs_jaypore_jaypore1.webp",
   "gallery": [
-   "/img/cs/jaypore/jaypore1.png"
+   "/site-img/img_cs_jaypore_jaypore1.webp"
   ],
   "body": "A lifestyle commerce build across app, web and admin, covering catalogue, checkout and merchandising.",
   "proposition": "Lifestyle commerce sells on imagery, which is exactly what slows a page down.",
@@ -1257,12 +1257,12 @@ export const cases = [
   "sector": "E-commerce marketplace",
   "scope": "Marketplace + web + admin",
   "key": "marketplace",
-  "img": "/img/cs/kogan/kogan2.png",
+  "img": "/site-img/img_cs_kogan_kogan2.webp",
   "gallery": [
-   "/img/cs/kogan/kogan2.png",
-   "/img/cs/kogan/kogan1.png",
-   "/img/cs/kogan/kogan3.png",
-   "/img/cs/kogan/kogan4.png"
+   "/site-img/img_cs_kogan_kogan2.webp",
+   "/site-img/img_cs_kogan_kogan1.webp",
+   "/site-img/img_cs_kogan_kogan3.webp",
+   "/site-img/img_cs_kogan_kogan4.webp"
   ],
   "body": "A marketplace build across web and admin with a large third-party seller base, covering listings, orders and seller tooling.",
   "proposition": "A marketplace lives or dies on the seller side, and nobody demos that.",
@@ -1315,11 +1315,11 @@ export const cases = [
   "sector": "E-commerce marketplace",
   "scope": "Marketplace + web + admin",
   "key": "marketplace",
-  "img": "/img/cs/onbuy/onbuy1.png",
+  "img": "/site-img/img_cs_onbuy_onbuy1.webp",
   "gallery": [
-   "/img/cs/onbuy/onbuy1.png",
-   "/img/cs/onbuy/onbuy2.png",
-   "/img/cs/onbuy/onbuy3.png"
+   "/site-img/img_cs_onbuy_onbuy1.webp",
+   "/site-img/img_cs_onbuy_onbuy2.webp",
+   "/site-img/img_cs_onbuy_onbuy3.webp"
   ],
   "body": "A marketplace build across web and admin, covering multi-seller listings, checkout, payouts and dispute handling.",
   "proposition": "Two-sided platforms fail on trust mechanics long before they fail on traffic.",
@@ -1372,12 +1372,12 @@ export const cases = [
   "sector": "E-commerce",
   "scope": "App + web + admin",
   "key": "ecommerce",
-  "img": "/img/cs/onceit/onceit2.png",
+  "img": "/site-img/img_cs_onceit_onceit2.webp",
   "gallery": [
-   "/img/cs/onceit/onceit2.png",
-   "/img/cs/onceit/onceit1.png",
-   "/img/cs/onceit/onceit3.png",
-   "/img/cs/onceit/onceit4.png"
+   "/site-img/img_cs_onceit_onceit2.webp",
+   "/site-img/img_cs_onceit_onceit1.webp",
+   "/site-img/img_cs_onceit_onceit3.webp",
+   "/site-img/img_cs_onceit_onceit4.webp"
   ],
   "body": "A commerce build across app, web and admin for time-limited sales, covering inventory holds, checkout and fulfilment.",
   "proposition": "A timed sale concentrates a month of traffic into an hour.",
@@ -1430,12 +1430,12 @@ export const cases = [
   "sector": "Quick commerce",
   "scope": "App + web + admin",
   "key": "qcommerce",
-  "img": "/img/cs/zypit/zypit2.png",
+  "img": "/site-img/img_cs_zypit_zypit2.webp",
   "gallery": [
-   "/img/cs/zypit/zypit2.png",
-   "/img/cs/zypit/zypit1.png",
-   "/img/cs/zypit/zypit3.png",
-   "/img/cs/zypit/zypit4.png"
+   "/site-img/img_cs_zypit_zypit2.webp",
+   "/site-img/img_cs_zypit_zypit1.webp",
+   "/site-img/img_cs_zypit_zypit3.webp",
+   "/site-img/img_cs_zypit_zypit4.webp"
   ],
   "body": "A quick commerce build across app, web and admin, covering ordering, dispatch and store operations.",
   "proposition": "Fast delivery is a promise the software has to be able to keep.",
@@ -1488,12 +1488,12 @@ export const cases = [
   "sector": "Grocery, quick commerce",
   "scope": "App + web + admin",
   "key": "qcommerce",
-  "img": "/img/cs/thegrocart/thegrocart1.png",
+  "img": "/site-img/img_cs_thegrocart_thegrocart1.webp",
   "gallery": [
-   "/img/cs/thegrocart/thegrocart1.png",
-   "/img/cs/thegrocart/thegrocart2.png",
-   "/img/cs/thegrocart/thegrocart3.png",
-   "/img/cs/thegrocart/thegrocart4.png"
+   "/site-img/img_cs_thegrocart_thegrocart1.webp",
+   "/site-img/img_cs_thegrocart_thegrocart2.webp",
+   "/site-img/img_cs_thegrocart_thegrocart3.webp",
+   "/site-img/img_cs_thegrocart_thegrocart4.webp"
   ],
   "body": "A grocery commerce build across app, web and admin, covering catalogue, ordering, picking and fulfilment.",
   "proposition": "Grocery has the widest catalogue and the least tolerance for a substitution.",
@@ -1546,12 +1546,12 @@ export const cases = [
   "sector": "Grocery, quick commerce",
   "scope": "App + web + admin",
   "key": "qcommerce",
-  "img": "/img/cs/milkrun/milkrun1.png",
+  "img": "/site-img/img_cs_milkrun_milkrun1.webp",
   "gallery": [
-   "/img/cs/milkrun/milkrun1.png",
-   "/img/cs/milkrun/milkrun2.png",
-   "/img/cs/milkrun/milkrun3.png",
-   "/img/cs/milkrun/milkrun4.png"
+   "/site-img/img_cs_milkrun_milkrun1.webp",
+   "/site-img/img_cs_milkrun_milkrun2.webp",
+   "/site-img/img_cs_milkrun_milkrun3.webp",
+   "/site-img/img_cs_milkrun_milkrun4.webp"
   ],
   "body": "Grocery delivery with rider dispatch and live tracking, engineered for sub-ten-minute promises.",
   "proposition": "The promise on the homepage is an engineering commitment, not a marketing one.",
@@ -1604,12 +1604,12 @@ export const cases = [
   "sector": "Quick commerce",
   "scope": "App + web + admin",
   "key": "qcommerce",
-  "img": "/img/cs/volygroup/volygroup2.png",
+  "img": "/site-img/img_cs_volygroup_volygroup2.webp",
   "gallery": [
-   "/img/cs/volygroup/volygroup2.png",
-   "/img/cs/volygroup/volygroup1.png",
-   "/img/cs/volygroup/volygroup3.png",
-   "/img/cs/volygroup/volygroup4.png"
+   "/site-img/img_cs_volygroup_volygroup2.webp",
+   "/site-img/img_cs_volygroup_volygroup1.webp",
+   "/site-img/img_cs_volygroup_volygroup3.webp",
+   "/site-img/img_cs_volygroup_volygroup4.webp"
   ],
   "body": "A quick commerce build across app, web and admin, covering customer ordering, rider dispatch and operations.",
   "proposition": "Quick commerce margins are decided in minutes and metres.",
@@ -1662,12 +1662,12 @@ export const cases = [
   "sector": "Quick commerce",
   "scope": "App + web + admin",
   "key": "qcommerce",
-  "img": "/img/cs/weezy/weezy2.png",
+  "img": "/site-img/img_cs_weezy_weezy2.webp",
   "gallery": [
-   "/img/cs/weezy/weezy2.png",
-   "/img/cs/weezy/weezy1.png",
-   "/img/cs/weezy/weezy3.png",
-   "/img/cs/weezy/weezy4.png"
+   "/site-img/img_cs_weezy_weezy2.webp",
+   "/site-img/img_cs_weezy_weezy1.webp",
+   "/site-img/img_cs_weezy_weezy3.webp",
+   "/site-img/img_cs_weezy_weezy4.webp"
   ],
   "body": "A quick commerce build across app, web and admin, covering ordering, rider assignment and live tracking.",
   "proposition": "Rider supply, not demand, is the constraint that breaks the promise.",
@@ -1720,12 +1720,12 @@ export const cases = [
   "sector": "Quick commerce",
   "scope": "App + web + admin",
   "key": "qcommerce",
-  "img": "/img/cs/zapp/zaap2.png",
+  "img": "/site-img/img_cs_zapp_zaap2.webp",
   "gallery": [
-   "/img/cs/zapp/zaap2.png",
-   "/img/cs/zapp/zaap1.png",
-   "/img/cs/zapp/zaap3.png",
-   "/img/cs/zapp/zaap4.png"
+   "/site-img/img_cs_zapp_zaap2.webp",
+   "/site-img/img_cs_zapp_zaap1.webp",
+   "/site-img/img_cs_zapp_zaap3.webp",
+   "/site-img/img_cs_zapp_zaap4.webp"
   ],
   "body": "A quick commerce build across app, web and admin, covering ordering, rider dispatch and live tracking at metropolitan scale.",
   "proposition": "On-demand delivery in a dense city is a dispatch problem with a storefront.",
@@ -1778,12 +1778,12 @@ export const cases = [
   "sector": "Grocery e-commerce",
   "scope": "App + web + admin",
   "key": "qcommerce",
-  "img": "/img/cs/oda/oda2.png",
+  "img": "/site-img/img_cs_oda_oda2.webp",
   "gallery": [
-   "/img/cs/oda/oda2.png",
-   "/img/cs/oda/oda1.png",
-   "/img/cs/oda/oda3.png",
-   "/img/cs/oda/oda4.png"
+   "/site-img/img_cs_oda_oda2.webp",
+   "/site-img/img_cs_oda_oda1.webp",
+   "/site-img/img_cs_oda_oda3.webp",
+   "/site-img/img_cs_oda_oda4.webp"
   ],
   "body": "A grocery commerce build across app, web and admin, covering large baskets, scheduled delivery and fulfilment.",
   "proposition": "Grocery at basket scale is a logistics product with a storefront attached.",
@@ -1836,12 +1836,12 @@ export const cases = [
   "sector": "Healthcare",
   "scope": "App + web",
   "key": "healthcare",
-  "img": "/img/cs/eka.care/eka.care2.png",
+  "img": "/site-img/img_cs_eka.care_eka.care2.webp",
   "gallery": [
-   "/img/cs/eka.care/eka.care2.png",
-   "/img/cs/eka.care/eka.care1.png",
-   "/img/cs/eka.care/eka.care3.png",
-   "/img/cs/eka.care/eka.care4.png"
+   "/site-img/img_cs_eka.care_eka.care2.webp",
+   "/site-img/img_cs_eka.care_eka.care1.webp",
+   "/site-img/img_cs_eka.care_eka.care3.webp",
+   "/site-img/img_cs_eka.care_eka.care4.webp"
   ],
   "body": "Patient records and telemedicine at national scale, with the consent and audit model the category demands.",
   "proposition": "A patient record is only useful if every read and write can be explained months later.",
@@ -1894,10 +1894,10 @@ export const cases = [
   "sector": "Healthcare, ayurveda",
   "scope": "App + web",
   "key": "healthcare",
-  "img": "/img/cs/nirogstreet/nirogstreet1.png",
+  "img": "/site-img/img_cs_nirogstreet_nirogstreet1.webp",
   "gallery": [
-   "/img/cs/nirogstreet/nirogstreet1.png",
-   "/img/cs/nirogstreet/nirogstreet2.png"
+   "/site-img/img_cs_nirogstreet_nirogstreet1.webp",
+   "/site-img/img_cs_nirogstreet_nirogstreet2.webp"
   ],
   "body": "A healthcare platform on app and web serving practitioners and patients, covering consultation, records and supply.",
   "proposition": "Digitising a traditional practice means respecting how it already works.",
@@ -1950,12 +1950,12 @@ export const cases = [
   "sector": "Healthcare",
   "scope": "App + web + provider platform",
   "key": "healthcare",
-  "img": "/img/cs/healthengine/healthengine1.png",
+  "img": "/site-img/img_cs_healthengine_healthengine1.webp",
   "gallery": [
-   "/img/cs/healthengine/healthengine1.png",
-   "/img/cs/healthengine/healthengine2.png",
-   "/img/cs/healthengine/healthengine3.png",
-   "/img/cs/healthengine/healthengine4.png"
+   "/site-img/img_cs_healthengine_healthengine1.webp",
+   "/site-img/img_cs_healthengine_healthengine2.webp",
+   "/site-img/img_cs_healthengine_healthengine3.webp",
+   "/site-img/img_cs_healthengine_healthengine4.webp"
   ],
   "body": "A healthcare platform across app, web and a provider platform, covering discovery, booking and practice-side management.",
   "proposition": "Appointment booking is a two-sided product where one side is a busy clinic.",
@@ -2008,12 +2008,12 @@ export const cases = [
   "sector": "Digital healthcare",
   "scope": "Web + app",
   "key": "healthcare",
-  "img": "/img/cs/zava/zavamed1.png",
+  "img": "/site-img/img_cs_zava_zavamed1.webp",
   "gallery": [
-   "/img/cs/zava/zavamed1.png",
-   "/img/cs/zava/zavamed2.png",
-   "/img/cs/zava/zavamed3.png",
-   "/img/cs/zava/zavamed4.png"
+   "/site-img/img_cs_zava_zavamed1.webp",
+   "/site-img/img_cs_zava_zavamed2.webp",
+   "/site-img/img_cs_zava_zavamed3.webp",
+   "/site-img/img_cs_zava_zavamed4.webp"
   ],
   "body": "A digital healthcare build on web and app, covering assessment, consultation and prescription fulfilment.",
   "proposition": "Remote prescribing puts a clinical decision inside a product flow.",
@@ -2066,11 +2066,11 @@ export const cases = [
   "sector": "Digital healthcare",
   "scope": "App + web",
   "key": "healthcare",
-  "img": "/img/cs/livi/livi3.png",
+  "img": "/site-img/img_cs_livi_livi3.webp",
   "gallery": [
-   "/img/cs/livi/livi3.png",
-   "/img/cs/livi/livi1.png",
-   "/img/cs/livi/livi2.png"
+   "/site-img/img_cs_livi_livi3.webp",
+   "/site-img/img_cs_livi_livi1.webp",
+   "/site-img/img_cs_livi_livi2.webp"
   ],
   "body": "A digital healthcare product on app and web, covering appointment booking, video consultation and clinical notes.",
   "proposition": "Video consultation is judged on the first thirty seconds of connection.",
@@ -2123,12 +2123,12 @@ export const cases = [
   "sector": "Healthcare, dental",
   "scope": "App + web + clinics",
   "key": "healthcare",
-  "img": "/img/cs/tend/tend1.png",
+  "img": "/site-img/img_cs_tend_tend1.webp",
   "gallery": [
-   "/img/cs/tend/tend1.png",
-   "/img/cs/tend/tend2.png",
-   "/img/cs/tend/tend3.png",
-   "/img/cs/tend/tend4.png"
+   "/site-img/img_cs_tend_tend1.webp",
+   "/site-img/img_cs_tend_tend2.webp",
+   "/site-img/img_cs_tend_tend3.webp",
+   "/site-img/img_cs_tend_tend4.webp"
   ],
   "body": "A healthcare build across app, web and clinic-facing systems, covering booking, records and in-clinic workflow.",
   "proposition": "Dental care spans an app, a website and a physical chair.",
@@ -2181,12 +2181,12 @@ export const cases = [
   "sector": "Healthcare",
   "scope": "App + web + provider platform",
   "key": "healthcare",
-  "img": "/img/cs/hotdoc/hotdoc1.png",
+  "img": "/site-img/img_cs_hotdoc_hotdoc1.webp",
   "gallery": [
-   "/img/cs/hotdoc/hotdoc1.png",
-   "/img/cs/hotdoc/hotdoc2.png",
-   "/img/cs/hotdoc/hotdoc3.png",
-   "/img/cs/hotdoc/hotdoc4.png"
+   "/site-img/img_cs_hotdoc_hotdoc1.webp",
+   "/site-img/img_cs_hotdoc_hotdoc2.webp",
+   "/site-img/img_cs_hotdoc_hotdoc3.webp",
+   "/site-img/img_cs_hotdoc_hotdoc4.webp"
   ],
   "body": "A healthcare platform across app, web and a provider platform, covering booking, reminders and practice management.",
   "proposition": "Provider-side software decides whether patient-side software gets used.",
@@ -2239,9 +2239,9 @@ export const cases = [
   "sector": "On-demand service",
   "scope": "App + web",
   "key": "web",
-  "img": "/img/numberdekho.webp",
+  "img": "/site-img/img_numberdekho.webp",
   "gallery": [
-   "/img/numberdekho.webp"
+   "/site-img/img_numberdekho.webp"
   ],
   "body": "An on-demand service build on app and web, covering discovery, booking, fulfilment and the operations behind it.",
   "proposition": "On-demand products are two apps: the one people praise and the one that works.",
@@ -2293,9 +2293,9 @@ export const cases = [
   "sector": "Consumer web & app",
   "scope": "App + web",
   "key": "web",
-  "img": "/img/broopi-thumb.webp",
+  "img": "/site-img/img_broopi-thumb.webp",
   "gallery": [
-   "/img/broopi-thumb.webp"
+   "/site-img/img_broopi-thumb.webp"
   ],
   "body": "A consumer app and website built from first wireframe to launch, covering the core flow and the admin behind it.",
   "proposition": "A product with no users yet needs the smallest honest version of itself.",
@@ -2347,9 +2347,9 @@ export const cases = [
   "sector": "Consumer web",
   "scope": "Web",
   "key": "web",
-  "img": "/img/milanoa-thumb.webp",
+  "img": "/site-img/img_milanoa-thumb.webp",
   "gallery": [
-   "/img/milanoa-thumb.webp"
+   "/site-img/img_milanoa-thumb.webp"
   ],
   "body": "A website build covering content structure, editorial control and the performance work that keeps it fast.",
   "proposition": "A website is a performance budget with content in it.",

@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/zypit/zypit.png',
   galleryImages: [
-    '/img/cs/zypit/zypit1.png',
-    '/img/cs/zypit/zypit2.png',
-    '/img/cs/zypit/zypit3.png',
-    '/img/cs/zypit/zypit4.png',
+    '/site-img/img_cs_zypit_zypit1.webp',
+    '/site-img/img_cs_zypit_zypit2.webp',
+    '/site-img/img_cs_zypit_zypit3.webp',
+    '/site-img/img_cs_zypit_zypit4.webp',
   ],
   sections: [
     {

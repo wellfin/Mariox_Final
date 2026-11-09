@@ -7,11 +7,11 @@ const caseStudy = {
     'FinTech',
     'Mobile App + Web + Admin',
   ],
-  heroImage: '/img/cs/famapp/famapp1.png',
+  heroImage: '/site-img/img_cs_famapp_famapp1.webp',
   galleryImages: [
-    '/img/cs/famapp/famapp2.png',
-    '/img/cs/famapp/famapp3.png',
-    '/img/cs/famapp/famapp4.png',
+    '/site-img/img_cs_famapp_famapp2.webp',
+    '/site-img/img_cs_famapp_famapp3.webp',
+    '/site-img/img_cs_famapp_famapp4.webp',
     '/img/cs/famapp/famapp5.png',
   ],
   sections: [

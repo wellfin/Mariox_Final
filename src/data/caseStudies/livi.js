@@ -9,9 +9,9 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/livi/livi.png',
   galleryImages: [
-    '/img/cs/livi/livi1.png',
-    '/img/cs/livi/livi2.png',
-    '/img/cs/livi/livi3.png',
+    '/site-img/img_cs_livi_livi1.webp',
+    '/site-img/img_cs_livi_livi2.webp',
+    '/site-img/img_cs_livi_livi3.webp',
   ],
   sections: [
     {

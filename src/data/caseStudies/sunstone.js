@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/sunstone/sunstone.png',
   galleryImages: [
-    '/img/cs/sunstone/sunstone1.png',
-    '/img/cs/sunstone/sunstone2.png',
-    '/img/cs/sunstone/sunstone3.png',
-    '/img/cs/sunstone/sunstone4.png',
+    '/site-img/img_cs_sunstone_sunstone1.webp',
+    '/site-img/img_cs_sunstone_sunstone2.webp',
+    '/site-img/img_cs_sunstone_sunstone3.webp',
+    '/site-img/img_cs_sunstone_sunstone4.webp',
     '/img/cs/sunstone/sunstone5.png',
   ],
   sections: [

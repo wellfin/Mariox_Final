@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/oda/oda.png',
   galleryImages: [
-    '/img/cs/oda/oda1.png',
-    '/img/cs/oda/oda2.png',
-    '/img/cs/oda/oda3.png',
-    '/img/cs/oda/oda4.png',
+    '/site-img/img_cs_oda_oda1.webp',
+    '/site-img/img_cs_oda_oda2.webp',
+    '/site-img/img_cs_oda_oda3.webp',
+    '/site-img/img_cs_oda_oda4.webp',
   ],
   sections: [
     {

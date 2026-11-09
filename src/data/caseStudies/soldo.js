@@ -7,7 +7,7 @@ const caseStudy = {
     'FinTech',
     'App + Web',
   ],
-  heroImage: '/img/cs/soldo/soldo.png',
+  heroImage: '/site-img/img_cs_soldo_soldo.webp',
   galleryImages: [
     '/img/cs/soldo/soldo1.png',
     '/img/cs/soldo/soldo2.png',

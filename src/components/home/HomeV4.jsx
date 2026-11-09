@@ -9,6 +9,22 @@ import {
   pillars, services, ai, aiStack, techTabs, industries, steps, engage, trust, faq, footerCols,
 } from '@/data/homeV4';
 
+// The office shots and the four numbers under them, from the design's
+// "Proof you can walk into" band.
+const OFFICE_SHOTS = [
+  ['/assets/company/team-office-seated.jpg', 'Engineering floor', 'center'],
+  ['/assets/company/office-floor.jpg', 'Open studio', 'center'],
+  ['/assets/company/team-offsite-group.jpg', 'Annual offsite', 'center 35%'],
+  ['/assets/company/team-night-out.jpg', 'Launch nights', 'center 40%'],
+];
+
+const NUMBER_CARDS = [
+  ['⏱', '2016', 'Building software since'],
+  ['◆', '300+', 'Products shipped for clients in 4 countries'],
+  ['★', '4.8★', 'From 138 Google reviews'],
+  ['◉', '4', 'Offices: Noida, Bengaluru, Dallas, Victoria'],
+];
+
 // "Mariox Home v4" design: its own header, chapter rail, loader, cursor,
 // instanced-cube canvas and pinned sections. Motion logic is ported from the
 // design's component; GSAP, Lenis and three.js load in the browser only.
@@ -457,6 +473,54 @@ export default function HomeV4() {
               <El key={s.l} data-rv="1" css="padding:clamp(22px,2.6vw,34px) clamp(0px,1.4vw,22px) 0 0">
                 <El css="font-size:clamp(3.6rem,8vw,8.5rem);line-height:.85;letter-spacing:-.07em;font-weight:300"><El as="span" data-count={s.v}>{s.v}</El><El as="span" css="color:#F04423">{s.suf}</El></El>
                 <El css={`margin-top:16px;${MONO};font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#5E5A55`}>{s.l}</El>
+              </El>
+            ))}
+          </El>
+        </El>
+
+        {/* 03b Numbers: the proof you can walk into */}
+        <El as="section" id="numbers" css={`position:relative;background:#F7F4EE;color:#08070A;padding:clamp(90px,10vw,160px) ${PAD_X}`}>
+          <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(32px,4vw,56px)">
+            <El as="h2" data-rv="1" css="margin:0;font-size:clamp(2.6rem,6vw,6rem);line-height:.9;letter-spacing:-.06em;font-weight:600">Proof you can <El as="em" css={`${SERIF};font-weight:400;color:#F04423;letter-spacing:-.03em`}>walk into.</El></El>
+            <El as="p" data-rv="1" css="margin:0;max-width:44ch;font-size:16.5px;line-height:1.55;color:#4A4741">Real offices, a real payroll and a real team. Every engineer on your project works for Mariox, and you are welcome to visit them.</El>
+          </El>
+
+          <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(12px,1.4vw,20px);margin-bottom:clamp(12px,1.4vw,20px)">
+            <El as="figure" data-rv="1" css="margin:0;position:relative;overflow:hidden;border-radius:18px;background:#E4E0D8;min-height:clamp(300px,34vw,460px);grid-column:span 2;min-width:min(100%,300px)">
+              <El role="img" aria-label="The Mariox team in the Noida office" css="position:absolute;inset:0;background:url('/assets/company/team-group-2026.jpg') center 35%/cover no-repeat" />
+              <El aria-hidden="true" css="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,7,10,.7) 0%,rgba(8,7,10,0) 45%)" />
+              <El as="figcaption" css="position:absolute;left:clamp(18px,2vw,28px);bottom:clamp(16px,2vw,26px);right:20px;color:#F4F1EA">
+                <El as="span" css={`display:block;${MONO};font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#F04423;margin-bottom:8px`}>The floor this gets built on</El>
+                <El as="span" css="font-size:clamp(1.3rem,2.2vw,2rem);font-weight:500;letter-spacing:-.04em">100+ people. One payroll. Zero subcontractors.</El>
+              </El>
+            </El>
+            <El css="display:grid;gap:clamp(12px,1.4vw,20px)">
+              <El data-rv="1" css="background:#FDEBE5;border:1px solid rgba(240,68,35,.25);border-radius:18px;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:12px">
+                <El as="span" css={`${MONO};font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B8331A`}>Senior by default</El>
+                <El as="span" css="font-size:clamp(1.3rem,2vw,1.7rem);font-weight:600;letter-spacing:-.04em;line-height:1.1">The people in the pitch write the code.</El>
+                <El as="span" css="font-size:15px;line-height:1.5;color:#4A4741">No juniors hidden behind an account manager.</El>
+              </El>
+              <El data-rv="1" css="background:#FFFFFF;border:1px solid rgba(8,7,10,.08);border-radius:18px;padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:12px">
+                <El as="span" css={`${MONO};font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#5E5A55`}>Full stack, end to end</El>
+                <El as="span" css="font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.035em;line-height:1.15">Design, app, cloud, AI and support. One team, one contract.</El>
+              </El>
+            </El>
+          </El>
+
+          <El css="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:clamp(12px,1.4vw,20px)">
+            {OFFICE_SHOTS.map(([src, label, pos]) => (
+              <El as="figure" key={label} data-rv="1" css="margin:0;position:relative;overflow:hidden;border-radius:18px;background:#E4E0D8;min-height:220px">
+                <El role="img" aria-label={label} css={`position:absolute;inset:0;background:url('${src}') ${pos}/cover no-repeat;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)`} hover="transform:scale(1.05)" />
+                <El as="figcaption" css={`position:absolute;left:14px;bottom:12px;${MONO};font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#F4F1EA;background:rgba(8,7,10,.55);padding:5px 9px;border-radius:6px`}>{label}</El>
+              </El>
+            ))}
+            {NUMBER_CARDS.map(([icon, value, label]) => (
+              <El key={label} data-rv="1" css="background:#FFFFFF;border:1px solid rgba(8,7,10,.08);border-radius:18px;padding:clamp(20px,2.2vw,30px);display:flex;gap:16px;align-items:flex-start;min-height:150px">
+                <El as="span" aria-hidden="true" css="width:44px;height:44px;flex-shrink:0;border-radius:12px;background:#FDEBE5;color:#F04423;display:flex;align-items:center;justify-content:center;font-size:20px">{icon}</El>
+                <El>
+                  <El css="font-size:clamp(2.2rem,3.6vw,3.4rem);font-weight:600;letter-spacing:-.05em;line-height:.95">{value}</El>
+                  <El css="margin-top:8px;font-size:15px;line-height:1.4;color:#4A4741">{label}</El>
+                </El>
               </El>
             ))}
           </El>

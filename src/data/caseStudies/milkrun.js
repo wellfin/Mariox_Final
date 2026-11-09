@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/milkrun/milkrun.png',
   galleryImages: [
-    '/img/cs/milkrun/milkrun1.png',
-    '/img/cs/milkrun/milkrun2.png',
-    '/img/cs/milkrun/milkrun3.png',
-    '/img/cs/milkrun/milkrun4.png',
+    '/site-img/img_cs_milkrun_milkrun1.webp',
+    '/site-img/img_cs_milkrun_milkrun2.webp',
+    '/site-img/img_cs_milkrun_milkrun3.webp',
+    '/site-img/img_cs_milkrun_milkrun4.webp',
     '/img/cs/milkrun/milkrun5.png',
   ],
   sections: [

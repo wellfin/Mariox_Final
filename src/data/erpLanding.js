@@ -46,9 +46,9 @@ export const apps = [
 ];
 
 export const cases = [
-  { name: 'Fynd', sector: 'Retail operations', region: 'India', scope: 'App + web + admin', img: '/img/cs/fynd/fynd1.png', url: '/work/fynd', body: 'Commerce technology connecting online ordering with retail operations, with one inventory service read by every channel.' },
-  { name: 'Teachmint', sector: 'School management', region: 'India', scope: 'App + web', img: '/img/cs/teachmint/teachmint.png', url: '/work/teachmint', body: 'Classroom and school management at scale: attendance, fees and records for institutions on one platform.' },
-  { name: 'Voly', sector: 'Operations platform', region: 'Australia', scope: 'App + web + ops', img: '/img/cs/volygroup/volygroup2.png', url: '/work/volygroup', body: 'Quick commerce across app, web and the operations tooling behind stock, picking and dispatch.' },
+  { name: 'Fynd', sector: 'Retail operations', region: 'India', scope: 'App + web + admin', img: '/site-img/img_cs_fynd_fynd1.webp', url: '/work/fynd', body: 'Commerce technology connecting online ordering with retail operations, with one inventory service read by every channel.' },
+  { name: 'Teachmint', sector: 'School management', region: 'India', scope: 'App + web', img: '/site-img/img_cs_teachmint_teachmint.webp', url: '/work/teachmint', body: 'Classroom and school management at scale: attendance, fees and records for institutions on one platform.' },
+  { name: 'Voly', sector: 'Operations platform', region: 'Australia', scope: 'App + web + ops', img: '/site-img/img_cs_volygroup_volygroup2.webp', url: '/work/volygroup', body: 'Quick commerce across app, web and the operations tooling behind stock, picking and dispatch.' },
 ];
 
 export const faq = [

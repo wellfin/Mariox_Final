@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/fynd/fynd.png',
   galleryImages: [
-    '/img/cs/fynd/fynd1.png',
-    '/img/cs/fynd/fynd2.png',
-    '/img/cs/fynd/fynd3.png',
-    '/img/cs/fynd/fynd4.png',
+    '/site-img/img_cs_fynd_fynd1.webp',
+    '/site-img/img_cs_fynd_fynd2.webp',
+    '/site-img/img_cs_fynd_fynd3.webp',
+    '/site-img/img_cs_fynd_fynd4.webp',
   ],
   sections: [
     {

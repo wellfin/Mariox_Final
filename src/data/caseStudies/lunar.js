@@ -9,9 +9,9 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/lunar/lunar.png',
   galleryImages: [
-    '/img/cs/lunar/luner1.png',
-    '/img/cs/lunar/luner2.png',
-    '/img/cs/lunar/luner3.png',
+    '/site-img/img_cs_lunar_luner1.webp',
+    '/site-img/img_cs_lunar_luner2.webp',
+    '/site-img/img_cs_lunar_luner3.webp',
   ],
   sections: [
     {

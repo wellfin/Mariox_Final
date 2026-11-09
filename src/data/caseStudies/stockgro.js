@@ -9,9 +9,9 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/stockgro/stockgro.png',
   galleryImages: [
-    '/img/cs/stockgro/stockgro1.png',
-    '/img/cs/stockgro/stockgro2.png',
-    '/img/cs/stockgro/stockgro3.png',
+    '/site-img/img_cs_stockgro_stockgro1.webp',
+    '/site-img/img_cs_stockgro_stockgro2.webp',
+    '/site-img/img_cs_stockgro_stockgro3.webp',
   ],
   sections: [
     {

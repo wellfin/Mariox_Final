@@ -9,7 +9,7 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/snitch/snitch.png',
   galleryImages: [
-    '/img/cs/snitch/snitch1.png',
+    '/site-img/img_cs_snitch_snitch1.webp',
   ],
   sections: [
     {

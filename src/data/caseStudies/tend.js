@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/tend/tend.png',
   galleryImages: [
-    '/img/cs/tend/tend1.png',
-    '/img/cs/tend/tend2.png',
-    '/img/cs/tend/tend3.png',
-    '/img/cs/tend/tend4.png',
+    '/site-img/img_cs_tend_tend1.webp',
+    '/site-img/img_cs_tend_tend2.webp',
+    '/site-img/img_cs_tend_tend3.webp',
+    '/site-img/img_cs_tend_tend4.webp',
   ],
   sections: [
     {

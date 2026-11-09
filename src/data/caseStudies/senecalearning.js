@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/senecalearning/senecalearning.png',
   galleryImages: [
-    '/img/cs/senecalearning/senecalearning1.png',
-    '/img/cs/senecalearning/senecalearning2.png',
-    '/img/cs/senecalearning/senecalearning3.png',
-    '/img/cs/senecalearning/senecalearning4.png',
+    '/site-img/img_cs_senecalearning_senecalearning1.webp',
+    '/site-img/img_cs_senecalearning_senecalearning2.webp',
+    '/site-img/img_cs_senecalearning_senecalearning3.webp',
+    '/site-img/img_cs_senecalearning_senecalearning4.webp',
   ],
   sections: [
     {

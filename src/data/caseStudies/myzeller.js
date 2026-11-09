@@ -9,11 +9,11 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/myzelller/myzeller.png',
   galleryImages: [
-    '/img/cs/myzelller/myzeller1.png',
-    '/img/cs/myzelller/myzeller2.png',
-    '/img/cs/myzelller/myzeller3.png',
+    '/site-img/img_cs_myzelller_myzeller1.webp',
+    '/site-img/img_cs_myzelller_myzeller2.webp',
+    '/site-img/img_cs_myzelller_myzeller3.webp',
     '/img/cs/myzelller/myzeller4.png',
-    '/img/cs/myzelller/myzeller5.png',
+    '/site-img/img_cs_myzelller_myzeller5.webp',
   ],
   sections: [
     {

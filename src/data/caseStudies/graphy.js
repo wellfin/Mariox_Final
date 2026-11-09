@@ -9,10 +9,10 @@ const caseStudy = {
   ],
   heroImage: '/img/cs/graphy/graphy.png',
   galleryImages: [
-    '/img/cs/graphy/graphy1.png',
-    '/img/cs/graphy/graphy2.png',
-    '/img/cs/graphy/graphy3.png',
-    '/img/cs/graphy/graphy4.png',
+    '/site-img/img_cs_graphy_graphy1.webp',
+    '/site-img/img_cs_graphy_graphy2.webp',
+    '/site-img/img_cs_graphy_graphy3.webp',
+    '/site-img/img_cs_graphy_graphy4.webp',
     '/img/cs/graphy/graphy5.png',
   ],
   sections: [

@@ -83,22 +83,22 @@ export const industries = [
    {
     "name": "Airwallex",
     "line": "Global business accounts & FX",
-    "img": "/img/cs/airwallex/AirWallex4.png"
+    "img": "/site-img/img_cs_airwallex_AirWallex4.webp"
    },
    {
     "name": "Zeller",
     "line": "Business payments & settlement",
-    "img": "/img/cs/myzelller/myzeller5.png"
+    "img": "/site-img/img_cs_myzelller_myzeller5.webp"
    },
    {
     "name": "Skydo",
     "line": "Cross-border payments for exporters",
-    "img": "/img/cs/skydo/Skydo1.png"
+    "img": "/site-img/img_cs_skydo_Skydo1.webp"
    },
    {
     "name": "StockGro",
     "line": "Investing & market data platform",
-    "img": "/img/cs/stockgro/stockgro1.png"
+    "img": "/site-img/img_cs_stockgro_stockgro1.webp"
    }
   ],
   "n": "01",
@@ -170,12 +170,12 @@ export const industries = [
    {
     "name": "Lunar",
     "line": "Digital banking",
-    "img": "/img/cs/lunar/luner1.png"
+    "img": "/site-img/img_cs_lunar_luner1.webp"
    },
    {
     "name": "Soldo",
     "line": "Company spend management",
-    "img": "/img/cs/soldo/soldo.png"
+    "img": "/site-img/img_cs_soldo_soldo.webp"
    }
   ],
   "n": "02",
@@ -314,12 +314,12 @@ export const industries = [
    {
     "name": "HotDoc",
     "line": "Clinic booking & patient engagement",
-    "img": "/img/cs/hotdoc/hotdoc1.png"
+    "img": "/site-img/img_cs_hotdoc_hotdoc1.webp"
    },
    {
     "name": "Eka Care",
     "line": "Health records & telemedicine",
-    "img": "/img/cs/eka.care/eka.care2.png"
+    "img": "/site-img/img_cs_eka.care_eka.care2.webp"
    }
   ],
   "n": "04",
@@ -521,22 +521,22 @@ export const industries = [
    {
     "name": "Graphy",
     "line": "Creator courses & live cohorts",
-    "img": "/img/cs/graphy/graphy1.png"
+    "img": "/site-img/img_cs_graphy_graphy1.webp"
    },
    {
     "name": "Testbook",
     "line": "Exam prep & assessment",
-    "img": "/img/cs/testbook/testbook1.png"
+    "img": "/site-img/img_cs_testbook_testbook1.webp"
    },
    {
     "name": "Teachmint",
     "line": "School operations platform",
-    "img": "/img/cs/teachmint/teachmint.png"
+    "img": "/site-img/img_cs_teachmint_teachmint.webp"
    },
    {
     "name": "Learnosity",
     "line": "Assessment infrastructure",
-    "img": "/img/cs/learnosity/learnosity2.png"
+    "img": "/site-img/img_cs_learnosity_learnosity2.webp"
    }
   ],
   "n": "07",
@@ -607,22 +607,22 @@ export const industries = [
    {
     "name": "Snitch",
     "line": "Fashion commerce",
-    "img": "/img/cs/snitch/snitch1.png"
+    "img": "/site-img/img_cs_snitch_snitch1.webp"
    },
    {
     "name": "Kogan",
     "line": "Marketplace & seller tools",
-    "img": "/img/cs/kogan/kogan2.png"
+    "img": "/site-img/img_cs_kogan_kogan2.webp"
    },
    {
     "name": "OnBuy",
     "line": "Multi-seller marketplace",
-    "img": "/img/cs/onbuy/onbuy1.png"
+    "img": "/site-img/img_cs_onbuy_onbuy1.webp"
    },
    {
     "name": "Jaypore",
     "line": "Lifestyle e-commerce",
-    "img": "/img/cs/jaypore/jaypore1.png"
+    "img": "/site-img/img_cs_jaypore_jaypore1.webp"
    }
   ],
   "n": "08",
@@ -693,12 +693,12 @@ export const industries = [
    {
     "name": "Fynd",
     "line": "Omnichannel commerce",
-    "img": "/img/cs/fynd/fynd1.png"
+    "img": "/site-img/img_cs_fynd_fynd1.webp"
    },
    {
     "name": "Jaypore",
     "line": "Lifestyle e-commerce",
-    "img": "/img/cs/jaypore/jaypore1.png"
+    "img": "/site-img/img_cs_jaypore_jaypore1.webp"
    }
   ],
   "n": "09",
@@ -769,22 +769,22 @@ export const industries = [
    {
     "name": "MILKRUN",
     "line": "Quick-commerce & rider dispatch",
-    "img": "/img/cs/milkrun/milkrun1.png"
+    "img": "/site-img/img_cs_milkrun_milkrun1.webp"
    },
    {
     "name": "Zupit",
     "line": "Quick commerce",
-    "img": "/img/cs/zypit/zypit2.png"
+    "img": "/site-img/img_cs_zypit_zypit2.webp"
    },
    {
     "name": "Voly",
     "line": "Dark-store operations",
-    "img": "/img/cs/volygroup/volygroup2.png"
+    "img": "/site-img/img_cs_volygroup_volygroup2.webp"
    },
    {
     "name": "Grokart",
     "line": "Grocery delivery",
-    "img": "/img/cs/thegrocart/thegrocart1.png"
+    "img": "/site-img/img_cs_thegrocart_thegrocart1.webp"
    }
   ],
   "n": "10",
@@ -920,17 +920,17 @@ export const industries = [
    {
     "name": "MILKRUN",
     "line": "Quick-commerce & rider dispatch",
-    "img": "/img/cs/milkrun/milkrun1.png"
+    "img": "/site-img/img_cs_milkrun_milkrun1.webp"
    },
    {
     "name": "Voly",
     "line": "Dark-store operations",
-    "img": "/img/cs/volygroup/volygroup2.png"
+    "img": "/site-img/img_cs_volygroup_volygroup2.webp"
    },
    {
     "name": "Grokart",
     "line": "Grocery delivery",
-    "img": "/img/cs/thegrocart/thegrocart1.png"
+    "img": "/site-img/img_cs_thegrocart_thegrocart1.webp"
    }
   ],
   "n": "12",
@@ -1001,12 +1001,12 @@ export const industries = [
    {
     "name": "MILKRUN",
     "line": "Quick-commerce & rider dispatch",
-    "img": "/img/cs/milkrun/milkrun1.png"
+    "img": "/site-img/img_cs_milkrun_milkrun1.webp"
    },
    {
     "name": "Voly",
     "line": "Dark-store operations",
-    "img": "/img/cs/volygroup/volygroup2.png"
+    "img": "/site-img/img_cs_volygroup_volygroup2.webp"
    }
   ],
   "n": "13",
@@ -1077,12 +1077,12 @@ export const industries = [
    {
     "name": "Fynd",
     "line": "Omnichannel commerce",
-    "img": "/img/cs/fynd/fynd1.png"
+    "img": "/site-img/img_cs_fynd_fynd1.webp"
    },
    {
     "name": "Voly",
     "line": "Dark-store operations",
-    "img": "/img/cs/volygroup/volygroup2.png"
+    "img": "/site-img/img_cs_volygroup_volygroup2.webp"
    }
   ],
   "n": "14",
@@ -1543,7 +1543,7 @@ export const industries = [
    {
     "name": "Voly",
     "line": "Dark-store operations",
-    "img": "/img/cs/volygroup/volygroup2.png"
+    "img": "/site-img/img_cs_volygroup_volygroup2.webp"
    }
   ],
   "n": "21",
@@ -2322,17 +2322,17 @@ export const industries = [
    {
     "name": "Skydo",
     "line": "Cross-border payments for exporters",
-    "img": "/img/cs/skydo/Skydo1.png"
+    "img": "/site-img/img_cs_skydo_Skydo1.webp"
    },
    {
     "name": "Zupit",
     "line": "Quick commerce",
-    "img": "/img/cs/zypit/zypit2.png"
+    "img": "/site-img/img_cs_zypit_zypit2.webp"
    },
    {
     "name": "Grokart",
     "line": "Grocery delivery",
-    "img": "/img/cs/thegrocart/thegrocart1.png"
+    "img": "/site-img/img_cs_thegrocart_thegrocart1.webp"
    }
   ],
   "n": "33",
@@ -2404,12 +2404,12 @@ export const industries = [
    {
     "name": "Fynd",
     "line": "Omnichannel commerce",
-    "img": "/img/cs/fynd/fynd1.png"
+    "img": "/site-img/img_cs_fynd_fynd1.webp"
    },
    {
     "name": "Soldo",
     "line": "Company spend management",
-    "img": "/img/cs/soldo/soldo.png"
+    "img": "/site-img/img_cs_soldo_soldo.webp"
    }
   ],
   "n": "34",
